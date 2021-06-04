@@ -260,15 +260,18 @@ namespace OpenGSQ.Protocols
             udpClient.Client.SendTimeout = _timeout;
             udpClient.Client.ReceiveTimeout = _timeout;
 
-            // Set up request data
+            // Set up request base
             var requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, (byte)request };
-            var requestData = requestBase;
 
             if (request == Request.A2S_INFO)
             {
-                requestData = requestData.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
+                requestBase = requestBase.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
             }
-            else
+
+            // Set up request data
+            var requestData = requestBase;
+
+            if (request != Request.A2S_INFO)
             {
                 requestData = requestData.Concat(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }).ToArray();
             }
