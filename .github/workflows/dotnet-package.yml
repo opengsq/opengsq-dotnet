@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: dotnet build OpenGSQ
     - name: Test
-      run: dotnet test OpenGSQ --verbosity normal
+      run: dotnet test OpenGSQ --no-build --verbosity normal
