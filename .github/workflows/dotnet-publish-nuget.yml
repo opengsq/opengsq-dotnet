@@ -1,4 +1,4 @@
-name: Publish Dotnet Package (nuget.org)
+name: Publish Dotnet Package (NuGet)
 
 on:
   release:
