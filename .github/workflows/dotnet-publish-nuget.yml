@@ -15,6 +15,10 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
+    - name: Build
+      run: dotnet build OpenGSQ -c Release
+    - name: Create the package
+      run: dotnet pack OpenGSQ -c Release
     - name: Publish the package to nuget.org
       run: dotnet nuget push OpenGSQ/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
       env:
