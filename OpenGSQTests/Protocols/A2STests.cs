@@ -16,10 +16,10 @@ namespace OpenGSQ.Protocols.Tests
         };
 
         // TF2
-        // public A2S a2s = new A2S("91.216.250.13", 27015);
+        public A2S a2s = new A2S("91.216.250.13", 27015);
 
         // CSGO
-        public A2S a2s = new A2S("216.52.148.47", 27015);
+        //public A2S a2s = new A2S("216.52.148.47", 27015);
 
         // CS
         // public A2S a2s = new A2S("46.174.53.84", 27015);
