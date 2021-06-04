@@ -23,6 +23,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore OpenGSQ
     - name: Build
-      run: dotnet build OpenGSQ --no-restore
+      run: dotnet build OpenGSQ
     - name: Test
-      run: dotnet test OpenGSQ --no-build --verbosity normal
+      run: dotnet test OpenGSQ --verbosity normal
