@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGSQ", "OpenGSQ.csproj", "{ACED93D0-FC50-4B10-92E0-E901FB243D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGSQTests", "..\OpenGSQTests\OpenGSQTests.csproj", "{FCD475C9-0951-43CE-92BD-EC81E894C7FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACED93D0-FC50-4B10-92E0-E901FB243D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACED93D0-FC50-4B10-92E0-E901FB243D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACED93D0-FC50-4B10-92E0-E901FB243D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACED93D0-FC50-4B10-92E0-E901FB243D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCD475C9-0951-43CE-92BD-EC81E894C7FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCD475C9-0951-43CE-92BD-EC81E894C7FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCD475C9-0951-43CE-92BD-EC81E894C7FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCD475C9-0951-43CE-92BD-EC81E894C7FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ED4BE525-8EFD-4977-86E8-8582D06CD76F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>OpenGSQ</AssemblyTitle>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <Version>39.50.0</Version>
+    <Authors>OpenGSQ, BattlefieldDuck</Authors>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>OpenGSQ</AssemblyName>
+    <PackageId>OpenGSQ</PackageId>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SharpZipLib" Version="1.3.2" />
+  </ItemGroup>
+
+</Project>
