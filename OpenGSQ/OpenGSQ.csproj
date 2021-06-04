@@ -1,18 +1,38 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyTitle>OpenGSQ</AssemblyTitle>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <Version>39.50.0</Version>
+    <Version>1.0.0</Version>
     <Authors>OpenGSQ, BattlefieldDuck</Authors>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>OpenGSQ</AssemblyName>
     <PackageId>OpenGSQ</PackageId>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/opengsq/opengsq-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/opengsq/opengsq-dotnet</RepositoryUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Description>.NET library for querying game servers</Description>
+    <PackageTags>game, csharp, server-query, opengsq, game-server-query</PackageTags>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="SharpZipLib" Version="1.3.2" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="C:\Users\HkdseThomas\Downloads\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
