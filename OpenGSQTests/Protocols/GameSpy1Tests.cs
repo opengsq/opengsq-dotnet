@@ -23,7 +23,7 @@ namespace OpenGSQ.Protocols.Tests
         //public GameSpy1 gameSpy1 = new GameSpy1("66.150.121.123", 7778);
 
         // Add a delay on every test case since too quick causes timeout
-        private readonly int _millisecondsTimeout = 800;
+        private readonly int _millisecondsTimeout = 900;
 
         [TestMethod()]
         public void GetBasicTest()
