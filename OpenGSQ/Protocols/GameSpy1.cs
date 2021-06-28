@@ -187,7 +187,7 @@ namespace OpenGSQ.Protocols
                 (string key, int index) = (subs[0], int.Parse(subs[1]));
 
                 // Create a new item if not exists
-                if (items.Count <= index)
+                while (items.Count <= index)
                 {
                     items.Add(new Dictionary<string, string>());
                 }
