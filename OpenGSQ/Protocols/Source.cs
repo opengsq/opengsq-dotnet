@@ -4,36 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
 namespace OpenGSQ.Protocols
 {
-    public class A2S
+    public class Source : ProtocolBase
     {
-        private IPEndPoint _endPoint;
-        private readonly int _timeout;
-
         /// <summary>
         /// A2S Protocol<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries">https://developer.valvesoftware.com/wiki/Server_queries</see>
         /// </summary>
-        /// <param name="endPoint"></param>
+        /// <param name="address"></param>
+        /// <param name="port"></param>
         /// <param name="timeout"></param>
-        public A2S(IPEndPoint endPoint, int timeout = 5000)
-        {
-            _endPoint = endPoint;
-            _timeout = timeout;
-        }
-
-        /// <summary>
-        /// A2S Protocol<br />
-        /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries">https://developer.valvesoftware.com/wiki/Server_queries</see>
-        /// </summary>
-        /// <param name="endPoint"></param>
-        /// <param name="timeout"></param>
-        public A2S(string address, int port = 27015, int timeout = 5000) : this(new IPEndPoint(IPAddress.Parse(address), port), timeout)
+        public Source(string address, int port = 27015, int timeout = 5000) : base(address, port, timeout)
         {
 
         }
@@ -256,9 +241,9 @@ namespace OpenGSQ.Protocols
         private byte[] ConnectAndSendChallenge(UdpClient udpClient, Request request)
         {
             // Connect to remote host
-            udpClient.Connect(_endPoint);
-            udpClient.Client.SendTimeout = _timeout;
-            udpClient.Client.ReceiveTimeout = _timeout;
+            udpClient.Connect(EndPoint);
+            udpClient.Client.SendTimeout = Timeout;
+            udpClient.Client.ReceiveTimeout = Timeout;
 
             // Set up request base
             var requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, (byte)request };
@@ -295,13 +280,13 @@ namespace OpenGSQ.Protocols
         private byte[] Receive(UdpClient udpClient)
         {
             bool isCompressed;
-            int total_packets = -1, crc32Sum = 0;
+            int totalPackets = -1, crc32Sum = 0;
             var payloads = new SortedDictionary<int, byte[]>();
             var packets = new List<byte[]>();
 
             do
             {
-                var responseData = udpClient.Receive(ref _endPoint);
+                var responseData = udpClient.Receive(ref EndPoint);
                 packets.Add(responseData);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
@@ -327,7 +312,7 @@ namespace OpenGSQ.Protocols
                     }
 
                     // The total number of packets
-                    total_packets = br.ReadByte();
+                    totalPackets = br.ReadByte();
 
                     // The number of the packet
                     int number = br.ReadByte();
@@ -346,7 +331,7 @@ namespace OpenGSQ.Protocols
 
                     payloads.Add(number, responseData.Skip((int)br.BaseStream.Position).ToArray());
                 }
-            } while (total_packets == -1 || payloads.Count < total_packets);
+            } while (totalPackets == -1 || payloads.Count < totalPackets);
 
             // Combine the payloads
             var combinedPayload = payloads.Values.Aggregate((a, b) => a.Concat(b).ToArray());
@@ -387,13 +372,13 @@ namespace OpenGSQ.Protocols
 
         private byte[] ParseGoldSourcePackets(UdpClient udpClient, List<byte[]> packets)
         {
-            int total_packets = -1;
+            int totalPackets = -1;
             var payloads = new SortedDictionary<int, byte[]>();
 
-            while (total_packets == -1 || payloads.Count < total_packets)
+            while (totalPackets == -1 || payloads.Count < totalPackets)
             {
                 // Load the old received packets first, then receive the packets from udpClient
-                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : udpClient.Receive(ref _endPoint);
+                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : udpClient.Receive(ref EndPoint);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
@@ -404,13 +389,13 @@ namespace OpenGSQ.Protocols
                     br.ReadInt32();
 
                     // The total number of packets
-                    total_packets = br.ReadByte();
+                    totalPackets = br.ReadByte();
 
                     // Upper 4 bits represent the number of the current packet (starting at 0)
-                    int number = total_packets >> 4;
+                    int number = totalPackets >> 4;
 
                     // Bottom 4 bits represent the total number of packets (2 to 15)
-                    total_packets &= 0x0F;
+                    totalPackets &= 0x0F;
 
                     payloads.Add(number, responseData.Skip((int)br.BaseStream.Position).ToArray());
                 }
@@ -456,7 +441,7 @@ namespace OpenGSQ.Protocols
             /// <summary>
             /// Info response type. Either <c>Source</c> or <c>GoldSource</c>
             /// </summary>
-            public Type ResponseType { get; set; } = typeof(Source);
+            public Type ResponseType { get; set; }
 
             /// <summary>
             /// Info response.

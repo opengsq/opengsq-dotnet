@@ -6,7 +6,7 @@ using System.Text.Json;
 namespace OpenGSQ.Protocols.Tests
 {
     [TestClass()]
-    public class A2STests
+    public class SourceTests
     {
         public JsonSerializerOptions options = new JsonSerializerOptions
         {
@@ -16,13 +16,7 @@ namespace OpenGSQ.Protocols.Tests
         };
 
         // TF2
-        public A2S a2s = new A2S("91.216.250.13", 27015);
-
-        // CSGO
-        //public A2S a2s = new A2S("216.52.148.47", 27015);
-
-        // CS
-        // public A2S a2s = new A2S("46.174.53.84", 27015);
+        public Source a2s = new Source("91.216.250.13", 27015);
 
         // The Ship
         // public A2S a2s = new A2S("5.79.86.193", 27021);
@@ -32,7 +26,7 @@ namespace OpenGSQ.Protocols.Tests
         {
             var info = a2s.GetInfo();
 
-            Console.WriteLine("Info Type:\t" + (info.ResponseType.Equals(typeof(A2S.Info.Source)) ? "Source" : "GoldSource"));
+            Console.WriteLine("Info Type:\t" + (info.ResponseType.Equals(typeof(Source.Info.Source)) ? "Source" : "GoldSource"));
             Console.WriteLine();
             Console.WriteLine(JsonSerializer.Serialize(info.Response, info.ResponseType, options));
         }
@@ -44,7 +38,7 @@ namespace OpenGSQ.Protocols.Tests
 
             Console.WriteLine("Player Count:\t" + players.Count);
             Console.WriteLine();
-            Console.WriteLine(JsonSerializer.Serialize(players, typeof(List<A2S.Player>), options));
+            Console.WriteLine(JsonSerializer.Serialize(players, typeof(List<Source.Player>), options));
         }
 
         [TestMethod()]
