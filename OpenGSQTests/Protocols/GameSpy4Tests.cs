@@ -15,7 +15,7 @@ namespace OpenGSQ.Protocols.Tests
         };
 
         // Minecraft Pocket Edition
-        public GameSpy4 gameSpy4 = new GameSpy4("188.18.10.72", 19133);
+        public GameSpy4 gameSpy4 = new GameSpy4("104.238.152.181", 19132);
 
         [TestMethod()]
         public void GetResponseTest()
