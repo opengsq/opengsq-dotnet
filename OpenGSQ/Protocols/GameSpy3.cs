@@ -27,7 +27,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns></returns>
         /// <exception cref="SocketException"></exception>
-        public Response GetResponse()
+        public Status GetStatus()
         {
             using (var udpClient = new UdpClient())
             {
@@ -35,15 +35,15 @@ namespace OpenGSQ.Protocols
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
-                    return new Response
+                    return new Status
                     {
-                        // Save Response Info
+                        // Save Status Info
                         Info = GetInfo(br),
 
-                        // Save Response Players
+                        // Save Status Players
                         Players = GetPlayers(br),
 
-                        // Save Response Teams
+                        // Save Status Teams
                         Teams = GetTeams(br)
                     };
                 }
@@ -307,22 +307,22 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Response object
+        /// Status object
         /// </summary>
-        public class Response
+        public class Status
         {
             /// <summary>
-            /// Response Info
+            /// Status Info
             /// </summary>
             public Dictionary<string, string> Info { get; set; }
 
             /// <summary>
-            /// Response Players
+            /// Status Players
             /// </summary>
             public List<Dictionary<string, string>> Players { get; set; }
 
             /// <summary>
-            /// Response Teams
+            /// Status Teams
             /// </summary>
             public List<Dictionary<string, string>> Teams { get; set; }
         }

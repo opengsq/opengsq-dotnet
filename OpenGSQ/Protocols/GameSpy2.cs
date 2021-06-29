@@ -26,7 +26,7 @@ namespace OpenGSQ.Protocols
         /// <param name="request"></param>
         /// <returns></returns>
         /// <exception cref="SocketException"></exception>
-        public Response GetResponse(Request request = Request.Info | Request.Players | Request.Teams)
+        public Status GetStatus(Request request = Request.Info | Request.Players | Request.Teams)
         {
             using (var udpClient = new UdpClient())
             {
@@ -34,27 +34,27 @@ namespace OpenGSQ.Protocols
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
-                    var response = new Response();
+                    var status = new Status();
 
                     // Save Response Info
                     if (request.HasFlag(Request.Info))
                     {
-                        response.Info = GetInfo(br);
+                        status.Info = GetInfo(br);
                     }
 
                     // Save Response Players
                     if (request.HasFlag(Request.Players))
                     {
-                        response.Players = GetPlayers(br);
+                        status.Players = GetPlayers(br);
                     }
 
                     // Save Response Teams
                     if (request.HasFlag(Request.Teams))
                     {
-                        response.Teams = GetTeams(br);
+                        status.Teams = GetTeams(br);
                     }
 
-                    return response;
+                    return status;
                 }
             }
         }
@@ -175,22 +175,22 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Response object
+        /// Status object
         /// </summary>
-        public class Response
+        public class Status
         {
             /// <summary>
-            /// Response Info
+            /// Status Info
             /// </summary>
             public Dictionary<string, string> Info { get; set; }
 
             /// <summary>
-            /// Response Players
+            /// Status Players
             /// </summary>
             public List<Dictionary<string, string>> Players { get; set; }
 
             /// <summary>
-            /// Response Teams
+            /// Status Teams
             /// </summary>
             public List<Dictionary<string, string>> Teams { get; set; }
         }

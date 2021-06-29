@@ -20,9 +20,9 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public void GetResponseTest()
         {
-            var response = gameSpy2.GetResponse();
+            var response = gameSpy2.GetStatus();
 
-            Console.WriteLine(JsonSerializer.Serialize(response, typeof(GameSpy2.Response), options));
+            Console.WriteLine(JsonSerializer.Serialize(response, typeof(GameSpy2.Status), options));
         }
     }
 }

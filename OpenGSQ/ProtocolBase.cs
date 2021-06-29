@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace OpenGSQ.Protocols
+namespace OpenGSQ
 {
     public abstract class ProtocolBase
     {
