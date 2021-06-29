@@ -8,7 +8,7 @@ namespace OpenGSQ.Protocols
 {
     public class GameSpy1 : ProtocolBase
     {
-        private readonly byte _separateByte = Encoding.ASCII.GetBytes("\\")[0];
+        private static readonly byte _delimiter = Encoding.ASCII.GetBytes("\\")[0];
 
         /// <summary>
         /// Gamespy Query Protocol version 1
@@ -24,6 +24,7 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// This returns basic server information, mainly for recognition.
         /// </summary>
+        /// <exception cref="SocketException"></exception>
         /// <returns></returns>
         public Dictionary<string, string> GetBasic()
         {
@@ -32,11 +33,10 @@ namespace OpenGSQ.Protocols
 
         /// <summary>
         /// Information about the current game running on the server.
-        /// <br />
-        /// <br />
-        /// If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.
-        /// </summary>
+        /// <para>If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.</para>
+        /// </summary> 
         /// <param name="XServerQuery"></param>
+        /// <exception cref="SocketException"></exception>
         /// <returns></returns>
         public Dictionary<string, string> GetInfo(bool XServerQuery = true)
         {
@@ -45,12 +45,11 @@ namespace OpenGSQ.Protocols
 
         /// <summary>
         /// Setting for the current game, return sets of rules depends on the running game type.
-        /// <br />
-        /// <br />
-        /// If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.
+        /// <para>If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.</para>
         /// </summary>
         /// <param name="XServerQuery"></param>
         /// <returns></returns>
+        /// <exception cref="SocketException"></exception>
         public Dictionary<string, string> GetRules(bool XServerQuery = true)
         {
             return SendAndParseKeyValue("\\rules\\" + (XServerQuery ? "xserverquery" : string.Empty));
@@ -58,27 +57,24 @@ namespace OpenGSQ.Protocols
 
         /// <summary>
         /// Returns information about each player on the server.
-        /// <br />
-        /// <br />
-        /// If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.
+        /// <para>If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.</para>
         /// </summary>
         /// <param name="XServerQuery"></param>
         /// <returns></returns>
+        /// <exception cref="SocketException"></exception>
         public List<Dictionary<string, string>> GetPlayers(bool XServerQuery = true)
         {
             return SendAndParseObject("\\players\\" + (XServerQuery ? "xserverquery" : string.Empty));
         }
 
         /// <summary>
-        /// XServerQuery: \info\xserverquery\rules\xserverquery\players\xserverquery
-        /// <br />
+        /// XServerQuery: \info\xserverquery\rules\xserverquery\players\xserverquery<br />
         /// Old response: \basic\\info\\rules\\players\
-        /// <br />
-        /// <br />
-        /// If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.
+        /// <para>If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.</para>
         /// </summary>
         /// <param name="XServerQuery"></param>
         /// <returns></returns>
+        /// <exception cref="SocketException"></exception>
         public Status GetStatus(bool XServerQuery = true)
         {
             using (var udpClient = new UdpClient())
@@ -96,11 +92,11 @@ namespace OpenGSQ.Protocols
 
                     // Read key until "player_#" or "Player_#"
                     while (br.BaseStream.Position < br.BaseStream.Length 
-                        && br.TryReadStringEx(out var key, _separateByte) 
+                        && br.TryReadStringEx(out var key, _delimiter) 
                         && !key.ToLower().StartsWith("player_"))
                     {
                         // Save key and value
-                        status.KeyValues[key] = br.ReadStringEx(_separateByte);
+                        status.KeyValues[key] = br.ReadStringEx(_delimiter);
 
                         // Save the position after read the value
                         position = br.BaseStream.Position;
@@ -148,6 +144,7 @@ namespace OpenGSQ.Protocols
         /// Returns information about each team on the server.
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="SocketException"></exception>
         public List<Dictionary<string, string>> GetTeams()
         {
             return SendAndParseObject("\\teams\\");
@@ -157,6 +154,7 @@ namespace OpenGSQ.Protocols
         /// This command requires a argument, the argument will be returned.
         /// </summary>
         /// <param name="text"></param>
+        /// <exception cref="SocketException"></exception>
         /// <returns></returns>
         public Dictionary<string, string> GetEcho(string text = "this is a test")
         {
@@ -168,9 +166,9 @@ namespace OpenGSQ.Protocols
             var kv = new Dictionary<string, string>();
 
             // Read all key values
-            while (br.BaseStream.Position < br.BaseStream.Length && br.TryReadStringEx(out var key, _separateByte))
+            while (br.BaseStream.Position < br.BaseStream.Length && br.TryReadStringEx(out var key, _delimiter))
             {
-                kv[key] = br.ReadStringEx(_separateByte);
+                kv[key] = br.ReadStringEx(_delimiter);
             }
 
             return kv;
@@ -180,7 +178,7 @@ namespace OpenGSQ.Protocols
         {
             var items = new List<Dictionary<string, string>>();
 
-            while (br.BaseStream.Position < br.BaseStream.Length && br.TryReadStringEx(out var outString, _separateByte))
+            while (br.BaseStream.Position < br.BaseStream.Length && br.TryReadStringEx(out var outString, _delimiter))
             {
                 // Split key and index
                 string[] subs = outString.Split(new char[] { '_' }, 2);
@@ -193,7 +191,7 @@ namespace OpenGSQ.Protocols
                 }
 
                 // Set the value
-                items[index][key] = br.ReadStringEx(_separateByte);
+                items[index][key] = br.ReadStringEx(_delimiter);
             }
 
             return items;
@@ -228,9 +226,9 @@ namespace OpenGSQ.Protocols
         private byte[] ConnectAndSend(UdpClient udpClient, string request)
         {
             // Connect to remote host
-            udpClient.Connect(EndPoint);
-            udpClient.Client.SendTimeout = Timeout;
-            udpClient.Client.ReceiveTimeout = Timeout;
+            udpClient.Connect(_EndPoint);
+            udpClient.Client.SendTimeout = _Timeout;
+            udpClient.Client.ReceiveTimeout = _Timeout;
 
             // Send Request
             var requestData = Encoding.ASCII.GetBytes(request);
@@ -250,7 +248,7 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = udpClient.Receive(ref EndPoint);
+                var responseData = udpClient.Receive(ref _EndPoint);
 
                 // Try read "queryid" value, if it is the last packet, it cannot read the "queryid" value directly
                 if (!ReadStringReverse(responseData, responseData.Length, out var endIndex, out var queryId))
@@ -272,7 +270,7 @@ namespace OpenGSQ.Protocols
                 ReadStringReverse(responseData, endIndex, out endIndex, out _);
 
                 // Save the payload
-                byte[] payload = responseData.Take(endIndex).Skip(1).Concat(new byte[] { _separateByte }).ToArray();
+                byte[] payload = responseData.Take(endIndex).Skip(1).Concat(new byte[] { _delimiter }).ToArray();
 
                 payloads.Add(packetId, payload);
             } while (totalPackets == -1 || payloads.Count < totalPackets);
@@ -287,7 +285,7 @@ namespace OpenGSQ.Protocols
         {
             var bytes = new List<byte>();
 
-            while (data[--startIndex] != _separateByte)
+            while (data[--startIndex] != _delimiter)
             {
                 bytes.Add(data[startIndex]);
             }
@@ -312,6 +310,7 @@ namespace OpenGSQ.Protocols
 
             /// <summary>
             /// Server's KeyValues
+            /// <para>If <see cref="IsXServerQuery"/> is <see langword="true"/>, then it includes \info\xserverquery\rules\xserverquery, else \basic\\info\\rules\\</para>
             /// </summary>
             public Dictionary<string, string> KeyValues { get; set; }
 
@@ -321,7 +320,7 @@ namespace OpenGSQ.Protocols
             public List<Dictionary<string, string>> Players { get; set; }
 
             /// <summary>
-            /// Server's Teams (Only when IsXServerQuery is true)
+            /// Server's Teams (Only when <see cref="IsXServerQuery"/> is <see langword="true"/>)
             /// </summary>
             public List<Dictionary<string, string>> Teams { get; set; }
         }

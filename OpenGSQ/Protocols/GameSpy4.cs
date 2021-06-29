@@ -10,7 +10,7 @@
         /// <param name="timeout"></param>
         public GameSpy4(string address, int port, int timeout = 5000) : base(address, port, timeout)
         {
-            _challenge = true;
+            _Challenge = true;
         }
     }
 }

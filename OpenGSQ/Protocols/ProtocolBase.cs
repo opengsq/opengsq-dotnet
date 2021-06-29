@@ -4,21 +4,21 @@ namespace OpenGSQ.Protocols
 {
     public abstract class ProtocolBase
     {
-        protected IPEndPoint EndPoint;
-        protected int Timeout;
+        protected IPEndPoint _EndPoint;
+        protected int _Timeout;
 
         public ProtocolBase(string address, int port, int timeout = 5000)
         {
             if (IPAddress.TryParse(address, out var ipAddress))
             {
-                EndPoint = new IPEndPoint(ipAddress, port);
+                _EndPoint = new IPEndPoint(ipAddress, port);
             }
             else
             {
-                EndPoint = new IPEndPoint(Dns.GetHostAddresses(address)[0], port);
+                _EndPoint = new IPEndPoint(Dns.GetHostAddresses(address)[0], port);
             }
 
-            Timeout = timeout;
+            _Timeout = timeout;
         }
     }
 }

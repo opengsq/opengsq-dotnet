@@ -5,7 +5,7 @@ using System.Text.Json;
 namespace OpenGSQ.Protocols.Tests
 {
     [TestClass()]
-    public class GameSpy4Tests
+    public class Quake1Tests
     {
         public JsonSerializerOptions options = new JsonSerializerOptions
         {
@@ -14,15 +14,15 @@ namespace OpenGSQ.Protocols.Tests
             WriteIndented = true,
         };
 
-        // Minecraft
-        public GameSpy4 gameSpy4 = new GameSpy4("193.84.64.217", 25565);
+        // QuakeWorld
+        public Quake1 quake1 = new Quake1("35.185.44.174", 27500);
 
         [TestMethod()]
-        public void GetResponseTest()
+        public void GetStatusTest()
         {
-            var response = gameSpy4.GetResponse();
+            var response = quake1.GetStatus();
 
-            Console.WriteLine(JsonSerializer.Serialize(response, typeof(GameSpy3.Response), options));
+            Console.WriteLine(JsonSerializer.Serialize(response, typeof(Quake1.Status), options));
         }
     }
 }

@@ -23,14 +23,14 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// Retrieves information about the server including, Info, Players, and Teams.
         /// </summary>
-        /// <exception cref="SocketException"></exception>
         /// <param name="request"></param>
         /// <returns></returns>
+        /// <exception cref="SocketException"></exception>
         public Response GetResponse(Request request = Request.Info | Request.Players | Request.Teams)
         {
             using (var udpClient = new UdpClient())
             {
-                var responseData = ConnectAndSendPackets(udpClient, request);
+                var responseData = ConnectAndSend(udpClient, request);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
@@ -59,19 +59,19 @@ namespace OpenGSQ.Protocols
             }
         }
 
-        private byte[] ConnectAndSendPackets(UdpClient udpClient, Request request)
+        private byte[] ConnectAndSend(UdpClient udpClient, Request request)
         {
             // Connect to remote host
-            udpClient.Connect(EndPoint);
-            udpClient.Client.SendTimeout = Timeout;
-            udpClient.Client.ReceiveTimeout = Timeout;
+            udpClient.Connect(_EndPoint);
+            udpClient.Client.SendTimeout = _Timeout;
+            udpClient.Client.ReceiveTimeout = _Timeout;
 
             // Send Request
             var requestData = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(request)).ToArray();
             udpClient.Send(requestData, requestData.Length);
 
             // Server response
-            var responseData = udpClient.Receive(ref EndPoint);
+            var responseData = udpClient.Receive(ref _EndPoint);
 
             // Remove the first 5 bytes { 0x00, 0x04, 0x05, 0x06, 0x07 }
             return responseData.Skip(5).ToArray();

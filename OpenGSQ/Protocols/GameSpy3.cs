@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols
 {
     public class GameSpy3 : ProtocolBase
     {
-        protected bool _challenge;
+        protected bool _Challenge;
 
         /// <summary>
         /// Gamespy Query Protocol version 3
@@ -25,8 +25,8 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// Retrieves information about the server including, Info, Players, and Teams.
         /// </summary>
-        /// <exception cref="SocketException"></exception>
         /// <returns></returns>
+        /// <exception cref="SocketException"></exception>
         public Response GetResponse()
         {
             using (var udpClient = new UdpClient())
@@ -53,19 +53,19 @@ namespace OpenGSQ.Protocols
         private byte[] ConnectAndSendPackets(UdpClient udpClient)
         {
             // Connect to remote host
-            udpClient.Connect(EndPoint);
-            udpClient.Client.SendTimeout = Timeout;
-            udpClient.Client.ReceiveTimeout = Timeout;
+            udpClient.Connect(_EndPoint);
+            udpClient.Client.SendTimeout = _Timeout;
+            udpClient.Client.ReceiveTimeout = _Timeout;
 
             // Packet 1: Initial request
             byte[] responseData, challenge = new byte[] { }, requestData = new byte[] { 0xFE, 0xFD, 0x09, 0x04, 0x05, 0x06, 0x07 };
 
-            if (_challenge)
+            if (_Challenge)
             {
                 udpClient.Send(requestData, requestData.Length);
 
                 // Packet 2: First response
-                responseData = udpClient.Receive(ref EndPoint);
+                responseData = udpClient.Receive(ref _EndPoint);
 
                 // Get challenge
                 if (int.TryParse(Encoding.ASCII.GetString(responseData.Skip(5).ToArray()).Trim(), out int result) && result != 0)
@@ -97,7 +97,7 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = udpClient.Receive(ref EndPoint);
+                var responseData = udpClient.Receive(ref _EndPoint);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {

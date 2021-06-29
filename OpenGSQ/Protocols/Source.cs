@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols
     public class Source : ProtocolBase
     {
         /// <summary>
-        /// A2S Protocol<br />
+        /// Source Engine Query Protocol<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries">https://developer.valvesoftware.com/wiki/Server_queries</see>
         /// </summary>
         /// <param name="address"></param>
@@ -27,25 +27,26 @@ namespace OpenGSQ.Protocols
         /// Retrieves information about the server including, but not limited to: its name, the map currently being played, and the number of players.<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO">https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO</see>
         /// </summary>
+        /// <returns></returns>
         /// <exception cref="SocketException"></exception>
         public Info GetInfo()
         {
             using (var udpClient = new UdpClient())
             {
-                var responseData = ConnectAndSendChallenge(udpClient, Request.A2S_INFO);
+                var responseData = ConnectAndSendChallenge(udpClient, RequestHeader.A2S_INFO);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
                     var header = br.ReadByte();
 
-                    if (header != (byte)Response.S2A_INFO_SRC && header != (byte)Response.S2A_INFO_DETAILED)
+                    if (header != (byte)ResponseHeader.S2A_INFO_SRC && header != (byte)ResponseHeader.S2A_INFO_DETAILED)
                     {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {Response.S2A_INFO_SRC} or {Response.S2A_INFO_DETAILED}.");
+                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {ResponseHeader.S2A_INFO_SRC} or {ResponseHeader.S2A_INFO_DETAILED}.");
                     }
 
                     var info = new Info();
 
-                    if (header == (byte)Response.S2A_INFO_SRC)
+                    if (header == (byte)ResponseHeader.S2A_INFO_SRC)
                     {
                         info.ResponseType = typeof(Info.Source);
 
@@ -156,20 +157,21 @@ namespace OpenGSQ.Protocols
         /// This query retrieves information about the players currently on the server.<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries#A2S_PLAYER">https://developer.valvesoftware.com/wiki/Server_queries#A2S_PLAYER</see>
         /// </summary>
+        /// <returns></returns>
         /// <exception cref="SocketException"></exception>
         public List<Player> GetPlayers()
         {
             using (var udpClient = new UdpClient())
             {
-                var responseData = ConnectAndSendChallenge(udpClient, Request.A2S_PLAYER);
+                var responseData = ConnectAndSendChallenge(udpClient, RequestHeader.A2S_PLAYER);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
                     var header = br.ReadByte();
 
-                    if (header != (byte)Response.S2A_PLAYER)
+                    if (header != (byte)ResponseHeader.S2A_PLAYER)
                     {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {Response.S2A_PLAYER}.");
+                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {ResponseHeader.S2A_PLAYER}.");
                     }
 
                     var playerCount = br.ReadByte();
@@ -207,20 +209,21 @@ namespace OpenGSQ.Protocols
         /// Returns the server rules, or configuration variables in name/value pairs.<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries#A2S_RULES">https://developer.valvesoftware.com/wiki/Server_queries#A2S_RULES</see>
         /// </summary>
+        /// <returns></returns>
         /// <exception cref="SocketException"></exception>
         public Dictionary<string, string> GetRules()
         {
             using (var udpClient = new UdpClient())
             {
-                var responseData = ConnectAndSendChallenge(udpClient, Request.A2S_RULES);
+                var responseData = ConnectAndSendChallenge(udpClient, RequestHeader.A2S_RULES);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
                     var header = br.ReadByte();
 
-                    if (header != (byte)Response.S2A_RULES)
+                    if (header != (byte)ResponseHeader.S2A_RULES)
                     {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {Response.S2A_RULES}.");
+                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {ResponseHeader.S2A_RULES}.");
                     }
 
                     var ruleCount = br.ReadUInt16();
@@ -238,17 +241,17 @@ namespace OpenGSQ.Protocols
             }
         }
 
-        private byte[] ConnectAndSendChallenge(UdpClient udpClient, Request request)
+        private byte[] ConnectAndSendChallenge(UdpClient udpClient, RequestHeader requestHeader)
         {
             // Connect to remote host
-            udpClient.Connect(EndPoint);
-            udpClient.Client.SendTimeout = Timeout;
-            udpClient.Client.ReceiveTimeout = Timeout;
+            udpClient.Connect(_EndPoint);
+            udpClient.Client.SendTimeout = _Timeout;
+            udpClient.Client.ReceiveTimeout = _Timeout;
 
             // Set up request base
-            var requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, (byte)request };
+            var requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, (byte)requestHeader };
 
-            if (request == Request.A2S_INFO)
+            if (requestHeader == RequestHeader.A2S_INFO)
             {
                 requestBase = requestBase.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
             }
@@ -256,7 +259,7 @@ namespace OpenGSQ.Protocols
             // Set up request data
             var requestData = requestBase;
 
-            if (request != Request.A2S_INFO)
+            if (requestHeader != RequestHeader.A2S_INFO)
             {
                 requestData = requestData.Concat(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }).ToArray();
             }
@@ -266,7 +269,7 @@ namespace OpenGSQ.Protocols
             var responseData = Receive(udpClient);
 
             // The server may reply with a challenge
-            if (responseData[0] == (byte)Response.S2C_CHALLENGE)
+            if (responseData[0] == (byte)ResponseHeader.S2C_CHALLENGE)
             {
                 // Send the challenge and receive
                 requestData = requestBase.Concat(responseData.Skip(1)).ToArray();
@@ -286,7 +289,7 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = udpClient.Receive(ref EndPoint);
+                var responseData = udpClient.Receive(ref _EndPoint);
                 packets.Add(responseData);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
@@ -378,7 +381,7 @@ namespace OpenGSQ.Protocols
             while (totalPackets == -1 || payloads.Count < totalPackets)
             {
                 // Load the old received packets first, then receive the packets from udpClient
-                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : udpClient.Receive(ref EndPoint);
+                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : udpClient.Receive(ref _EndPoint);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
@@ -420,14 +423,14 @@ namespace OpenGSQ.Protocols
             }
         }
 
-        private enum Request : byte
+        private enum RequestHeader : byte
         {
             A2S_INFO = 0x54,
             A2S_PLAYER = 0x55,
             A2S_RULES = 0x56,
         }
 
-        private enum Response : byte
+        private enum ResponseHeader : byte
         {
             S2C_CHALLENGE = 0x41,
             S2A_INFO_SRC = 0x49,
