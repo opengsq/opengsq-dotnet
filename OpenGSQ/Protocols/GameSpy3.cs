@@ -198,8 +198,8 @@ namespace OpenGSQ.Protocols
                 return players;
             }
 
-            // Skip \x00\x01player_\x00\x00
-            br.ReadBytes(2);
+            // Skip \x01player_\x00\x00
+            br.ReadByte();
             string key = br.ReadStringEx().TrimEnd('_');
             br.ReadByte();
 

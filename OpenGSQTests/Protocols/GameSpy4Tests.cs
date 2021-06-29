@@ -14,8 +14,8 @@ namespace OpenGSQ.Protocols.Tests
             WriteIndented = true,
         };
 
-        // Minecraft
-        public GameSpy4 gameSpy4 = new GameSpy4("193.84.64.217", 25565);
+        // Minecraft Pocket Edition
+        public GameSpy4 gameSpy4 = new GameSpy4("188.18.10.72", 19133);
 
         [TestMethod()]
         public void GetResponseTest()
