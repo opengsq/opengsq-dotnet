@@ -16,7 +16,7 @@ namespace OpenGSQ.Protocols.Tests
         };
 
         // TF2
-        public Source a2s = new Source("91.216.250.13", 27015);
+        public Source a2s = new Source("91.216.250.14", 27015);
 
         // The Ship
         // public A2S a2s = new A2S("5.79.86.193", 27021);
@@ -24,11 +24,11 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public void GetInfoTest()
         {
-            var info = a2s.GetInfo();
+            var (info, infoType) = a2s.GetInfo();
 
-            Console.WriteLine("Info Type:\t" + (info.ResponseType.Equals(typeof(Source.Info.Source)) ? "Source" : "GoldSource"));
+            Console.WriteLine("Info Type:\t" + (infoType.Equals(typeof(Source.Info.Source)) ? "Source" : "GoldSource"));
             Console.WriteLine();
-            Console.WriteLine(JsonSerializer.Serialize(info.Response, info.ResponseType, options));
+            Console.WriteLine(JsonSerializer.Serialize(info, infoType, options));
         }
 
         [TestMethod()]

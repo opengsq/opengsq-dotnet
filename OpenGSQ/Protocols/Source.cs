@@ -29,7 +29,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns></returns>
         /// <exception cref="SocketException"></exception>
-        public Info GetInfo()
+        public (object, Type) GetInfo()
         {
             using (var udpClient = new UdpClient())
             {
@@ -44,12 +44,8 @@ namespace OpenGSQ.Protocols
                         throw new Exception($"Packet header mismatch. Received: {header}. Expected: {ResponseHeader.S2A_INFO_SRC} or {ResponseHeader.S2A_INFO_DETAILED}.");
                     }
 
-                    var info = new Info();
-
                     if (header == (byte)ResponseHeader.S2A_INFO_SRC)
                     {
-                        info.ResponseType = typeof(Info.Source);
-
                         var source = new Info.Source
                         {
                             Protocol = br.ReadByte(),
@@ -109,12 +105,10 @@ namespace OpenGSQ.Protocols
                             }
                         }
 
-                        info.Response = source;
+                        return (source, source.GetType());
                     }
                     else
                     {
-                        info.ResponseType = typeof(Info.GoldSource);
-
                         var goldSource = new Info.GoldSource
                         {
                             Address = br.ReadStringEx(),
@@ -145,10 +139,8 @@ namespace OpenGSQ.Protocols
                         goldSource.VAC = (Info.VAC)br.ReadByte();
                         goldSource.Bots = br.ReadByte();
 
-                        info.Response = goldSource;
+                        return (goldSource, goldSource.GetType());
                     }
-
-                    return info;
                 }
             }
         }
@@ -439,18 +431,8 @@ namespace OpenGSQ.Protocols
             S2A_RULES = 0x45,
         }
 
-        public class Info
+        public static class Info
         {
-            /// <summary>
-            /// Info response type. Either <c>Source</c> or <c>GoldSource</c>
-            /// </summary>
-            public Type ResponseType { get; set; }
-
-            /// <summary>
-            /// Info response.
-            /// </summary>
-            public dynamic Response { get; set; }
-
             public enum ServerType : byte
             {
                 Dedicated = 0x64,
