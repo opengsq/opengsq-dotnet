@@ -1,0 +1,34 @@
+{
+  "Info": {
+    "JumpMod": "1.34ger",
+    "capturelimit": "0",
+    "cheats": "0",
+    "competition": "0",
+    "ctf": "1",
+    "deathmatch": "1",
+    "dmflags": "524308",
+    "fraglimit": "0",
+    "game": "jump",
+    "gamedate": "Dec 24 2020",
+    "gamedir": "jump",
+    "gamename": "Q2JUMP 1.34ger",
+    "hostname": ".german q2 jump",
+    "mapname": "q2dm1hard",
+    "matchlock": "1",
+    "matchtime": "20",
+    "maxclients": "15",
+    "port": "27910",
+    "protocol": "34",
+    "time_remaining": "13:55",
+    "timelimit": "0",
+    "version": "q2proded r1826~7ad132a Dec 28 2018 Linux x86_64",
+    "uptime": "142 days, 12 hours, 35 mins, 19 secs"
+  },
+  "Players": [
+    {
+      "Frags": 0,
+      "Ping": 32,
+      "Name": "Caboom"
+    }
+  ]
+}

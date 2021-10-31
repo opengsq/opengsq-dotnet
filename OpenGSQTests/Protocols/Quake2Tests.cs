@@ -1,28 +1,26 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using OpenGSQTests;
 using System.Text.Json;
 
 namespace OpenGSQ.Protocols.Tests
 {
     [TestClass()]
-    public class Quake2Tests
+    public class Quake2Tests : TestBase
     {
-        public JsonSerializerOptions options = new JsonSerializerOptions
-        {
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            IgnoreNullValues = true,
-            WriteIndented = true,
-        };
-
         // Quake2
         public Quake2 quake2 = new Quake2("46.165.236.118", 27910);
+
+        public Quake2Tests() : base(nameof(Quake2Tests))
+        {
+            _EnableSave = false;
+        }
 
         [TestMethod()]
         public void GetStatusTest()
         {
             var response = quake2.GetStatus();
 
-            Console.WriteLine(JsonSerializer.Serialize(response, typeof(Quake2.Status), options));
+            SaveResult(nameof(GetStatusTest), JsonSerializer.Serialize(response, typeof(Quake2.Status), Options));
         }
     }
 }

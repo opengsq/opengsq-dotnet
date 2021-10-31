@@ -1,0 +1,14 @@
+{
+  "hostname": " ---  ComboGib  CTF  (Grapple Hook)  --  London  ---",
+  "hostport": "7777",
+  "maptitle": "2on2 Terra M643",
+  "mapname": "CTF-2on2-TerraM643",
+  "gametype": "CTFGame",
+  "numplayers": "6",
+  "maxplayers": "18",
+  "gamemode": "openplaying",
+  "gamever": "469",
+  "minnetver": "432",
+  "worldlog": "false",
+  "wantworldlog": "false"
+}

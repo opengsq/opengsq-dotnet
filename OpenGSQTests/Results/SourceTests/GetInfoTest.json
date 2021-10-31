@@ -1,0 +1,21 @@
+{
+  "Protocol": 17,
+  "Name": "\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001skial.com | SAXTON HALE | US ███",
+  "Map": "vsh_skyhigh_resort_se1",
+  "Folder": "tf",
+  "Game": "██ Skial ██",
+  "ID": 440,
+  "Players": 28,
+  "MaxPlayers": 32,
+  "Bots": 0,
+  "ServerType": 100,
+  "Environment": 108,
+  "Visibility": 0,
+  "VAC": 1,
+  "Version": "6862056",
+  "EDF": 177,
+  "Port": 27015,
+  "SteamID": 85568392920040217,
+  "Keywords": "skial,stats,free_items,free_unusuals,alltalk,arena,increased_maxplayers,nocrits,stomp",
+  "GameID": 440
+}

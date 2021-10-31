@@ -1,0 +1,97 @@
+{
+  "IsXServerQuery": false,
+  "KeyValues": {
+    "gamename": "ut",
+    "gamever": "469",
+    "minnetver": "432",
+    "location": "0",
+    "hostname": " ---  ComboGib  CTF  (Grapple Hook)  --  London  ---",
+    "hostport": "7777",
+    "maptitle": "2on2 Terra M643",
+    "mapname": "CTF-2on2-TerraM643",
+    "gametype": "CTFGame",
+    "numplayers": "6",
+    "maxplayers": "18",
+    "gamemode": "openplaying",
+    "worldlog": "false",
+    "wantworldlog": "false",
+    "mutators": "NDdj4, NDgrap49c, Player Commands V01a, ZeroPingPlus: ZeroPing, NoSelfDamage, MapVoteLAv2 Big21a, Auto Team Balance",
+    "listenserver": "False",
+    "password": "False",
+    "timelimit": "30",
+    "goalteamscore": "7",
+    "minplayers": "6",
+    "changelevels": "True",
+    "maxteams": "2",
+    "balanceteams": "True",
+    "playersbalanceteams": "True",
+    "friendlyfire": "0%",
+    "tournament": "False",
+    "gamestyle": "Hardcore",
+    "botskill": "Skilled",
+    "AdminName": "Roger",
+    "AdminEMail": "negruler@gmail.com"
+  },
+  "Players": [
+    {
+      "player": "Lou_Sassole",
+      "frags": "170",
+      "ping": " 222",
+      "team": "1",
+      "mesh": "Male Soldier",
+      "skin": "SoldierSkins.Gard",
+      "face": "SoldierSkins.Von",
+      "ngsecret": "true"
+    },
+    {
+      "player": "Cilia-BOT",
+      "frags": "83",
+      "ping": "0",
+      "team": "0",
+      "mesh": "Male Soldier",
+      "skin": "SoldierSkins.sldr",
+      "face": "SoldierSkins.Rankin",
+      "ngsecret": "Bot"
+    },
+    {
+      "player": "Barak-BOT",
+      "frags": "75",
+      "ping": "0",
+      "team": "1",
+      "mesh": "Male Commando",
+      "skin": "CommandoSkins.cmdo",
+      "face": "CommandoSkins.Gorn",
+      "ngsecret": "Bot"
+    },
+    {
+      "player": "Kosak-BOT",
+      "frags": "66",
+      "ping": "0",
+      "team": "0",
+      "mesh": "Male Soldier",
+      "skin": "SoldierSkins.Blkt",
+      "face": "SoldierSkins.Othello",
+      "ngsecret": "Bot"
+    },
+    {
+      "player": "Kragoth-BOT",
+      "frags": "98",
+      "ping": "0",
+      "team": "1",
+      "mesh": "Female Commando",
+      "skin": "FCommandoSkins.daco",
+      "face": "FCommandoSkins.Jayce",
+      "ngsecret": "Bot"
+    },
+    {
+      "player": "Juss",
+      "frags": "149",
+      "ping": " 60",
+      "team": "0",
+      "mesh": "Male Soldier",
+      "skin": "SoldierSkins.hkil",
+      "face": "SoldierSkins.matrix",
+      "ngsecret": "true"
+    }
+  ]
+}

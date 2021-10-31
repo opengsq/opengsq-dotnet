@@ -1,0 +1,144 @@
+{
+  "Info": {
+    "spawn": "0",
+    "*z_ext": "32",
+    "*gamedir": "fortress",
+    "hostname": "[BOTS] CustomTF For The People [BOTS]",
+    "watervis": "0",
+    "n": "6",
+    "map": "dm5",
+    "rj": "2",
+    "curse": "5",
+    "deathmatch": "3",
+    "timelimit": "50",
+    "fraglimit": "500",
+    "maxclients": "32",
+    "maxspectators": "16",
+    "samelevel": "0",
+    "admin/dev": "�Pulse����-",
+    "money": "11000",
+    "teamplay": "0"
+  },
+  "Players": [
+    {
+      "Id": 1004,
+      "Score": 0,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Bishop",
+      "Skin": "tf_pyro",
+      "Color1": 3,
+      "Color2": 1
+    },
+    {
+      "Id": 1005,
+      "Score": 0,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Gypsy",
+      "Skin": "tf_scout",
+      "Color1": 9,
+      "Color2": 8
+    },
+    {
+      "Id": 1006,
+      "Score": 0,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Starscream",
+      "Skin": "tf_scout",
+      "Color1": 2,
+      "Color2": 0
+    },
+    {
+      "Id": 1007,
+      "Score": 0,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Talus",
+      "Skin": "tf_eng",
+      "Color1": 2,
+      "Color2": 11
+    },
+    {
+      "Id": 1008,
+      "Score": 1,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Gort",
+      "Skin": "tf_snipe",
+      "Color1": 5,
+      "Color2": 2
+    },
+    {
+      "Id": 1009,
+      "Score": 0,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "R2-D2",
+      "Skin": "tf_eng",
+      "Color1": 9,
+      "Color2": 8
+    },
+    {
+      "Id": 1010,
+      "Score": 2,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Jerry",
+      "Skin": "tf_sold",
+      "Color1": 11,
+      "Color2": 3
+    },
+    {
+      "Id": 1003,
+      "Score": 1,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Teddy",
+      "Skin": "tf_sold",
+      "Color1": 7,
+      "Color2": 4
+    },
+    {
+      "Id": 1011,
+      "Score": 2,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "KITT",
+      "Skin": "tf_eng",
+      "Color1": 12,
+      "Color2": 13
+    },
+    {
+      "Id": 1012,
+      "Score": 1,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Optimus Prime",
+      "Skin": "tf_snipe",
+      "Color1": 6,
+      "Color2": 7
+    },
+    {
+      "Id": 1013,
+      "Score": 3,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Nomad",
+      "Skin": "tf_sold",
+      "Color1": 2,
+      "Color2": 13
+    },
+    {
+      "Id": 1014,
+      "Score": 0,
+      "Time": 4,
+      "Ping": 807,
+      "Name": "Ash",
+      "Skin": "tf_pyro",
+      "Color1": 4,
+      "Color2": 4
+    }
+  ]
+}

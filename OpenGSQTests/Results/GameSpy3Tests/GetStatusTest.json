@@ -1,0 +1,631 @@
+{
+  "Info": {
+    "hostname": "SUPER@ - S1 Strike at Karkand Infantry Only",
+    "gamename": "battlefield2",
+    "gamever": "1.5.3153-802.0",
+    "mapname": "Strike At Karkand",
+    "gametype": "gpm_cq",
+    "gamevariant": "bf2",
+    "numplayers": "57",
+    "maxplayers": "64",
+    "gamemode": "openplaying",
+    "password": "0",
+    "timelimit": "0",
+    "roundtime": "10",
+    "hostport": "16567",
+    "bf2_dedicated": "1",
+    "bf2_ranked": "1",
+    "bf2_anticheat": "1",
+    "bf2_os": "linux-64",
+    "bf2_autorec": "1",
+    "bf2_d_idx": "http://battlerecorder.superinfantryclan.com/s1",
+    "bf2_d_dl": "http://battlerecorder.superinfantryclan.com/s1",
+    "bf2_voip": "1",
+    "bf2_autobalanced": "1",
+    "bf2_friendlyfire": "0",
+    "bf2_tkmode": "No Punish",
+    "bf2_startdelay": "15",
+    "bf2_spawntime": "15.000000",
+    "bf2_sponsortext": "www.superinfantryclan.com",
+    "bf2_sponsorlogo_url": "http://www.superinfantryclan.com/bf2/109338097-superbf2.jpg",
+    "bf2_communitylogo_url": "http://www.superinfantryclan.com/bf2/109338097-superbf2.jpg",
+    "bf2_scorelimit": "0",
+    "bf2_ticketratio": "100",
+    "bf2_teamratio": "100.000000",
+    "bf2_team1": "MEC",
+    "bf2_team2": "US",
+    "bf2_bots": "0",
+    "bf2_pure": "1",
+    "bf2_mapsize": "64",
+    "bf2_globalunlocks": "1",
+    "bf2_fps": "36.000000",
+    "bf2_plasma": "0",
+    "bf2_reservedslots": "0",
+    "bf2_coopbotratio": "",
+    "bf2_coopbotcount": "",
+    "bf2_coopbotdiff": "",
+    "bf2_novehicles": "1"
+  },
+  "Players": [
+    {
+      "player": "Aim&Shoot",
+      "score": "97",
+      "ping": "17",
+      "team": "1",
+      "deaths": "7",
+      "pid": "500025705",
+      "skill": "40",
+      "AIBot": "0"
+    },
+    {
+      "player": "k0FFe1N",
+      "score": "71",
+      "ping": "23",
+      "team": "2",
+      "deaths": "4",
+      "pid": "500211353",
+      "skill": "5",
+      "AIBot": "0"
+    },
+    {
+      "player": "MrRubert",
+      "score": "51",
+      "ping": "41",
+      "team": "1",
+      "deaths": "9",
+      "pid": "422730768",
+      "skill": "18",
+      "AIBot": "0"
+    },
+    {
+      "player": "cabecamalvado",
+      "score": "39",
+      "ping": "183",
+      "team": "1",
+      "deaths": "7",
+      "pid": "152108142",
+      "skill": "18",
+      "AIBot": "0"
+    },
+    {
+      "player": "OGSKaraKiller",
+      "score": "39",
+      "ping": "174",
+      "team": "1",
+      "deaths": "8",
+      "pid": "500120845",
+      "skill": "17",
+      "AIBot": "0"
+    },
+    {
+      "player": "X_Seelenkrank_X",
+      "score": "32",
+      "ping": "24",
+      "team": "1",
+      "deaths": "5",
+      "pid": "500118578",
+      "skill": "7",
+      "AIBot": "0"
+    },
+    {
+      "player": "flying_dutchman144",
+      "score": "30",
+      "ping": "66",
+      "team": "1",
+      "deaths": "5",
+      "pid": "500291949",
+      "skill": "12",
+      "AIBot": "0"
+    },
+    {
+      "player": "pac_m@n",
+      "score": "28",
+      "ping": "305",
+      "team": "2",
+      "deaths": "15",
+      "pid": "500366673",
+      "skill": "14",
+      "AIBot": "0"
+    },
+    {
+      "player": "BAPBAP__777__",
+      "score": "28",
+      "ping": "35",
+      "team": "2",
+      "deaths": "15",
+      "pid": "500416246",
+      "skill": "5",
+      "AIBot": "0"
+    },
+    {
+      "player": "Ownyou I|Gravity|I",
+      "score": "27",
+      "ping": "33",
+      "team": "1",
+      "deaths": "2",
+      "pid": "500337111",
+      "skill": "11",
+      "AIBot": "0"
+    },
+    {
+      "player": "KOPOBA",
+      "score": "25",
+      "ping": "151",
+      "team": "2",
+      "deaths": "8",
+      "pid": "500342129",
+      "skill": "12",
+      "AIBot": "0"
+    },
+    {
+      "player": "Kedr37",
+      "score": "25",
+      "ping": "132",
+      "team": "2",
+      "deaths": "13",
+      "pid": "500286498",
+      "skill": "11",
+      "AIBot": "0"
+    },
+    {
+      "player": "Ya2",
+      "score": "25",
+      "ping": "88",
+      "team": "2",
+      "deaths": "5",
+      "pid": "46773475",
+      "skill": "10",
+      "AIBot": "0"
+    },
+    {
+      "player": "flossy.gt",
+      "score": "21",
+      "ping": "32",
+      "team": "1",
+      "deaths": "6",
+      "pid": "500017963",
+      "skill": "7",
+      "AIBot": "0"
+    },
+    {
+      "player": "Rick423",
+      "score": "21",
+      "ping": "80",
+      "team": "2",
+      "deaths": "6",
+      "pid": "500448764",
+      "skill": "5",
+      "AIBot": "0"
+    },
+    {
+      "player": "zoro20 zoRo2003",
+      "score": "20",
+      "ping": "64",
+      "team": "1",
+      "deaths": "13",
+      "pid": "500442393",
+      "skill": "8",
+      "AIBot": "0"
+    },
+    {
+      "player": "ToothFairy",
+      "score": "20",
+      "ping": "178",
+      "team": "1",
+      "deaths": "2",
+      "pid": "500118112",
+      "skill": "5",
+      "AIBot": "0"
+    },
+    {
+      "player": "poet1",
+      "score": "20",
+      "ping": "82",
+      "team": "2",
+      "deaths": "4",
+      "pid": "500131905",
+      "skill": "3",
+      "AIBot": "0"
+    },
+    {
+      "player": "[INDO] gombloh",
+      "score": "19",
+      "ping": "214",
+      "team": "1",
+      "deaths": "4",
+      "pid": "500321925",
+      "skill": "8",
+      "AIBot": "0"
+    },
+    {
+      "player": "Maxitorian",
+      "score": "17",
+      "ping": "25",
+      "team": "1",
+      "deaths": "4",
+      "pid": "500448704",
+      "skill": "9",
+      "AIBot": "0"
+    },
+    {
+      "player": "LUDOBF2",
+      "score": "17",
+      "ping": "12",
+      "team": "2",
+      "deaths": "6",
+      "pid": "384505951",
+      "skill": "2",
+      "AIBot": "0"
+    },
+    {
+      "player": "ChiefJones",
+      "score": "17",
+      "ping": "335",
+      "team": "2",
+      "deaths": "5",
+      "pid": "500395309",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "MichaelBurns",
+      "score": "16",
+      "ping": "145",
+      "team": "2",
+      "deaths": "8",
+      "pid": "500378427",
+      "skill": "3",
+      "AIBot": "0"
+    },
+    {
+      "player": "988 745623",
+      "score": "15",
+      "ping": "287",
+      "team": "2",
+      "deaths": "7",
+      "pid": "500281281",
+      "skill": "7",
+      "AIBot": "0"
+    },
+    {
+      "player": "AniSSkin",
+      "score": "15",
+      "ping": "85",
+      "team": "2",
+      "deaths": "1",
+      "pid": "500020419",
+      "skill": "3",
+      "AIBot": "0"
+    },
+    {
+      "player": "Athion.Sniper",
+      "score": "14",
+      "ping": "159",
+      "team": "1",
+      "deaths": "1",
+      "pid": "377659660",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "!MEGA! 1D1OT",
+      "score": "13",
+      "ping": "26",
+      "team": "1",
+      "deaths": "3",
+      "pid": "500365260",
+      "skill": "4",
+      "AIBot": "0"
+    },
+    {
+      "player": "BAIDEN",
+      "score": "10",
+      "ping": "50",
+      "team": "2",
+      "deaths": "0",
+      "pid": "500449090",
+      "skill": "5",
+      "AIBot": "0"
+    },
+    {
+      "player": "CrazySwed CrazySwede",
+      "score": "9",
+      "ping": "55",
+      "team": "2",
+      "deaths": "5",
+      "pid": "500449031",
+      "skill": "3",
+      "AIBot": "0"
+    },
+    {
+      "player": "mizunohoshiyori9786",
+      "score": "9",
+      "ping": "280",
+      "team": "1",
+      "deaths": "1",
+      "pid": "47975413",
+      "skill": "2",
+      "AIBot": "0"
+    },
+    {
+      "player": "frans0 Frans09",
+      "score": "8",
+      "ping": "23",
+      "team": "1",
+      "deaths": "1",
+      "pid": "500375347",
+      "skill": "4",
+      "AIBot": "0"
+    },
+    {
+      "player": "1thconguerer",
+      "score": "7",
+      "ping": "20",
+      "team": "2",
+      "deaths": "5",
+      "pid": "500437227",
+      "skill": "1",
+      "AIBot": "0"
+    },
+    {
+      "player": "onemoretime",
+      "score": "5",
+      "ping": "38",
+      "team": "2",
+      "deaths": "2",
+      "pid": "500500363320",
+      "skill": "2",
+      "AIBot": "0"
+    },
+    {
+      "player": "milkiway33",
+      "score": "4",
+      "ping": "52",
+      "team": "1",
+      "deaths": "0",
+      "pid": "500449117",
+      "skill": "2",
+      "AIBot": "0"
+    },
+    {
+      "player": "diirdiimiid",
+      "score": "4",
+      "ping": "41",
+      "team": "2",
+      "deaths": "2",
+      "pid": "500209939",
+      "skill": "2",
+      "AIBot": "0"
+    },
+    {
+      "player": "I_killed_you_BR",
+      "score": "1",
+      "ping": "233",
+      "team": "1",
+      "deaths": "2",
+      "pid": "231697006",
+      "skill": "1",
+      "AIBot": "0"
+    },
+    {
+      "player": "wang1122",
+      "score": "0",
+      "ping": "255",
+      "team": "2",
+      "deaths": "12",
+      "pid": "500397264",
+      "skill": "3",
+      "AIBot": "0"
+    },
+    {
+      "player": "BaakvAnS",
+      "score": "0",
+      "ping": "32",
+      "team": "1",
+      "deaths": "0",
+      "pid": "286214465",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "Legend hApPy^|sSumiiiK",
+      "score": "0",
+      "ping": "15",
+      "team": "2",
+      "deaths": "0",
+      "pid": "260085941",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "_DED_r45",
+      "score": "0",
+      "ping": "100",
+      "team": "1",
+      "deaths": "0",
+      "pid": "228393988",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "Satan_Husseiin",
+      "score": "0",
+      "ping": "87",
+      "team": "2",
+      "deaths": "0",
+      "pid": "500129711",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "75naostro75",
+      "score": "0",
+      "ping": "21",
+      "team": "2",
+      "deaths": "0",
+      "pid": "500286478",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "upiter678",
+      "score": "0",
+      "ping": "68",
+      "team": "2",
+      "deaths": "0",
+      "pid": "500389228",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "MotazYY123",
+      "score": "0",
+      "ping": "83",
+      "team": "1",
+      "deaths": "0",
+      "pid": "500169318",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "Rus_Chigan",
+      "score": "0",
+      "ping": "90",
+      "team": "1",
+      "deaths": "0",
+      "pid": "390231424",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "SuperInfantryClan",
+      "score": "0",
+      "ping": "0",
+      "team": "2",
+      "deaths": "0",
+      "pid": "95663409",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "[SiC] ItchyManHood",
+      "score": "0",
+      "ping": "0",
+      "team": "1",
+      "deaths": "0",
+      "pid": "92306650",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "SUPER@ _1_MAN-ARMY,69",
+      "score": "0",
+      "ping": "0",
+      "team": "2",
+      "deaths": "0",
+      "pid": "46705543",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "[NL] Sapperdeflap",
+      "score": "0",
+      "ping": "0",
+      "team": "1",
+      "deaths": "0",
+      "pid": "83798862",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "[MytH] DuneScytale",
+      "score": "0",
+      "ping": "0",
+      "team": "2",
+      "deaths": "0",
+      "pid": "114166291",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "[SiC] stabil0bossNL",
+      "score": "0",
+      "ping": "0",
+      "team": "1",
+      "deaths": "0",
+      "pid": "81355384",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "BOOM! EAT.MY.NADE",
+      "score": "0",
+      "ping": "0",
+      "team": "1",
+      "deaths": "0",
+      "pid": "182689276",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "[SiC] OneSiCkArmyMan",
+      "score": "0",
+      "ping": "0",
+      "team": "2",
+      "deaths": "0",
+      "pid": "49627641",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "Hatseflats",
+      "score": "0",
+      "ping": "0",
+      "team": "2",
+      "deaths": "0",
+      "pid": "43380664",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "[SiC] Peeing_Man",
+      "score": "0",
+      "ping": "0",
+      "team": "2",
+      "deaths": "0",
+      "pid": "47704920",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "JJ OuweViezeMan",
+      "score": "0",
+      "ping": "0",
+      "team": "1",
+      "deaths": "0",
+      "pid": "48057818",
+      "skill": "0",
+      "AIBot": "0"
+    },
+    {
+      "player": "Steff_The_Killer",
+      "score": "0",
+      "ping": "0",
+      "team": "1",
+      "deaths": "0",
+      "pid": "216031586",
+      "skill": "0",
+      "AIBot": "0"
+    }
+  ],
+  "Teams": [
+    {
+      "eam": "MEC",
+      "score": "0"
+    },
+    {
+      "eam": "US",
+      "score": "0"
+    }
+  ]
+}

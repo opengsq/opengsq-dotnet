@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenGSQTests;
 using System;
 using System.Collections.Generic;
 using System.Security.Authentication;
@@ -7,29 +8,25 @@ using System.Text.Json;
 namespace OpenGSQ.Protocols.Tests
 {
     [TestClass()]
-    public class SourceTests
+    public class SourceTests : TestBase
     {
-        public JsonSerializerOptions options = new JsonSerializerOptions
-        {
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            IgnoreNullValues = true,
-            WriteIndented = true,
-        };
-
         // TF2
         public Source source = new Source("91.216.250.14", 27015);
 
         // The Ship
         // public A2S a2s = new A2S("5.79.86.193", 27021);
 
+        public SourceTests() : base(nameof(SourceTests))
+        {
+            _EnableSave = false;
+        }
+
         [TestMethod()]
         public void GetInfoTest()
         {
             var (info, infoType) = source.GetInfo();
 
-            Console.WriteLine("Info Type:\t" + (infoType.Equals(typeof(Source.Info.Source)) ? "Source" : "GoldSource"));
-            Console.WriteLine();
-            Console.WriteLine(JsonSerializer.Serialize(info, infoType, options));
+            SaveResult(nameof(GetInfoTest), JsonSerializer.Serialize(info, infoType, Options));
         }
 
         [TestMethod()]
@@ -37,9 +34,7 @@ namespace OpenGSQ.Protocols.Tests
         {
             var players = source.GetPlayers();
 
-            Console.WriteLine("Player Count:\t" + players.Count);
-            Console.WriteLine();
-            Console.WriteLine(JsonSerializer.Serialize(players, typeof(List<Source.Player>), options));
+            SaveResult(nameof(GetPlayersTest), JsonSerializer.Serialize(players, typeof(List<Source.Player>), Options));
         }
 
         [TestMethod()]
@@ -47,21 +42,21 @@ namespace OpenGSQ.Protocols.Tests
         {
             var rules = source.GetRules();
 
-            Console.WriteLine("Rule Count:\t" + rules.Count);
-            Console.WriteLine();
-            Console.WriteLine(JsonSerializer.Serialize(rules, typeof(Dictionary<string, string>), options));
+            SaveResult(nameof(GetRulesTest), JsonSerializer.Serialize(rules, typeof(Dictionary<string, string>), Options));
         }
 
         [TestMethod()]
         public void RemoteConsoleTest()
         {
-            var rcon = new Source.RemoteConsole("", 27015);
+            var rcon = new Source.RemoteConsole("", 27010);
 
             try
             {
                 rcon.Authenticate("");
+
                 string response = rcon.SendCommand("cvarlist");
-                Console.WriteLine(response);
+
+                SaveResult(nameof(RemoteConsoleTest), response, isJson: false);
             }
             catch (ArgumentException e)
             {
