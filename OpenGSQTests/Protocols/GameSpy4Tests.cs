@@ -18,7 +18,7 @@ namespace OpenGSQ.Protocols.Tests
         public GameSpy4 gameSpy4 = new GameSpy4("104.238.152.181", 19132);
 
         [TestMethod()]
-        public void GetResponseTest()
+        public void GetStatusTest()
         {
             var response = gameSpy4.GetStatus();
 

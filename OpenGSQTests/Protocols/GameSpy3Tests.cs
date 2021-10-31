@@ -18,7 +18,7 @@ namespace OpenGSQ.Protocols.Tests
         public GameSpy3 gameSpy3 = new GameSpy3("185.107.96.59", 29900);
 
         [TestMethod()]
-        public void GetResponseTest()
+        public void GetStatusTest()
         {
             var response = gameSpy3.GetStatus();
 

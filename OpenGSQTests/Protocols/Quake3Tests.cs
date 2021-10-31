@@ -15,9 +15,8 @@ namespace OpenGSQ.Protocols.Tests
             WriteIndented = true,
         };
 
-        // Quake3
-        public Quake3 quake3 = new Quake3("85.10.197.106", 27960);
-
+        // Quake3 - https://www.gametracker.com/search/et/
+        public Quake3 quake3 = new Quake3("108.61.18.110", 27960);
 
         [TestMethod()]
         public void GetInfoTest()

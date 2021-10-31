@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols
 {
     public class GameSpy3 : ProtocolBase
     {
-        protected bool _Challenge;
+        protected new bool _Challenge;
 
         /// <summary>
         /// Gamespy Query Protocol version 3

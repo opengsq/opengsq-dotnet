@@ -6,6 +6,7 @@ namespace OpenGSQ
     {
         protected IPEndPoint _EndPoint;
         protected int _Timeout;
+        protected byte[] _Challenge = new byte[0];
 
         public ProtocolBase(string address, int port, int timeout = 5000)
         {
