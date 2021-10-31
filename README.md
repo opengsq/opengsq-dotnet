@@ -28,10 +28,15 @@ var source = new Source("123.123.123.123", 27015);
 ```
 Source RCON Protocol
 ```cs
-var rcon = new Source.RemoteConsole("123.123.123.123", 27015);
-rcon.Authenticate("serverRconPassword");
-string response = rcon.SendCommand("cvarlist");
+var remoteConsole = new Source.RemoteConsole("123.123.123.123", 27015);
+
+// Authenticate with rcon password
+remoteConsole.Authenticate("serverRconPassword");
+
+// Send command and receive the response
+string response = remoteConsole.SendCommand("cvarlist");
 ```
 
-See [OpenGSQTests](/OpenGSQTests/Protocols) for more examples and outputs.
+See [OpenGSQTests/Protocols](/OpenGSQTests/Protocols) for the tests.
 
+See [OpenGSQTests/Results](/OpenGSQTests/Results) for tests outputs.
