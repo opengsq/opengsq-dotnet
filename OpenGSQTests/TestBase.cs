@@ -20,14 +20,14 @@ namespace OpenGSQTests
         protected int _DelayPerTest = 0;
 
         /// <summary>
-        /// Protocol result path
-        /// </summary>
-        protected string _ProtocolPath;
-
-        /// <summary>
         /// OpenGSQTests Results Path
         /// </summary>
         public string ResultsPath = Path.Combine(Regex.Match(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ".+OpenGSQTests").Value, "Results");
+
+        /// <summary>
+        /// Protocol result path
+        /// </summary>
+        private readonly string _protocolPath;
 
         /// <summary>
         /// Json serializer options
@@ -45,8 +45,8 @@ namespace OpenGSQTests
         /// <param name="protocolName"></param>
         public TestBase(string protocolName)
         {
-            _ProtocolPath = Path.Combine(ResultsPath, protocolName);
-            Directory.CreateDirectory(_ProtocolPath);
+            _protocolPath = Path.Combine(ResultsPath, protocolName);
+            Directory.CreateDirectory(_protocolPath);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace OpenGSQTests
         {
             if (_EnableSave && !string.IsNullOrWhiteSpace(result))
             {
-                File.WriteAllText(Path.Combine(_ProtocolPath, $"{functionName}.{(isJson ? "json" : "txt")}"), result);
+                File.WriteAllText(Path.Combine(_protocolPath, $"{functionName}.{(isJson ? "json" : "txt")}"), result);
             }
 
             Console.WriteLine(result);

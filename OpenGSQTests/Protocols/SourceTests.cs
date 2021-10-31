@@ -48,13 +48,13 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public void RemoteConsoleTest()
         {
-            var rcon = new Source.RemoteConsole("", 27010);
+            var remoteConsole = new Source.RemoteConsole("", 27010);
 
             try
             {
-                rcon.Authenticate("");
+                remoteConsole.Authenticate("");
 
-                string response = rcon.SendCommand("cvarlist");
+                string response = remoteConsole.SendCommand("cvarlist");
 
                 SaveResult(nameof(RemoteConsoleTest), response, isJson: false);
             }
