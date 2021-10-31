@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace OpenGSQ.Protocols
 {
+    /// <summary>
+    /// Quake3 Query Protocol
+    /// </summary>
     public class Quake3 : Quake2
     {
         /// <summary>

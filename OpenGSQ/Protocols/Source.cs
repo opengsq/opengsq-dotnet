@@ -10,6 +10,9 @@ using System.Text;
 
 namespace OpenGSQ.Protocols
 {
+    /// <summary>
+    /// Source Engine Query Protocol
+    /// </summary>
     public class Source : ProtocolBase
     {
         /// <summary>
@@ -438,6 +441,7 @@ namespace OpenGSQ.Protocols
             S2A_RULES = 0x45,
         }
 
+#pragma warning disable 1591
         public static class Info
         {
             public enum ServerType : byte
@@ -537,7 +541,11 @@ namespace OpenGSQ.Protocols
             public long? Deaths { get; set; }
             public long? Money { get; set; }
         }
+#pragma warning restore 1591
 
+        /// <summary>
+        /// Source RCON Protocol
+        /// </summary>
         public class RemoteConsole : ProtocolBase, IDisposable
         {
             private TcpClient _tcpClient;
@@ -553,6 +561,9 @@ namespace OpenGSQ.Protocols
 
             }
 
+            /// <summary>
+            /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            /// </summary>
             public void Dispose()
             {
                 _tcpClient?.Close();

@@ -7,9 +7,14 @@ using System.Text;
 
 namespace OpenGSQ.Protocols
 {
+    /// <summary>
+    /// Gamespy Query Protocol version 3
+    /// </summary>
     public class GameSpy3 : ProtocolBase
     {
+#pragma warning disable 1591
         protected new bool _Challenge;
+#pragma warning restore 1591
 
         /// <summary>
         /// Gamespy Query Protocol version 3

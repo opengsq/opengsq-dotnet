@@ -14,6 +14,8 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Description>.NET library for querying game servers</Description>
     <PackageTags>game, csharp, server-query, opengsq, game-server-query</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   
   <ItemGroup>

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace OpenGSQ
 {
+    /// <summary>
+    /// BinaryReader Extensions
+    /// </summary>
     public static class BinaryReaderExtensions
     {
         /// <summary>

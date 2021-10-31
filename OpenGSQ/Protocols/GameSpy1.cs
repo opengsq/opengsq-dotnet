@@ -6,6 +6,9 @@ using System.Text;
 
 namespace OpenGSQ.Protocols
 {
+    /// <summary>
+    /// Gamespy Query Protocol version 1
+    /// </summary>
     public class GameSpy1 : ProtocolBase
     {
         private static readonly byte _delimiter = Encoding.ASCII.GetBytes("\\")[0];

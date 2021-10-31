@@ -8,11 +8,16 @@ using System.Text.RegularExpressions;
 
 namespace OpenGSQ.Protocols
 {
+    /// <summary>
+    /// Quake1 Query Protocol
+    /// </summary>
     public class Quake1 : ProtocolBase
     {
+#pragma warning disable 1591
         protected byte _Delimiter1 = Encoding.ASCII.GetBytes("\\")[0];
         protected byte _Delimiter2 = Encoding.ASCII.GetBytes("\n")[0];
         protected string _RequestHeader, _ResponseHeader;
+#pragma warning restore 1591
 
         /// <summary>
         /// Quake1 Query Protocol
@@ -43,6 +48,7 @@ namespace OpenGSQ.Protocols
             }
         }
 
+#pragma warning disable 1591
         protected BinaryReader GetResponseBinaryReader()
         {
             using (var udpClient = new UdpClient())

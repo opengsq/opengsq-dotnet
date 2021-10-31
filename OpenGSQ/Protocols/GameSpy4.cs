@@ -1,5 +1,8 @@
 ﻿namespace OpenGSQ.Protocols
 {
+    /// <summary>
+    /// Gamespy Query Protocol version 4
+    /// </summary>
     public class GameSpy4 : GameSpy3
     {
         /// <summary>

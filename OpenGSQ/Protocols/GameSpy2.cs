@@ -7,6 +7,9 @@ using System.Text;
 
 namespace OpenGSQ.Protocols
 {
+    /// <summary>
+    /// Gamespy Query Protocol version 2
+    /// </summary>
     public class GameSpy2 : ProtocolBase
     {
         /// <summary>
@@ -169,29 +172,18 @@ namespace OpenGSQ.Protocols
         [Flags]
         public enum Request : short
         {
+#pragma warning disable 1591
             Info = 1,
             Players = 2,
             Teams = 4,
         }
 
-        /// <summary>
-        /// Status object
-        /// </summary>
         public class Status
         {
-            /// <summary>
-            /// Status Info
-            /// </summary>
             public Dictionary<string, string> Info { get; set; }
 
-            /// <summary>
-            /// Status Players
-            /// </summary>
             public List<Dictionary<string, string>> Players { get; set; }
 
-            /// <summary>
-            /// Status Teams
-            /// </summary>
             public List<Dictionary<string, string>> Teams { get; set; }
         }
     }

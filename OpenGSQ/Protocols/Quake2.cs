@@ -4,6 +4,9 @@ using System.Net.Sockets;
 
 namespace OpenGSQ.Protocols
 {
+    /// <summary>
+    /// Quake2 Query Protocol
+    /// </summary>
     public class Quake2 : Quake1
     {
         /// <summary>
@@ -35,6 +38,7 @@ namespace OpenGSQ.Protocols
             }
         }
 
+#pragma warning disable 1591
         protected new List<Player> ParsePlayers(BinaryReader br)
         {
             var players = new List<Player>();
