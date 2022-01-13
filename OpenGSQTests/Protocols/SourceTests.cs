@@ -1,9 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 using System;
-using System.Collections.Generic;
 using System.Security.Authentication;
-using System.Text.Json;
 
 namespace OpenGSQ.Protocols.Tests
 {
@@ -24,25 +22,19 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public void GetInfoTest()
         {
-            var (info, infoType) = source.GetInfo();
-
-            SaveResult(nameof(GetInfoTest), JsonSerializer.Serialize(info, infoType, Options));
+            SaveResult(nameof(GetInfoTest), source.GetInfo());
         }
 
         [TestMethod()]
         public void GetPlayersTest()
         {
-            var players = source.GetPlayers();
-
-            SaveResult(nameof(GetPlayersTest), JsonSerializer.Serialize(players, typeof(List<Source.Player>), Options));
+            SaveResult(nameof(GetPlayersTest), source.GetPlayers());
         }
 
         [TestMethod()]
         public void GetRulesTest()
         {
-            var rules = source.GetRules();
-
-            SaveResult(nameof(GetRulesTest), JsonSerializer.Serialize(rules, typeof(Dictionary<string, string>), Options));
+            SaveResult(nameof(GetRulesTest), source.GetRules());
         }
 
         [TestMethod()]
@@ -54,9 +46,9 @@ namespace OpenGSQ.Protocols.Tests
             {
                 remoteConsole.Authenticate("");
 
-                string response = remoteConsole.SendCommand("cvarlist");
+                string result = remoteConsole.SendCommand("cvarlist");
 
-                SaveResult(nameof(RemoteConsoleTest), response, isJson: false);
+                SaveResult(nameof(RemoteConsoleTest), result, isJson: false);
             }
             catch (ArgumentException e)
             {

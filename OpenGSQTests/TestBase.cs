@@ -56,14 +56,19 @@ namespace OpenGSQTests
         /// <param name="functionName"></param>
         /// <param name="result"></param>
         /// <param name="isJson"></param>
-        public void SaveResult(string functionName, string result, bool isJson = true)
+        public void SaveResult(string functionName, object result, bool isJson = true)
         {
-            if (_EnableSave && !string.IsNullOrWhiteSpace(result))
+            if (isJson)
             {
-                File.WriteAllText(Path.Combine(_protocolPath, $"{functionName}.{(isJson ? "json" : "txt")}"), result);
+                result = JsonSerializer.Serialize(result, result.GetType(), Options);
             }
 
-            Console.WriteLine(result);
+            if (_EnableSave)
+            {
+                File.WriteAllText(Path.Combine(_protocolPath, $"{functionName}.{(isJson ? "json" : "txt")}"), result.ToString());
+            }
+
+            Console.WriteLine(result.ToString());
 
             Thread.Sleep(_DelayPerTest);
         }

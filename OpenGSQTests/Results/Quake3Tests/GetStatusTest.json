@@ -1,208 +1,123 @@
 {
   "Info": {
-    "omnibot_playing": "0",
-    "P": "2213111223211-1122102-1132123223-2-1-------------------3",
-    "voteFlags": "507903",
+    "sv_sac": "0",
+    "omnibot_playing": "15",
+    "mod_url": "http://mygamingtalk.com/",
+    "mod_version": "0.9.0",
+    "P": "-212121212121211",
+    "voteFlags": "32504767",
     "g_balancedteams": "1",
-    "g_bluelimbotime": "12000",
-    "g_redlimbotime": "12000",
-    "gamename": "jaymod",
-    "mod_version": "2.2.0",
-    "mod_url": "http://jaymod.clanfu.org",
-    "mod_binary": "linux-release",
-    "sv_uptime": "14d06h33m",
-    "sv_cpu": "Intel(R) Xeon(R) CPU E3-1270 v5",
+    "g_bluelimbotime": "9000",
+    "g_redlimbotime": "14000",
+    "gamename": "silEnT",
     "cm_optimizePatchPlanes": "0",
+    "g_damageXPLevel": "50",
+    "g_damageXP": "1",
+    "g_tyranny": "1",
     "g_axismaxlives": "0",
     "g_alliedmaxlives": "0",
     "g_voteFlags": "0",
     "g_minGameClients": "8",
     "g_needpass": "0",
     "sv_privateClients": "0",
-    "mapname": "pirates",
+    "mapname": "goldrush",
     "protocol": "84",
-    "g_gametype": "2",
-    "timelimit": "20",
-    "sv_hostname": "F|A RECRUITING XP SAVE",
-    "sv_minRate": "0",
-    "sv_maxRate": "45000",
-    "sv_dlRate": "100000",
-    "sv_minPing": "0",
-    "sv_maxPing": "0",
-    "sv_floodProtect": "1",
-    "g_friendlyFire": "0",
-    "g_maxlives": "0",
-    "g_antilag": "1",
-    "g_heavyWeaponRestriction": "100",
+    "g_gametype": "6",
     "omnibot_enable": "1",
-    "sv_maxclients": "60",
-    "version": "ET Legacy v2.77.1 linux-i386 Mar 17 2021"
+    "g_antilagDelay": "0",
+    "g_maxlivesRespawnPenalty": "0",
+    "g_maxGameClients": "0",
+    "g_maxConnsPerIP": "3",
+    "g_heavyWeaponRestriction": "100",
+    "g_antilag": "1",
+    "g_maxlives": "0",
+    "g_friendlyFire": "0",
+    "sv_floodProtect": "0",
+    "sv_maxPing": "0",
+    "sv_minPing": "0",
+    "sv_dlRate": "100000",
+    "sv_maxRate": "60000",
+    "sv_minRate": "0",
+    "sv_hostname": "F|A SILENT RECRUITING XPS",
+    "timelimit": "30",
+    "sv_maxclients": "40",
+    "version": "ET Legacy v2.77 win-x86 Mar  1 2021"
   },
   "Players": [
     {
-      "Frags": 0,
-      "Ping": 113,
-      "Name": "Soredo"
+      "Frags": 119,
+      "Ping": 0,
+      "Name": "Bortack"
     },
     {
-      "Frags": 0,
-      "Ping": 151,
-      "Name": "holborn"
+      "Frags": 89,
+      "Ping": 0,
+      "Name": "CraigChrist"
     },
     {
-      "Frags": 0,
-      "Ping": 248,
-      "Name": "DreadPrivateMatt"
+      "Frags": 80,
+      "Ping": 0,
+      "Name": "Mungri"
     },
     {
-      "Frags": 0,
-      "Ping": 48,
-      "Name": "=F|A=BuckWild"
+      "Frags": 142,
+      "Ping": 0,
+      "Name": "Nundak"
     },
     {
-      "Frags": 0,
-      "Ping": 301,
-      "Name": "=F|A=Invader"
+      "Frags": 100,
+      "Ping": 0,
+      "Name": "Tanz"
     },
     {
-      "Frags": 0,
-      "Ping": 193,
-      "Name": "Hercules"
+      "Frags": 197,
+      "Ping": 0,
+      "Name": "Vokur"
     },
     {
-      "Frags": 0,
-      "Ping": 219,
-      "Name": "Selena"
+      "Frags": 129,
+      "Ping": 0,
+      "Name": "Oysterhead"
     },
     {
-      "Frags": 0,
-      "Ping": 98,
-      "Name": "Mago"
+      "Frags": 234,
+      "Ping": 0,
+      "Name": "Brad"
     },
     {
-      "Frags": 0,
-      "Ping": 140,
-      "Name": "intomies"
+      "Frags": 110,
+      "Ping": 0,
+      "Name": "Hitnrun"
     },
     {
-      "Frags": 0,
-      "Ping": 150,
-      "Name": "SLAWEK1023"
+      "Frags": 141,
+      "Ping": 0,
+      "Name": "Flint"
     },
     {
-      "Frags": 0,
-      "Ping": 66,
-      "Name": "ArynnCajunHippie"
+      "Frags": 77,
+      "Ping": 0,
+      "Name": "SpecialEd"
     },
     {
-      "Frags": 0,
-      "Ping": 148,
-      "Name": "t3am2000-Romash"
+      "Frags": 140,
+      "Ping": 0,
+      "Name": "Bean"
     },
     {
-      "Frags": 0,
-      "Ping": 160,
-      "Name": "spugeL"
+      "Frags": 104,
+      "Ping": 0,
+      "Name": "Aimless"
     },
     {
-      "Frags": 0,
-      "Ping": 143,
-      "Name": "reaper  :)"
+      "Frags": 125,
+      "Ping": 0,
+      "Name": "Sean"
     },
     {
-      "Frags": 0,
-      "Ping": 133,
-      "Name": "=F|A=Long*"
-    },
-    {
-      "Frags": 0,
-      "Ping": 170,
-      "Name": "COM TR"
-    },
-    {
-      "Frags": 0,
-      "Ping": 79,
-      "Name": "DeadBolt"
-    },
-    {
-      "Frags": 0,
-      "Ping": 143,
-      "Name": "bobby"
-    },
-    {
-      "Frags": 422305,
-      "Ping": 999,
-      "Name": "Bigjhon"
-    },
-    {
-      "Frags": 0,
-      "Ping": 53,
-      "Name": "Mayday Malone"
-    },
-    {
-      "Frags": 0,
-      "Ping": 196,
-      "Name": "Doronco"
-    },
-    {
-      "Frags": 0,
-      "Ping": 123,
-      "Name": "markusior"
-    },
-    {
-      "Frags": 0,
-      "Ping": 98,
-      "Name": "FIRE&STEEL"
-    },
-    {
-      "Frags": 0,
-      "Ping": 98,
-      "Name": "djivince"
-    },
-    {
-      "Frags": 0,
-      "Ping": 248,
-      "Name": "Death_Reincarnated"
-    },
-    {
-      "Frags": 0,
-      "Ping": 201,
-      "Name": "WatIsDit?"
-    },
-    {
-      "Frags": 0,
-      "Ping": 100,
-      "Name": "=F|A=BigBro"
-    },
-    {
-      "Frags": 0,
-      "Ping": 148,
-      "Name": "Meireles16"
-    },
-    {
-      "Frags": 0,
-      "Ping": 148,
-      "Name": "TMc"
-    },
-    {
-      "Frags": 0,
-      "Ping": 120,
-      "Name": "[:OD:]El Loco"
-    },
-    {
-      "Frags": 0,
-      "Ping": 148,
-      "Name": "tiiduema"
-    },
-    {
-      "Frags": 0,
-      "Ping": 198,
-      "Name": "twoask"
-    },
-    {
-      "Frags": 0,
-      "Ping": 148,
-      "Name": "Novelle"
+      "Frags": 126,
+      "Ping": 0,
+      "Name": "Richard"
     }
   ]
 }

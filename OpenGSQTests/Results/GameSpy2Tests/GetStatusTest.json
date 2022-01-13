@@ -35,11 +35,11 @@
     "kickback_on_splash": "20%",
     "soldier_friendly_fire_on_splash": "50%",
     "vehicle_friendly_fire_on_splash": "50%",
-    "cpu": "3700",
+    "cpu": "3699",
     "bot_skill": "",
     "reservedslots": "3",
     "spectatorsallowed": "1",
-    "spectatorvoting": "1",
+    "spectatorvoting": "0",
     "spectatorswitchtime": "120s",
     "active_mods": "",
     "all_active_mods": "bfvietnam",
@@ -49,7 +49,7 @@
   "Teams": [
     {
       "team": "red",
-      "tickets": "322"
+      "tickets": "325"
     },
     {
       "team": "blue",

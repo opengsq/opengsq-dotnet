@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
-using System.Collections.Generic;
-using System.Text.Json;
 
 namespace OpenGSQ.Protocols.Tests
 {
@@ -18,18 +16,16 @@ namespace OpenGSQ.Protocols.Tests
         {
             // Quake3 - https://www.gametracker.com/search/et/
             var quake3 = new Quake3("108.61.18.110", 27960);
-            var response = quake3.GetInfo();
 
-            SaveResult(nameof(GetInfoTest), JsonSerializer.Serialize(response, typeof(Dictionary<string, string>), Options));
+            SaveResult(nameof(GetInfoTest), quake3.GetInfo());
         }
 
         [TestMethod()]
         public void GetStatusTest()
         {
             var quake3 = new Quake3("108.61.21.93", 27960);
-            var response = quake3.GetStatus();
 
-            SaveResult(nameof(GetStatusTest), JsonSerializer.Serialize(response, typeof(Quake3.Status), Options));
+            SaveResult(nameof(GetStatusTest), quake3.GetStatus());
         }
     }
 }

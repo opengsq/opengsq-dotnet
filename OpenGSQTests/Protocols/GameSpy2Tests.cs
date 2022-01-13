@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
-using System.Text.Json;
 
 namespace OpenGSQ.Protocols.Tests
 {
@@ -18,9 +17,7 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public void GetStatusTest()
         {
-            var response = gameSpy2.GetStatus();
-
-            SaveResult(nameof(GetStatusTest), JsonSerializer.Serialize(response, typeof(GameSpy2.Status), Options));
+            SaveResult(nameof(GetStatusTest), gameSpy2.GetStatus());
         }
     }
 }

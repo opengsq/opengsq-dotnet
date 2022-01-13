@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
-using System.Collections.Generic;
-using System.Text.Json;
 
 namespace OpenGSQ.Protocols.Tests
 {
@@ -23,57 +21,43 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public void GetBasicTest()
         {
-            var response = gameSpy1.GetBasic();
-
-            SaveResult(nameof(GetBasicTest), JsonSerializer.Serialize(response, typeof(Dictionary<string, string>), Options));
+            SaveResult(nameof(GetBasicTest), gameSpy1.GetBasic());
         }
 
         [TestMethod()]
         public void GetInfoTest()
         {
-            var response = gameSpy1.GetInfo();
-
-            SaveResult(nameof(GetInfoTest), JsonSerializer.Serialize(response, typeof(Dictionary<string, string>), Options));
+            SaveResult(nameof(GetInfoTest), gameSpy1.GetInfo());
         }
 
         [TestMethod()]
         public void GetRulesTest()
         {
-            var response = gameSpy1.GetRules();
-
-            SaveResult(nameof(GetRulesTest), JsonSerializer.Serialize(response, typeof(Dictionary<string, string>), Options));
+            SaveResult(nameof(GetRulesTest), gameSpy1.GetRules());
         }
 
         [TestMethod()]
         public void GetPlayersTest()
         {
-            var response = gameSpy1.GetPlayers();
-
-            SaveResult(nameof(GetPlayersTest), JsonSerializer.Serialize(response, typeof(List<Dictionary<string, string>>), Options));
+            SaveResult(nameof(GetPlayersTest), gameSpy1.GetPlayers());
         }
 
         [TestMethod()]
         public void GetStatusTest()
         {
-            var response = gameSpy1.GetStatus();
-
-            SaveResult(nameof(GetStatusTest), JsonSerializer.Serialize(response, typeof(GameSpy1.Status), Options));
+            SaveResult(nameof(GetStatusTest), gameSpy1.GetStatus());
         }
 
         [TestMethod()]
         public void GetTeamsTest()
         {
-            var response = gameSpy1.GetTeams();
-
-            SaveResult(nameof(GetTeamsTest), JsonSerializer.Serialize(response, typeof(List<Dictionary<string, string>>), Options));
+            SaveResult(nameof(GetTeamsTest), gameSpy1.GetTeams());
         }
 
         [TestMethod()]
         public void GetEchoTest()
         {
-            var response = gameSpy1.GetEcho();
-
-            SaveResult(nameof(GetEchoTest), JsonSerializer.Serialize(response, typeof(Dictionary<string, string>), Options));
+            SaveResult(nameof(GetEchoTest), gameSpy1.GetEcho());
         }
     }
 }

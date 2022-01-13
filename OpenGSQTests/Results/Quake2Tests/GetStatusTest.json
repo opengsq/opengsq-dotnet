@@ -13,22 +13,16 @@
     "gamedir": "jump",
     "gamename": "Q2JUMP 1.34ger",
     "hostname": ".german q2 jump",
-    "mapname": "q2dm1hard",
+    "mapname": "konopa6",
     "matchlock": "1",
     "matchtime": "20",
     "maxclients": "15",
     "port": "27910",
     "protocol": "34",
-    "time_remaining": "13:55",
+    "time_remaining": "00:58",
     "timelimit": "0",
     "version": "q2proded r1826~7ad132a Dec 28 2018 Linux x86_64",
-    "uptime": "142 days, 12 hours, 35 mins, 19 secs"
+    "uptime": "216 days, 9 hours, 45 mins, 13 secs"
   },
-  "Players": [
-    {
-      "Frags": 0,
-      "Ping": 32,
-      "Name": "Caboom"
-    }
-  ]
+  "Players": []
 }

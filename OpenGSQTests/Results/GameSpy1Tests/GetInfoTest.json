@@ -1,10 +1,10 @@
 {
   "hostname": " ---  ComboGib  CTF  (Grapple Hook)  --  London  ---",
   "hostport": "7777",
-  "maptitle": "2on2 Terra M643",
-  "mapname": "CTF-2on2-TerraM643",
+  "maptitle": "W00t NoxX",
+  "mapname": "CTF-w00tNoxX",
   "gametype": "CTFGame",
-  "numplayers": "6",
+  "numplayers": "4",
   "maxplayers": "18",
   "gamemode": "openplaying",
   "gamever": "469",

@@ -1,27 +1,27 @@
 [
   {
-    "player": "Lou_Sassole",
-    "frags": "170",
-    "ping": " 224",
-    "team": "1",
-    "mesh": "Male Soldier",
-    "skin": "SoldierSkins.Gard",
-    "face": "SoldierSkins.Von",
-    "ngsecret": "true"
-  },
-  {
-    "player": "Cilia-BOT",
-    "frags": "83",
+    "player": "Zenith-BOT",
+    "frags": "3",
     "ping": "0",
     "team": "0",
-    "mesh": "Male Soldier",
-    "skin": "SoldierSkins.sldr",
-    "face": "SoldierSkins.Rankin",
+    "mesh": "Male Commando",
+    "skin": "CommandoSkins.daco",
+    "face": "CommandoSkins.Boris",
+    "ngsecret": "Bot"
+  },
+  {
+    "player": "Visse-BOT",
+    "frags": "1",
+    "ping": "0",
+    "team": "1",
+    "mesh": "Female Soldier",
+    "skin": "SGirlSkins.Army",
+    "face": "SGirlSkins.Lauren",
     "ngsecret": "Bot"
   },
   {
     "player": "Barak-BOT",
-    "frags": "75",
+    "frags": "60",
     "ping": "0",
     "team": "1",
     "mesh": "Male Commando",
@@ -30,33 +30,13 @@
     "ngsecret": "Bot"
   },
   {
-    "player": "Kosak-BOT",
-    "frags": "66",
+    "player": "Archon-BOT",
+    "frags": "34",
     "ping": "0",
     "team": "0",
-    "mesh": "Male Soldier",
-    "skin": "SoldierSkins.Blkt",
-    "face": "SoldierSkins.Othello",
+    "mesh": "Male Commando",
+    "skin": "CommandoSkins.cmdo",
+    "face": "CommandoSkins.Blake",
     "ngsecret": "Bot"
-  },
-  {
-    "player": "Kragoth-BOT",
-    "frags": "98",
-    "ping": "0",
-    "team": "1",
-    "mesh": "Female Commando",
-    "skin": "FCommandoSkins.daco",
-    "face": "FCommandoSkins.Jayce",
-    "ngsecret": "Bot"
-  },
-  {
-    "player": "Juss",
-    "frags": "149",
-    "ping": " 61",
-    "team": "0",
-    "mesh": "Male Soldier",
-    "skin": "SoldierSkins.hkil",
-    "face": "SoldierSkins.matrix",
-    "ngsecret": "true"
   }
 ]

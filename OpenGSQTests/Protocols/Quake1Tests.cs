@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
-using System.Text.Json;
 
 namespace OpenGSQ.Protocols.Tests
 {
@@ -18,9 +17,7 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public void GetStatusTest()
         {
-            var response = quake1.GetStatus();
-
-            SaveResult(nameof(GetStatusTest), JsonSerializer.Serialize(response, typeof(Quake1.Status), Options));
+            SaveResult(nameof(GetStatusTest), quake1.GetStatus());
         }
     }
 }
