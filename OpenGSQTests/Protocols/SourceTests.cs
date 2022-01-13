@@ -48,7 +48,7 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public void RemoteConsoleTest()
         {
-            var remoteConsole = new Source.RemoteConsole("", 27010);
+            using var remoteConsole = new Source.RemoteConsole("", 27010);
 
             try
             {
