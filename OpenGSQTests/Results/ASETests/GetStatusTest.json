@@ -1,0 +1,54 @@
+{
+  "gamename": "mta",
+  "gameport": "22003",
+  "hostname": "MTA Türkiye ✖ GÜL GAMİNG FREEROAM ✖ [Roleplay/Askeri/Drift/Drop/Turkey/Tr/Gül Gaming]",
+  "gametype": "ＢＥＤＡＶＡ － ＶＩＰ",
+  "map": "None",
+  "version": "1.6",
+  "password": "0",
+  "numplayers": "5",
+  "maxplayers": "120",
+  "rules": {},
+  "players": [
+    {
+      "name": "SAMETNEXX",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "56",
+      "time": ""
+    },
+    {
+      "name": "Gidikla_Beni",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "93",
+      "time": ""
+    },
+    {
+      "name": "anil",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "53",
+      "time": ""
+    },
+    {
+      "name": "AFFETMEM",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "66",
+      "time": ""
+    },
+    {
+      "name": "dyperpro31",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "62",
+      "time": ""
+    }
+  ]
+}
