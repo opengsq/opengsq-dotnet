@@ -11,6 +11,16 @@ namespace OpenGSQ
     public static class BinaryReaderExtensions
     {
         /// <summary>
+        /// Calculates the number of bytes remaining in the BinaryReader's BaseStream.
+        /// </summary>
+        /// <param name="br">The BinaryReader instance.</param>
+        /// <returns>The number of bytes remaining to be read from the BinaryReader's BaseStream.</returns>
+        public static long RemainingBytes(this BinaryReader br)
+        {
+            return br.BaseStream.Length - br.BaseStream.Position;
+        }
+
+        /// <summary>
         /// Determines whether the end of the stream has been reached.
         /// </summary>
         /// <param name="br">The BinaryReader instance on which the extension method is called.</param>
