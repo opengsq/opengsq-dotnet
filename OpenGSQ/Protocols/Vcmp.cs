@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
+using OpenGSQ.Responses.Vcmp;
 
 namespace OpenGSQ.Protocols
 {
@@ -30,56 +32,50 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Retrieves the status of the server.
+        /// Asynchronously gets the status of the server.
         /// </summary>
-        /// <returns>A dictionary containing the server status.</returns>
-        public Dictionary<string, object> GetStatus()
+        /// <returns>A task that represents the asynchronous operation. The task result contains a StatusResponse object with the server status.</returns>
+        public async Task<StatusResponse> GetStatus()
         {
-            var response = SendAndReceive(new byte[] { (byte)'i' });
-
+            var response = await SendAndReceive(new byte[] { (byte)'i' });
             using var br = new BinaryReader(new MemoryStream(response), Encoding.UTF8);
-            var result = new Dictionary<string, object>
-            {
-                ["version"] = Encoding.UTF8.GetString(br.ReadBytes(12)).Trim('\0'),
-                ["password"] = br.ReadByte(),
-                ["numplayers"] = br.ReadInt16(),
-                ["maxplayers"] = br.ReadInt16(),
-                ["servername"] = ReadString(br, 4),
-                ["gametype"] = ReadString(br, 4),
-                ["language"] = ReadString(br, 4)
-            };
 
-            return result;
+            return new StatusResponse
+            {
+                Version = Encoding.UTF8.GetString(br.ReadBytes(12)).Trim('\0'),
+                Password = br.ReadByte() == 1,
+                NumPlayers = br.ReadInt16(),
+                MaxPlayers = br.ReadInt16(),
+                ServerName = ReadString(br, 4),
+                GameType = ReadString(br, 4),
+                Language = ReadString(br, 4),
+            };
         }
 
         /// <summary>
-        /// Retrieves the list of players on the server. The server may not respond when the number of players is greater than 100.
+        /// Asynchronously gets the list of players from the server.
         /// </summary>
-        /// <returns>A list of dictionaries containing player information.</returns>
-        public List<Dictionary<string, string>> GetPlayers()
+        /// <returns>A task that represents the asynchronous operation. The task result contains a list of Player objects.</returns>
+        public async Task<List<Player>> GetPlayers()
         {
-            var response = SendAndReceive(new byte[] { (byte)'c' });
-            var players = new List<Dictionary<string, string>>();
+            var response = await SendAndReceive(new byte[] { (byte)'c' });
+            var players = new List<Player>();
 
             using var br = new BinaryReader(new MemoryStream(response), Encoding.UTF8);
             var numplayers = br.ReadInt16();
 
             for (var i = 0; i < numplayers; i++)
             {
-                var player = new Dictionary<string, string>
-                {
-                    ["name"] = ReadString(br)
-                };
-                players.Add(player);
+                players.Add(new Player { Name = ReadString(br) });
             }
 
             return players;
         }
 
-        private byte[] SendAndReceive(byte[] data)
+        private async Task<byte[]> SendAndReceive(byte[] data)
         {
             // Format the address
-            var host = Dns.GetHostEntry(IPEndPoint.Address).AddressList[0].ToString();
+            var host = (await GetIPEndPoint()).Address.ToString();
 
             byte[] headerData = new byte[6];
             string[] splitIp = host.Split('.');
@@ -89,15 +85,15 @@ namespace OpenGSQ.Protocols
                 headerData[i] = Convert.ToByte(int.Parse(splitIp[i]));
             }
 
-            headerData[4] = (byte)(IPEndPoint.Port >> 8);
-            headerData[5] = (byte)IPEndPoint.Port;
+            headerData[4] = (byte)(Port >> 8);
+            headerData[5] = (byte)Port;
 
             byte[] packetHeader = headerData.Concat(data).ToArray();
             var request = _requestHeader.Concat(packetHeader).ToArray();
 
             // Validate the response
             using var udpClient = new UdpClient();
-            var response = udpClient.Communicate(this, request);
+            var response = await udpClient.CommunicateAsync(this, request);
             var header = response[.._responseHeader.Length];
 
             if (!header.SequenceEqual(_responseHeader))

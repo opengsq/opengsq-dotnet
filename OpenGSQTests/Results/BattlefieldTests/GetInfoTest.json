@@ -1,10 +1,10 @@
 {
   "hostname": "[JAH] Warriors #01 - Metro Only - All Weapons - 64 Slots",
-  "numplayers": 23,
+  "numplayers": 64,
   "maxplayers": 64,
   "gametype": "ConquestLarge0",
   "map": "MP_Subway",
-  "roundsplayed": 0,
+  "roundsplayed": 1,
   "roundstotal": 2,
   "ip_port": "94.250.199.214:25200",
   "punkbuster_version": "v1.905 | A1386 C2.352",

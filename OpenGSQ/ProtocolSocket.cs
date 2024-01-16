@@ -1,6 +1,5 @@
-using System.IO;
-using System.Net;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace OpenGSQ
 {
@@ -10,27 +9,26 @@ namespace OpenGSQ
     public static class UdpClientExtensions
     {
         /// <summary>
-        /// Sends data to a server and receives a response.
+        /// Sends data to a connected UdpClient and returns the response.
         /// </summary>
-        /// <param name="udpClient">The UdpClient instance.</param>
-        /// <param name="protocolBase">The protocol base containing the IP endpoint and timeout.</param>
+        /// <param name="udpClient">The UdpClient to communicate with.</param>
+        /// <param name="protocolBase">The protocol information.</param>
         /// <param name="data">The data to send.</param>
-        /// <returns>The response data received from the server.</returns>
-        public static byte[] Communicate(this UdpClient udpClient, ProtocolBase protocolBase, byte[] data)
+        /// <returns>A task that represents the asynchronous operation. The task result contains the response data.</returns>
+        public static async Task<byte[]> CommunicateAsync(this UdpClient udpClient, ProtocolBase protocolBase, byte[] data)
         {
             // Connect to the server
-            udpClient.Connect(protocolBase.IPEndPoint);
+            udpClient.Connect(protocolBase.Host, protocolBase.Port);
 
             // Set the timeout
             udpClient.Client.SendTimeout = protocolBase.Timeout;
             udpClient.Client.ReceiveTimeout = protocolBase.Timeout;
 
             // Send the data
-            udpClient.Send(data, data.Length);
+            await udpClient.SendAsync(data, data.Length);
 
             // Receive the response
-            var remoteEP = new IPEndPoint(IPAddress.Any, 0);
-            byte[] responseData = udpClient.Receive(ref remoteEP);
+            byte[] responseData = (await udpClient.ReceiveAsync()).Buffer;
 
             return responseData;
         }
@@ -42,29 +40,54 @@ namespace OpenGSQ
     public static class TcpClientExtensions
     {
         /// <summary>
-        /// Sends data to a server and receives a response.
+        /// Sends data to a connected TcpClient and returns the response.
         /// </summary>
-        /// <param name="tcpClient">The TcpClient instance.</param>
-        /// <param name="protocolBase">The protocol base containing the IP endpoint and timeout.</param>
+        /// <param name="tcpClient">The TcpClient to communicate with.</param>
+        /// <param name="protocolBase">The protocol information.</param>
         /// <param name="data">The data to send.</param>
-        /// <returns>The response data received from the server.</returns>
-        public static byte[] Communicate(this TcpClient tcpClient, ProtocolBase protocolBase, byte[] data)
+        /// <returns>A task that represents the asynchronous operation. The task result contains the response data.</returns>
+        public static async Task<byte[]> CommunicateAsync(this TcpClient tcpClient, ProtocolBase protocolBase, byte[] data)
         {
             // Connect to the server
-            tcpClient.Connect(protocolBase.IPEndPoint);
+            await tcpClient.ConnectAsync(protocolBase.Host, protocolBase.Port);
 
             // Set the timeout
             tcpClient.SendTimeout = protocolBase.Timeout;
             tcpClient.ReceiveTimeout = protocolBase.Timeout;
 
+            // Send the data
+            await tcpClient.SendAsync(data);
+
+            return await tcpClient.ReceiveAsync();
+        }
+
+        /// <summary>
+        /// Sends data to a connected TcpClient.
+        /// </summary>
+        /// <param name="tcpClient">The TcpClient to send data to.</param>
+        /// <param name="data">The data to send.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        public static async Task SendAsync(this TcpClient tcpClient, byte[] data)
+        {
             // Get the stream object for writing and reading
             NetworkStream stream = tcpClient.GetStream();
 
             // Send the data
-            stream.Write(data, 0, data.Length);
+            await stream.WriteAsync(data, 0, data.Length);
+        }
+
+        /// <summary>
+        /// Receives data from a connected TcpClient.
+        /// </summary>
+        /// <param name="tcpClient">The TcpClient to receive data from.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the received data.</returns>
+        public static async Task<byte[]> ReceiveAsync(this TcpClient tcpClient)
+        {
+            // Get the stream object for writing and reading
+            NetworkStream stream = tcpClient.GetStream();
 
             byte[] bytesToRead = new byte[tcpClient.ReceiveBufferSize];
-            stream.Read(bytesToRead, 0, tcpClient.ReceiveBufferSize);
+            await stream.ReadAsync(bytesToRead, 0, tcpClient.ReceiveBufferSize);
 
             return bytesToRead;
         }

@@ -31,217 +31,113 @@
   "si_antiLag": "1",
   "bot_enable": "1",
   "gamename": "baseETQW-1",
-  "si_campaign": "campaign_pacific",
-  "si_map": "maps/canyon.entities",
-  "si_campaignInfo": "",
+  "si_campaign": "campaign_northeurope",
+  "si_map": "maps/ark",
+  "si_campaignInfo": "2",
   "players": [
     {
       "id": 0,
-      "ping": 51,
-      "name": "Modron",
+      "ping": 0,
+      "name": "FannyPack",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 1,
-      "ping": 40,
-      "name": "-Ilya-",
-      "clantag_pos": 1,
-      "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 2,
-      "ping": 41,
-      "name": "Leonidas",
+      "ping": 0,
+      "name": "WAT|infected_remnants",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 3,
-      "ping": 61,
-      "name": "Dragon",
+      "ping": 0,
+      "name": "flower.tube",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 4,
-      "ping": 30,
-      "name": "+Hyd",
+      "ping": 0,
+      "name": "Gumbii",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 5,
-      "ping": 31,
-      "name": "CannedHam",
-      "clantag_pos": 0,
-      "clantag": "SPAM",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 6,
-      "ping": 109,
-      "name": "Roberts",
+      "ping": 0,
+      "name": "NiceLagSwitch",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 7,
-      "ping": 137,
-      "name": "StroggScum_",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 8,
-      "ping": 59,
-      "name": "Player",
+      "ping": 0,
+      "name": "rumpleforeskin",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 9,
-      "ping": 39,
-      "name": "Shameus",
+      "ping": 0,
+      "name": "Vlad_Putimir",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 10,
-      "ping": 44,
-      "name": "Tymek",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 11,
-      "ping": 38,
-      "name": "ValkoVer",
+      "ping": 0,
+      "name": "Bad Hombre",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 12,
-      "ping": 12,
-      "name": "Mic2010",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 13,
-      "ping": 104,
-      "name": "Bela ",
+      "ping": 0,
+      "name": "Kettle",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 14,
-      "ping": 261,
-      "name": "[/\\/\\/\\\\/]",
-      "clantag_pos": 0,
-      "clantag": "TAW|",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 15,
-      "ping": 38,
-      "name": "pOx",
+      "ping": 0,
+      "name": "CTZN Kane",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 16,
-      "ping": 29,
-      "name": "10tacl3_",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 17,
-      "ping": 56,
-      "name": "Serch",
+      "ping": 0,
+      "name": "iceT-bag",
       "clantag_pos": 0,
-      "clantag": "WAT|27",
-      "typeflag": 0
+      "clantag": "",
+      "typeflag": 1
     },
     {
       "id": 18,
-      "ping": 62,
-      "name": "legende",
+      "ping": 0,
+      "name": "NoobMcBoob",
       "clantag_pos": 0,
-      "clantag": "n1-",
-      "typeflag": 0
+      "clantag": "",
+      "typeflag": 1
     },
     {
       "id": 19,
-      "ping": 38,
-      "name": "mdf22",
+      "ping": 0,
+      "name": "NOSFERATU",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 20,
-      "ping": 58,
-      "name": "Konkwista",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 21,
-      "ping": 57,
-      "name": "WL_",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 22,
-      "ping": 71,
-      "name": "Rodik",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 23,
-      "ping": 40,
-      "name": "Galaction",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 24,
-      "ping": 61,
-      "name": "Lo spaccone",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 25,
-      "ping": 203,
-      "name": "Tort",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     }
   ]
 }

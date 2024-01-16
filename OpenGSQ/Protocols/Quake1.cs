@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using OpenGSQ.Responses.Quake1;
 
 namespace OpenGSQ.Protocols
 {
@@ -53,16 +55,15 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>A Status object containing the server information and players.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public Status GetStatus()
+        public async Task<StatusResponse> GetStatus()
         {
-            using (var br = GetResponseBinaryReader())
+            using var br = await GetResponseBinaryReader();
+
+            return new StatusResponse
             {
-                return new Status
-                {
-                    Info = ParseInfo(br),
-                    Players = ParsePlayers(br),
-                };
-            }
+                Info = ParseInfo(br),
+                Players = ParsePlayers(br),
+            };
         }
 
         /// <summary>
@@ -70,9 +71,9 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>A BinaryReader for the response data.</returns>
         /// <exception cref="Exception">Thrown when the packet header does not match the expected header.</exception>
-        protected BinaryReader GetResponseBinaryReader()
+        protected async Task<BinaryReader> GetResponseBinaryReader()
         {
-            var responseData = ConnectAndSend(_RequestHeader);
+            var responseData = await ConnectAndSend(_RequestHeader);
 
             var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
             var header = br.ReadStringEx(_Delimiter1);
@@ -163,95 +164,31 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="request">The request to send.</param>
         /// <returns>The response data received from the server.</returns>
-        protected byte[] ConnectAndSend(string request)
+        protected async Task<byte[]> ConnectAndSend(string request)
         {
-            using (var udpClient = new UdpClient())
+            using var udpClient = new UdpClient();
+            var header = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
+
+            // Send Request
+            var requestData = new byte[0].Concat(header).Concat(Encoding.ASCII.GetBytes(request)).Concat(new byte[] { 0x00 }).ToArray();
+
+            // Server response
+            var responseData = await udpClient.CommunicateAsync(this, requestData);
+
+            // Remove the last 0x00 if exists (Only if Quake1)
+            if (responseData[responseData.Length - 1] == 0)
             {
-                var header = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
-
-                // Send Request
-                var requestData = new byte[0].Concat(header).Concat(Encoding.ASCII.GetBytes(request)).Concat(new byte[] { 0x00 }).ToArray();
-
-                // Server response
-                var responseData = udpClient.Communicate(this, requestData);
-
-                // Remove the last 0x00 if exists (Only if Quake1)
-                if (responseData[responseData.Length - 1] == 0)
-                {
-                    responseData = responseData.Take(responseData.Length - 1).ToArray();
-                }
-
-                // Add \n at the last of responseData if not exists
-                if (responseData[responseData.Length - 1] != _Delimiter2)
-                {
-                    responseData = responseData.Concat(new byte[] { _Delimiter2 }).ToArray();
-                }
-
-                // Remove the first four 0xFF
-                return responseData.Skip(header.Length).ToArray();
+                responseData = responseData.Take(responseData.Length - 1).ToArray();
             }
-        }
 
-        /// <summary>
-        /// Represents the status of the server.
-        /// </summary>
-        public class Status
-        {
-            /// <summary>
-            /// Gets or sets the server information.
-            /// </summary>
-            public Dictionary<string, string> Info { get; set; }
+            // Add \n at the last of responseData if not exists
+            if (responseData[responseData.Length - 1] != _Delimiter2)
+            {
+                responseData = responseData.Concat(new byte[] { _Delimiter2 }).ToArray();
+            }
 
-            /// <summary>
-            /// Gets or sets the list of players.
-            /// </summary>
-            public List<Player> Players { get; set; }
-        }
-
-        /// <summary>
-        /// Represents a player in the game.
-        /// </summary>
-        public class Player
-        {
-            /// <summary>
-            /// Gets or sets the player's ID.
-            /// </summary>
-            public int Id { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's score.
-            /// </summary>
-            public int Score { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's time.
-            /// </summary>
-            public int Time { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's ping.
-            /// </summary>
-            public int Ping { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's name.
-            /// </summary>
-            public string Name { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's skin.
-            /// </summary>
-            public string Skin { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's first color.
-            /// </summary>
-            public int Color1 { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's second color.
-            /// </summary>
-            public int Color2 { get; set; }
+            // Remove the first four 0xFF
+            return responseData.Skip(header.Length).ToArray();
         }
     }
 }

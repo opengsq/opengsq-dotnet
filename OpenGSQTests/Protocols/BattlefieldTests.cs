@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 
 namespace OpenGSQ.Protocols.Tests
@@ -15,21 +16,21 @@ namespace OpenGSQ.Protocols.Tests
         }
 
         [TestMethod()]
-        public void GetInfoTest()
+        public async Task GetInfoTest()
         {
-            SaveResult(nameof(GetInfoTest), battlefield.GetInfo());
+            SaveResult(nameof(GetInfoTest), await battlefield.GetInfo());
         }
 
         [TestMethod()]
-        public void GetVersionTest()
+        public async Task GetVersionTest()
         {
-            SaveResult(nameof(GetVersionTest), battlefield.GetVersion());
+            SaveResult(nameof(GetVersionTest), await battlefield.GetVersion());
         }
 
         [TestMethod()]
-        public void GetPlayersTest()
+        public async Task GetPlayersTest()
         {
-            SaveResult(nameof(GetPlayersTest), battlefield.GetPlayers());
+            SaveResult(nameof(GetPlayersTest), await battlefield.GetPlayers());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Threading.Tasks;
 
 namespace OpenGSQ
 {
@@ -13,9 +14,14 @@ namespace OpenGSQ
         public abstract string FullName { get; }
 
         /// <summary>
-        /// The endpoint (IP address and port) of the server.
+        /// Gets the host to connect to.
         /// </summary>
-        public IPEndPoint IPEndPoint { get; private set; }
+        public string Host { get; private set; }
+
+        /// <summary>
+        /// Gets the port to connect to.
+        /// </summary>
+        public int Port { get; private set; }
 
         /// <summary>
         /// The timeout for the connection in seconds.
@@ -30,16 +36,25 @@ namespace OpenGSQ
         /// <param name="timeout">The connection timeout in milliseconds. Default is 5 seconds.</param>
         public ProtocolBase(string host, int port, int timeout = 5000)
         {
-            if (IPAddress.TryParse(host, out var ipAddress))
+            Host = host;
+            Port = port;
+            Timeout = timeout;
+        }
+
+        /// <summary>
+        /// Asynchronously gets the Internet Protocol (IP) endpoint.
+        /// </summary>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the IP endpoint.</returns>
+        protected async Task<IPEndPoint> GetIPEndPoint()
+        {
+            if (IPAddress.TryParse(Host, out var ipAddress))
             {
-                IPEndPoint = new IPEndPoint(ipAddress, port);
+                return new IPEndPoint(ipAddress, Port);
             }
             else
             {
-                IPEndPoint = new IPEndPoint(Dns.GetHostAddresses(host)[0], port);
+                return new IPEndPoint((await Dns.GetHostAddressesAsync(Host))[0], Port);
             }
-
-            Timeout = timeout;
         }
     }
 }

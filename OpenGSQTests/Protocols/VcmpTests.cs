@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 
 namespace OpenGSQ.Protocols.Tests
@@ -11,19 +12,19 @@ namespace OpenGSQ.Protocols.Tests
 
         public VcmpTests() : base(nameof(VcmpTests))
         {
-            _EnableSave = false;
+            _EnableSave = !false;
         }
 
         [TestMethod()]
-        public void GetStatusTest()
+        public async Task GetStatusTest()
         {
-            SaveResult(nameof(GetStatusTest), vcmp.GetStatus());
+            SaveResult(nameof(GetStatusTest), await vcmp.GetStatus());
         }
 
         [TestMethod()]
-        public void GetPlayersTest()
+        public async Task GetPlayersTest()
         {
-            SaveResult(nameof(GetPlayersTest), vcmp.GetPlayers());
+            SaveResult(nameof(GetPlayersTest), await vcmp.GetPlayers());
         }
     }
 }

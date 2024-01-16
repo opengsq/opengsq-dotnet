@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace OpenGSQ.Protocols
 {
@@ -32,10 +33,10 @@ namespace OpenGSQ.Protocols
         /// Gets the status of the server.
         /// </summary>
         /// <returns>A dictionary containing the server status.</returns>
-        public Dictionary<string, object> GetStatus()
+        public async Task<Dictionary<string, object>> GetStatus()
         {
             using var udpClient = new UdpClient();
-            byte[] response = udpClient.Communicate(this, _request);
+            byte[] response = await udpClient.CommunicateAsync(this, _request);
             byte[] header = response[..4];
 
             if (!header.SequenceEqual(_response))

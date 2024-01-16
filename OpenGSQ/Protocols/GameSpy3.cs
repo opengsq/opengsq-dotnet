@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
+using OpenGSQ.Responses.GameSpy2;
 
 namespace OpenGSQ.Protocols
 {
@@ -37,33 +38,29 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>A Status object containing the server information, players, and teams.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public Status GetStatus()
+        public async Task<StatusResponse> GetStatus()
         {
-            using (var udpClient = new UdpClient())
+            using var udpClient = new UdpClient();
+            var responseData = await ConnectAndSendPackets(udpClient);
+            using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
+
+            return new StatusResponse
             {
-                var responseData = ConnectAndSendPackets(udpClient);
+                // Save Status Info
+                Info = GetInfo(br),
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
-                {
-                    return new Status
-                    {
-                        // Save Status Info
-                        Info = GetInfo(br),
+                // Save Status Players
+                Players = GetPlayers(br),
 
-                        // Save Status Players
-                        Players = GetPlayers(br),
-
-                        // Save Status Teams
-                        Teams = GetTeams(br)
-                    };
-                }
-            }
+                // Save Status Teams
+                Teams = GetTeams(br)
+            };
         }
 
-        private byte[] ConnectAndSendPackets(UdpClient udpClient)
+        private async Task<byte[]> ConnectAndSendPackets(UdpClient udpClient)
         {
             // Connect to remote host
-            udpClient.Connect(IPEndPoint);
+            udpClient.Connect(Host, Port);
             udpClient.Client.SendTimeout = Timeout;
             udpClient.Client.ReceiveTimeout = Timeout;
 
@@ -72,11 +69,10 @@ namespace OpenGSQ.Protocols
 
             if (_Challenge)
             {
-                udpClient.Send(requestData, requestData.Length);
+                await udpClient.SendAsync(requestData, requestData.Length);
 
                 // Packet 2: First response
-                var remoteEP = new IPEndPoint(IPAddress.Any, 0);
-                responseData = udpClient.Receive(ref remoteEP);
+                responseData = (await udpClient.ReceiveAsync()).Buffer;
 
                 // Get challenge
                 if (int.TryParse(Encoding.ASCII.GetString(responseData.Skip(5).ToArray()).Trim(), out int result) && result != 0)
@@ -96,75 +92,72 @@ namespace OpenGSQ.Protocols
             udpClient.Send(requestData, requestData.Length);
 
             // Packet 4: Server response
-            responseData = Receive(udpClient);
+            responseData = await Receive(udpClient);
 
             return responseData;
         }
 
-        private byte[] Receive(UdpClient udpClient)
+        private async Task<byte[]> Receive(UdpClient udpClient)
         {
             int totalPackets = -1;
             var payloads = new SortedDictionary<int, byte[]>();
 
             do
             {
-                var remoteEP = new IPEndPoint(IPAddress.Any, 0);
-                var responseData = udpClient.Receive(ref remoteEP);
+                var responseData = (await udpClient.ReceiveAsync()).Buffer;
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+                using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
+                var header = br.ReadByte();
+
+                if (header != 0)
                 {
-                    var header = br.ReadByte();
-
-                    if (header != 0)
-                    {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: 0.");
-                    }
-
-                    // Skip the timestamp and splitnum
-                    br.ReadBytes(13);
-
-                    // The 'numPackets' byte
-                    var numPackets = br.ReadByte();
-
-                    // The low 7 bits are the packet index (starting at zero)
-                    var number = numPackets & 0x7F;
-
-                    // The high bit is whether or not this is the last packet
-                    var isLastPacket = numPackets >> 7 == 1;
-
-                    // Save totalPackets as packet number + 1
-                    if (isLastPacket)
-                    {
-                        totalPackets = number + 1;
-                    }
-
-                    // The object id. Example: \x01
-                    var objectId = br.ReadByte();
-
-                    // The object header
-                    byte[] objectHeader = new byte[] { };
-
-                    if (objectId >= 1)
-                    {
-                        // The object name. Example: "player_"
-                        string objectName = br.ReadStringEx();
-
-                        // The object items appear count
-                        int count = br.ReadByte();
-
-                        // If the object item doesn't appear before, set the header back
-                        if (count == 0)
-                        {
-                            // Set the header. Example: \x00\x01player_\x00\x00
-                            objectHeader = new byte[] { 0x00, objectId }.Concat(Encoding.UTF8.GetBytes(objectName)).Concat(new byte[] { 0x00, 0x00 }).ToArray();
-                        }
-                    }
-
-                    // Save the payload
-                    byte[] payload = objectHeader.Concat(responseData.Skip((int)br.BaseStream.Position)).ToArray();
-
-                    payloads.Add(number, TrimPayload(payload));
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: 0.");
                 }
+
+                // Skip the timestamp and splitnum
+                br.ReadBytes(13);
+
+                // The 'numPackets' byte
+                var numPackets = br.ReadByte();
+
+                // The low 7 bits are the packet index (starting at zero)
+                var number = numPackets & 0x7F;
+
+                // The high bit is whether or not this is the last packet
+                var isLastPacket = numPackets >> 7 == 1;
+
+                // Save totalPackets as packet number + 1
+                if (isLastPacket)
+                {
+                    totalPackets = number + 1;
+                }
+
+                // The object id. Example: \x01
+                var objectId = br.ReadByte();
+
+                // The object header
+                byte[] objectHeader = new byte[] { };
+
+                if (objectId >= 1)
+                {
+                    // The object name. Example: "player_"
+                    string objectName = br.ReadStringEx();
+
+                    // The object items appear count
+                    int count = br.ReadByte();
+
+                    // If the object item doesn't appear before, set the header back
+                    if (count == 0)
+                    {
+                        // Set the header. Example: \x00\x01player_\x00\x00
+                        objectHeader = new byte[] { 0x00, objectId }.Concat(Encoding.UTF8.GetBytes(objectName)).Concat(new byte[] { 0x00, 0x00 }).ToArray();
+                    }
+                }
+
+                // Save the payload
+                byte[] payload = objectHeader.Concat(responseData.Skip((int)br.BaseStream.Position)).ToArray();
+
+                payloads.Add(number, TrimPayload(payload));
             } while (totalPackets == -1 || payloads.Count < totalPackets);
 
             // Combine the payloads
@@ -316,27 +309,6 @@ namespace OpenGSQ.Protocols
             }
 
             return teams;
-        }
-
-        /// <summary>
-        /// Status object
-        /// </summary>
-        public class Status
-        {
-            /// <summary>
-            /// Status Info
-            /// </summary>
-            public Dictionary<string, string> Info { get; set; }
-
-            /// <summary>
-            /// Status Players
-            /// </summary>
-            public List<Dictionary<string, string>> Players { get; set; }
-
-            /// <summary>
-            /// Status Teams
-            /// </summary>
-            public List<Dictionary<string, string>> Teams { get; set; }
         }
     }
 }

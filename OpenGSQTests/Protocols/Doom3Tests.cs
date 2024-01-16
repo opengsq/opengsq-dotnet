@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 
 namespace OpenGSQ.Protocols.Tests
@@ -18,9 +19,9 @@ namespace OpenGSQ.Protocols.Tests
         }
 
         [TestMethod()]
-        public void GetInfoTest()
+        public async Task GetInfoTest()
         {
-            SaveResult(nameof(GetInfoTest), doom3.GetInfo());
+            SaveResult(nameof(GetInfoTest), await doom3.GetInfo());
         }
     }
 }

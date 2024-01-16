@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 using System;
+using System.Threading.Tasks;
 
 namespace OpenGSQ.Protocols.Tests
 {
@@ -19,33 +20,33 @@ namespace OpenGSQ.Protocols.Tests
         }
 
         [TestMethod()]
-        public void GetInfoTest()
+        public async Task GetInfoTest()
         {
-            SaveResult(nameof(GetInfoTest), source.GetInfo());
+            SaveResult(nameof(GetInfoTest), await source.GetInfo());
         }
 
         [TestMethod()]
-        public void GetPlayersTest()
+        public async Task GetPlayersTest()
         {
-            SaveResult(nameof(GetPlayersTest), source.GetPlayers());
+            SaveResult(nameof(GetPlayersTest), await source.GetPlayers());
         }
 
         [TestMethod()]
-        public void GetRulesTest()
+        public async Task GetRulesTest()
         {
-            SaveResult(nameof(GetRulesTest), source.GetRules());
+            SaveResult(nameof(GetRulesTest), await source.GetRules());
         }
 
         [TestMethod()]
-        public void RemoteConsoleTest()
+        public async Task RemoteConsoleTest()
         {
             using var remoteConsole = new Source.RemoteConsole("", 27010);
 
             try
             {
-                remoteConsole.Authenticate("");
+                await remoteConsole.Authenticate("");
 
-                string result = remoteConsole.SendCommand("cvarlist");
+                string result = await remoteConsole.SendCommand("cvarlist");
 
                 SaveResult(nameof(RemoteConsoleTest), result, isJson: false);
             }

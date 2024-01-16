@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 
 namespace OpenGSQ.Protocols.Tests
@@ -15,9 +16,9 @@ namespace OpenGSQ.Protocols.Tests
         }
 
         [TestMethod()]
-        public void GetStatusTest()
+        public async Task GetStatusTest()
         {
-            SaveResult(nameof(GetStatusTest), ase.GetStatus());
+            SaveResult(nameof(GetStatusTest), await ase.GetStatus());
         }
     }
 }

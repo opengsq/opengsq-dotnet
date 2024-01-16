@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
+using OpenGSQ.Responses.GameSpy2;
 
 namespace OpenGSQ.Protocols
 {
@@ -32,38 +34,34 @@ namespace OpenGSQ.Protocols
         /// <param name="request">The type of information to request.</param>
         /// <returns>A Status object containing the requested information.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public Status GetStatus(Request request = Request.Info | Request.Players | Request.Teams)
+        public async Task<StatusResponse> GetStatus(Request request = Request.Info | Request.Players | Request.Teams)
         {
-            using (var udpClient = new UdpClient())
+            using var udpClient = new UdpClient();
+            var requestData = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(request)).ToArray();
+            var responseData = await udpClient.CommunicateAsync(this, requestData);
+
+            using var br = new BinaryReader(new MemoryStream(responseData.Skip(5).ToArray()), Encoding.UTF8);
+            var status = new StatusResponse();
+
+            // Save Response Info
+            if (request.HasFlag(Request.Info))
             {
-                var requestData = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(request)).ToArray();
-                var responseData = udpClient.Communicate(this, requestData);
-
-                using (var br = new BinaryReader(new MemoryStream(responseData.Skip(5).ToArray()), Encoding.UTF8))
-                {
-                    var status = new Status();
-
-                    // Save Response Info
-                    if (request.HasFlag(Request.Info))
-                    {
-                        status.Info = GetInfo(br);
-                    }
-
-                    // Save Response Players
-                    if (request.HasFlag(Request.Players))
-                    {
-                        status.Players = GetPlayers(br);
-                    }
-
-                    // Save Response Teams
-                    if (request.HasFlag(Request.Teams))
-                    {
-                        status.Teams = GetTeams(br);
-                    }
-
-                    return status;
-                }
+                status.Info = GetInfo(br);
             }
+
+            // Save Response Players
+            if (request.HasFlag(Request.Players))
+            {
+                status.Players = GetPlayers(br);
+            }
+
+            // Save Response Teams
+            if (request.HasFlag(Request.Teams))
+            {
+                status.Teams = GetTeams(br);
+            }
+
+            return status;
         }
 
 
@@ -173,27 +171,6 @@ namespace OpenGSQ.Protocols
             /// A request for team data.
             /// </summary>
             Teams = 4,
-        }
-
-        /// <summary>
-        /// Represents the status of the server.
-        /// </summary>
-        public class Status
-        {
-            /// <summary>
-            /// Gets or sets the server information.
-            /// </summary>
-            public Dictionary<string, string> Info { get; set; }
-
-            /// <summary>
-            /// Gets or sets the list of players.
-            /// </summary>
-            public List<Dictionary<string, string>> Players { get; set; }
-
-            /// <summary>
-            /// Gets or sets the list of teams.
-            /// </summary>
-            public List<Dictionary<string, string>> Teams { get; set; }
         }
     }
 }

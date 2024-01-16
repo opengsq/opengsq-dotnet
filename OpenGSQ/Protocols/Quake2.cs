@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
+using System.Threading.Tasks;
+using OpenGSQ.Responses.Quake2;
 
 namespace OpenGSQ.Protocols
 {
@@ -29,16 +31,15 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>A Status object containing the server information and players.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public new Status GetStatus()
+        public new async Task<StatusResponse> GetStatus()
         {
-            using (var br = GetResponseBinaryReader())
+            using var br = await GetResponseBinaryReader();
+
+            return new StatusResponse
             {
-                return new Status
-                {
-                    Info = ParseInfo(br),
-                    Players = ParsePlayers(br),
-                };
-            }
+                Info = ParseInfo(br),
+                Players = ParsePlayers(br),
+            };
         }
 
         /// <summary>
@@ -62,48 +63,6 @@ namespace OpenGSQ.Protocols
             }
 
             return players;
-        }
-
-        /// <summary>
-        /// Represents the status of the server.
-        /// </summary>
-        public new class Status
-        {
-            /// <summary>
-            /// Gets or sets the server information.
-            /// </summary>
-            public Dictionary<string, string> Info { get; set; }
-
-            /// <summary>
-            /// Gets or sets the list of players.
-            /// </summary>
-            public List<Player> Players { get; set; }
-        }
-
-        /// <summary>
-        /// Represents a player in the game.
-        /// </summary>
-        public new class Player
-        {
-            /// <summary>
-            /// Gets or sets the player's frags.
-            /// </summary>
-            public int Frags { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's ping.
-            /// </summary>
-            public int Ping { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's name.
-            /// </summary>
-            public string Name { get; set; }
-
-            /// <summary>
-            /// Gets or sets the player's address.
-            /// </summary>
-            public string Address { get; set; }
         }
     }
 }

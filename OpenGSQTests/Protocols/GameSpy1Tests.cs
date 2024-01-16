@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 
 namespace OpenGSQ.Protocols.Tests
@@ -19,45 +20,45 @@ namespace OpenGSQ.Protocols.Tests
         }
 
         [TestMethod()]
-        public void GetBasicTest()
+        public async Task GetBasicTest()
         {
-            SaveResult(nameof(GetBasicTest), gameSpy1.GetBasic());
+            SaveResult(nameof(GetBasicTest), await gameSpy1.GetBasic());
         }
 
         [TestMethod()]
-        public void GetInfoTest()
+        public async Task GetInfoTest()
         {
-            SaveResult(nameof(GetInfoTest), gameSpy1.GetInfo());
+            SaveResult(nameof(GetInfoTest), await gameSpy1.GetInfo());
         }
 
         [TestMethod()]
-        public void GetRulesTest()
+        public async Task GetRulesTest()
         {
-            SaveResult(nameof(GetRulesTest), gameSpy1.GetRules());
+            SaveResult(nameof(GetRulesTest), await gameSpy1.GetRules());
         }
 
         [TestMethod()]
-        public void GetPlayersTest()
+        public async Task GetPlayersTest()
         {
-            SaveResult(nameof(GetPlayersTest), gameSpy1.GetPlayers());
+            SaveResult(nameof(GetPlayersTest), await gameSpy1.GetPlayers());
         }
 
         [TestMethod()]
-        public void GetStatusTest()
+        public async Task GetStatusTest()
         {
-            SaveResult(nameof(GetStatusTest), gameSpy1.GetStatus());
+            SaveResult(nameof(GetStatusTest), await gameSpy1.GetStatus());
         }
 
         [TestMethod()]
-        public void GetTeamsTest()
+        public async Task GetTeamsTest()
         {
-            SaveResult(nameof(GetTeamsTest), gameSpy1.GetTeams());
+            SaveResult(nameof(GetTeamsTest), await gameSpy1.GetTeams());
         }
 
         [TestMethod()]
-        public void GetEchoTest()
+        public async Task GetEchoTest()
         {
-            SaveResult(nameof(GetEchoTest), gameSpy1.GetEcho());
+            SaveResult(nameof(GetEchoTest), await gameSpy1.GetEcho());
         }
     }
 }

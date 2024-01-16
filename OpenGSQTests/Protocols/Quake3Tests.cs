@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 
 namespace OpenGSQ.Protocols.Tests
@@ -16,15 +17,15 @@ namespace OpenGSQ.Protocols.Tests
         }
 
         [TestMethod()]
-        public void GetInfoTest()
+        public async Task GetInfoTest()
         {
-            SaveResult(nameof(GetInfoTest), quake3.GetInfo());
+            SaveResult(nameof(GetInfoTest), await quake3.GetInfo());
         }
 
         [TestMethod()]
-        public void GetStatusTest()
+        public async Task GetStatusTest()
         {
-            SaveResult(nameof(GetStatusTest), quake3.GetStatus());
+            SaveResult(nameof(GetStatusTest), await quake3.GetStatus());
         }
     }
 }

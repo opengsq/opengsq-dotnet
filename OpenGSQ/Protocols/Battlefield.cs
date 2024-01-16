@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace OpenGSQ.Protocols
 {
@@ -32,9 +33,9 @@ namespace OpenGSQ.Protocols
         /// Gets the status of the server.
         /// </summary>
         /// <returns>A dictionary containing the server status.</returns>
-        public Dictionary<string, object> GetInfo()
+        public async Task<Dictionary<string, object>> GetInfo()
         {
-            var data = new Stack<string>(GetData(_info).AsEnumerable().Reverse());
+            var data = new Stack<string>((await GetData(_info)).AsEnumerable().Reverse());
 
             var info = new Dictionary<string, object>
             {
@@ -104,9 +105,9 @@ namespace OpenGSQ.Protocols
         /// Gets the version of the server.
         /// </summary>
         /// <returns>A dictionary containing the server version.</returns>
-        public Dictionary<string, string> GetVersion()
+        public async Task<Dictionary<string, string>> GetVersion()
         {
-            var data = GetData(_version);
+            var data = await GetData(_version);
             return new Dictionary<string, string> { ["mod"] = data[0], ["version"] = data[1] };
         }
 
@@ -114,9 +115,9 @@ namespace OpenGSQ.Protocols
         /// Gets the players on the server.
         /// </summary>
         /// <returns>A list of dictionaries containing player information.</returns>
-        public List<Dictionary<string, string>> GetPlayers()
+        public async Task<List<Dictionary<string, string>>> GetPlayers()
         {
-            var data = GetData(_players);
+            var data = await GetData(_players);
             var count = int.Parse(data[0]);
             var fields = data.GetRange(1, count);
             var numplayers = int.Parse(data[count + 1]);
@@ -138,10 +139,10 @@ namespace OpenGSQ.Protocols
             return players;
         }
 
-        private List<string> GetData(byte[] request)
+        private async Task<List<string>> GetData(byte[] request)
         {
             using var tcpClient = new TcpClient();
-            byte[] response = tcpClient.Communicate(this, request);
+            byte[] response = await tcpClient.CommunicateAsync(this, request);
 
             var br = new BinaryReader(new MemoryStream(response));
             br.ReadInt32();  // header

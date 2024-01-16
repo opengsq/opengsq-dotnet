@@ -1,11 +1,11 @@
 {
   "Protocol": 17,
   "Name": "shounic trenches (USA Chicago)",
-  "Map": "pl_cashworks",
+  "Map": "pl_goldrush",
   "Folder": "tf",
   "Game": "Team Fortress",
   "ID": 440,
-  "Players": 60,
+  "Players": 100,
   "MaxPlayers": 100,
   "Bots": 0,
   "ServerType": 100,
