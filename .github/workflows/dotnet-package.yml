@@ -15,11 +15,11 @@ jobs:
         os: [windows-latest]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core 3.1
-      uses: actions/setup-dotnet@v1
+    - uses: actions/checkout@v4
+    - name: Setup .NET 7
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 3.1.x
+        dotnet-version: 7
     - name: Install dependencies
       run: dotnet restore OpenGSQ
     - name: Build
