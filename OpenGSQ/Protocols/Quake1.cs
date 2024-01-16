@@ -13,18 +13,35 @@ namespace OpenGSQ.Protocols
     /// </summary>
     public class Quake1 : ProtocolBase
     {
-#pragma warning disable 1591
+        /// <summary>
+        /// The ASCII value of the backslash character used as a delimiter.
+        /// </summary>
         protected byte _Delimiter1 = Encoding.ASCII.GetBytes("\\")[0];
-        protected byte _Delimiter2 = Encoding.ASCII.GetBytes("\n")[0];
-        protected string _RequestHeader, _ResponseHeader;
-#pragma warning restore 1591
 
         /// <summary>
-        /// Quake1 Query Protocol
+        /// The ASCII value of the newline character used as a delimiter.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
+        protected byte _Delimiter2 = Encoding.ASCII.GetBytes("\n")[0];
+
+        /// <summary>
+        /// The header of the request.
+        /// </summary>
+        protected string _RequestHeader;
+
+        /// <summary>
+        /// The header of the response.
+        /// </summary>
+        protected string _ResponseHeader;
+
+        /// <inheritdoc/>
+        public override string FullName => "Quake1 Query Protocol";
+
+        /// <summary>
+        /// Initializes a new instance of the Quake1 class.
+        /// </summary>
+        /// <param name="address">The IP address of the server.</param>
+        /// <param name="port">The port number of the server.</param>
+        /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public Quake1(string address, int port, int timeout = 5000) : base(address, port, timeout)
         {
             _RequestHeader = "status";
@@ -32,10 +49,10 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// This returns server information and players.
+        /// Gets the status of the server including information and players.
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <returns>A Status object containing the server information and players.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Status GetStatus()
         {
             using (var br = GetResponseBinaryReader())
@@ -48,25 +65,31 @@ namespace OpenGSQ.Protocols
             }
         }
 
-#pragma warning disable 1591
+        /// <summary>
+        /// Gets a BinaryReader for the response data.
+        /// </summary>
+        /// <returns>A BinaryReader for the response data.</returns>
+        /// <exception cref="Exception">Thrown when the packet header does not match the expected header.</exception>
         protected BinaryReader GetResponseBinaryReader()
         {
-            using (var udpClient = new UdpClient())
+            var responseData = ConnectAndSend(_RequestHeader);
+
+            var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
+            var header = br.ReadStringEx(_Delimiter1);
+
+            if (header != _ResponseHeader)
             {
-                var responseData = ConnectAndSend(udpClient, _RequestHeader);
-
-                var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
-                var header = br.ReadStringEx(_Delimiter1);
-
-                if (header != _ResponseHeader)
-                {
-                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {_ResponseHeader}.");
-                }
-
-                return br;
+                throw new Exception($"Packet header mismatch. Received: {header}. Expected: {_ResponseHeader}.");
             }
+
+            return br;
         }
 
+        /// <summary>
+        /// Parses the server information from the BinaryReader.
+        /// </summary>
+        /// <param name="br">The BinaryReader containing the server information.</param>
+        /// <returns>A dictionary containing the server information.</returns>
         protected Dictionary<string, string> ParseInfo(BinaryReader br)
         {
             var info = new Dictionary<string, string>();
@@ -87,6 +110,11 @@ namespace OpenGSQ.Protocols
             return info;
         }
 
+        /// <summary>
+        /// Parses the player information from the BinaryReader.
+        /// </summary>
+        /// <param name="br">The BinaryReader containing the player information.</param>
+        /// <returns>A list of Player objects.</returns>
         protected List<Player> ParsePlayers(BinaryReader br)
         {
             var players = new List<Player>();
@@ -109,6 +137,11 @@ namespace OpenGSQ.Protocols
             return players;
         }
 
+        /// <summary>
+        /// Gets a list of MatchCollection objects for each player.
+        /// </summary>
+        /// <param name="br">The BinaryReader containing the player information.</param>
+        /// <returns>A list of MatchCollection objects for each player.</returns>
         protected List<MatchCollection> GetPlayerMatchCollections(BinaryReader br)
         {
             var matchCollections = new List<MatchCollection>();
@@ -125,61 +158,99 @@ namespace OpenGSQ.Protocols
             return matchCollections;
         }
 
-        protected byte[] ConnectAndSend(UdpClient udpClient, string request)
+        /// <summary>
+        /// Connects to the server and sends a request.
+        /// </summary>
+        /// <param name="request">The request to send.</param>
+        /// <returns>The response data received from the server.</returns>
+        protected byte[] ConnectAndSend(string request)
         {
-            // Connect to remote host
-            udpClient.Connect(_EndPoint);
-            udpClient.Client.SendTimeout = _Timeout;
-            udpClient.Client.ReceiveTimeout = _Timeout;
-
-            var header = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
-
-            // Send Request
-            var requestData = new byte[0].Concat(header).Concat(Encoding.ASCII.GetBytes(request)).Concat(new byte[] { 0x00 } ).ToArray();
-            udpClient.Send(requestData, requestData.Length);
-
-            // Server response
-            var responseData = udpClient.Receive(ref _EndPoint);
-
-            // Remove the last 0x00 if exists (Only if Quake1)
-            if (responseData[responseData.Length - 1] == 0)
+            using (var udpClient = new UdpClient())
             {
-                responseData = responseData.Take(responseData.Length - 1).ToArray();
-            }
+                var header = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
 
-            // Add \n at the last of responseData if not exists
-            if (responseData[responseData.Length - 1] != _Delimiter2)
-            {
-                responseData = responseData.Concat(new byte[] { _Delimiter2 }).ToArray();
-            }
+                // Send Request
+                var requestData = new byte[0].Concat(header).Concat(Encoding.ASCII.GetBytes(request)).Concat(new byte[] { 0x00 }).ToArray();
 
-            // Remove the first four 0xFF
-            return responseData.Skip(header.Length).ToArray();
+                // Server response
+                var responseData = udpClient.Communicate(this, requestData);
+
+                // Remove the last 0x00 if exists (Only if Quake1)
+                if (responseData[responseData.Length - 1] == 0)
+                {
+                    responseData = responseData.Take(responseData.Length - 1).ToArray();
+                }
+
+                // Add \n at the last of responseData if not exists
+                if (responseData[responseData.Length - 1] != _Delimiter2)
+                {
+                    responseData = responseData.Concat(new byte[] { _Delimiter2 }).ToArray();
+                }
+
+                // Remove the first four 0xFF
+                return responseData.Skip(header.Length).ToArray();
+            }
         }
 
+        /// <summary>
+        /// Represents the status of the server.
+        /// </summary>
         public class Status
         {
+            /// <summary>
+            /// Gets or sets the server information.
+            /// </summary>
             public Dictionary<string, string> Info { get; set; }
 
+            /// <summary>
+            /// Gets or sets the list of players.
+            /// </summary>
             public List<Player> Players { get; set; }
         }
 
+        /// <summary>
+        /// Represents a player in the game.
+        /// </summary>
         public class Player
         {
+            /// <summary>
+            /// Gets or sets the player's ID.
+            /// </summary>
             public int Id { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's score.
+            /// </summary>
             public int Score { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's time.
+            /// </summary>
             public int Time { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's ping.
+            /// </summary>
             public int Ping { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's name.
+            /// </summary>
             public string Name { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's skin.
+            /// </summary>
             public string Skin { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's first color.
+            /// </summary>
             public int Color1 { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's second color.
+            /// </summary>
             public int Color2 { get; set; }
         }
     }

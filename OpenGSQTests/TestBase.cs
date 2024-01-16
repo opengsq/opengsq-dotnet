@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
 
@@ -32,10 +33,10 @@ namespace OpenGSQTests
         /// <summary>
         /// Json serializer options
         /// </summary>
-        public JsonSerializerOptions Options = new JsonSerializerOptions
+        public JsonSerializerOptions Options = new()
         {
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            IgnoreNullValues = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             WriteIndented = true,
         };
 

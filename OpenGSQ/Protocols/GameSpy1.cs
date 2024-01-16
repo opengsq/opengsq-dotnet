@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
@@ -11,48 +12,49 @@ namespace OpenGSQ.Protocols
     /// </summary>
     public class GameSpy1 : ProtocolBase
     {
+        /// <inheritdoc/>
+        public override string FullName => "GameSpy Protocol version 1";
+
         private static readonly byte _delimiter = Encoding.ASCII.GetBytes("\\")[0];
 
         /// <summary>
-        /// Gamespy Query Protocol version 1
+        /// Initializes a new instance of the GameSpy1 class.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
+        /// <param name="address">The IP address of the server.</param>
+        /// <param name="port">The port number of the server.</param>
+        /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public GameSpy1(string address, int port, int timeout = 5000) : base(address, port, timeout)
         {
 
         }
 
         /// <summary>
-        /// This returns basic server information, mainly for recognition.
+        /// Gets basic server information, mainly for recognition.
         /// </summary>
-        /// <exception cref="SocketException"></exception>
-        /// <returns></returns>
+        /// <returns>A dictionary containing the basic server information.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Dictionary<string, string> GetBasic()
         {
             return SendAndParseKeyValue("\\basic\\");
         }
 
         /// <summary>
-        /// Information about the current game running on the server.
-        /// <para>If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.</para>
-        /// </summary> 
-        /// <param name="XServerQuery"></param>
-        /// <exception cref="SocketException"></exception>
-        /// <returns></returns>
+        /// Gets information about the current game running on the server.
+        /// </summary>
+        /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
+        /// <returns>A dictionary containing the game information.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Dictionary<string, string> GetInfo(bool XServerQuery = true)
         {
             return SendAndParseKeyValue("\\info\\" + (XServerQuery ? "xserverquery" : string.Empty));
         }
 
         /// <summary>
-        /// Setting for the current game, return sets of rules depends on the running game type.
-        /// <para>If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.</para>
+        /// Gets the settings for the current game, returns sets of rules depends on the running game type.
         /// </summary>
-        /// <param name="XServerQuery"></param>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
+        /// <returns>A dictionary containing the game rules.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Dictionary<string, string> GetRules(bool XServerQuery = true)
         {
             return SendAndParseKeyValue("\\rules\\" + (XServerQuery ? "xserverquery" : string.Empty));
@@ -60,105 +62,99 @@ namespace OpenGSQ.Protocols
 
         /// <summary>
         /// Returns information about each player on the server.
-        /// <para>If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.</para>
         /// </summary>
-        /// <param name="XServerQuery"></param>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
+        /// <returns>A list of dictionaries containing the player information.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public List<Dictionary<string, string>> GetPlayers(bool XServerQuery = true)
         {
             return SendAndParseObject("\\players\\" + (XServerQuery ? "xserverquery" : string.Empty));
         }
 
         /// <summary>
-        /// XServerQuery: \info\xserverquery\rules\xserverquery\players\xserverquery<br />
-        /// Old response: \basic\\info\\rules\\players\
-        /// <para>If the server uses XServerQuery, he sends you the new information, otherwise he'll give you back the old information.</para>
+        /// Gets the status of the server. If the server uses XServerQuery, it sends the new information, otherwise it gives back the old information.
         /// </summary>
-        /// <param name="XServerQuery"></param>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
+        /// <returns>A Status object containing the server information, players, and teams.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Status GetStatus(bool XServerQuery = true)
         {
-            using (var udpClient = new UdpClient())
+            var responseData = ConnectAndSend("\\status\\" + (XServerQuery ? "xserverquery" : string.Empty));
+
+            using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
             {
-                var responseData = ConnectAndSend(udpClient, "\\status\\" + (XServerQuery ? "xserverquery" : string.Empty));
-
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+                var status = new Status
                 {
-                    var status = new Status
-                    {
-                        KeyValues = new Dictionary<string, string>()
-                    };
+                    KeyValues = new Dictionary<string, string>()
+                };
 
-                    long position = 0;
+                long position = 0;
 
-                    // Read key until "player_#" or "Player_#"
-                    while (br.BaseStream.Position < br.BaseStream.Length 
-                        && br.TryReadStringEx(out var key, _delimiter) 
-                        && !key.ToLower().StartsWith("player_"))
-                    {
-                        // Save key and value
-                        status.KeyValues[key] = br.ReadStringEx(_delimiter);
+                // Read key until "player_#" or "Player_#"
+                while (br.BaseStream.Position < br.BaseStream.Length
+                    && br.TryReadStringEx(out var key, _delimiter)
+                    && !key.ToLower().StartsWith("player_"))
+                {
+                    // Save key and value
+                    status.KeyValues[key] = br.ReadStringEx(_delimiter);
 
-                        // Save the position after read the value
-                        position = br.BaseStream.Position;
-                    }
-
-                    // Reset the position
-                    br.BaseStream.Position = position;
-
-                    // Save players
-                    status.Players = ParseObject(br);
-
-                    if (status.IsXServerQuery)
-                    {
-                        // Save teams if it is XServerQuery response
-                        status.Teams = new List<Dictionary<string, string>>();
-
-                        var teams = status.KeyValues.Where(x => x.Key.Contains('_'));
-
-                        foreach (KeyValuePair<string, string> keyValue in teams)
-                        {
-                            // Split key and index
-                            string[] subs = keyValue.Key.Split(new char[] { '_' }, 2);
-                            (string key, int index) = (subs[0], int.Parse(subs[1]));
-
-                            // Create a new team if not exists
-                            if (status.Teams.Count <= index)
-                            {
-                                status.Teams.Add(new Dictionary<string, string>());
-                            }
-
-                            // Set the value
-                            status.Teams[index][key] = keyValue.Value;
-
-                            // Remove the key
-                            status.KeyValues.Remove(keyValue.Key);
-                        }
-                    }
-
-                    return status;
+                    // Save the position after read the value
+                    position = br.BaseStream.Position;
                 }
+
+                // Reset the position
+                br.BaseStream.Position = position;
+
+                // Save players
+                status.Players = ParseObject(br);
+
+                if (status.IsXServerQuery)
+                {
+                    // Save teams if it is XServerQuery response
+                    status.Teams = new List<Dictionary<string, string>>();
+
+                    var teams = status.KeyValues.Where(x => x.Key.Contains('_'));
+
+                    foreach (KeyValuePair<string, string> keyValue in teams)
+                    {
+                        // Split key and index
+                        string[] subs = keyValue.Key.Split(new char[] { '_' }, 2);
+                        (string key, int index) = (subs[0], int.Parse(subs[1]));
+
+                        // Create a new team if not exists
+                        if (status.Teams.Count <= index)
+                        {
+                            status.Teams.Add(new Dictionary<string, string>());
+                        }
+
+                        // Set the value
+                        status.Teams[index][key] = keyValue.Value;
+
+                        // Remove the key
+                        status.KeyValues.Remove(keyValue.Key);
+                    }
+                }
+
+                return status;
             }
         }
 
         /// <summary>
         /// Returns information about each team on the server.
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <returns>A list of dictionaries containing the team information.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public List<Dictionary<string, string>> GetTeams()
         {
             return SendAndParseObject("\\teams\\");
         }
 
         /// <summary>
-        /// This command requires a argument, the argument will be returned.
+        /// Sends an echo command to the server. The server will return the argument.
         /// </summary>
-        /// <param name="text"></param>
-        /// <exception cref="SocketException"></exception>
-        /// <returns></returns>
+        /// <param name="text">The text to send with the echo command.</param>
+        /// <returns>A dictionary containing the server's response.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Dictionary<string, string> GetEcho(string text = "this is a test")
         {
             return SendAndParseKeyValue("\\echo\\" + text);
@@ -202,46 +198,43 @@ namespace OpenGSQ.Protocols
 
         private Dictionary<string, string> SendAndParseKeyValue(string request)
         {
-            using (var udpClient = new UdpClient())
-            {
-                var responseData = ConnectAndSend(udpClient, request);
+            var responseData = ConnectAndSend(request);
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
-                {
-                    return ParseKeyValue(br);
-                }
+            using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+            {
+                return ParseKeyValue(br);
             }
         }
 
         private List<Dictionary<string, string>> SendAndParseObject(string request)
         {
-            using (var udpClient = new UdpClient())
-            {
-                var responseData = ConnectAndSend(udpClient, request);
+            var responseData = ConnectAndSend(request);
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
-                {
-                    return ParseObject(br);
-                }
+            using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+            {
+                return ParseObject(br);
             }
         }
 
-        private byte[] ConnectAndSend(UdpClient udpClient, string request)
+        private byte[] ConnectAndSend(string request)
         {
-            // Connect to remote host
-            udpClient.Connect(_EndPoint);
-            udpClient.Client.SendTimeout = _Timeout;
-            udpClient.Client.ReceiveTimeout = _Timeout;
+            using (var udpClient = new UdpClient())
+            {
+                // Connect to remote host
+                udpClient.Connect(IPEndPoint);
+                udpClient.Client.SendTimeout = Timeout;
+                udpClient.Client.ReceiveTimeout = Timeout;
 
-            // Send Request
-            var requestData = Encoding.ASCII.GetBytes(request);
-            udpClient.Send(requestData, requestData.Length);
+                // Send Request
+                var requestData = Encoding.ASCII.GetBytes(request);
+                udpClient.Send(requestData, requestData.Length);
 
-            // Server response
-            var responseData = Receive(udpClient);
+                // Server response
+                var responseData = Receive(udpClient);
 
-            // Remove
-            return responseData;
+                // Remove
+                return responseData;
+            }
         }
 
         private byte[] Receive(UdpClient udpClient)
@@ -251,7 +244,8 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = udpClient.Receive(ref _EndPoint);
+                var remoteEP = new IPEndPoint(IPAddress.Any, 0);
+                var responseData = udpClient.Receive(ref remoteEP);
 
                 // Try read "queryid" value, if it is the last packet, it cannot read the "queryid" value directly
                 if (!ReadStringReverse(responseData, responseData.Length, out var endIndex, out var queryId))

@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
-using System.Security.Authentication;
 using System.Text;
 
 namespace OpenGSQ.Protocols
@@ -15,6 +15,9 @@ namespace OpenGSQ.Protocols
     /// </summary>
     public class Source : ProtocolBase
     {
+        /// <inheritdoc/>
+        public override string FullName => "Source Engine Protocol";
+
         /// <summary>
         /// Source Engine Query Protocol<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries">https://developer.valvesoftware.com/wiki/Server_queries</see>
@@ -35,116 +38,113 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public IResponse GetInfo()
         {
-            using (var udpClient = new UdpClient())
+            var responseData = ConnectAndSendChallenge(QueryRequest.A2S_INFO);
+
+            using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
             {
-                var responseData = ConnectAndSendChallenge(udpClient, QueryRequest.A2S_INFO);
+                var header = br.ReadByte();
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+                if (header != (byte)QueryResponse.S2A_INFO_SRC && header != (byte)QueryResponse.S2A_INFO_DETAILED)
                 {
-                    var header = br.ReadByte();
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_INFO_SRC} or {QueryResponse.S2A_INFO_DETAILED}.");
+                }
 
-                    if (header != (byte)QueryResponse.S2A_INFO_SRC && header != (byte)QueryResponse.S2A_INFO_DETAILED)
+                if (header == (byte)QueryResponse.S2A_INFO_SRC)
+                {
+                    var source = new SourceResponse
                     {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_INFO_SRC} or {QueryResponse.S2A_INFO_DETAILED}.");
+                        Protocol = br.ReadByte(),
+                        Name = br.ReadStringEx(),
+                        Map = br.ReadStringEx(),
+                        Folder = br.ReadStringEx(),
+                        Game = br.ReadStringEx(),
+                        ID = br.ReadInt16(),
+                        Players = br.ReadByte(),
+                        MaxPlayers = br.ReadByte(),
+                        Bots = br.ReadByte(),
+                        ServerType = (ServerType)br.ReadByte(),
+                        Environment = GetEnvironment(br.ReadByte()),
+                        Visibility = (Visibility)br.ReadByte(),
+                        VAC = (VAC)br.ReadByte()
+                    };
+
+                    if (source.ID == 2400)
+                    {
+                        source.Mode = br.ReadByte();
+                        source.Witnesses = br.ReadByte();
+                        source.Duration = br.ReadByte();
                     }
 
-                    if (header == (byte)QueryResponse.S2A_INFO_SRC)
+                    source.Version = br.ReadStringEx();
+
+                    if (br.BaseStream.Position < br.BaseStream.Length)
                     {
-                        var source = new SourceResponse
-                        {
-                            Protocol = br.ReadByte(),
-                            Name = br.ReadStringEx(),
-                            Map = br.ReadStringEx(),
-                            Folder = br.ReadStringEx(),
-                            Game = br.ReadStringEx(),
-                            ID = br.ReadInt16(),
-                            Players = br.ReadByte(),
-                            MaxPlayers = br.ReadByte(),
-                            Bots = br.ReadByte(),
-                            ServerType = (ServerType)br.ReadByte(),
-                            Environment = GetEnvironment(br.ReadByte()),
-                            Visibility = (Visibility)br.ReadByte(),
-                            VAC = (VAC)br.ReadByte()
-                        };
+                        source.EDF = (ExtraDataFlag)br.ReadByte();
 
-                        if (source.ID == 2400)
+                        var edf = (ExtraDataFlag)source.EDF;
+
+                        if (edf.HasFlag(ExtraDataFlag.Port))
                         {
-                            source.Mode = br.ReadByte();
-                            source.Witnesses = br.ReadByte();
-                            source.Duration = br.ReadByte();
+                            source.Port = br.ReadInt16();
                         }
 
-                        source.Version = br.ReadStringEx();
-
-                        if (br.BaseStream.Position < br.BaseStream.Length)
+                        if (edf.HasFlag(ExtraDataFlag.SteamID))
                         {
-                            source.EDF = (ExtraDataFlag)br.ReadByte();
-
-                            var edf = (ExtraDataFlag)source.EDF;
-
-                            if (edf.HasFlag(ExtraDataFlag.Port))
-                            {
-                                source.Port = br.ReadInt16();
-                            }
-
-                            if (edf.HasFlag(ExtraDataFlag.SteamID))
-                            {
-                                source.SteamID = br.ReadUInt64();
-                            }
-
-                            if (edf.HasFlag(ExtraDataFlag.Spectator))
-                            {
-                                source.SpectatorPort = br.ReadInt16();
-                                source.SpectatorName = br.ReadStringEx();
-                            }
-
-                            if (edf.HasFlag(ExtraDataFlag.Keywords))
-                            {
-                                source.Keywords = br.ReadStringEx();
-                            }
-
-                            if (edf.HasFlag(ExtraDataFlag.SteamID))
-                            {
-                                source.GameID = br.ReadUInt64();
-                            }
+                            source.SteamID = br.ReadUInt64();
                         }
 
-                        return source;
+                        if (edf.HasFlag(ExtraDataFlag.Spectator))
+                        {
+                            source.SpectatorPort = br.ReadInt16();
+                            source.SpectatorName = br.ReadStringEx();
+                        }
+
+                        if (edf.HasFlag(ExtraDataFlag.Keywords))
+                        {
+                            source.Keywords = br.ReadStringEx();
+                        }
+
+                        if (edf.HasFlag(ExtraDataFlag.SteamID))
+                        {
+                            source.GameID = br.ReadUInt64();
+                        }
                     }
-                    else
+
+                    return source;
+                }
+                else
+                {
+                    var goldSource = new GoldSourceResponse
                     {
-                        var goldSource = new GoldSourceResponse
-                        {
-                            Address = br.ReadStringEx(),
-                            Name = br.ReadStringEx(),
-                            Map = br.ReadStringEx(),
-                            Folder = br.ReadStringEx(),
-                            Game = br.ReadStringEx(),
-                            Players = br.ReadByte(),
-                            MaxPlayers = br.ReadByte(),
-                            Protocol = br.ReadByte(),
-                            ServerType = (ServerType)char.ToLower(Convert.ToChar(br.ReadByte())),
-                            Environment = (Environment)char.ToLower(Convert.ToChar(br.ReadByte())),
-                            Visibility = (Visibility)br.ReadByte(),
-                            Mod = br.ReadByte()
-                        };
+                        Address = br.ReadStringEx(),
+                        Name = br.ReadStringEx(),
+                        Map = br.ReadStringEx(),
+                        Folder = br.ReadStringEx(),
+                        Game = br.ReadStringEx(),
+                        Players = br.ReadByte(),
+                        MaxPlayers = br.ReadByte(),
+                        Protocol = br.ReadByte(),
+                        ServerType = (ServerType)char.ToLower(Convert.ToChar(br.ReadByte())),
+                        Environment = (Environment)char.ToLower(Convert.ToChar(br.ReadByte())),
+                        Visibility = (Visibility)br.ReadByte(),
+                        Mod = br.ReadByte()
+                    };
 
-                        if (goldSource.Mod == 1)
-                        {
-                            goldSource.Link = br.ReadStringEx();
-                            goldSource.DownloadLink = br.ReadStringEx();
-                            br.ReadByte();
-                            goldSource.Version = br.ReadInt64();
-                            goldSource.Size = br.ReadInt64();
-                            goldSource.Type = br.ReadByte();
-                            goldSource.DLL = br.ReadByte();
-                        }
-
-                        goldSource.VAC = (VAC)br.ReadByte();
-                        goldSource.Bots = br.ReadByte();
-
-                        return goldSource;
+                    if (goldSource.Mod == 1)
+                    {
+                        goldSource.Link = br.ReadStringEx();
+                        goldSource.DownloadLink = br.ReadStringEx();
+                        br.ReadByte();
+                        goldSource.Version = br.ReadInt64();
+                        goldSource.Size = br.ReadInt64();
+                        goldSource.Type = br.ReadByte();
+                        goldSource.DLL = br.ReadByte();
                     }
+
+                    goldSource.VAC = (VAC)br.ReadByte();
+                    goldSource.Bots = br.ReadByte();
+
+                    return goldSource;
                 }
             }
         }
@@ -157,47 +157,44 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public List<Player> GetPlayers()
         {
-            using (var udpClient = new UdpClient())
+            var responseData = ConnectAndSendChallenge(QueryRequest.A2S_PLAYER);
+
+            using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
             {
-                var responseData = ConnectAndSendChallenge(udpClient, QueryRequest.A2S_PLAYER);
+                var header = br.ReadByte();
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+                if (header != (byte)QueryResponse.S2A_PLAYER)
                 {
-                    var header = br.ReadByte();
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_PLAYER}.");
+                }
 
-                    if (header != (byte)QueryResponse.S2A_PLAYER)
+                var playerCount = br.ReadByte();
+
+                var players = new List<Player>();
+
+                // Save the players
+                for (int i = 0; i < playerCount; i++)
+                {
+                    br.ReadByte();
+
+                    players.Add(new Player
                     {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_PLAYER}.");
-                    }
+                        Name = br.ReadStringEx(),
+                        Score = br.ReadInt32(),
+                        Duration = br.ReadSingle(),
+                    });
+                }
 
-                    var playerCount = br.ReadByte();
-
-                    var players = new List<Player>();
-
-                    // Save the players
+                if (br.BaseStream.Position < br.BaseStream.Length)
+                {
                     for (int i = 0; i < playerCount; i++)
                     {
-                        br.ReadByte();
-
-                        players.Add(new Player
-                        {
-                            Name = br.ReadStringEx(),
-                            Score = br.ReadInt32(),
-                            Duration = br.ReadSingle(),
-                        });
+                        players[i].Deaths = br.ReadInt32();
+                        players[i].Money = br.ReadInt32();
                     }
-
-                    if (br.BaseStream.Position < br.BaseStream.Length)
-                    {
-                        for (int i = 0; i < playerCount; i++)
-                        {
-                            players[i].Deaths = br.ReadInt32();
-                            players[i].Money = br.ReadInt32();
-                        }
-                    }
-
-                    return players;
                 }
+
+                return players;
             }
         }
 
@@ -209,77 +206,73 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public Dictionary<string, string> GetRules()
         {
-            using (var udpClient = new UdpClient())
+            var responseData = ConnectAndSendChallenge(QueryRequest.A2S_RULES);
+
+            using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
             {
-                var responseData = ConnectAndSendChallenge(udpClient, QueryRequest.A2S_RULES);
+                var header = br.ReadByte();
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+                if (header != (byte)QueryResponse.S2A_RULES)
                 {
-                    var header = br.ReadByte();
-
-                    if (header != (byte)QueryResponse.S2A_RULES)
-                    {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_RULES}.");
-                    }
-
-                    var ruleCount = br.ReadUInt16();
-
-                    var rules = new Dictionary<string, string>();
-
-                    // Save the rules into dictionary
-                    for (int i = 0; i < ruleCount; i++)
-                    {
-                        rules.Add(br.ReadStringEx(), br.ReadStringEx());
-                    }
-
-                    return rules;
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_RULES}.");
                 }
+
+                var ruleCount = br.ReadUInt16();
+
+                var rules = new Dictionary<string, string>();
+
+                // Save the rules into dictionary
+                for (int i = 0; i < ruleCount; i++)
+                {
+                    rules.Add(br.ReadStringEx(), br.ReadStringEx());
+                }
+
+                return rules;
             }
         }
 
-        private byte[] ConnectAndSendChallenge(UdpClient udpClient, QueryRequest queryRequest)
+        private byte[] ConnectAndSendChallenge(QueryRequest queryRequest)
         {
-            // Connect to remote host
-            udpClient.Connect(_EndPoint);
-            udpClient.Client.SendTimeout = _Timeout;
-            udpClient.Client.ReceiveTimeout = _Timeout;
-
-            // Set up request base
-            var requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, (byte)queryRequest };
-
-            if (queryRequest == QueryRequest.A2S_INFO)
+            using (var udpClient = new UdpClient())
             {
-                requestBase = requestBase.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
-            }
+                // Connect to remote host
+                udpClient.Connect(IPEndPoint);
+                udpClient.Client.SendTimeout = Timeout;
+                udpClient.Client.ReceiveTimeout = Timeout;
 
-            // Set up request data
-            var requestData = requestBase;
+                // Set up request base
+                byte[] requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, (byte)queryRequest };
 
-            if (_Challenge.Length > 0)
-            {
-                requestData = requestData.Concat(_Challenge).ToArray();
-            }
-            else if (queryRequest != QueryRequest.A2S_INFO)
-            {
-                requestData = requestData.Concat(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }).ToArray();
-            }
+                if (queryRequest == QueryRequest.A2S_INFO)
+                {
+                    requestBase = requestBase.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
+                }
 
-            // Send and receive
-            udpClient.Send(requestData, requestData.Length);
-            var responseData = Receive(udpClient);
+                // Set up request data
+                byte[] requestData = requestBase;
 
-            // The server may reply with a challenge
-            if (responseData[0] == (byte)QueryResponse.S2C_CHALLENGE)
-            {
-                _Challenge = responseData.Skip(1).ToArray();
+                if (queryRequest != QueryRequest.A2S_INFO)
+                {
+                    requestData = requestData.Concat(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }).ToArray();
+                }
 
-                // Send the challenge and receive
-                requestData = requestBase.Concat(_Challenge).ToArray();
+                // Send and receive
                 udpClient.Send(requestData, requestData.Length);
-                responseData = Receive(udpClient);
-            }
+                byte[] responseData = Receive(udpClient);
 
-            return responseData;
+                // The server may reply with a challenge
+                if (responseData[0] == (byte)QueryResponse.S2C_CHALLENGE)
+                {
+                    byte[] challenge = responseData.Skip(1).ToArray();
+
+                    // Send the challenge and receive
+                    requestData = requestBase.Concat(challenge).ToArray();
+                    udpClient.Send(requestData, requestData.Length);
+                    responseData = Receive(udpClient);
+                }
+
+                return responseData;
+            }
         }
 
         private byte[] Receive(UdpClient udpClient)
@@ -291,7 +284,8 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = udpClient.Receive(ref _EndPoint);
+                var remoteEP = new IPEndPoint(IPAddress.Any, 0);
+                var responseData = udpClient.Receive(ref remoteEP);
                 packets.Add(responseData);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
@@ -383,7 +377,8 @@ namespace OpenGSQ.Protocols
             while (totalPackets == -1 || payloads.Count < totalPackets)
             {
                 // Load the old received packets first, then receive the packets from udpClient
-                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : udpClient.Receive(ref _EndPoint);
+                var remoteEP = new IPEndPoint(IPAddress.Any, 0);
+                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : udpClient.Receive(ref remoteEP);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
@@ -416,9 +411,9 @@ namespace OpenGSQ.Protocols
         {
             switch (environmentByte)
             {
-                case (byte)Environment.Linux: 
+                case (byte)Environment.Linux:
                     return Environment.Linux;
-                case (byte)Environment.Windows: 
+                case (byte)Environment.Windows:
                     return Environment.Windows;
                 default:
                     return Environment.Mac;
@@ -847,6 +842,9 @@ namespace OpenGSQ.Protocols
         {
             private TcpClient _tcpClient;
 
+            /// <inheritdoc/>
+            public override string FullName => "Source RCON Protocol";
+
             /// <summary>
             /// Source RCON Protocol
             /// </summary>
@@ -880,9 +878,9 @@ namespace OpenGSQ.Protocols
 
                 // Connect
                 _tcpClient = new TcpClient();
-                _tcpClient.Connect(_EndPoint);
-                _tcpClient.Client.SendTimeout = _Timeout;
-                _tcpClient.Client.ReceiveTimeout = _Timeout;
+                _tcpClient.Connect(IPEndPoint);
+                _tcpClient.Client.SendTimeout = Timeout;
+                _tcpClient.Client.ReceiveTimeout = Timeout;
 
                 // Send password
                 int id = new Random().Next(4096);

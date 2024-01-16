@@ -7,7 +7,7 @@ namespace OpenGSQ.Protocols.Tests
     public class GameSpy1Tests : TestBase
     {
         // Battlefield Vietnam (Old Response)
-        public GameSpy1 gameSpy1 = new GameSpy1("139.162.235.20", 7778);
+        public GameSpy1 gameSpy1 = new("139.162.235.20", 7778);
 
         // Battlefield Vietnam (XServerQuery)
         //public GameSpy1 gameSpy1 = new GameSpy1("66.150.121.123", 7778);

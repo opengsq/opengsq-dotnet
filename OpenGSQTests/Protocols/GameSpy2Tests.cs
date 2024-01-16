@@ -7,7 +7,7 @@ namespace OpenGSQ.Protocols.Tests
     public class GameSpy2Tests : TestBase
     {
         // Battlefield Vietnam
-        public GameSpy2 gameSpy2 = new GameSpy2("158.69.118.94", 23000);
+        public GameSpy2 gameSpy2 = new("108.61.236.22", 23000);
 
         public GameSpy2Tests() : base(nameof(GameSpy2Tests))
         {

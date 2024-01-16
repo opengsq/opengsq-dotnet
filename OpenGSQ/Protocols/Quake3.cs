@@ -12,12 +12,15 @@ namespace OpenGSQ.Protocols
     /// </summary>
     public class Quake3 : Quake2
     {
+        /// <inheritdoc/>
+        public override string FullName => "Quake3 Query Protocol";
+
         /// <summary>
-        /// Quake3 Query Protocol
+        /// Initializes a new instance of the Quake3 class.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
+        /// <param name="address">The IP address of the server.</param>
+        /// <param name="port">The port number of the server.</param>
+        /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public Quake3(string address, int port, int timeout = 5000) : base(address, port, timeout)
         {
             _RequestHeader = "getstatus";
@@ -25,51 +28,47 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// This returns server information only. if <c>stripColor</c>
-        /// <para>If you want to get players too. See: <seealso cref="GetStatus(bool)"/></para>
+        /// Gets the server information. If stripColor is true, color codes are removed from the server name.
         /// </summary>
-        /// <param name="stripColor"></param>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <param name="stripColor">A boolean indicating whether to remove color codes from the server name.</param>
+        /// <returns>A dictionary containing the server information.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Dictionary<string, string> GetInfo(bool stripColor = true)
         {
-            using (var udpClient = new UdpClient())
+            var responseData = ConnectAndSend("getinfo");
+
+            using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
             {
-                var responseData = ConnectAndSend(udpClient, "getinfo");
+                var header = br.ReadStringEx(_Delimiter1);
+                string infoResponseHeader = "infoResponse\n";
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+                if (header != infoResponseHeader)
                 {
-                    var header = br.ReadStringEx(_Delimiter1);
-                    string infoResponseHeader = "infoResponse\n";
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {infoResponseHeader}.");
+                }
 
-                    if (header != infoResponseHeader)
-                    {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: {infoResponseHeader}.");
-                    }
+                var info = ParseInfo(br);
 
-                    var info = ParseInfo(br);
-
-                    if (!stripColor)
-                    {
-                        return info;
-                    }
-
-                    if (info.ContainsKey("hostname"))
-                    {
-                        info["hostname"] = StripColors(info["hostname"]);
-                    }
-
+                if (!stripColor)
+                {
                     return info;
                 }
+
+                if (info.ContainsKey("hostname"))
+                {
+                    info["hostname"] = StripColors(info["hostname"]);
+                }
+
+                return info;
             }
         }
 
         /// <summary>
-        /// This returns server information and players.
+        /// Gets the status of the server including information and players. If stripColor is true, color codes are removed from the server name and player names.
         /// </summary>
-        /// <param name="stripColor"></param>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <param name="stripColor">A boolean indicating whether to remove color codes from the server name and player names.</param>
+        /// <returns>A Status object containing the server information and players.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Status GetStatus(bool stripColor = true)
         {
             using (var br = GetResponseBinaryReader())
@@ -103,10 +102,10 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Strip color codes
+        /// Removes color codes from a string.
         /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
+        /// <param name="text">The text to remove color codes from.</param>
+        /// <returns>The text with color codes removed.</returns>
         public static string StripColors(string text)
         {
             return new Regex("\\^(X.{6}|.)").Replace(text, string.Empty);

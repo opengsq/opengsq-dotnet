@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
@@ -12,26 +13,30 @@ namespace OpenGSQ.Protocols
     /// </summary>
     public class GameSpy3 : ProtocolBase
     {
-#pragma warning disable 1591
-        protected new bool _Challenge;
-#pragma warning restore 1591
+        /// <inheritdoc/>
+        public override string FullName => "GameSpy Protocol version 3";
 
         /// <summary>
-        /// Gamespy Query Protocol version 3
+        /// A boolean indicating whether to use the challenge method.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
+        protected bool _Challenge;
+
+        /// <summary>
+        /// Initializes a new instance of the GameSpy3 class.
+        /// </summary>
+        /// <param name="address">The IP address of the server.</param>
+        /// <param name="port">The port number of the server.</param>
+        /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public GameSpy3(string address, int port, int timeout = 5000) : base(address, port, timeout)
         {
 
         }
 
         /// <summary>
-        /// Retrieves information about the server including, Info, Players, and Teams.
+        /// Retrieves information about the server including Info, Players, and Teams.
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <returns>A Status object containing the server information, players, and teams.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Status GetStatus()
         {
             using (var udpClient = new UdpClient())
@@ -58,9 +63,9 @@ namespace OpenGSQ.Protocols
         private byte[] ConnectAndSendPackets(UdpClient udpClient)
         {
             // Connect to remote host
-            udpClient.Connect(_EndPoint);
-            udpClient.Client.SendTimeout = _Timeout;
-            udpClient.Client.ReceiveTimeout = _Timeout;
+            udpClient.Connect(IPEndPoint);
+            udpClient.Client.SendTimeout = Timeout;
+            udpClient.Client.ReceiveTimeout = Timeout;
 
             // Packet 1: Initial request
             byte[] responseData, challenge = new byte[] { }, requestData = new byte[] { 0xFE, 0xFD, 0x09, 0x04, 0x05, 0x06, 0x07 };
@@ -70,7 +75,8 @@ namespace OpenGSQ.Protocols
                 udpClient.Send(requestData, requestData.Length);
 
                 // Packet 2: First response
-                responseData = udpClient.Receive(ref _EndPoint);
+                var remoteEP = new IPEndPoint(IPAddress.Any, 0);
+                responseData = udpClient.Receive(ref remoteEP);
 
                 // Get challenge
                 if (int.TryParse(Encoding.ASCII.GetString(responseData.Skip(5).ToArray()).Trim(), out int result) && result != 0)
@@ -102,7 +108,8 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = udpClient.Receive(ref _EndPoint);
+                var remoteEP = new IPEndPoint(IPAddress.Any, 0);
+                var responseData = udpClient.Receive(ref remoteEP);
 
                 using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
                 {
@@ -167,7 +174,7 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Remove the last trash string on the payload 
+        /// Remove the last trash string on the payload
         /// </summary>
         /// <param name="payload"></param>
         /// <returns></returns>
@@ -175,7 +182,7 @@ namespace OpenGSQ.Protocols
         {
             int i = payload.Length;
 
-            while (payload[--i] != 0);
+            while (payload[--i] != 0) ;
 
             return payload.Take(i).ToArray();
         }

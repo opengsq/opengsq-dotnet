@@ -5,12 +5,15 @@
     /// </summary>
     public class GameSpy4 : GameSpy3
     {
+        /// <inheritdoc/>
+        public override string FullName => "GameSpy Protocol version 4";
+
         /// <summary>
-        /// Gamespy Query Protocol version 4
+        /// Initializes a new instance of the GameSpy4 class.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
+        /// <param name="address">The IP address of the server.</param>
+        /// <param name="port">The port number of the server.</param>
+        /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public GameSpy4(string address, int port, int timeout = 5000) : base(address, port, timeout)
         {
             _Challenge = true;

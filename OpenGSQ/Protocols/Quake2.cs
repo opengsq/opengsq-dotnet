@@ -9,12 +9,15 @@ namespace OpenGSQ.Protocols
     /// </summary>
     public class Quake2 : Quake1
     {
+        /// <inheritdoc/>
+        public override string FullName => "Quake2 Query Protocol";
+
         /// <summary>
-        /// Quake2 Query Protocol
+        /// Initializes a new instance of the Quake2 class.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
+        /// <param name="address">The IP address of the server.</param>
+        /// <param name="port">The port number of the server.</param>
+        /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public Quake2(string address, int port, int timeout = 5000) : base(address, port, timeout)
         {
             _RequestHeader = "status";
@@ -22,10 +25,10 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// This returns server information and players.
+        /// Gets the status of the server including information and players.
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <returns>A Status object containing the server information and players.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public new Status GetStatus()
         {
             using (var br = GetResponseBinaryReader())
@@ -38,7 +41,11 @@ namespace OpenGSQ.Protocols
             }
         }
 
-#pragma warning disable 1591
+        /// <summary>
+        /// Parses the player information from the BinaryReader.
+        /// </summary>
+        /// <param name="br">The BinaryReader containing the player information.</param>
+        /// <returns>A list of Player objects.</returns>
         protected new List<Player> ParsePlayers(BinaryReader br)
         {
             var players = new List<Player>();
@@ -57,21 +64,45 @@ namespace OpenGSQ.Protocols
             return players;
         }
 
+        /// <summary>
+        /// Represents the status of the server.
+        /// </summary>
         public new class Status
         {
+            /// <summary>
+            /// Gets or sets the server information.
+            /// </summary>
             public Dictionary<string, string> Info { get; set; }
 
+            /// <summary>
+            /// Gets or sets the list of players.
+            /// </summary>
             public List<Player> Players { get; set; }
         }
 
+        /// <summary>
+        /// Represents a player in the game.
+        /// </summary>
         public new class Player
         {
+            /// <summary>
+            /// Gets or sets the player's frags.
+            /// </summary>
             public int Frags { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's ping.
+            /// </summary>
             public int Ping { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's name.
+            /// </summary>
             public string Name { get; set; }
 
+            /// <summary>
+            /// Gets or sets the player's address.
+            /// </summary>
             public string Address { get; set; }
         }
     }

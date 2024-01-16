@@ -12,30 +12,34 @@ namespace OpenGSQ.Protocols
     /// </summary>
     public class GameSpy2 : ProtocolBase
     {
+        /// <inheritdoc/>
+        public override string FullName => "GameSpy Protocol version 2";
+
         /// <summary>
-        /// Gamespy Query Protocol version 2
+        /// Initializes a new instance of the GameSpy2 class.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
+        /// <param name="address">The IP address of the server.</param>
+        /// <param name="port">The port number of the server.</param>
+        /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public GameSpy2(string address, int port, int timeout = 5000) : base(address, port, timeout)
         {
 
         }
 
         /// <summary>
-        /// Retrieves information about the server including, Info, Players, and Teams.
+        /// Retrieves information about the server including Info, Players, and Teams.
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <param name="request">The type of information to request.</param>
+        /// <returns>A Status object containing the requested information.</returns>
+        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public Status GetStatus(Request request = Request.Info | Request.Players | Request.Teams)
         {
             using (var udpClient = new UdpClient())
             {
-                var responseData = ConnectAndSend(udpClient, request);
+                var requestData = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(request)).ToArray();
+                var responseData = udpClient.Communicate(this, requestData);
 
-                using (var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8))
+                using (var br = new BinaryReader(new MemoryStream(responseData.Skip(5).ToArray()), Encoding.UTF8))
                 {
                     var status = new Status();
 
@@ -62,23 +66,6 @@ namespace OpenGSQ.Protocols
             }
         }
 
-        private byte[] ConnectAndSend(UdpClient udpClient, Request request)
-        {
-            // Connect to remote host
-            udpClient.Connect(_EndPoint);
-            udpClient.Client.SendTimeout = _Timeout;
-            udpClient.Client.ReceiveTimeout = _Timeout;
-
-            // Send Request
-            var requestData = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(request)).ToArray();
-            udpClient.Send(requestData, requestData.Length);
-
-            // Server response
-            var responseData = udpClient.Receive(ref _EndPoint);
-
-            // Remove the first 5 bytes { 0x00, 0x04, 0x05, 0x06, 0x07 }
-            return responseData.Skip(5).ToArray();
-        }
 
         private byte[] GetRequestBytes(Request request)
         {
@@ -167,23 +154,45 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Request Flag
+        /// Represents the types of requests that can be sent.
         /// </summary>
         [Flags]
         public enum Request : short
         {
-#pragma warning disable 1591
+            /// <summary>
+            /// A request for information.
+            /// </summary>
             Info = 1,
+
+            /// <summary>
+            /// A request for player data.
+            /// </summary>
             Players = 2,
+
+            /// <summary>
+            /// A request for team data.
+            /// </summary>
             Teams = 4,
         }
 
+        /// <summary>
+        /// Represents the status of the server.
+        /// </summary>
         public class Status
         {
+            /// <summary>
+            /// Gets or sets the server information.
+            /// </summary>
             public Dictionary<string, string> Info { get; set; }
 
+            /// <summary>
+            /// Gets or sets the list of players.
+            /// </summary>
             public List<Dictionary<string, string>> Players { get; set; }
 
+            /// <summary>
+            /// Gets or sets the list of teams.
+            /// </summary>
             public List<Dictionary<string, string>> Teams { get; set; }
         }
     }

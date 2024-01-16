@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenGSQTests;
 using System;
-using System.Security.Authentication;
 
 namespace OpenGSQ.Protocols.Tests
 {
@@ -9,10 +8,10 @@ namespace OpenGSQ.Protocols.Tests
     public class SourceTests : TestBase
     {
         // TF2
-        public Source source = new Source("91.216.250.14", 27015);
+        public Source source = new("45.62.160.71", 27015);
 
         // The Ship
-        // public A2S a2s = new A2S("5.79.86.193", 27021);
+        // public Source source = new Source("5.79.86.193", 27021);
 
         public SourceTests() : base(nameof(SourceTests))
         {
