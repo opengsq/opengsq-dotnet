@@ -6,10 +6,20 @@ using System.Text;
 namespace OpenGSQ
 {
     /// <summary>
-    /// BinaryReader Extensions
+    /// Provides extension methods for the BinaryReader class.
     /// </summary>
     public static class BinaryReaderExtensions
     {
+        /// <summary>
+        /// Determines whether the end of the stream has been reached.
+        /// </summary>
+        /// <param name="br">The BinaryReader instance on which the extension method is called.</param>
+        /// <returns>true if the end of the stream is reached; otherwise, false.</returns>
+        public static bool IsEnd(this BinaryReader br)
+        {
+            return br.BaseStream.Position >= br.BaseStream.Length;
+        }
+
         /// <summary>
         /// Reads a string from the current stream until charByte.
         /// </summary>
@@ -21,7 +31,7 @@ namespace OpenGSQ
         /// <exception cref="IOException">An I/O error occurs.</exception>
         public static string ReadStringEx(this BinaryReader br, byte[] charBytes)
         {
-            charBytes = charBytes ?? new byte[] { 0 };
+            charBytes ??= new byte[] { 0 };
 
             var bytes = new List<byte>();
             byte streamByte;

@@ -3,43 +3,43 @@
 namespace OpenGSQ
 {
     /// <summary>
-    /// ProtocolBase class for Protocol
+    /// Abstract base class for protocols.
     /// </summary>
     public abstract class ProtocolBase
     {
         /// <summary>
-        /// Represents a network endpoint as an IP address and a port number.
+        /// Gets the full name of the protocol.
         /// </summary>
-        protected IPEndPoint _EndPoint;
+        public abstract string FullName { get; }
 
         /// <summary>
-        /// Timeout in millisecond
+        /// The endpoint (IP address and port) of the server.
         /// </summary>
-        protected int _Timeout;
+        public IPEndPoint IPEndPoint { get; private set; }
 
         /// <summary>
-        /// Cached challenge bytes
+        /// The timeout for the connection in seconds.
         /// </summary>
-        protected byte[] _Challenge = new byte[0];
+        public int Timeout { get; private set; }
 
         /// <summary>
-        /// ProtocolBase
+        /// Initializes a new instance of the ProtocolBase class.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
-        public ProtocolBase(string address, int port, int timeout = 5000)
+        /// <param name="host">The host to connect to.</param>
+        /// <param name="port">The port to connect to.</param>
+        /// <param name="timeout">The connection timeout in milliseconds. Default is 5 seconds.</param>
+        public ProtocolBase(string host, int port, int timeout = 5000)
         {
-            if (IPAddress.TryParse(address, out var ipAddress))
+            if (IPAddress.TryParse(host, out var ipAddress))
             {
-                _EndPoint = new IPEndPoint(ipAddress, port);
+                IPEndPoint = new IPEndPoint(ipAddress, port);
             }
             else
             {
-                _EndPoint = new IPEndPoint(Dns.GetHostAddresses(address)[0], port);
+                IPEndPoint = new IPEndPoint(Dns.GetHostAddresses(host)[0], port);
             }
 
-            _Timeout = timeout;
+            Timeout = timeout;
         }
     }
 }
