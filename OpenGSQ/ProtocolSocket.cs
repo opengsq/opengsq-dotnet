@@ -1,3 +1,4 @@
+using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
@@ -83,13 +84,14 @@ namespace OpenGSQ
         /// <returns>A task that represents the asynchronous operation. The task result contains the received data.</returns>
         public static async Task<byte[]> ReceiveAsync(this TcpClient tcpClient)
         {
-            // Get the stream object for writing and reading
-            NetworkStream stream = tcpClient.GetStream();
+            var buffer = new byte[tcpClient.Client.ReceiveBufferSize];
+            var segment = new ArraySegment<byte>(buffer);
+            var result = await tcpClient.Client.ReceiveAsync(segment, SocketFlags.None);
 
-            byte[] bytesToRead = new byte[tcpClient.ReceiveBufferSize];
-            await stream.ReadAsync(bytesToRead, 0, tcpClient.ReceiveBufferSize);
+            var receivedBytes = new byte[result];
+            Array.Copy(buffer, receivedBytes, result);
 
-            return bytesToRead;
+            return receivedBytes;
         }
     }
 }
