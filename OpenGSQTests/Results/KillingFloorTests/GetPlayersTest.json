@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1101,
+    "Name": "[ARG] Zohan",
+    "Ping": 1020,
+    "Score": 1500,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1081,
+    "Name": "[USA] daneki",
+    "Ping": 124,
+    "Score": 1547,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 921,
+    "Name": "[BRA] Oruf8",
+    "Ping": 40,
+    "Score": 1500,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 608,
+    "Name": "[BRA] Doctor_King!",
+    "Ping": 20,
+    "Score": 11370,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 2,
+    "Name": "[ESP] HomerO",
+    "Ping": 200,
+    "Score": 2152,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1,
+    "Name": "[BRA] Scarphan",
+    "Ping": 36,
+    "Score": 2267,
+    "StatsId": 536870912
+  }
+]
