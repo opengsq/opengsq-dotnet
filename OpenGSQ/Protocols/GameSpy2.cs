@@ -20,10 +20,10 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// Initializes a new instance of the GameSpy2 class.
         /// </summary>
-        /// <param name="address">The IP address of the server.</param>
+        /// <param name="host">The IP address of the server.</param>
         /// <param name="port">The port number of the server.</param>
         /// <param name="timeout">The timeout for the connection in milliseconds.</param>
-        public GameSpy2(string address, int port, int timeout = 5000) : base(address, port, timeout)
+        public GameSpy2(string host, int port, int timeout = 5000) : base(host, port, timeout)
         {
 
         }
