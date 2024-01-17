@@ -21,13 +21,28 @@ namespace OpenGSQ.Protocols
         public override string FullName => "Source Engine Protocol";
 
         /// <summary>
-        /// Source Engine Query Protocol<br />
-        /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries">https://developer.valvesoftware.com/wiki/Server_queries</see>
+        /// The byte array representing the A2S_INFO request.
         /// </summary>
-        /// <param name="address"></param>
-        /// <param name="port"></param>
-        /// <param name="timeout"></param>
-        public Source(string address, int port = 27015, int timeout = 5000) : base(address, port, timeout)
+        protected byte[] A2S_INFO = new byte[] { 0x54 };
+
+        /// <summary>
+        /// The byte array representing the A2S_PLAYER request.
+        /// </summary>
+        protected byte[] A2S_PLAYER = new byte[] { 0x55 };
+
+        /// <summary>
+        /// The byte array representing the A2S_RULES request.
+        /// </summary>
+        protected byte[] A2S_RULES = new byte[] { 0x56 };
+
+
+        /// <summary>
+        /// Initializes a new instance of the Source class.
+        /// </summary>
+        /// <param name="host">The host to connect to.</param>
+        /// <param name="port">The port to connect to. Default is 27015.</param>
+        /// <param name="timeout">The connection timeout in milliseconds. Default is 5 seconds.</param>
+        public Source(string host, int port = 27015, int timeout = 5000) : base(host, port, timeout)
         {
 
         }
@@ -40,7 +55,7 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public async Task<IInfoResponse> GetInfo()
         {
-            var responseData = await ConnectAndSendChallenge(QueryRequest.A2S_INFO);
+            var responseData = await ConnectAndSendChallenge(A2S_INFO);
 
             using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
             var header = br.ReadByte();
@@ -136,8 +151,8 @@ namespace OpenGSQ.Protocols
                     goldSource.Link = br.ReadStringEx();
                     goldSource.DownloadLink = br.ReadStringEx();
                     br.ReadByte();
-                    goldSource.Version = br.ReadInt64();
-                    goldSource.Size = br.ReadInt64();
+                    goldSource.Version = br.ReadInt32();
+                    goldSource.Size = br.ReadInt32();
                     goldSource.Type = br.ReadByte();
                     goldSource.DLL = br.ReadByte();
                 }
@@ -157,7 +172,7 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public async Task<List<Player>> GetPlayers()
         {
-            var responseData = await ConnectAndSendChallenge(QueryRequest.A2S_PLAYER);
+            var responseData = await ConnectAndSendChallenge(A2S_PLAYER);
 
             using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
             var header = br.ReadByte();
@@ -204,7 +219,7 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public async Task<Dictionary<string, string>> GetRules()
         {
-            var responseData = await ConnectAndSendChallenge(QueryRequest.A2S_RULES);
+            var responseData = await ConnectAndSendChallenge(A2S_RULES);
 
             using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
             var header = br.ReadByte();
@@ -227,7 +242,7 @@ namespace OpenGSQ.Protocols
             return rules;
         }
 
-        private async Task<byte[]> ConnectAndSendChallenge(QueryRequest queryRequest)
+        private async Task<byte[]> ConnectAndSendChallenge(byte[] header)
         {
             using var udpClient = new UdpClient();
 
@@ -237,9 +252,9 @@ namespace OpenGSQ.Protocols
             udpClient.Client.ReceiveTimeout = Timeout;
 
             // Set up request base
-            byte[] requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, (byte)queryRequest };
+            byte[] requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }.Concat(header).ToArray();
 
-            if (queryRequest == QueryRequest.A2S_INFO)
+            if (header.SequenceEqual(A2S_INFO))
             {
                 requestBase = requestBase.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
             }
@@ -247,7 +262,7 @@ namespace OpenGSQ.Protocols
             // Set up request data
             byte[] requestData = requestBase;
 
-            if (queryRequest != QueryRequest.A2S_INFO)
+            if (!header.SequenceEqual(A2S_INFO))
             {
                 requestData = requestData.Concat(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }).ToArray();
             }
@@ -404,13 +419,6 @@ namespace OpenGSQ.Protocols
                 (byte)Environment.Windows => Environment.Windows,
                 _ => Environment.Mac,
             };
-        }
-
-        private enum QueryRequest : byte
-        {
-            A2S_INFO = 0x54,
-            A2S_PLAYER = 0x55,
-            A2S_RULES = 0x56,
         }
 
         private enum QueryResponse : byte
