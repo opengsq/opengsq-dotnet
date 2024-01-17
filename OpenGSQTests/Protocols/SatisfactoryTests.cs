@@ -11,7 +11,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public SatisfactoryTests() : base(nameof(SatisfactoryTests))
         {
-            _EnableSave = !false;
+            _EnableSave = false;
         }
 
         [TestMethod()]

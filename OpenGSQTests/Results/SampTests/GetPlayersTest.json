@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 0,
+    "Name": "Valentino_Reiner",
+    "Score": 28,
+    "Ping": 55
+  },
+  {
+    "Id": 1,
+    "Name": "Jesus_Dark",
+    "Score": 0,
+    "Ping": 228
+  },
+  {
+    "Id": 2,
+    "Name": "Gretchen_Morgan",
+    "Score": 47,
+    "Ping": 127
+  },
+  {
+    "Id": 3,
+    "Name": "[VIP] Benson_Corleone",
+    "Score": 55,
+    "Ping": 76
+  },
+  {
+    "Id": 5,
+    "Name": "Isabella_Corleonesi",
+    "Score": 22,
+    "Ping": 51
+  }
+]

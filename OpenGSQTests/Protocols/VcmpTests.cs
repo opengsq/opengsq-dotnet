@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public VcmpTests() : base(nameof(VcmpTests))
         {
-            _EnableSave = !false;
+            _EnableSave = false;
         }
 
         [TestMethod()]
