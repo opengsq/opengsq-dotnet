@@ -1,0 +1,44 @@
+[
+  {
+    "endpoint": "127.0.0.1",
+    "id": 23,
+    "identifiers": [
+      "license:46162fd5044a6f4d29681f517e303fad77dceea1",
+      "xbl:2533274934667515",
+      "live:914800932941839",
+      "discord:424089529763495984",
+      "fivem:12231526",
+      "license2:c6fb36e20b780132fb0cf53ec4312e2e54c17eff"
+    ],
+    "name": "tony",
+    "ping": 120
+  },
+  {
+    "endpoint": "127.0.0.1",
+    "id": 16,
+    "identifiers": [
+      "license:feef646718d2283c786d9d1377decd3b4ee45e63",
+      "xbl:2535405211024165",
+      "live:844428391057578",
+      "discord:759117825481900084",
+      "fivem:8999311",
+      "license2:a7ce2d61a2c4f61fb19cd7d845cede4c708b8580"
+    ],
+    "name": "Mswubz",
+    "ping": 40
+  },
+  {
+    "endpoint": "127.0.0.1",
+    "id": 24,
+    "identifiers": [
+      "license:a1a4b4b883fb179743acb4ed7b4592ddb61f4d5f",
+      "xbl:2533274856734579",
+      "live:914800179605634",
+      "discord:240886211114303488",
+      "fivem:2007521",
+      "license2:a1a4b4b883fb179743acb4ed7b4592ddb61f4d5f"
+    ],
+    "name": "P3TC0CK",
+    "ping": 21
+  }
+]
