@@ -5,11 +5,11 @@ using OpenGSQTests;
 namespace OpenGSQ.Protocols.Tests
 {
     [TestClass()]
-    public class Teamspeak3Tests : TestBase
+    public class TeamSpeak3Tests : TestBase
     {
-        public Teamspeak3 teamspeak3 = new("145.239.200.2", 10011, 9987);
+        public TeamSpeak3 teamSpeak3 = new("145.239.200.2", 10011, 9987);
 
-        public Teamspeak3Tests() : base(nameof(Teamspeak3Tests))
+        public TeamSpeak3Tests() : base(nameof(TeamSpeak3Tests))
         {
             _EnableSave = !false;
         }
@@ -17,19 +17,19 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public async Task GetInfoTest()
         {
-            SaveResult(nameof(GetInfoTest), await teamspeak3.GetInfo());
+            SaveResult(nameof(GetInfoTest), await teamSpeak3.GetInfo());
         }
 
         [TestMethod()]
         public async Task GetClientsTest()
         {
-            SaveResult(nameof(GetClientsTest), await teamspeak3.GetClients());
+            SaveResult(nameof(GetClientsTest), await teamSpeak3.GetClients());
         }
 
         [TestMethod()]
         public async Task GetChannelsTest()
         {
-            SaveResult(nameof(GetChannelsTest), await teamspeak3.GetChannels());
+            SaveResult(nameof(GetChannelsTest), await teamSpeak3.GetChannels());
         }
     }
 }

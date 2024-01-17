@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 namespace OpenGSQ.Protocols
 {
     /// <summary>
-    /// Teamspeak 3 Protocol
+    /// TeamSpeak 3 Protocol
     /// </summary>
-    public class Teamspeak3 : ProtocolBase
+    public class TeamSpeak3 : ProtocolBase
     {
         /// <inheritdoc/>
-        public override string FullName => "Teamspeak 3 Protocol";
+        public override string FullName => "TeamSpeak 3 Protocol";
 
         private readonly int _voicePort;
 
         /// <summary>
-        /// Initializes a new instance of the Teamspeak3 class.
+        /// Initializes a new instance of the TeamSpeak3 class.
         /// </summary>
         /// <param name="host">The host.</param>
         /// <param name="port">The port.</param>
         /// <param name="voicePort">The voice port.</param>
         /// <param name="timeout">The timeout. Default is 5000.</param>
-        public Teamspeak3(string host, int port, int voicePort, int timeout = 5000) : base(host, port, timeout)
+        public TeamSpeak3(string host, int port, int voicePort, int timeout = 5000) : base(host, port, timeout)
         {
             _voicePort = voicePort;
         }
