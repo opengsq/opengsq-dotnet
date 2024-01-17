@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 9,
+    "Name": "Invzz",
+    "Ping": 24,
+    "Score": 6,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 8,
+    "Name": "athena",
+    "Ping": 44,
+    "Score": 0,
+    "StatsId": 0
+  },
+  {
+    "Id": 7,
+    "Name": "thr0ng^",
+    "Ping": 24,
+    "Score": 27,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 6,
+    "Name": "Mashup",
+    "Ping": 20,
+    "Score": 2,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 4,
+    "Name": "Qbit91",
+    "Ping": 32,
+    "Score": 35,
+    "StatsId": 1073741824
+  },
+  {
+    "Id": 3,
+    "Name": "noThi",
+    "Ping": 28,
+    "Score": 8,
+    "StatsId": 1073741824
+  },
+  {
+    "Id": 2,
+    "Name": "JOHNCENA",
+    "Ping": 64,
+    "Score": 0,
+    "StatsId": 0
+  },
+  {
+    "Id": 1,
+    "Name": "Prok",
+    "Ping": 32,
+    "Score": 32,
+    "StatsId": 1073741824
+  },
+  {
+    "Id": 0,
+    "Name": "Red�rturd",
+    "Ping": 0,
+    "Score": 0,
+    "StatsId": 0
+  },
+  {
+    "Id": 0,
+    "Name": "Blue�rturd",
+    "Ping": 0,
+    "Score": 6,
+    "StatsId": 0
+  }
+]

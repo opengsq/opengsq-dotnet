@@ -1,0 +1,14 @@
+{
+  "ServerId": 0,
+  "ServerIP": "",
+  "GamePort": 6969,
+  "QueryPort": 0,
+  "ServerName": "The Usual Suspects TAM server DE (#rdturd)",
+  "MapName": "DM-Under_LE-2009",
+  "GameType": "xDeathMatch",
+  "NumPlayers": 6,
+  "MaxPlayers": 16,
+  "Ping": 0,
+  "Flags": 0,
+  "Skill": "0"
+}
