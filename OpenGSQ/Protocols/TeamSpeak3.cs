@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -60,35 +59,36 @@ namespace OpenGSQ.Protocols
 
         private async Task<string> SendAndReceive(byte[] data)
         {
-            using var tcpClient = new TcpClient();
-
-            // Set the timeout
-            tcpClient.SendTimeout = Timeout;
-            tcpClient.ReceiveTimeout = Timeout;
-
-            await tcpClient.ConnectAsync(Host, Port);
-
-            // Welcome message from the server
-            await tcpClient.ReceiveAsync();
-
-            // Send voice port
-            var portData = Encoding.ASCII.GetBytes($"use port={_voicePort}\n");
-            await tcpClient.SendAsync(portData);
-            await tcpClient.ReceiveAsync();
-
-            // Send data
-            await tcpClient.SendAsync(data.Concat(new byte[] { 0x0A }).ToArray());
-
-            // Receive response
-            string response = string.Empty;
-
-            while (!response.EndsWith("error id=0 msg=ok\n\r"))
+            using (var tcpClient = new System.Net.Sockets.TcpClient())
             {
-                response += Encoding.UTF8.GetString(await tcpClient.ReceiveAsync());
-            }
+                // Set the timeout
+                tcpClient.SendTimeout = Timeout;
+                tcpClient.ReceiveTimeout = Timeout;
 
-            // Remove "\n\rerror id=0 msg=ok\n\r"
-            return response[..^21];
+                await tcpClient.ConnectAsync(Host, Port);
+
+                // Welcome message from the server
+                await tcpClient.ReceiveAsync();
+
+                // Send voice port
+                var portData = Encoding.ASCII.GetBytes($"use port={_voicePort}\n");
+                await tcpClient.SendAsync(portData);
+                await tcpClient.ReceiveAsync();
+
+                // Send data
+                await tcpClient.SendAsync(data.Concat(new byte[] { 0x0A }).ToArray());
+
+                // Receive response
+                string response = string.Empty;
+
+                while (!response.EndsWith("error id=0 msg=ok\n\r"))
+                {
+                    response += Encoding.UTF8.GetString(await tcpClient.ReceiveAsync());
+                }
+
+                // Remove "\n\rerror id=0 msg=ok\n\r"
+                return response.Substring(0, response.Length - 21);
+            }
         }
 
         private List<Dictionary<string, string>> ParseRows(string response)
@@ -102,9 +102,9 @@ namespace OpenGSQ.Protocols
 
             foreach (var kv in response.Split(' '))
             {
-                string[] items = kv.Split("=", 2);
+                string[] items = kv.Split(new char[] { '=' }, 2);
                 string key = items[0];
-                string val = items.Length == 2 ? items[1] : "";
+                string val = items.Length == 2 ? items[1] : string.Empty;
                 kvs[key] = val.Replace("\\p", "|").Replace("\\s", " ").Replace("\\/", "/");
             }
 

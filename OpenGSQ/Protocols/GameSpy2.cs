@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.GameSpy2;
 
@@ -31,46 +30,50 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// Retrieves information about the server including Info, Players, and Teams.
         /// </summary>
-        /// <param name="request">The type of information to request.</param>
+        /// <param name="requestHeader">The type of information to request.</param>
         /// <returns>A Status object containing the requested information.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public async Task<Status> GetStatus(Request request = Request.Info | Request.Players | Request.Teams)
+        public async Task<Status> GetStatus(RequestHeader requestHeader = RequestHeader.Info | RequestHeader.Players | RequestHeader.Teams)
         {
-            using var udpClient = new UdpClient();
-            var requestData = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(request)).ToArray();
-            var responseData = await udpClient.CommunicateAsync(this, requestData);
+            var request = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(requestHeader)).ToArray();
+            var response = await UdpClient.CommunicateAsync(this, request);
 
-            using var br = new BinaryReader(new MemoryStream(responseData.Skip(5).ToArray()), Encoding.UTF8);
-            var status = new Status();
-
-            // Save Response Info
-            if (request.HasFlag(Request.Info))
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                status.Info = GetInfo(br);
-            }
+                // Skip first 5 bytes
+                br.ReadBytes(5);
 
-            // Save Response Players
-            if (request.HasFlag(Request.Players))
-            {
-                status.Players = GetPlayers(br);
-            }
+                var status = new Status();
 
-            // Save Response Teams
-            if (request.HasFlag(Request.Teams))
-            {
-                status.Teams = GetTeams(br);
-            }
+                // Save Response Info
+                if (requestHeader.HasFlag(RequestHeader.Info))
+                {
+                    status.Info = GetInfo(br);
+                }
 
-            return status;
+                // Save Response Players
+                if (requestHeader.HasFlag(RequestHeader.Players))
+                {
+                    status.Players = GetPlayers(br);
+                }
+
+                // Save Response Teams
+                if (requestHeader.HasFlag(RequestHeader.Teams))
+                {
+                    status.Teams = GetTeams(br);
+                }
+
+                return status;
+            }
         }
 
-
-        private byte[] GetRequestBytes(Request request)
+        private byte[] GetRequestBytes(RequestHeader request)
         {
-            return new byte[] {
-                (byte)(request.HasFlag(Request.Info) ? 0xFF : 0x00),
-                (byte)(request.HasFlag(Request.Players) ? 0xFF : 0x00),
-                (byte)(request.HasFlag(Request.Teams) ? 0xFF : 0x00),
+            return new byte[]
+            {
+                (byte)(request.HasFlag(RequestHeader.Info) ? 0xFF : 0x00),
+                (byte)(request.HasFlag(RequestHeader.Players) ? 0xFF : 0x00),
+                (byte)(request.HasFlag(RequestHeader.Teams) ? 0xFF : 0x00),
             };
         }
 
@@ -155,7 +158,7 @@ namespace OpenGSQ.Protocols
         /// Represents the types of requests that can be sent.
         /// </summary>
         [Flags]
-        public enum Request : short
+        public enum RequestHeader : short
         {
             /// <summary>
             /// A request for information.

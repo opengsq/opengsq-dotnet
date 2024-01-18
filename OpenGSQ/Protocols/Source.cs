@@ -55,112 +55,114 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public async Task<PartialInfo> GetInfo()
         {
-            var responseData = await ConnectAndSendChallenge(A2S_INFO);
+            byte[] response = await ConnectAndSendChallenge(A2S_INFO);
 
-            using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
-            var header = br.ReadByte();
-
-            if (header != (byte)QueryResponse.S2A_INFO_SRC && header != (byte)QueryResponse.S2A_INFO_DETAILED)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_INFO_SRC} or {QueryResponse.S2A_INFO_DETAILED}.");
-            }
+                var header = br.ReadByte();
 
-            if (header == (byte)QueryResponse.S2A_INFO_SRC)
-            {
-                var source = new SourceInfo
+                if (header != (byte)QueryResponse.S2A_INFO_SRC && header != (byte)QueryResponse.S2A_INFO_DETAILED)
                 {
-                    Protocol = br.ReadByte(),
-                    Name = br.ReadStringEx(),
-                    Map = br.ReadStringEx(),
-                    Folder = br.ReadStringEx(),
-                    Game = br.ReadStringEx(),
-                    ID = br.ReadInt16(),
-                    Players = br.ReadByte(),
-                    MaxPlayers = br.ReadByte(),
-                    Bots = br.ReadByte(),
-                    ServerType = (ServerType)br.ReadByte(),
-                    Environment = GetEnvironment(br.ReadByte()),
-                    Visibility = (Visibility)br.ReadByte(),
-                    VAC = (VAC)br.ReadByte()
-                };
-
-                if (source.ID == 2400)
-                {
-                    source.Mode = br.ReadByte();
-                    source.Witnesses = br.ReadByte();
-                    source.Duration = br.ReadByte();
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_INFO_SRC} or {QueryResponse.S2A_INFO_DETAILED}.");
                 }
 
-                source.Version = br.ReadStringEx();
-
-                if (br.BaseStream.Position < br.BaseStream.Length)
+                if (header == (byte)QueryResponse.S2A_INFO_SRC)
                 {
-                    source.EDF = (ExtraDataFlag)br.ReadByte();
-
-                    var edf = (ExtraDataFlag)source.EDF;
-
-                    if (edf.HasFlag(ExtraDataFlag.Port))
+                    var source = new SourceInfo
                     {
-                        source.Port = br.ReadInt16();
+                        Protocol = br.ReadByte(),
+                        Name = br.ReadStringEx(),
+                        Map = br.ReadStringEx(),
+                        Folder = br.ReadStringEx(),
+                        Game = br.ReadStringEx(),
+                        ID = br.ReadInt16(),
+                        Players = br.ReadByte(),
+                        MaxPlayers = br.ReadByte(),
+                        Bots = br.ReadByte(),
+                        ServerType = (ServerType)br.ReadByte(),
+                        Environment = GetEnvironment(br.ReadByte()),
+                        Visibility = (Visibility)br.ReadByte(),
+                        VAC = (VAC)br.ReadByte()
+                    };
+
+                    if (source.ID == 2400)
+                    {
+                        source.Mode = br.ReadByte();
+                        source.Witnesses = br.ReadByte();
+                        source.Duration = br.ReadByte();
                     }
 
-                    if (edf.HasFlag(ExtraDataFlag.SteamID))
+                    source.Version = br.ReadStringEx();
+
+                    if (br.BaseStream.Position < br.BaseStream.Length)
                     {
-                        source.SteamID = br.ReadUInt64();
+                        source.EDF = (ExtraDataFlag)br.ReadByte();
+
+                        var edf = (ExtraDataFlag)source.EDF;
+
+                        if (edf.HasFlag(ExtraDataFlag.Port))
+                        {
+                            source.Port = br.ReadInt16();
+                        }
+
+                        if (edf.HasFlag(ExtraDataFlag.SteamID))
+                        {
+                            source.SteamID = br.ReadUInt64();
+                        }
+
+                        if (edf.HasFlag(ExtraDataFlag.Spectator))
+                        {
+                            source.SpectatorPort = br.ReadInt16();
+                            source.SpectatorName = br.ReadStringEx();
+                        }
+
+                        if (edf.HasFlag(ExtraDataFlag.Keywords))
+                        {
+                            source.Keywords = br.ReadStringEx();
+                        }
+
+                        if (edf.HasFlag(ExtraDataFlag.SteamID))
+                        {
+                            source.GameID = br.ReadUInt64();
+                        }
                     }
 
-                    if (edf.HasFlag(ExtraDataFlag.Spectator))
-                    {
-                        source.SpectatorPort = br.ReadInt16();
-                        source.SpectatorName = br.ReadStringEx();
-                    }
-
-                    if (edf.HasFlag(ExtraDataFlag.Keywords))
-                    {
-                        source.Keywords = br.ReadStringEx();
-                    }
-
-                    if (edf.HasFlag(ExtraDataFlag.SteamID))
-                    {
-                        source.GameID = br.ReadUInt64();
-                    }
+                    return source;
                 }
-
-                return source;
-            }
-            else
-            {
-                var goldSource = new GoldSourceInfo
+                else
                 {
-                    Address = br.ReadStringEx(),
-                    Name = br.ReadStringEx(),
-                    Map = br.ReadStringEx(),
-                    Folder = br.ReadStringEx(),
-                    Game = br.ReadStringEx(),
-                    Players = br.ReadByte(),
-                    MaxPlayers = br.ReadByte(),
-                    Protocol = br.ReadByte(),
-                    ServerType = (ServerType)char.ToLower(Convert.ToChar(br.ReadByte())),
-                    Environment = (Environment)char.ToLower(Convert.ToChar(br.ReadByte())),
-                    Visibility = (Visibility)br.ReadByte(),
-                    Mod = br.ReadByte()
-                };
+                    var goldSource = new GoldSourceInfo
+                    {
+                        Address = br.ReadStringEx(),
+                        Name = br.ReadStringEx(),
+                        Map = br.ReadStringEx(),
+                        Folder = br.ReadStringEx(),
+                        Game = br.ReadStringEx(),
+                        Players = br.ReadByte(),
+                        MaxPlayers = br.ReadByte(),
+                        Protocol = br.ReadByte(),
+                        ServerType = (ServerType)char.ToLower(Convert.ToChar(br.ReadByte())),
+                        Environment = (Environment)char.ToLower(Convert.ToChar(br.ReadByte())),
+                        Visibility = (Visibility)br.ReadByte(),
+                        Mod = br.ReadByte()
+                    };
 
-                if (goldSource.Mod == 1)
-                {
-                    goldSource.Link = br.ReadStringEx();
-                    goldSource.DownloadLink = br.ReadStringEx();
-                    br.ReadByte();
-                    goldSource.Version = br.ReadInt32();
-                    goldSource.Size = br.ReadInt32();
-                    goldSource.Type = br.ReadByte();
-                    goldSource.DLL = br.ReadByte();
+                    if (goldSource.Mod == 1)
+                    {
+                        goldSource.Link = br.ReadStringEx();
+                        goldSource.DownloadLink = br.ReadStringEx();
+                        br.ReadByte();
+                        goldSource.Version = br.ReadInt32();
+                        goldSource.Size = br.ReadInt32();
+                        goldSource.Type = br.ReadByte();
+                        goldSource.DLL = br.ReadByte();
+                    }
+
+                    goldSource.VAC = (VAC)br.ReadByte();
+                    goldSource.Bots = br.ReadByte();
+
+                    return goldSource;
                 }
-
-                goldSource.VAC = (VAC)br.ReadByte();
-                goldSource.Bots = br.ReadByte();
-
-                return goldSource;
             }
         }
 
@@ -172,43 +174,44 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public async Task<List<Player>> GetPlayers()
         {
-            var responseData = await ConnectAndSendChallenge(A2S_PLAYER);
+            byte[] response = await ConnectAndSendChallenge(A2S_PLAYER);
 
-            using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
-            var header = br.ReadByte();
-
-            if (header != (byte)QueryResponse.S2A_PLAYER)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_PLAYER}.");
-            }
+                var header = br.ReadByte();
 
-            var playerCount = br.ReadByte();
-
-            var players = new List<Player>();
-
-            // Save the players
-            for (int i = 0; i < playerCount; i++)
-            {
-                br.ReadByte();
-
-                players.Add(new Player
+                if (header != (byte)QueryResponse.S2A_PLAYER)
                 {
-                    Name = br.ReadStringEx(),
-                    Score = br.ReadInt32(),
-                    Duration = br.ReadSingle(),
-                });
-            }
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_PLAYER}.");
+                }
 
-            if (br.BaseStream.Position < br.BaseStream.Length)
-            {
+                var playerCount = br.ReadByte();
+                var players = new List<Player>();
+
+                // Save the players
                 for (int i = 0; i < playerCount; i++)
                 {
-                    players[i].Deaths = br.ReadInt32();
-                    players[i].Money = br.ReadInt32();
-                }
-            }
+                    br.ReadByte();
 
-            return players;
+                    players.Add(new Player
+                    {
+                        Name = br.ReadStringEx(),
+                        Score = br.ReadInt32(),
+                        Duration = br.ReadSingle(),
+                    });
+                }
+
+                if (br.BaseStream.Position < br.BaseStream.Length)
+                {
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        players[i].Deaths = br.ReadInt32();
+                        players[i].Money = br.ReadInt32();
+                    }
+                }
+
+                return players;
+            }
         }
 
         /// <summary>
@@ -219,73 +222,76 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException"></exception>
         public async Task<Dictionary<string, string>> GetRules()
         {
-            var responseData = await ConnectAndSendChallenge(A2S_RULES);
+            byte[] response = await ConnectAndSendChallenge(A2S_RULES);
 
-            using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
-            var header = br.ReadByte();
-
-            if (header != (byte)QueryResponse.S2A_RULES)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_RULES}.");
+                var header = br.ReadByte();
+
+                if (header != (byte)QueryResponse.S2A_RULES)
+                {
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_RULES}.");
+                }
+
+                var ruleCount = br.ReadUInt16();
+                var rules = new Dictionary<string, string>();
+
+                // Save the rules into dictionary
+                for (int i = 0; i < ruleCount; i++)
+                {
+                    rules.Add(br.ReadStringEx(), br.ReadStringEx());
+                }
+
+                return rules;
             }
-
-            var ruleCount = br.ReadUInt16();
-
-            var rules = new Dictionary<string, string>();
-
-            // Save the rules into dictionary
-            for (int i = 0; i < ruleCount; i++)
-            {
-                rules.Add(br.ReadStringEx(), br.ReadStringEx());
-            }
-
-            return rules;
         }
 
         private async Task<byte[]> ConnectAndSendChallenge(byte[] header)
         {
-            using var udpClient = new UdpClient();
-
-            // Connect to remote host
-            udpClient.Connect(Host, Port);
-            udpClient.Client.SendTimeout = Timeout;
-            udpClient.Client.ReceiveTimeout = Timeout;
-
-            // Set up request base
-            byte[] requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }.Concat(header).ToArray();
-
-            if (header.SequenceEqual(A2S_INFO))
+            using (var udpClient = new System.Net.Sockets.UdpClient())
             {
-                requestBase = requestBase.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
-            }
+                udpClient.Client.SendTimeout = Timeout;
+                udpClient.Client.ReceiveTimeout = Timeout;
 
-            // Set up request data
-            byte[] requestData = requestBase;
+                // Connect to remote host
+                udpClient.Connect(Host, Port);
 
-            if (!header.SequenceEqual(A2S_INFO))
-            {
-                requestData = requestData.Concat(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }).ToArray();
-            }
+                // Set up request base
+                byte[] requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }.Concat(header).ToArray();
 
-            // Send and receive
-            await udpClient.SendAsync(requestData, requestData.Length);
-            byte[] responseData = await Receive(udpClient);
+                if (header.SequenceEqual(A2S_INFO))
+                {
+                    requestBase = requestBase.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
+                }
 
-            // The server may reply with a challenge
-            if (responseData[0] == (byte)QueryResponse.S2C_CHALLENGE)
-            {
-                byte[] challenge = responseData.Skip(1).ToArray();
+                // Set up request data
+                byte[] requestData = requestBase;
 
-                // Send the challenge and receive
-                requestData = requestBase.Concat(challenge).ToArray();
+                if (!header.SequenceEqual(A2S_INFO))
+                {
+                    requestData = requestData.Concat(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }).ToArray();
+                }
+
+                // Send and receive
                 await udpClient.SendAsync(requestData, requestData.Length);
-                responseData = await Receive(udpClient);
-            }
+                byte[] response = await Receive(udpClient);
 
-            return responseData;
+                // The server may reply with a challenge
+                if (response[0] == (byte)QueryResponse.S2C_CHALLENGE)
+                {
+                    byte[] challenge = response.Skip(1).ToArray();
+
+                    // Send the challenge and receive
+                    requestData = requestBase.Concat(challenge).ToArray();
+                    await udpClient.SendAsync(requestData, requestData.Length);
+                    response = await Receive(udpClient);
+                }
+
+                return response;
+            }
         }
 
-        private async Task<byte[]> Receive(UdpClient udpClient)
+        private async Task<byte[]> Receive(System.Net.Sockets.UdpClient udpClient)
         {
             bool isCompressed;
             int totalPackets = -1, crc32Sum = 0;
@@ -294,49 +300,51 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = await udpClient.ReceiveAsyncWithTimeout();
-                packets.Add(responseData);
+                byte[] response = await udpClient.ReceiveAsyncWithTimeout();
+                packets.Add(response);
 
-                using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
-                var header = br.ReadInt32();
-
-                // Simple Response Format
-                if (header == -1)
+                using (var br = new BinaryReader(new MemoryStream(response)))
                 {
-                    // Return the payload
-                    return responseData.Skip((int)br.BaseStream.Position).ToArray();
+                    var header = br.ReadInt32();
+
+                    // Simple Response Format
+                    if (header == -1)
+                    {
+                        // Return the payload
+                        return response.Skip((int)br.BaseStream.Position).ToArray();
+                    }
+
+                    // Packet id
+                    int id = br.ReadInt32();
+                    isCompressed = id < 0;
+
+                    // Check is GoldSource multi-packet response format
+                    if (IsGoldSourceSplit(response, (int)br.BaseStream.Position))
+                    {
+                        // Return the payload
+                        return await ParseGoldSourcePackets(udpClient, packets);
+                    }
+
+                    // The total number of packets
+                    totalPackets = br.ReadByte();
+
+                    // The number of the packet
+                    int number = br.ReadByte();
+
+                    // Packet size
+                    br.ReadUInt16();
+
+                    if (number == 0 && isCompressed)
+                    {
+                        // Decompressed size
+                        br.ReadInt32();
+
+                        // CRC32 sum
+                        crc32Sum = br.ReadInt32();
+                    }
+
+                    payloads.Add(number, response.Skip((int)br.BaseStream.Position).ToArray());
                 }
-
-                // Packet id
-                int id = br.ReadInt32();
-                isCompressed = id < 0;
-
-                // Check is GoldSource multi-packet response format
-                if (IsGoldSourceSplit(responseData, (int)br.BaseStream.Position))
-                {
-                    // Return the payload
-                    return await ParseGoldSourcePackets(udpClient, packets);
-                }
-
-                // The total number of packets
-                totalPackets = br.ReadByte();
-
-                // The number of the packet
-                int number = br.ReadByte();
-
-                // Packet size
-                br.ReadUInt16();
-
-                if (number == 0 && isCompressed)
-                {
-                    // Decompressed size
-                    br.ReadInt32();
-
-                    // CRC32 sum
-                    crc32Sum = br.ReadInt32();
-                }
-
-                payloads.Add(number, responseData.Skip((int)br.BaseStream.Position).ToArray());
             } while (totalPackets == -1 || payloads.Count < totalPackets);
 
             // Combine the payloads
@@ -376,7 +384,7 @@ namespace OpenGSQ.Protocols
             return number == 0 && data[1] == 0xFF && data[2] == 0xFF && data[3] == 0xFF && data[4] == 0xFF;
         }
 
-        private async Task<byte[]> ParseGoldSourcePackets(UdpClient udpClient, List<byte[]> packets)
+        private async Task<byte[]> ParseGoldSourcePackets(System.Net.Sockets.UdpClient udpClient, List<byte[]> packets)
         {
             int totalPackets = -1;
             var payloads = new SortedDictionary<int, byte[]>();
@@ -384,25 +392,27 @@ namespace OpenGSQ.Protocols
             while (totalPackets == -1 || payloads.Count < totalPackets)
             {
                 // Load the old received packets first, then receive the packets from udpClient
-                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : await udpClient.ReceiveAsyncWithTimeout();
-                using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
+                byte[] response = payloads.Count < packets.Count ? packets[payloads.Count] : await udpClient.ReceiveAsyncWithTimeout();
 
-                // Header
-                br.ReadInt32();
+                using (var br = new BinaryReader(new MemoryStream(response)))
+                {
+                    // Header
+                    br.ReadInt32();
 
-                // Packet id
-                br.ReadInt32();
+                    // Packet id
+                    br.ReadInt32();
 
-                // The total number of packets
-                totalPackets = br.ReadByte();
+                    // The total number of packets
+                    totalPackets = br.ReadByte();
 
-                // Upper 4 bits represent the number of the current packet (starting at 0)
-                int number = totalPackets >> 4;
+                    // Upper 4 bits represent the number of the current packet (starting at 0)
+                    int number = totalPackets >> 4;
 
-                // Bottom 4 bits represent the total number of packets (2 to 15)
-                totalPackets &= 0x0F;
+                    // Bottom 4 bits represent the total number of packets (2 to 15)
+                    totalPackets &= 0x0F;
 
-                payloads.Add(number, responseData.Skip((int)br.BaseStream.Position).ToArray());
+                    payloads.Add(number, response.Skip((int)br.BaseStream.Position).ToArray());
+                }
             }
 
             // Combine the payloads
@@ -413,12 +423,15 @@ namespace OpenGSQ.Protocols
 
         private Environment GetEnvironment(byte environmentByte)
         {
-            return environmentByte switch
+            switch (environmentByte)
             {
-                (byte)Environment.Linux => Environment.Linux,
-                (byte)Environment.Windows => Environment.Windows,
-                _ => Environment.Mac,
-            };
+                case (byte)Environment.Linux:
+                    return Environment.Linux;
+                case (byte)Environment.Windows:
+                    return Environment.Windows;
+                default:
+                    return Environment.Mac;
+            }
         }
 
         private enum QueryResponse : byte
@@ -435,7 +448,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         public class RemoteConsole : ProtocolBase, IDisposable
         {
-            private TcpClient _tcpClient;
+            private System.Net.Sockets.TcpClient _tcpClient;
 
             /// <inheritdoc/>
             public override string FullName => "Source RCON Protocol";
@@ -472,7 +485,7 @@ namespace OpenGSQ.Protocols
                 }
 
                 // Connect
-                _tcpClient = new TcpClient();
+                _tcpClient = new System.Net.Sockets.TcpClient();
                 await _tcpClient.ConnectAsync(Host, Port);
                 _tcpClient.Client.SendTimeout = Timeout;
                 _tcpClient.Client.ReceiveTimeout = Timeout;
@@ -554,29 +567,31 @@ namespace OpenGSQ.Protocols
             private (List<Packet>, byte[]) GetPackets(byte[] bytes)
             {
                 var packets = new List<Packet>();
-                using var br = new BinaryReader(new MemoryStream(bytes), Encoding.UTF8);
 
-                // + 4 to ensure br.ReadInt32() is readable
-                while (br.BaseStream.Position + 4 < br.BaseStream.Length)
+                using (var br = new BinaryReader(new MemoryStream(bytes)))
                 {
-                    int size = br.ReadInt32();
-
-                    // Return if we know not enough bytes to read
-                    if (br.BaseStream.Position + size > br.BaseStream.Length)
+                    // + 4 to ensure br.ReadInt32() is readable
+                    while (br.BaseStream.Position + 4 < br.BaseStream.Length)
                     {
-                        return (packets, bytes.Skip((int)br.BaseStream.Position - 4).ToArray());
+                        int size = br.ReadInt32();
+
+                        // Return if we know not enough bytes to read
+                        if (br.BaseStream.Position + size > br.BaseStream.Length)
+                        {
+                            return (packets, bytes.Skip((int)br.BaseStream.Position - 4).ToArray());
+                        }
+
+                        // Read packet and append to packets
+                        var id = br.ReadInt32();
+                        var type = (PacketType)br.ReadInt32();
+                        var body = br.ReadStringEx();
+                        br.ReadByte();
+
+                        packets.Add(new Packet(id, type, body));
                     }
 
-                    // Read packet and append to packets
-                    var id = br.ReadInt32();
-                    var type = (PacketType)br.ReadInt32();
-                    var body = br.ReadStringEx();
-                    br.ReadByte();
-
-                    packets.Add(new Packet(id, type, body));
+                    return (packets, new byte[0]);
                 }
-
-                return (packets, new byte[0]);
             }
 
             private enum PacketType : int
@@ -614,11 +629,13 @@ namespace OpenGSQ.Protocols
                 /// <param name="bytes"></param>
                 public Packet(byte[] bytes)
                 {
-                    using var br = new BinaryReader(new MemoryStream(bytes), Encoding.UTF8);
-                    br.ReadInt32();
-                    Id = br.ReadInt32();
-                    Type = (PacketType)br.ReadInt32();
-                    Body = br.ReadStringEx();
+                    using (var br = new BinaryReader(new MemoryStream(bytes)))
+                    {
+                        br.ReadInt32();
+                        Id = br.ReadInt32();
+                        Type = (PacketType)br.ReadInt32();
+                        Body = br.ReadStringEx();
+                    }
                 }
             }
         }

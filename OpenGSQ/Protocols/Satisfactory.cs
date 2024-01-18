@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.Satisfactory;
@@ -34,28 +33,29 @@ namespace OpenGSQ.Protocols
         {
             // https://github.com/dopeghoti/SF-Tools/blob/main/Protocol.md
             byte[] request = new byte[] { 0, 0 }.Concat(Encoding.ASCII.GetBytes("opengsq")).ToArray();
+            byte[] response = await UdpClient.CommunicateAsync(this, request);
 
-            using var udpClient = new UdpClient();
-            byte[] response = await udpClient.CommunicateAsync(this, request);
-            using var br = new BinaryReader(new MemoryStream(response), Encoding.UTF8);
-            byte header = br.ReadByte();
-
-            if (header != 1)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new Exception($"Packet header mismatch. Received: {header}. Expected: 1.");
+                byte header = br.ReadByte();
+
+                if (header != 1)
+                {
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: 1.");
+                }
+
+                br.ReadByte();  // Protocol version
+                br.ReadBytes(8);  // Request data
+
+                var result = new Status
+                {
+                    State = br.ReadByte(),
+                    Version = br.ReadInt32(),
+                    BeaconPort = br.ReadInt16()
+                };
+
+                return result;
             }
-
-            br.ReadByte();  // Protocol version
-            br.ReadBytes(8);  // Request data
-
-            var result = new Status
-            {
-                State = br.ReadByte(),
-                Version = br.ReadInt32(),
-                BeaconPort = br.ReadInt16()
-            };
-
-            return result;
         }
     }
 }

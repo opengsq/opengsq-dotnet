@@ -41,7 +41,10 @@ namespace OpenGSQ
         /// <exception cref="IOException">An I/O error occurs.</exception>
         public static string ReadStringEx(this BinaryReader br, byte[] charBytes)
         {
-            charBytes ??= new byte[] { 0 };
+            if (charBytes == null)
+            {
+                charBytes = new byte[] { 0 };
+            }
 
             var bytes = new List<byte>();
             byte streamByte;

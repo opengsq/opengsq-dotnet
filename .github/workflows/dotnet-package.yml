@@ -9,17 +9,18 @@ on:
 jobs:
   build:
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [windows-latest]
+        dotnet: [ '6', '7', '8' ]
 
+    name: Dotnet ${{ matrix.dotnet }}
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET 7
+    - name: Setup dotnet
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 7
+        dotnet-version: ${{ matrix.dotnet }}
     - name: Install dependencies
       run: dotnet restore OpenGSQ
     - name: Build

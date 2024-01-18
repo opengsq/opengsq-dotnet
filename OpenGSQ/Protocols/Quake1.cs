@@ -15,28 +15,28 @@ namespace OpenGSQ.Protocols
     /// </summary>
     public class Quake1 : ProtocolBase
     {
+        /// <inheritdoc/>
+        public override string FullName => "Quake1 Query Protocol";
+
         /// <summary>
         /// The ASCII value of the backslash character used as a delimiter.
         /// </summary>
-        protected byte _Delimiter1 = Encoding.ASCII.GetBytes("\\")[0];
+        protected byte Delimiter1 = Encoding.ASCII.GetBytes("\\")[0];
 
         /// <summary>
         /// The ASCII value of the newline character used as a delimiter.
         /// </summary>
-        protected byte _Delimiter2 = Encoding.ASCII.GetBytes("\n")[0];
+        protected byte Delimiter2 = Encoding.ASCII.GetBytes("\n")[0];
 
         /// <summary>
         /// The header of the request.
         /// </summary>
-        protected string _RequestHeader;
+        protected string RequestHeader;
 
         /// <summary>
         /// The header of the response.
         /// </summary>
-        protected string _ResponseHeader;
-
-        /// <inheritdoc/>
-        public override string FullName => "Quake1 Query Protocol";
+        protected string ResponseHeader;
 
         /// <summary>
         /// Initializes a new instance of the Quake1 class.
@@ -46,8 +46,8 @@ namespace OpenGSQ.Protocols
         /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public Quake1(string host, int port, int timeout = 5000) : base(host, port, timeout)
         {
-            _RequestHeader = "status";
-            _ResponseHeader = "n";
+            RequestHeader = "status";
+            ResponseHeader = "n";
         }
 
         /// <summary>
@@ -57,13 +57,14 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public async Task<Status> GetStatus()
         {
-            using var br = await GetResponseBinaryReader();
-
-            return new Status
+            using (var br = await GetResponseBinaryReader())
             {
-                Info = ParseInfo(br),
-                Players = ParsePlayers(br),
-            };
+                return new Status
+                {
+                    Info = ParseInfo(br),
+                    Players = ParsePlayers(br),
+                };
+            }
         }
 
         /// <summary>
@@ -73,14 +74,14 @@ namespace OpenGSQ.Protocols
         /// <exception cref="Exception">Thrown when the packet header does not match the expected header.</exception>
         protected async Task<BinaryReader> GetResponseBinaryReader()
         {
-            var responseData = await ConnectAndSend(_RequestHeader);
+            byte[] response = await ConnectAndSend(RequestHeader);
 
-            var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
-            var header = br.ReadStringEx(_Delimiter1);
+            var br = new BinaryReader(new MemoryStream(response));
+            var header = br.ReadStringEx(Delimiter1);
 
-            if (header != _ResponseHeader)
+            if (header != ResponseHeader)
             {
-                throw new Exception($"Packet header mismatch. Received: {header}. Expected: {_ResponseHeader}.");
+                throw new Exception($"Packet header mismatch. Received: {header}. Expected: {ResponseHeader}.");
             }
 
             return br;
@@ -96,13 +97,13 @@ namespace OpenGSQ.Protocols
             var info = new Dictionary<string, string>();
 
             // Read all key values until meet \n
-            while (br.TryReadStringEx(out var key, _Delimiter1))
+            while (br.TryReadStringEx(out var key, Delimiter1))
             {
-                info[key] = br.ReadStringEx(new byte[] { _Delimiter1, _Delimiter2 });
+                info[key] = br.ReadStringEx(new byte[] { Delimiter1, Delimiter2 });
 
                 br.BaseStream.Position--;
 
-                if (br.ReadByte() == _Delimiter2)
+                if (br.ReadByte() == Delimiter2)
                 {
                     break;
                 }
@@ -151,7 +152,7 @@ namespace OpenGSQ.Protocols
             var regex = new Regex("\"(\\\"|[^\"])*?\"|[^\\s]+");
 
             // Read all players
-            while (br.BaseStream.Position < br.BaseStream.Length && br.TryReadStringEx(out var playerInfo, _Delimiter2))
+            while (br.BaseStream.Position < br.BaseStream.Length && br.TryReadStringEx(out var playerInfo, Delimiter2))
             {
                 matchCollections.Add(regex.Matches(playerInfo));
             }
@@ -166,29 +167,27 @@ namespace OpenGSQ.Protocols
         /// <returns>The response data received from the server.</returns>
         protected async Task<byte[]> ConnectAndSend(string request)
         {
-            using var udpClient = new UdpClient();
-            var header = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
-
             // Send Request
+            var header = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF };
             var requestData = new byte[0].Concat(header).Concat(Encoding.ASCII.GetBytes(request)).Concat(new byte[] { 0x00 }).ToArray();
 
             // Server response
-            var responseData = await udpClient.CommunicateAsync(this, requestData);
+            byte[] response = await UdpClient.CommunicateAsync(this, requestData);
 
             // Remove the last 0x00 if exists (Only if Quake1)
-            if (responseData[responseData.Length - 1] == 0)
+            if (response[response.Length - 1] == 0)
             {
-                responseData = responseData.Take(responseData.Length - 1).ToArray();
+                response = response.Take(response.Length - 1).ToArray();
             }
 
             // Add \n at the last of responseData if not exists
-            if (responseData[responseData.Length - 1] != _Delimiter2)
+            if (response[response.Length - 1] != Delimiter2)
             {
-                responseData = responseData.Concat(new byte[] { _Delimiter2 }).ToArray();
+                response = response.Concat(new byte[] { Delimiter2 }).ToArray();
             }
 
             // Remove the first four 0xFF
-            return responseData.Skip(header.Length).ToArray();
+            return response.Skip(header.Length).ToArray();
         }
     }
 }

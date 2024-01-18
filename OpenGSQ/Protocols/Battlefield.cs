@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 
 namespace OpenGSQ.Protocols
@@ -141,22 +140,23 @@ namespace OpenGSQ.Protocols
 
         private async Task<List<string>> GetData(byte[] request)
         {
-            using var tcpClient = new TcpClient();
-            byte[] response = await tcpClient.CommunicateAsync(this, request);
+            byte[] response = await TcpClient.CommunicateAsync(this, request);
 
-            var br = new BinaryReader(new MemoryStream(response));
-            br.ReadInt32();  // header
-            br.ReadInt32();  // packet length
-            var count = br.ReadInt32();  // string count
-            var data = new List<string>();
-
-            for (var i = 0; i < count; i++)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                br.ReadInt32();  // length of the string
-                data.Add(br.ReadStringEx());
-            }
+                br.ReadInt32();  // header
+                br.ReadInt32();  // packet length
+                var count = br.ReadInt32();  // string count
+                var data = new List<string>();
 
-            return data.GetRange(1, data.Count - 1);
+                for (var i = 0; i < count; i++)
+                {
+                    br.ReadInt32();  // length of the string
+                    data.Add(br.ReadStringEx());
+                }
+
+                return data.GetRange(1, data.Count - 1);
+            }
         }
     }
 }

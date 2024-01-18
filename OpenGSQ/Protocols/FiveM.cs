@@ -28,11 +28,13 @@ namespace OpenGSQ.Protocols
         {
             string url = $"http://{Host}:{Port}/{filename}.json?v={new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()}";
 
-            using HttpClient client = new HttpClient();
-            HttpResponseMessage response = await client.GetAsync(url);
-            response.EnsureSuccessStatusCode();
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadFromJsonAsync<T>();
+                return await response.Content.ReadFromJsonAsync<T>();
+            }
         }
 
         /// <summary>

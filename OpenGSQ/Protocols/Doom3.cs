@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -41,70 +40,73 @@ namespace OpenGSQ.Protocols
         public async Task<Dictionary<string, object>> GetInfo(bool stripColor = true)
         {
             byte[] request = new byte[] { 0xFF, 0xFF, 0x67, 0x65, 0x74, 0x49, 0x6E, 0x66, 0x6F, 0x00, 0x6F, 0x67, 0x73, 0x71, 0x00 };
-            using var udpClient = new UdpClient();
-            byte[] response = await udpClient.CommunicateAsync(this, request);
+            byte[] response = await UdpClient.CommunicateAsync(this, request);
 
-            using var br = new BinaryReader(new MemoryStream(response.Skip(2).ToArray()));
-            string header = br.ReadStringEx();
-
-            if (header != "infoResponse")
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: infoResponse.");
-            }
+                br.ReadBytes(2); // Skip 2 bytes
 
-            // Read challenge
-            br.ReadBytes(4);
+                string header = br.ReadStringEx();
 
-            if (!br.ReadBytes(4).SequenceEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }))
-            {
-                br.BaseStream.Position -= 4;
-            }
-
-            Dictionary<string, object> info = new Dictionary<string, object>();
-
-            // Read protocol version
-            ushort minor = br.ReadUInt16();
-            ushort major = br.ReadUInt16();
-            info["version"] = $"{major}.{minor}";
-
-            // Read packet size
-            if (br.ReadInt32() != br.RemainingBytes())
-            {
-                br.BaseStream.Position -= 4;
-            }
-
-            // Key / value pairs, delimited by an empty pair
-            while (br.BaseStream.Length > 0)
-            {
-                string key = br.ReadStringEx().Trim();
-                string val = br.ReadStringEx().Trim();
-
-                if (key == "" && val == "")
+                if (header != "infoResponse")
                 {
-                    break;
+                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: infoResponse.");
                 }
 
-                info[key] = stripColor ? StripColors(val) : val;
-            }
+                // Read challenge
+                br.ReadBytes(4);
 
-            long streamPosition = br.BaseStream.Position;
-
-            // Try parse the fields
-            foreach (string mod in _playerFields.Keys)
-            {
-                try
+                if (!br.ReadBytes(4).SequenceEqual(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }))
                 {
-                    info["players"] = ParsePlayer(br, _playerFields[mod], stripColor);
-                    break;
+                    br.BaseStream.Position -= 4;
                 }
-                catch (Exception)
-                {
-                    info["players"] = new List<object>();
-                    br.BaseStream.Position = streamPosition;
-                }
-            }
 
-            return info;
+                Dictionary<string, object> info = new Dictionary<string, object>();
+
+                // Read protocol version
+                ushort minor = br.ReadUInt16();
+                ushort major = br.ReadUInt16();
+                info["version"] = $"{major}.{minor}";
+
+                // Read packet size
+                if (br.ReadInt32() != br.RemainingBytes())
+                {
+                    br.BaseStream.Position -= 4;
+                }
+
+                // Key / value pairs, delimited by an empty pair
+                while (br.BaseStream.Length > 0)
+                {
+                    string key = br.ReadStringEx().Trim();
+                    string val = br.ReadStringEx().Trim();
+
+                    if (key == "" && val == "")
+                    {
+                        break;
+                    }
+
+                    info[key] = stripColor ? StripColors(val) : val;
+                }
+
+                long streamPosition = br.BaseStream.Position;
+
+                // Try parse the fields
+                foreach (string mod in _playerFields.Keys)
+                {
+                    try
+                    {
+                        info["players"] = ParsePlayer(br, _playerFields[mod], stripColor);
+                        break;
+                    }
+                    catch (Exception)
+                    {
+                        info["players"] = new List<object>();
+                        br.BaseStream.Position = streamPosition;
+                    }
+                }
+
+                return info;
+            }
         }
 
         private static List<Dictionary<string, object>> ParsePlayer(BinaryReader br, List<string> fields, bool stripColor)

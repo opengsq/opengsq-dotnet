@@ -6,7 +6,6 @@ using System.Text.Json;
 using System.Linq;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Net.Sockets;
 
 namespace OpenGSQ.Protocols
 {
@@ -41,31 +40,38 @@ namespace OpenGSQ.Protocols
             var request = new byte[] { 0x00 }.Concat(protocol).Concat(PackVarint(address.Length)).Concat(address).Concat(BitConverter.GetBytes((short)Port)).Concat(new byte[] { 0x01 }).ToArray();
             request = PackVarint(request.Length).Concat(request).Concat(new byte[] { 0x01, 0x00 }).ToArray();
 
-            using var tcpClient = new TcpClient();
-            tcpClient.ReceiveTimeout = Timeout;
-            await tcpClient.ConnectAsync(Host, Port);
-            await tcpClient.SendAsync(request);
-
-            var response = await tcpClient.ReceiveAsync();
-            using var br1 = new BinaryReader(new MemoryStream(response));
-            var length = UnpackVarint(br1);
-
-            // Keep receiving until reach packet length
-            while (response.Length < length)
+            using (var tcpClient = new System.Net.Sockets.TcpClient())
             {
-                response = response.Concat(await tcpClient.ReceiveAsync()).ToArray();
+                tcpClient.ReceiveTimeout = Timeout;
+                await tcpClient.ConnectAsync(Host, Port);
+                await tcpClient.SendAsync(request);
+
+                byte[] response = await tcpClient.ReceiveAsync();
+
+                using (var br = new BinaryReader(new MemoryStream(response)))
+                {
+                    var length = UnpackVarint(br);
+
+                    // Keep receiving until reach packet length
+                    while (response.Length < length)
+                    {
+                        response = response.Concat(await tcpClient.ReceiveAsync()).ToArray();
+                    }
+                }
+
+                // Read full response
+                using (var br = new BinaryReader(new MemoryStream(response)))
+                {
+                    UnpackVarint(br);  // packet length
+                    UnpackVarint(br);  // packet id
+                    var count = UnpackVarint(br);  // json length
+
+                    // The packet may respond with two json objects, so we need to get the json length exactly
+                    var data = JsonSerializer.Deserialize<Dictionary<string, object>>(Encoding.UTF8.GetString(br.ReadBytes(count)));
+
+                    return data;
+                }
             }
-
-            // Read full response
-            using var br = new BinaryReader(new MemoryStream(response));
-            UnpackVarint(br);  // packet length
-            UnpackVarint(br);  // packet id
-            var count = UnpackVarint(br);  // json length
-
-            // The packet may respond with two json objects, so we need to get the json length exactly
-            var data = JsonSerializer.Deserialize<Dictionary<string, object>>(Encoding.UTF8.GetString(br.ReadBytes(count)));
-
-            return data;
         }
 
         /// <summary>
@@ -74,30 +80,31 @@ namespace OpenGSQ.Protocols
         /// <returns>A task that represents the asynchronous operation. The task result contains the server status.</returns>
         public async Task<Dictionary<string, object>> GetStatusPre17()
         {
-            using var tcpClient = new TcpClient();
-            var response = await tcpClient.CommunicateAsync(this, new byte[] { 0xFE, 0x01 });
+            byte[] response = await TcpClient.CommunicateAsync(this, new byte[] { 0xFE, 0x01 });
 
-            using var br = new BinaryReader(new MemoryStream(response));
-            var header = br.ReadByte();
-
-            if (header != 0xFF)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {0xFF}.");
+                var header = br.ReadByte();
+
+                if (header != 0xFF)
+                {
+                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {0xFF}.");
+                }
+
+                br.ReadBytes(2);  // length of the following string
+                var items = Encoding.BigEndianUnicode.GetString(br.ReadBytes(response.Length - 2)).Split('\0');
+
+                var result = new Dictionary<string, object>
+                {
+                    ["protocol"] = items[1],
+                    ["version"] = items[2],
+                    ["motd"] = items[3],
+                    ["numplayers"] = int.Parse(items[4]),
+                    ["maxplayers"] = int.Parse(items[5])
+                };
+
+                return result;
             }
-
-            br.ReadBytes(2);  // length of the following string
-            var items = Encoding.BigEndianUnicode.GetString(br.ReadBytes(response.Length - 2)).Split('\0');
-
-            var result = new Dictionary<string, object>
-            {
-                ["protocol"] = items[1],
-                ["version"] = items[2],
-                ["motd"] = items[3],
-                ["numplayers"] = int.Parse(items[4]),
-                ["maxplayers"] = int.Parse(items[5])
-            };
-
-            return result;
         }
 
         /// <summary>

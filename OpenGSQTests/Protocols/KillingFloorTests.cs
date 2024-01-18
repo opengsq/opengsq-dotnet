@@ -7,11 +7,11 @@ namespace OpenGSQ.Protocols.Tests
     [TestClass()]
     public class KillingFloorTests : TestBase
     {
-        public KillingFloor killingFloor = new("104.234.65.235", 7708);
+        public KillingFloor killingFloor = new("185.80.128.168", 7708);
 
         public KillingFloorTests() : base(nameof(KillingFloorTests))
         {
-            // EnableSave = true;
+            EnableSave = true;
         }
 
         [TestMethod()]

@@ -80,62 +80,64 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public async Task<Status> GetStatus(bool XServerQuery = true)
         {
-            var responseData = await ConnectAndSend("\\status\\" + (XServerQuery ? "xserverquery" : string.Empty));
-            using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
+            byte[] response = await ConnectAndSend("\\status\\" + (XServerQuery ? "xserverquery" : string.Empty));
 
-            var status = new Status
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                KeyValues = new Dictionary<string, string>()
-            };
-
-            long position = 0;
-
-            // Read key until "player_#" or "Player_#"
-            while (br.BaseStream.Position < br.BaseStream.Length
-                && br.TryReadStringEx(out var key, _delimiter)
-                && !key.ToLower().StartsWith("player_"))
-            {
-                // Save key and value
-                status.KeyValues[key] = br.ReadStringEx(_delimiter);
-
-                // Save the position after read the value
-                position = br.BaseStream.Position;
-            }
-
-            // Reset the position
-            br.BaseStream.Position = position;
-
-            // Save players
-            status.Players = ParseObject(br);
-
-            if (status.IsXServerQuery)
-            {
-                // Save teams if it is XServerQuery response
-                status.Teams = new List<Dictionary<string, string>>();
-
-                var teams = status.KeyValues.Where(x => x.Key.Contains('_'));
-
-                foreach (KeyValuePair<string, string> keyValue in teams)
+                var status = new Status
                 {
-                    // Split key and index
-                    string[] subs = keyValue.Key.Split(new char[] { '_' }, 2);
-                    (string key, int index) = (subs[0], int.Parse(subs[1]));
+                    KeyValues = new Dictionary<string, string>()
+                };
 
-                    // Create a new team if not exists
-                    if (status.Teams.Count <= index)
-                    {
-                        status.Teams.Add(new Dictionary<string, string>());
-                    }
+                long position = 0;
 
-                    // Set the value
-                    status.Teams[index][key] = keyValue.Value;
+                // Read key until "player_#" or "Player_#"
+                while (br.BaseStream.Position < br.BaseStream.Length
+                    && br.TryReadStringEx(out var key, _delimiter)
+                    && !key.ToLower().StartsWith("player_"))
+                {
+                    // Save key and value
+                    status.KeyValues[key] = br.ReadStringEx(_delimiter);
 
-                    // Remove the key
-                    status.KeyValues.Remove(keyValue.Key);
+                    // Save the position after read the value
+                    position = br.BaseStream.Position;
                 }
-            }
 
-            return status;
+                // Reset the position
+                br.BaseStream.Position = position;
+
+                // Save players
+                status.Players = ParseObject(br);
+
+                if (status.IsXServerQuery)
+                {
+                    // Save teams if it is XServerQuery response
+                    status.Teams = new List<Dictionary<string, string>>();
+
+                    var teams = status.KeyValues.Where(x => x.Key.Contains('_'));
+
+                    foreach (KeyValuePair<string, string> keyValue in teams)
+                    {
+                        // Split key and index
+                        string[] subs = keyValue.Key.Split(new char[] { '_' }, 2);
+                        (string key, int index) = (subs[0], int.Parse(subs[1]));
+
+                        // Create a new team if not exists
+                        if (status.Teams.Count <= index)
+                        {
+                            status.Teams.Add(new Dictionary<string, string>());
+                        }
+
+                        // Set the value
+                        status.Teams[index][key] = keyValue.Value;
+
+                        // Remove the key
+                        status.KeyValues.Remove(keyValue.Key);
+                    }
+                }
+
+                return status;
+            }
         }
 
         /// <summary>
@@ -197,57 +199,63 @@ namespace OpenGSQ.Protocols
 
         private async Task<Dictionary<string, string>> SendAndParseKeyValue(string request)
         {
-            var responseData = await ConnectAndSend(request);
-            using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
+            byte[] response = await ConnectAndSend(request);
 
-            return ParseKeyValue(br);
+            using (var br = new BinaryReader(new MemoryStream(response)))
+            {
+                return ParseKeyValue(br);
+            }
         }
 
         private async Task<List<Dictionary<string, string>>> SendAndParseObject(string request)
         {
-            var responseData = await ConnectAndSend(request);
-            using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
+            byte[] response = await ConnectAndSend(request);
 
-            return ParseObject(br);
+            using (var br = new BinaryReader(new MemoryStream(response)))
+            {
+                return ParseObject(br);
+            }
         }
 
         private async Task<byte[]> ConnectAndSend(string request)
         {
-            using var udpClient = new UdpClient();
+            using (var udpClient = new System.Net.Sockets.UdpClient())
+            {
+                udpClient.Client.SendTimeout = Timeout;
+                udpClient.Client.ReceiveTimeout = Timeout;
 
-            // Connect to remote host
-            udpClient.Connect(Host, Port);
-            udpClient.Client.SendTimeout = Timeout;
-            udpClient.Client.ReceiveTimeout = Timeout;
+                // Connect to remote host
+                udpClient.Connect(Host, Port);
 
-            // Send Request
-            var requestData = Encoding.ASCII.GetBytes(request);
-            udpClient.Send(requestData, requestData.Length);
+                // Send Request
+                byte[] datagram = Encoding.ASCII.GetBytes(request);
+                await udpClient.SendAsync(datagram, datagram.Length);
 
-            // Server response
-            var responseData = await Receive(udpClient);
+                // Server response
+                byte[] response = await Receive(udpClient);
 
-            // Remove
-            return responseData;
+                // Remove
+                return response;
+            }
         }
 
-        private async Task<byte[]> Receive(UdpClient udpClient)
+        private async Task<byte[]> Receive(System.Net.Sockets.UdpClient udpClient)
         {
             int totalPackets = -1, packetId;
             var payloads = new SortedDictionary<int, byte[]>();
 
             do
             {
-                var responseData = await udpClient.ReceiveAsyncWithTimeout();
+                byte[] response = await udpClient.ReceiveAsyncWithTimeout();
 
                 // Try read "queryid" value, if it is the last packet, it cannot read the "queryid" value directly
-                if (!ReadStringReverse(responseData, responseData.Length, out var endIndex, out var queryId))
+                if (!ReadStringReverse(response, response.Length, out var endIndex, out var queryId))
                 {
                     // Read "final" string
-                    ReadStringReverse(responseData, endIndex, out endIndex, out _);
+                    ReadStringReverse(response, endIndex, out endIndex, out _);
 
                     // Read "queryid" value
-                    ReadStringReverse(responseData, endIndex, out endIndex, out queryId);
+                    ReadStringReverse(response, endIndex, out endIndex, out queryId);
 
                     // Save total packet
                     totalPackets = int.Parse(queryId.Split('.')[1]);
@@ -257,10 +265,10 @@ namespace OpenGSQ.Protocols
                 packetId = int.Parse(queryId.Split('.')[1]);
 
                 // Read "queryid" string
-                ReadStringReverse(responseData, endIndex, out endIndex, out _);
+                ReadStringReverse(response, endIndex, out endIndex, out _);
 
                 // Save the payload
-                byte[] payload = responseData.Take(endIndex).Skip(1).Concat(new byte[] { _delimiter }).ToArray();
+                byte[] payload = response.Take(endIndex).Skip(1).Concat(new byte[] { _delimiter }).ToArray();
 
                 payloads.Add(packetId, payload);
             } while (totalPackets == -1 || payloads.Count < totalPackets);

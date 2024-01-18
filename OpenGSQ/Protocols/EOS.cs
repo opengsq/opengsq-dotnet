@@ -57,21 +57,22 @@ namespace OpenGSQ.Protocols
             string authInfo = $"{_clientId}:{_clientSecret}";
             authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
 
-            using HttpClient client = new HttpClient()
+            using (var client = new HttpClient()
             {
                 BaseAddress = new Uri(url),
                 DefaultRequestHeaders =
                 {
                     Authorization = new AuthenticationHeaderValue("Basic", authInfo)
                 }
-            };
+            })
+            {
+                HttpResponseMessage response = await client.PostAsync(url, new StringContent(body, Encoding.UTF8, "application/x-www-form-urlencoded"));
+                response.EnsureSuccessStatusCode();
 
-            HttpResponseMessage response = await client.PostAsync(url, new StringContent(body, Encoding.UTF8, "application/x-www-form-urlencoded"));
-            response.EnsureSuccessStatusCode();
+                var data = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
 
-            var data = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
-
-            return data["access_token"].ToString();
+                return data["access_token"].ToString();
+            }
         }
 
         /// <summary>
@@ -93,23 +94,24 @@ namespace OpenGSQ.Protocols
 
             string url = $"{_apiUrl}/matchmaking/v1/{_deploymentId}/filter";
 
-            using HttpClient client = new HttpClient()
+            using (var client = new HttpClient()
             {
                 BaseAddress = new Uri(url),
                 DefaultRequestHeaders =
                 {
                     Authorization = new AuthenticationHeaderValue("Bearer", _accessToken)
                 }
-            };
+            })
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = await client.PostAsync(url, new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json"));
+                response.EnsureSuccessStatusCode();
 
-            HttpResponseMessage response = await client.PostAsync(url, new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json"));
-            response.EnsureSuccessStatusCode();
+                var responseData = await response.Content.ReadFromJsonAsync<Matchmaking>();
 
-            var responseData = await response.Content.ReadFromJsonAsync<Matchmaking>();
-
-            return responseData;
+                return responseData;
+            }
         }
 
         /// <summary>

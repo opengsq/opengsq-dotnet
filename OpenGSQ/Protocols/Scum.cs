@@ -44,7 +44,10 @@ namespace OpenGSQ.Protocols
         {
             var ip = (await GetIPEndPoint()).Address.ToString();
 
-            masterServers ??= await QueryMasterServers();
+            if (masterServers == null)
+            {
+                masterServers = await QueryMasterServers();
+            }
 
             foreach (var server in masterServers)
             {
@@ -68,52 +71,56 @@ namespace OpenGSQ.Protocols
             {
                 try
                 {
-                    using var tcpClient = new TcpClient();
-                    tcpClient.ReceiveTimeout = 5000;
-                    await tcpClient.ConnectAsync(host, port);
-                    await tcpClient.SendAsync(new byte[] { 0x04, 0x03, 0x00, 0x00 });
-
-                    var total = -1;
-                    var response = new byte[0];
-                    var servers = new List<Status>();
-
-                    while (total == -1 || servers.Count < total)
+                    using (var tcpClient = new System.Net.Sockets.TcpClient())
                     {
-                        response = response.Concat(await tcpClient.ReceiveAsync()).ToArray();
-                        using var br = new BinaryReader(new MemoryStream(response));
+                        tcpClient.ReceiveTimeout = 5000;
+                        await tcpClient.ConnectAsync(host, port);
+                        await tcpClient.SendAsync(new byte[] { 0x04, 0x03, 0x00, 0x00 });
 
-                        // first packet return the total number of servers
-                        if (total == -1)
-                        {
-                            total = br.ReadInt16();
-                        }
+                        var total = -1;
+                        var response = new byte[0];
+                        var servers = new List<Status>();
 
-                        // server bytes length always 127
-                        while (br.BaseStream.Length - br.BaseStream.Position >= 127)
+                        while (total == -1 || servers.Count < total)
                         {
-                            var statusResponse = new Status
+                            response = response.Concat(await tcpClient.ReceiveAsync()).ToArray();
+
+                            using (var br = new BinaryReader(new MemoryStream(response)))
                             {
-                                Ip = string.Join(".", br.ReadBytes(4).Reverse().Select(b => b.ToString())),
-                                Port = br.ReadInt16(),
-                                Name = Encoding.UTF8.GetString(br.ReadBytes(100).TakeWhile(b => b != 0).ToArray())
-                            };
-                            br.ReadByte();  // skip
-                            statusResponse.NumPlayers = br.ReadByte();
-                            statusResponse.MaxPlayers = br.ReadByte();
-                            statusResponse.Time = br.ReadByte();
-                            br.ReadByte();  // skip
-                            statusResponse.Password = ((br.ReadByte() >> 1) & 1) == 1;
-                            br.ReadBytes(7);  // skip
-                            var v = br.ReadBytes(8).Reverse().Select(b => Convert.ToInt32(b).ToString("X").PadLeft(2, '0')).ToList();
-                            statusResponse.Version = $"{Convert.ToInt32(v[0], 16)}.{Convert.ToInt32(v[1], 16)}.{Convert.ToInt32(v[2] + v[3], 16)}.{Convert.ToInt32(v[4] + v[5] + v[6] + v[7], 16)}";
-                            servers.Add(statusResponse);
+                                // first packet return the total number of servers
+                                if (total == -1)
+                                {
+                                    total = br.ReadInt16();
+                                }
+
+                                // server bytes length always 127
+                                while (br.BaseStream.Length - br.BaseStream.Position >= 127)
+                                {
+                                    var statusResponse = new Status
+                                    {
+                                        Ip = string.Join(".", br.ReadBytes(4).Reverse().Select(b => b.ToString())),
+                                        Port = br.ReadInt16(),
+                                        Name = Encoding.UTF8.GetString(br.ReadBytes(100).TakeWhile(b => b != 0).ToArray())
+                                    };
+                                    br.ReadByte();  // skip
+                                    statusResponse.NumPlayers = br.ReadByte();
+                                    statusResponse.MaxPlayers = br.ReadByte();
+                                    statusResponse.Time = br.ReadByte();
+                                    br.ReadByte();  // skip
+                                    statusResponse.Password = ((br.ReadByte() >> 1) & 1) == 1;
+                                    br.ReadBytes(7);  // skip
+                                    var v = br.ReadBytes(8).Reverse().Select(b => Convert.ToInt32(b).ToString("X").PadLeft(2, '0')).ToList();
+                                    statusResponse.Version = $"{Convert.ToInt32(v[0], 16)}.{Convert.ToInt32(v[1], 16)}.{Convert.ToInt32(v[2] + v[3], 16)}.{Convert.ToInt32(v[4] + v[5] + v[6] + v[7], 16)}";
+                                    servers.Add(statusResponse);
+                                }
+
+                                // if the length is less than 127, save the unused bytes for next loop
+                                response = br.ReadBytes((int)(br.BaseStream.Length - br.BaseStream.Position));
+                            }
                         }
 
-                        // if the length is less than 127, save the unused bytes for next loop
-                        response = br.ReadBytes((int)(br.BaseStream.Length - br.BaseStream.Position));
+                        return servers;
                     }
-
-                    return servers;
                 }
                 catch (SocketException)
                 {

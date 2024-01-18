@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.Quake2;
@@ -25,8 +24,8 @@ namespace OpenGSQ.Protocols
         /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public Quake3(string host, int port, int timeout = 5000) : base(host, port, timeout)
         {
-            _RequestHeader = "getstatus";
-            _ResponseHeader = "statusResponse\n";
+            RequestHeader = "getstatus";
+            ResponseHeader = "statusResponse\n";
         }
 
         /// <summary>
@@ -37,30 +36,30 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public async Task<Dictionary<string, string>> GetInfo(bool stripColor = true)
         {
-            var responseData = await ConnectAndSend("getinfo");
+            byte[] response = await ConnectAndSend("getinfo");
 
-            using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
-            var header = br.ReadStringEx(_Delimiter1);
-            string infoResponseHeader = "infoResponse\n";
-
-            if (header != infoResponseHeader)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new Exception($"Packet header mismatch. Received: {header}. Expected: {infoResponseHeader}.");
-            }
+                var header = br.ReadStringEx(Delimiter1);
+                string infoResponseHeader = "infoResponse\n";
 
-            var info = ParseInfo(br);
+                if (header != infoResponseHeader)
+                {
+                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {infoResponseHeader}.");
+                }
 
-            if (!stripColor)
-            {
+                var info = ParseInfo(br);
+
+                if (stripColor)
+                {
+                    if (info.ContainsKey("hostname"))
+                    {
+                        info["hostname"] = StripColors(info["hostname"]);
+                    }
+                }
+
                 return info;
             }
-
-            if (info.ContainsKey("hostname"))
-            {
-                info["hostname"] = StripColors(info["hostname"]);
-            }
-
-            return info;
         }
 
         /// <summary>
@@ -71,33 +70,32 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public async Task<Status> GetStatus(bool stripColor = true)
         {
-            using var br = await GetResponseBinaryReader();
-
-            var status = new Status
+            using (var br = await GetResponseBinaryReader())
             {
-                Info = ParseInfo(br),
-                Players = ParsePlayers(br),
-            };
+                var status = new Status
+                {
+                    Info = ParseInfo(br),
+                    Players = ParsePlayers(br),
+                };
 
-            if (!stripColor)
-            {
+                if (stripColor)
+                {
+                    if (status.Info.ContainsKey("sv_hostname"))
+                    {
+                        status.Info["sv_hostname"] = StripColors(status.Info["sv_hostname"]);
+                    }
+
+                    foreach (var player in status.Players)
+                    {
+                        if (player.Name != null)
+                        {
+                            player.Name = StripColors(player.Name);
+                        }
+                    }
+                }
+
                 return status;
             }
-
-            if (status.Info.ContainsKey("sv_hostname"))
-            {
-                status.Info["sv_hostname"] = StripColors(status.Info["sv_hostname"]);
-            }
-
-            foreach (var player in status.Players)
-            {
-                if (player.Name != null)
-                {
-                    player.Name = StripColors(player.Name);
-                }
-            }
-
-            return status;
         }
 
         /// <summary>

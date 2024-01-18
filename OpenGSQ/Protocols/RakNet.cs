@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using System.Linq;
 using System.IO;
-using System.Net.Sockets;
 using OpenGSQ.Responses.RakNet;
 
 namespace OpenGSQ.Protocols
@@ -37,45 +36,46 @@ namespace OpenGSQ.Protocols
         /// <returns>A task that represents the asynchronous operation. The task result contains the server status.</returns>
         public async Task<Status> GetStatus()
         {
-            var request = ID_UNCONNECTED_PING.Concat(TIMESTAMP).Concat(OFFLINE_MESSAGE_DATA_ID).Concat(CLIENT_GUID).ToArray();
-            using var udpClient = new UdpClient();
-            var response = await udpClient.CommunicateAsync(this, request);
+            byte[] request = ID_UNCONNECTED_PING.Concat(TIMESTAMP).Concat(OFFLINE_MESSAGE_DATA_ID).Concat(CLIENT_GUID).ToArray();
+            byte[] response = await UdpClient.CommunicateAsync(this, request);
 
-            using var br = new BinaryReader(new MemoryStream(response));
-            var header = br.ReadByte();
-
-            if (header != ID_UNCONNECTED_PONG[0])
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {ID_UNCONNECTED_PONG[0]}.");
+                var header = br.ReadByte();
+
+                if (header != ID_UNCONNECTED_PONG[0])
+                {
+                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {ID_UNCONNECTED_PONG[0]}.");
+                }
+
+                br.ReadBytes(TIMESTAMP.Length + CLIENT_GUID.Length);  // skip timestamp and guid
+                var magic = br.ReadBytes(OFFLINE_MESSAGE_DATA_ID.Length);
+
+                if (!magic.SequenceEqual(OFFLINE_MESSAGE_DATA_ID))
+                {
+                    throw new InvalidPacketException($"Magic value mismatch. Received: {magic}. Expected: {OFFLINE_MESSAGE_DATA_ID}.");
+                }
+
+                br.ReadInt16();  // skip remaining packet length
+
+                byte[] delimiter = { (byte)';' };
+
+                return new Status
+                {
+                    Edition = br.ReadStringEx(delimiter),
+                    MotdLine1 = br.ReadStringEx(delimiter),
+                    ProtocolVersion = int.Parse(br.ReadStringEx(delimiter)),
+                    VersionName = br.ReadStringEx(delimiter),
+                    NumPlayers = int.Parse(br.ReadStringEx(delimiter)),
+                    MaxPlayers = int.Parse(br.ReadStringEx(delimiter)),
+                    ServerUniqueId = br.ReadStringEx(delimiter),
+                    MotdLine2 = br.ReadStringEx(delimiter),
+                    GameMode = br.ReadStringEx(delimiter),
+                    GameModeNumeric = int.Parse(br.ReadStringEx(delimiter)),
+                    PortIPv4 = int.Parse(br.ReadStringEx(delimiter)),
+                    PortIPv6 = int.Parse(br.ReadStringEx(delimiter))
+                };
             }
-
-            br.ReadBytes(TIMESTAMP.Length + CLIENT_GUID.Length);  // skip timestamp and guid
-            var magic = br.ReadBytes(OFFLINE_MESSAGE_DATA_ID.Length);
-
-            if (!magic.SequenceEqual(OFFLINE_MESSAGE_DATA_ID))
-            {
-                throw new InvalidPacketException($"Magic value mismatch. Received: {magic}. Expected: {OFFLINE_MESSAGE_DATA_ID}.");
-            }
-
-            br.ReadInt16();  // skip remaining packet length
-
-            byte[] delimiter = { (byte)';' };
-
-            return new Status
-            {
-                Edition = br.ReadStringEx(delimiter),
-                MotdLine1 = br.ReadStringEx(delimiter),
-                ProtocolVersion = int.Parse(br.ReadStringEx(delimiter)),
-                VersionName = br.ReadStringEx(delimiter),
-                NumPlayers = int.Parse(br.ReadStringEx(delimiter)),
-                MaxPlayers = int.Parse(br.ReadStringEx(delimiter)),
-                ServerUniqueId = br.ReadStringEx(delimiter),
-                MotdLine2 = br.ReadStringEx(delimiter),
-                GameMode = br.ReadStringEx(delimiter),
-                GameModeNumeric = int.Parse(br.ReadStringEx(delimiter)),
-                PortIPv4 = int.Parse(br.ReadStringEx(delimiter)),
-                PortIPv6 = int.Parse(br.ReadStringEx(delimiter))
-            };
         }
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,33 +34,34 @@ namespace OpenGSQ.Protocols
         /// <returns>A dictionary containing the server status.</returns>
         public async Task<Dictionary<string, object>> GetStatus()
         {
-            using var udpClient = new UdpClient();
-            byte[] response = await udpClient.CommunicateAsync(this, _request);
-            byte[] header = response[..4];
+            byte[] response = await UdpClient.CommunicateAsync(this, _request);
 
-            if (!header.SequenceEqual(_response))
+            using (var br = new BinaryReader(new MemoryStream(response), Encoding.UTF8))
             {
-                throw new InvalidPacketException($"Packet header mismatch. Received: {BitConverter.ToString(header)}. Expected: {BitConverter.ToString(_response)}.");
+                byte[] header = br.ReadBytes(4);
+
+                if (!header.SequenceEqual(_response))
+                {
+                    throw new InvalidPacketException($"Packet header mismatch. Received: {BitConverter.ToString(header)}. Expected: {BitConverter.ToString(_response)}.");
+                }
+
+                var result = new Dictionary<string, object>
+                {
+                    ["gamename"] = ReadString(br),
+                    ["gameport"] = ReadString(br),
+                    ["hostname"] = ReadString(br),
+                    ["gametype"] = ReadString(br),
+                    ["map"] = ReadString(br),
+                    ["version"] = ReadString(br),
+                    ["password"] = ReadString(br),
+                    ["numplayers"] = ReadString(br),
+                    ["maxplayers"] = ReadString(br),
+                    ["rules"] = ParseRules(br),
+                    ["players"] = ParsePlayers(br)
+                };
+
+                return result;
             }
-
-            using var br = new BinaryReader(new MemoryStream(response[4..]), Encoding.UTF8);
-
-            var result = new Dictionary<string, object>
-            {
-                ["gamename"] = ReadString(br),
-                ["gameport"] = ReadString(br),
-                ["hostname"] = ReadString(br),
-                ["gametype"] = ReadString(br),
-                ["map"] = ReadString(br),
-                ["version"] = ReadString(br),
-                ["password"] = ReadString(br),
-                ["numplayers"] = ReadString(br),
-                ["maxplayers"] = ReadString(br),
-                ["rules"] = ParseRules(br),
-                ["players"] = ParsePlayers(br)
-            };
-
-            return result;
         }
 
         private Dictionary<string, string> ParseRules(BinaryReader br)

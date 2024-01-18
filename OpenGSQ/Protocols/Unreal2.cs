@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -46,35 +44,38 @@ namespace OpenGSQ.Protocols
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
         public async Task<Status> GetDetails()
         {
-            using var udpClient = new UdpClient();
-            byte[] response = await udpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _DETAILS });
+            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _DETAILS });
 
-            // Remove the first 4 bytes \x80\x00\x00\x00
-            BinaryReader br = new BinaryReader(new MemoryStream(response.Skip(4).ToArray()));
-            byte header = br.ReadByte();
-
-            if (header != _DETAILS)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_DETAILS}.");
+                // Remove the first 4 bytes \x80\x00\x00\x00
+                br.ReadBytes(4);
+
+                byte header = br.ReadByte();
+
+                if (header != _DETAILS)
+                {
+                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_DETAILS}.");
+                }
+
+                var details = new Status
+                {
+                    ServerId = br.ReadInt32(),
+                    ServerIP = br.ReadString(),
+                    GamePort = br.ReadInt32(),
+                    QueryPort = br.ReadInt32(),
+                    ServerName = ReadString(br),
+                    MapName = ReadString(br),
+                    GameType = ReadString(br),
+                    NumPlayers = br.ReadInt32(),
+                    MaxPlayers = br.ReadInt32(),
+                    Ping = br.ReadInt32(),
+                    Flags = br.ReadInt32(),
+                    Skill = ReadString(br)
+                };
+
+                return details;
             }
-
-            var details = new Status
-            {
-                ServerId = br.ReadInt32(),
-                ServerIP = br.ReadString(),
-                GamePort = br.ReadInt32(),
-                QueryPort = br.ReadInt32(),
-                ServerName = ReadString(br),
-                MapName = ReadString(br),
-                GameType = ReadString(br),
-                NumPlayers = br.ReadInt32(),
-                MaxPlayers = br.ReadInt32(),
-                Ping = br.ReadInt32(),
-                Flags = br.ReadInt32(),
-                Skill = ReadString(br)
-            };
-
-            return details;
         }
 
         /// <summary>
@@ -84,39 +85,42 @@ namespace OpenGSQ.Protocols
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
         public async Task<Dictionary<string, object>> GetRules()
         {
-            using var udpClient = new UdpClient();
-            byte[] response = await udpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _RULES });
+            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _RULES });
 
-            // Remove the first 4 bytes \x80\x00\x00\x00
-            BinaryReader br = new BinaryReader(new MemoryStream(response.Skip(4).ToArray()));
-            byte header = br.ReadByte();
-
-            if (header != _RULES)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_RULES}.");
-            }
+                // Remove the first 4 bytes \x80\x00\x00\x00
+                br.ReadBytes(4);
 
-            var rules = new Dictionary<string, object>();
-            var mutators = new List<string>();
+                byte header = br.ReadByte();
 
-            while (br.BaseStream.Position != br.BaseStream.Length)
-            {
-                string key = ReadString(br);
-                string val = ReadString(br);
-
-                if (key.ToLower() == "mutator")
+                if (header != _RULES)
                 {
-                    mutators.Add(val);
+                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_RULES}.");
                 }
-                else
+
+                var rules = new Dictionary<string, object>();
+                var mutators = new List<string>();
+
+                while (br.BaseStream.Position != br.BaseStream.Length)
                 {
-                    rules[key] = val;
+                    string key = ReadString(br);
+                    string val = ReadString(br);
+
+                    if (key.ToLower() == "mutator")
+                    {
+                        mutators.Add(val);
+                    }
+                    else
+                    {
+                        rules[key] = val;
+                    }
                 }
+
+                rules["Mutators"] = mutators;
+
+                return rules;
             }
-
-            rules["Mutators"] = mutators;
-
-            return rules;
         }
 
         /// <summary>
@@ -126,35 +130,38 @@ namespace OpenGSQ.Protocols
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
         public async Task<List<Player>> GetPlayers()
         {
-            using var udpClient = new UdpClient();
-            byte[] response = await udpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _PLAYERS });
+            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _PLAYERS });
 
-            // Remove the first 4 bytes \x80\x00\x00\x00
-            BinaryReader br = new BinaryReader(new MemoryStream(response.Skip(4).ToArray()));
-            byte header = br.ReadByte();
-
-            if (header != _PLAYERS)
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
-                throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_PLAYERS}.");
-            }
+                // Remove the first 4 bytes \x80\x00\x00\x00
+                br.ReadBytes(4);
 
-            var players = new List<Player>();
+                byte header = br.ReadByte();
 
-            while (br.BaseStream.Position != br.BaseStream.Length)
-            {
-                var player = new Player
+                if (header != _PLAYERS)
                 {
-                    Id = br.ReadInt32(),
-                    Name = ReadString(br),
-                    Ping = br.ReadInt32(),
-                    Score = br.ReadInt32(),
-                    StatsId = br.ReadInt32()
-                };
+                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_PLAYERS}.");
+                }
 
-                players.Add(player);
+                var players = new List<Player>();
+
+                while (br.BaseStream.Position != br.BaseStream.Length)
+                {
+                    var player = new Player
+                    {
+                        Id = br.ReadInt32(),
+                        Name = ReadString(br),
+                        Ping = br.ReadInt32(),
+                        Score = br.ReadInt32(),
+                        StatsId = br.ReadInt32()
+                    };
+
+                    players.Add(player);
+                }
+
+                return players;
             }
-
-            return players;
         }
 
         /// <summary>
@@ -176,6 +183,12 @@ namespace OpenGSQ.Protocols
         protected string ReadString(BinaryReader br)
         {
             int length = br.ReadByte();
+
+            if (length == 0)
+            {
+                return string.Empty;
+            }
+
             string str = br.ReadStringEx();
 
             byte[] b;

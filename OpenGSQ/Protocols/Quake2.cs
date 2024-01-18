@@ -22,8 +22,8 @@ namespace OpenGSQ.Protocols
         /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public Quake2(string host, int port, int timeout = 5000) : base(host, port, timeout)
         {
-            _RequestHeader = "status";
-            _ResponseHeader = "print\n";
+            RequestHeader = "status";
+            ResponseHeader = "print\n";
         }
 
         /// <summary>
@@ -33,13 +33,14 @@ namespace OpenGSQ.Protocols
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
         public new async Task<Status> GetStatus()
         {
-            using var br = await GetResponseBinaryReader();
-
-            return new Status
+            using (var br = await GetResponseBinaryReader())
             {
-                Info = ParseInfo(br),
-                Players = ParsePlayers(br),
-            };
+                return new Status
+                {
+                    Info = ParseInfo(br),
+                    Players = ParsePlayers(br),
+                };
+            }
         }
 
         /// <summary>
