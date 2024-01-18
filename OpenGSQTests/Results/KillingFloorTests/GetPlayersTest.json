@@ -1,72 +1,16 @@
 [
   {
-    "Id": 1403,
-    "Name": "Wev",
-    "Ping": 76,
-    "Score": 525148,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 1131,
-    "Name": "Ahoris_.i.",
-    "Ping": 92,
-    "Score": 3529808,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 857,
-    "Name": "ForgotteN`",
-    "Ping": 60,
-    "Score": 4505621,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 773,
-    "Name": "Toshka",
-    "Ping": 68,
-    "Score": 3568153,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 729,
-    "Name": "Jorji",
-    "Ping": 96,
-    "Score": 3940751,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 713,
-    "Name": "Kebabas",
-    "Ping": 48,
-    "Score": 3993232,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 484,
-    "Name": "DS",
-    "Ping": 80,
-    "Score": 4811738,
-    "StatsId": 0
-  },
-  {
-    "Id": 483,
-    "Name": "johnxina",
-    "Ping": 36,
-    "Score": 47930368,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 214,
-    "Name": "Dhaos",
-    "Ping": 168,
-    "Score": 1080845312,
-    "StatsId": 536870912
-  },
-  {
     "Id": 2,
-    "Name": "kaziukaass",
-    "Ping": 36,
-    "Score": 47753656,
+    "Name": "johnxina",
+    "Ping": 32,
+    "Score": 6607,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1,
+    "Name": "Shrine",
+    "Ping": 76,
+    "Score": 1789553024,
     "StatsId": 536870912
   }
 ]

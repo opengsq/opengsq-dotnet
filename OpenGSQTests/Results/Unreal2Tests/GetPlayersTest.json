@@ -1,16 +1,16 @@
 [
   {
-    "Id": 0,
-    "Name": "Red�rturd",
-    "Ping": 0,
-    "Score": 0,
-    "StatsId": 0
+    "Id": 5,
+    "Name": "Owl",
+    "Ping": 264,
+    "Score": 58,
+    "StatsId": 536870912
   },
   {
-    "Id": 0,
-    "Name": "Blue�rturd",
-    "Ping": 0,
-    "Score": 0,
-    "StatsId": 0
+    "Id": 4,
+    "Name": "Devergent",
+    "Ping": 164,
+    "Score": 119,
+    "StatsId": 536870912
   }
 ]

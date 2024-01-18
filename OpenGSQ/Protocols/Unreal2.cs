@@ -165,14 +165,13 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Strips color codes from the given text.
+        /// Strips color codes from the input text.
         /// </summary>
-        /// <param name="text">The text to strip color codes from, represented as a byte array.</param>
-        /// <returns>The text with color codes stripped, represented as a string.</returns>
-        protected static string StripColors(byte[] text)
+        /// <param name="text">The input text which may contain color codes.</param>
+        /// <returns>A string with color codes stripped out.</returns>
+        protected static string StripColors(string text)
         {
-            string str = Encoding.UTF8.GetString(text);
-            return Regex.Replace(str, @"\x1b...|[\x00-\x1a]", "");
+            return Regex.Replace(text, @"\x1b...|[\x00-\x1a]", "");
         }
 
         /// <summary>
@@ -184,24 +183,20 @@ namespace OpenGSQ.Protocols
         {
             int length = br.ReadByte();
 
-            if (length == 0)
+            string result;
+            if (length >= 128)
             {
-                return string.Empty;
-            }
-
-            string str = br.ReadStringEx();
-
-            byte[] b;
-            if (length == str.Length + 1)
-            {
-                b = Encoding.UTF8.GetBytes(str);
+                length = (length & 0x7f) * 2;
+                byte[] bytes = br.ReadBytes(length);
+                result = Encoding.Unicode.GetString(bytes);
             }
             else
             {
-                b = Encoding.Unicode.GetBytes(str);
+                byte[] bytes = br.ReadBytes(length);
+                result = Encoding.UTF8.GetString(bytes);
             }
 
-            return StripColors(b);
+            return StripColors(result);
         }
     }
 }
