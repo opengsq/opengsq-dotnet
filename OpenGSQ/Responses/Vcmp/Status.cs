@@ -3,7 +3,7 @@ namespace OpenGSQ.Responses.Vcmp
     /// <summary>
     /// Represents the status response from a server.
     /// </summary>
-    public class StatusResponse
+    public class Status
     {
         /// <summary>
         /// Gets or sets the version of the server.
@@ -39,16 +39,5 @@ namespace OpenGSQ.Responses.Vcmp
         /// Gets or sets the language of the server.
         /// </summary>
         public string Language { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a player in the game.
-    /// </summary>
-    public class Player
-    {
-        /// <summary>
-        /// Gets or sets the player's name.
-        /// </summary>
-        public string Name { get; set; }
     }
 }

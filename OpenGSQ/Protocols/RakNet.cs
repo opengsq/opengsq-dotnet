@@ -35,7 +35,7 @@ namespace OpenGSQ.Protocols
         /// Gets the server status asynchronously.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the server status.</returns>
-        public async Task<StatusResponse> GetStatus()
+        public async Task<Status> GetStatus()
         {
             var request = ID_UNCONNECTED_PING.Concat(TIMESTAMP).Concat(OFFLINE_MESSAGE_DATA_ID).Concat(CLIENT_GUID).ToArray();
             using var udpClient = new UdpClient();
@@ -61,7 +61,7 @@ namespace OpenGSQ.Protocols
 
             byte[] delimiter = { (byte)';' };
 
-            return new StatusResponse
+            return new Status
             {
                 Edition = br.ReadStringEx(delimiter),
                 MotdLine1 = br.ReadStringEx(delimiter),

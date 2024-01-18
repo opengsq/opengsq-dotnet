@@ -12,8 +12,8 @@ namespace OpenGSQ.Protocols.Tests
 
         public Quake3Tests() : base(nameof(Quake3Tests))
         {
-            _EnableSave = false;
-            _DelayPerTest = 900;
+            // EnableSave = true;
+            DelayPerTest = 900;
         }
 
         [TestMethod()]

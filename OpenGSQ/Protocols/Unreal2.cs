@@ -17,8 +17,19 @@ namespace OpenGSQ.Protocols
         /// <inheritdoc/>
         public override string FullName => "Unreal 2 Protocol";
 
+        /// <summary>
+        /// Represents the byte value for details.
+        /// </summary>
         protected const byte _DETAILS = 0x00;
+
+        /// <summary>
+        /// Represents the byte value for rules.
+        /// </summary>
         protected const byte _RULES = 0x01;
+
+        /// <summary>
+        /// Represents the byte value for players.
+        /// </summary>
         protected const byte _PLAYERS = 0x02;
 
         /// <summary>
@@ -151,7 +162,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="text">The text to strip color codes from, represented as a byte array.</param>
         /// <returns>The text with color codes stripped, represented as a string.</returns>
-        protected string StripColors(byte[] text)
+        protected static string StripColors(byte[] text)
         {
             string str = Encoding.UTF8.GetString(text);
             return Regex.Replace(str, @"\x1b...|[\x00-\x1a]", "");

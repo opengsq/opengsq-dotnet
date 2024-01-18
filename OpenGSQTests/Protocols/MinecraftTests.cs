@@ -11,7 +11,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public MinecraftTests() : base(nameof(MinecraftTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

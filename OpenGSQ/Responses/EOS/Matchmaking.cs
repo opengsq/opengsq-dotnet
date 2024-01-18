@@ -5,7 +5,7 @@ namespace OpenGSQ.Responses.EOS
     /// <summary>
     /// Represents the response from a matchmaking request.
     /// </summary>
-    public class MatchmakingResponse
+    public class Matchmaking
     {
         /// <summary>
         /// Gets or sets the list of sessions returned by the matchmaking request.

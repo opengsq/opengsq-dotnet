@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public SampTests() : base(nameof(SampTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

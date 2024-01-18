@@ -2,11 +2,11 @@
   "Info": {
     "hostname": "*Easy Prey/Death*",
     "hostport": "15567",
-    "mapname": "HUE [Choppers] -SSM-",
+    "mapname": "Flaming Dart [Extra Vehicles] -SSM-",
     "gametype": "coop",
-    "numplayers": "0",
+    "numplayers": "4",
     "maxplayers": "50",
-    "gamemode": "openplaying",
+    "gamemode": "pre",
     "password": "0",
     "gamever": "v1.21",
     "dedicated": "2",
@@ -35,7 +35,7 @@
     "kickback_on_splash": "30%",
     "soldier_friendly_fire_on_splash": "100%",
     "vehicle_friendly_fire_on_splash": "100%",
-    "cpu": "3600",
+    "cpu": "3599",
     "bot_skill": "100%",
     "reservedslots": "0",
     "spectatorsallowed": "1",
@@ -45,15 +45,48 @@
     "all_active_mods": "bfvietnam",
     "game_id_name": "BFVietnam"
   },
-  "Players": [],
+  "Players": [
+    {
+      "player": "Jason",
+      "score": "0",
+      "deaths": "0",
+      "ping": "71",
+      "team": "1",
+      "kills": "0"
+    },
+    {
+      "player": "Rbilly",
+      "score": "0",
+      "deaths": "0",
+      "ping": "36",
+      "team": "2",
+      "kills": "0"
+    },
+    {
+      "player": "Matt Foley",
+      "score": "0",
+      "deaths": "0",
+      "ping": "0",
+      "team": "1",
+      "kills": "0"
+    },
+    {
+      "player": "Gra$$HoPPer",
+      "score": "0",
+      "deaths": "0",
+      "ping": "0",
+      "team": "2",
+      "kills": "0"
+    }
+  ],
   "Teams": [
     {
       "team": "red",
-      "tickets": "626"
+      "tickets": "846"
     },
     {
       "team": "blue",
-      "tickets": "572"
+      "tickets": "846"
     }
   ]
 }

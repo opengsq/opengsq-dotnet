@@ -95,7 +95,7 @@
     "channel_order": "0",
     "channel_name": "Welcome | Rules in Channel Description",
     "channel_topic": "",
-    "total_clients": "11",
+    "total_clients": "10",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -104,7 +104,7 @@
     "channel_order": "122",
     "channel_name": "Lobby 1",
     "channel_topic": "",
-    "total_clients": "4",
+    "total_clients": "5",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -113,7 +113,7 @@
     "channel_order": "1",
     "channel_name": "Lobby 2",
     "channel_topic": "",
-    "total_clients": "2",
+    "total_clients": "0",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -122,7 +122,7 @@
     "channel_order": "43",
     "channel_name": "Lobby 3",
     "channel_topic": "",
-    "total_clients": "2",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -131,7 +131,7 @@
     "channel_order": "50",
     "channel_name": "Lobby 4",
     "channel_topic": "",
-    "total_clients": "1",
+    "total_clients": "0",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -140,7 +140,7 @@
     "channel_order": "605",
     "channel_name": "Lobby 5",
     "channel_topic": "We'll eat your tendies",
-    "total_clients": "0",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -158,7 +158,7 @@
     "channel_order": "128",
     "channel_name": "Lobby 7",
     "channel_topic": "",
-    "total_clients": "2",
+    "total_clients": "0",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -167,7 +167,7 @@
     "channel_order": "338",
     "channel_name": "Lobby 8",
     "channel_topic": "Sheep Shaggers United",
-    "total_clients": "3",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -194,7 +194,7 @@
     "channel_order": "959",
     "channel_name": "Lobby 11",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -315,9 +315,18 @@
     "channel_needed_subscribe_power": "0"
   },
   {
-    "cid": "18",
+    "cid": "1908",
     "pid": "225",
     "channel_order": "1746",
+    "channel_name": "Iran",
+    "channel_topic": "",
+    "total_clients": "0",
+    "channel_needed_subscribe_power": "0"
+  },
+  {
+    "cid": "18",
+    "pid": "225",
+    "channel_order": "1908",
     "channel_name": "Admin Lobby",
     "channel_topic": "Brits AFK/ Spawn  Room and tendies room",
     "total_clients": "-1",
@@ -1130,7 +1139,7 @@
     "channel_order": "1625",
     "channel_name": "Tellurian Works",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1148,7 +1157,7 @@
     "channel_order": "1634",
     "channel_name": "RoB",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1220,7 +1229,7 @@
     "channel_order": "1674",
     "channel_name": "JUU zavod za distroficare",
     "channel_topic": "",
-    "total_clients": "1",
+    "total_clients": "3",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1283,7 +1292,7 @@
     "channel_order": "1703",
     "channel_name": "AFK",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1310,7 +1319,7 @@
     "channel_order": "1706",
     "channel_name": "Platoon 1",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1632,7 +1641,7 @@
     "cid": "1835",
     "pid": "17",
     "channel_order": "1832",
-    "channel_name": "꧁༒тнє ĜΘĐ ᭄Fαтн��я༒꧂",
+    "channel_name": "꧁༒тнє ĜΘĐ ᭄Fαтнєя༒꧂",
     "channel_topic": "",
     "total_clients": "0",
     "channel_needed_subscribe_power": "0"
@@ -1643,7 +1652,7 @@
     "channel_order": "0",
     "channel_name": "MABAR 1",
     "channel_topic": "POINT BLANK INDONESIA",
-    "total_clients": "4",
+    "total_clients": "0",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -2030,7 +2039,7 @@
     "channel_order": "1885",
     "channel_name": "Finiti e spolverati",
     "channel_topic": "",
-    "total_clients": "1",
+    "total_clients": "0",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -2147,7 +2156,7 @@
     "channel_order": "1900",
     "channel_name": "Die Ziegos",
     "channel_topic": "",
-    "total_clients": "2",
+    "total_clients": "0",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -2183,7 +2192,7 @@
     "channel_order": "1906",
     "channel_name": "Rambazamba",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {

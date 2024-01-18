@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public RakNetTests() : base(nameof(RakNetTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

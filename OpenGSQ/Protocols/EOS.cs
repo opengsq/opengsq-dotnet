@@ -79,7 +79,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="data">The data to send with the matchmaking request.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the matchmaking response.</returns>
-        public async Task<MatchmakingResponse> GetMatchmakingAsync(Dictionary<string, object> data)
+        public async Task<Matchmaking> GetMatchmakingAsync(Dictionary<string, object> data)
         {
             if (_accessToken == null)
             {
@@ -107,7 +107,7 @@ namespace OpenGSQ.Protocols
             HttpResponseMessage response = await client.PostAsync(url, new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json"));
             response.EnsureSuccessStatusCode();
 
-            var responseData = await response.Content.ReadFromJsonAsync<MatchmakingResponse>();
+            var responseData = await response.Content.ReadFromJsonAsync<Matchmaking>();
 
             return responseData;
         }

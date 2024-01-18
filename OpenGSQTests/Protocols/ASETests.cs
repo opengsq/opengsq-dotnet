@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public ASETests() : base(nameof(ASETests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

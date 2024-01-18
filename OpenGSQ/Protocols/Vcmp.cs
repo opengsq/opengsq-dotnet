@@ -34,12 +34,12 @@ namespace OpenGSQ.Protocols
         /// Asynchronously gets the status of the server.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains a StatusResponse object with the server status.</returns>
-        public async Task<StatusResponse> GetStatus()
+        public async Task<Status> GetStatus()
         {
             var response = await SendAndReceive(new byte[] { (byte)'i' });
             using var br = new BinaryReader(new MemoryStream(response), Encoding.UTF8);
 
-            return new StatusResponse
+            return new Status
             {
                 Version = Encoding.UTF8.GetString(br.ReadBytes(12)).Trim('\0'),
                 Password = br.ReadByte() == 1,

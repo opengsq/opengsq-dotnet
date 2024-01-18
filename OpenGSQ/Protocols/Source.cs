@@ -53,7 +53,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns></returns>
         /// <exception cref="SocketException"></exception>
-        public async Task<IInfoResponse> GetInfo()
+        public async Task<PartialInfo> GetInfo()
         {
             var responseData = await ConnectAndSendChallenge(A2S_INFO);
 
@@ -67,7 +67,7 @@ namespace OpenGSQ.Protocols
 
             if (header == (byte)QueryResponse.S2A_INFO_SRC)
             {
-                var source = new SourceInfoResponse
+                var source = new SourceInfo
                 {
                     Protocol = br.ReadByte(),
                     Name = br.ReadStringEx(),
@@ -130,7 +130,7 @@ namespace OpenGSQ.Protocols
             }
             else
             {
-                var goldSource = new GoldSourceInfoResponse
+                var goldSource = new GoldSourceInfo
                 {
                     Address = br.ReadStringEx(),
                     Name = br.ReadStringEx(),
@@ -294,7 +294,7 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = (await udpClient.ReceiveAsync()).Buffer;
+                var responseData = await udpClient.ReceiveAsyncWithTimeout();
                 packets.Add(responseData);
 
                 using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
@@ -384,7 +384,7 @@ namespace OpenGSQ.Protocols
             while (totalPackets == -1 || payloads.Count < totalPackets)
             {
                 // Load the old received packets first, then receive the packets from udpClient
-                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : (await udpClient.ReceiveAsync()).Buffer;
+                var responseData = payloads.Count < packets.Count ? packets[payloads.Count] : await udpClient.ReceiveAsyncWithTimeout();
                 using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
 
                 // Header
@@ -521,18 +521,12 @@ namespace OpenGSQ.Protocols
 
                 List<Packet> packets;
                 var bytes = new byte[0];
-                var buffer = new byte[4096];
                 var response = new StringBuilder();
 
                 while (true)
                 {
-                    // // Receive
-                    int bufferSize = _tcpClient.Client.Receive(buffer);
-
-                    // Concat to last unused bytes
-                    bytes = bytes.Concat(buffer.Take(bufferSize)).ToArray();
-
-                    // bytes = bytes.Concat(await _tcpClient.ReceiveAsync()).ToArray();
+                    // Receive and concat to last unused bytes
+                    bytes = bytes.Concat(await _tcpClient.ReceiveAsync()).ToArray();
 
                     // Get the packets and get the unused bytes
                     (packets, bytes) = GetPackets(bytes);

@@ -3,7 +3,7 @@ namespace OpenGSQ.Responses.RakNet
     /// <summary>
     /// Represents the status response from a Minecraft server.
     /// </summary>
-    public class StatusResponse
+    public class Status
     {
         /// <summary>
         /// Gets or sets the edition of the server (MCPE or MCEE for Education Edition).

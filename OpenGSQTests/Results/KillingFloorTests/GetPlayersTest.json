@@ -1,44 +1,100 @@
 [
   {
-    "Id": 1101,
-    "Name": "[ARG] Zohan",
-    "Ping": 1020,
-    "Score": 1500,
+    "Id": 2359,
+    "Name": "[CHL] KA_LE",
+    "Ping": 48,
+    "Score": 2332,
     "StatsId": 536870912
   },
   {
-    "Id": 1081,
-    "Name": "[USA] daneki",
-    "Ping": 124,
-    "Score": 1547,
+    "Id": 2326,
+    "Name": "[CHL] Kriss_Nemesis",
+    "Ping": 52,
+    "Score": 2489,
     "StatsId": 536870912
   },
   {
-    "Id": 921,
-    "Name": "[BRA] Oruf8",
-    "Ping": 40,
-    "Score": 1500,
+    "Id": 2265,
+    "Name": "[ECU] B[4]CK^",
+    "Ping": 128,
+    "Score": 2485,
     "StatsId": 536870912
   },
   {
-    "Id": 608,
-    "Name": "[BRA] Doctor_King!",
-    "Ping": 20,
-    "Score": 11370,
+    "Id": 2094,
+    "Name": "[PER] FabricioHC",
+    "Ping": 76,
+    "Score": 1805,
     "StatsId": 536870912
   },
   {
-    "Id": 2,
+    "Id": 2080,
+    "Name": "[BOL] m21",
+    "Ping": 100,
+    "Score": 2295,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1534,
+    "Name": "[BRA] BMTVanDorst",
+    "Ping": 12,
+    "Score": 1569,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1146,
+    "Name": "[BRA] Machado_Halloween",
+    "Ping": 4,
+    "Score": 1799,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1106,
+    "Name": "[PER] berby_de_bajoterra__",
+    "Ping": 140,
+    "Score": 1557,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 822,
     "Name": "[ESP] HomerO",
-    "Ping": 200,
-    "Score": 2152,
+    "Ping": 188,
+    "Score": 6849,
     "StatsId": 536870912
   },
   {
-    "Id": 1,
+    "Id": 730,
+    "Name": "[COL] CACHONDOTAN",
+    "Ping": 160,
+    "Score": 2790,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 457,
+    "Name": "[CHL] DAFTY",
+    "Ping": 48,
+    "Score": 2232,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 355,
     "Name": "[BRA] Scarphan",
-    "Ping": 36,
-    "Score": 2267,
+    "Ping": 16,
+    "Score": 799,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 354,
+    "Name": "[PER] El_Azothe",
+    "Ping": 160,
+    "Score": 6122,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 171,
+    "Name": "[ARG] Green",
+    "Ping": 40,
+    "Score": 7425,
     "StatsId": 536870912
   }
 ]

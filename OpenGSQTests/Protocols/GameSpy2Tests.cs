@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public GameSpy2Tests() : base(nameof(GameSpy2Tests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

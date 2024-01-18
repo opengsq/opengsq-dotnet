@@ -1,5 +1,6 @@
 using System;
 using System.Net.Sockets;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace OpenGSQ
@@ -16,22 +17,43 @@ namespace OpenGSQ
         /// <param name="protocolBase">The protocol information.</param>
         /// <param name="data">The data to send.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the response data.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public static async Task<byte[]> CommunicateAsync(this UdpClient udpClient, ProtocolBase protocolBase, byte[] data)
         {
-            // Connect to the server
-            udpClient.Connect(protocolBase.Host, protocolBase.Port);
-
             // Set the timeout
             udpClient.Client.SendTimeout = protocolBase.Timeout;
             udpClient.Client.ReceiveTimeout = protocolBase.Timeout;
 
+            // Connect to the server
+            udpClient.Connect(protocolBase.Host, protocolBase.Port);
+
             // Send the data
             await udpClient.SendAsync(data, data.Length);
 
-            // Receive the response
-            byte[] responseData = (await udpClient.ReceiveAsync()).Buffer;
+            // Receive the data
+            return await udpClient.ReceiveAsyncWithTimeout();
+        }
 
-            return responseData;
+        /// <summary>
+        /// Receives a UDP datagram asynchronously with a timeout.
+        /// </summary>
+        /// <param name="udpClient">The UdpClient to receive from.</param>
+        /// <returns>A byte array containing the received datagram.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
+        public static async Task<byte[]> ReceiveAsyncWithTimeout(this UdpClient udpClient)
+        {
+            Task<UdpReceiveResult> receiveTask = udpClient.ReceiveAsync();
+
+            if (await Task.WhenAny(receiveTask, Task.Delay(udpClient.Client.ReceiveTimeout)) == receiveTask)
+            {
+                // Task completed within timeout.
+                return receiveTask.Result.Buffer;
+            }
+            else
+            {
+                // Task timed out.
+                throw new TimeoutException("The operation has timed out.");
+            }
         }
     }
 
@@ -47,14 +69,15 @@ namespace OpenGSQ
         /// <param name="protocolBase">The protocol information.</param>
         /// <param name="data">The data to send.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the response data.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public static async Task<byte[]> CommunicateAsync(this TcpClient tcpClient, ProtocolBase protocolBase, byte[] data)
         {
-            // Connect to the server
-            await tcpClient.ConnectAsync(protocolBase.Host, protocolBase.Port);
-
             // Set the timeout
             tcpClient.SendTimeout = protocolBase.Timeout;
             tcpClient.ReceiveTimeout = protocolBase.Timeout;
+
+            // Connect to the server
+            await tcpClient.ConnectAsync(protocolBase.Host, protocolBase.Port);
 
             // Send the data
             await tcpClient.SendAsync(data);
@@ -82,16 +105,25 @@ namespace OpenGSQ
         /// </summary>
         /// <param name="tcpClient">The TcpClient to receive data from.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the received data.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public static async Task<byte[]> ReceiveAsync(this TcpClient tcpClient)
         {
+            var cts = new CancellationTokenSource(tcpClient.Client.ReceiveTimeout);
             var buffer = new byte[tcpClient.Client.ReceiveBufferSize];
             var segment = new ArraySegment<byte>(buffer);
-            var result = await tcpClient.Client.ReceiveAsync(segment, SocketFlags.None);
 
-            var receivedBytes = new byte[result];
-            Array.Copy(buffer, receivedBytes, result);
-
-            return receivedBytes;
+            try
+            {
+                var result = await tcpClient.Client.ReceiveAsync(segment, SocketFlags.None, cts.Token);
+                var receivedBytes = new byte[result];
+                Array.Copy(buffer, receivedBytes, result);
+                return receivedBytes;
+            }
+            catch (OperationCanceledException)
+            {
+                // Task timed out.
+                throw new TimeoutException("The operation has timed out.");
+            }
         }
     }
 }

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 
-namespace OpenGSQ.Responses.GameSpy2
+namespace OpenGSQ.Responses.Quake2
 {
     /// <summary>
     /// Represents the status of the server.
     /// </summary>
-    public class StatusResponse
+    public class Status
     {
         /// <summary>
         /// Gets or sets the server information.
@@ -15,11 +15,6 @@ namespace OpenGSQ.Responses.GameSpy2
         /// <summary>
         /// Gets or sets the list of players.
         /// </summary>
-        public List<Dictionary<string, string>> Players { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of teams.
-        /// </summary>
-        public List<Dictionary<string, string>> Teams { get; set; }
+        public List<Player> Players { get; set; }
     }
 }

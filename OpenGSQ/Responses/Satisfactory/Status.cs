@@ -3,7 +3,7 @@ namespace OpenGSQ.Responses.Satisfactory
     /// <summary>
     /// Represents the status response.
     /// </summary>
-    public class StatusResponse
+    public class Status
     {
         /// <summary>
         /// Gets or sets the state.
@@ -20,5 +20,4 @@ namespace OpenGSQ.Responses.Satisfactory
         /// </summary>
         public short BeaconPort { get; set; }
     }
-
 }

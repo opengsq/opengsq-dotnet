@@ -78,12 +78,12 @@ namespace OpenGSQ.Protocols
         /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
         /// <returns>A Status object containing the server information, players, and teams.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public async Task<StatusResponse> GetStatus(bool XServerQuery = true)
+        public async Task<Status> GetStatus(bool XServerQuery = true)
         {
             var responseData = await ConnectAndSend("\\status\\" + (XServerQuery ? "xserverquery" : string.Empty));
             using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
 
-            var status = new StatusResponse
+            var status = new Status
             {
                 KeyValues = new Dictionary<string, string>()
             };
@@ -238,7 +238,7 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = (await udpClient.ReceiveAsync()).Buffer;
+                var responseData = await udpClient.ReceiveAsyncWithTimeout();
 
                 // Try read "queryid" value, if it is the last packet, it cannot read the "queryid" value directly
                 if (!ReadStringReverse(responseData, responseData.Length, out var endIndex, out var queryId))

@@ -11,7 +11,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public Unreal2Tests() : base(nameof(Unreal2Tests))
         {
-            _EnableSave = !false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

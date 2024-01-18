@@ -11,7 +11,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public KillingFloorTests() : base(nameof(KillingFloorTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

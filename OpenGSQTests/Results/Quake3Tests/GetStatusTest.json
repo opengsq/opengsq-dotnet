@@ -1,123 +1,168 @@
 {
   "Info": {
-    "sv_sac": "0",
-    "omnibot_playing": "15",
-    "mod_url": "http://mygamingtalk.com/",
-    "mod_version": "0.9.0",
-    "P": "-212121212121211",
-    "voteFlags": "32504767",
+    "omnibot_playing": "25",
+    "P": "-1212121212121212121212121",
+    "voteFlags": "507903",
     "g_balancedteams": "1",
-    "g_bluelimbotime": "9000",
+    "g_bluelimbotime": "12000",
     "g_redlimbotime": "14000",
-    "gamename": "silEnT",
-    "cm_optimizePatchPlanes": "0",
-    "g_damageXPLevel": "50",
-    "g_damageXP": "1",
-    "g_tyranny": "1",
+    "gamename": "jaymod",
+    "mod_version": "2.2.0",
+    "mod_url": "http://jaymod.clanfu.org",
+    "mod_binary": "linux-release",
+    "sv_uptime": "00d16h29m",
+    "sv_cpu": "Intel(R) Xeon(R) CPU E3-1270 v5",
     "g_axismaxlives": "0",
     "g_alliedmaxlives": "0",
     "g_voteFlags": "0",
     "g_minGameClients": "8",
     "g_needpass": "0",
+    "sv_maxPing": "0",
+    "sv_minPing": "0",
+    "sv_minRate": "0",
     "sv_privateClients": "0",
-    "mapname": "goldrush",
+    "mapname": "supplydepot2",
     "protocol": "84",
-    "g_gametype": "6",
+    "g_gametype": "2",
+    "sv_userInfoFloodProtect": "1",
     "omnibot_enable": "1",
-    "g_antilagDelay": "0",
-    "g_maxlivesRespawnPenalty": "0",
-    "g_maxGameClients": "0",
-    "g_maxConnsPerIP": "3",
     "g_heavyWeaponRestriction": "100",
     "g_antilag": "1",
     "g_maxlives": "0",
     "g_friendlyFire": "0",
-    "sv_floodProtect": "0",
-    "sv_maxPing": "0",
-    "sv_minPing": "0",
+    "sv_floodProtect": "1",
     "sv_dlRate": "100000",
-    "sv_maxRate": "60000",
-    "sv_minRate": "0",
-    "sv_hostname": "F|A SILENT RECRUITING XPS",
-    "timelimit": "30",
-    "sv_maxclients": "40",
-    "version": "ET Legacy v2.77 win-x86 Mar  1 2021"
+    "sv_maxRate": "45000",
+    "sv_hostname": "New Server /connect jay1.clan-fa.com:27960",
+    "timelimit": "15",
+    "sv_maxclients": "60",
+    "version": "ET Legacy v2.81.0 linux-i386 Jan 27 2023"
   },
   "Players": [
     {
-      "Frags": 119,
+      "Frags": 9474,
       "Ping": 0,
-      "Name": "Bortack"
+      "Name": "George"
     },
     {
-      "Frags": 89,
+      "Frags": 8894,
       "Ping": 0,
-      "Name": "CraigChrist"
+      "Name": "Beelz"
     },
     {
-      "Frags": 80,
+      "Frags": 9998,
       "Ping": 0,
-      "Name": "Mungri"
+      "Name": "Chimichanga"
     },
     {
-      "Frags": 142,
+      "Frags": 9141,
       "Ping": 0,
-      "Name": "Nundak"
+      "Name": "Kaolin"
     },
     {
-      "Frags": 100,
+      "Frags": 9503,
       "Ping": 0,
-      "Name": "Tanz"
+      "Name": "HalfH"
     },
     {
-      "Frags": 197,
+      "Frags": 8387,
       "Ping": 0,
-      "Name": "Vokur"
+      "Name": "Ed"
     },
     {
-      "Frags": 129,
+      "Frags": 9854,
       "Ping": 0,
-      "Name": "Oysterhead"
+      "Name": "Razor"
     },
     {
-      "Frags": 234,
+      "Frags": 8621,
+      "Ping": 0,
+      "Name": "Amadi"
+    },
+    {
+      "Frags": 9965,
       "Ping": 0,
       "Name": "Brad"
     },
     {
-      "Frags": 110,
+      "Frags": 8779,
       "Ping": 0,
-      "Name": "Hitnrun"
+      "Name": "Bortack"
     },
     {
-      "Frags": 141,
+      "Frags": 8550,
       "Ping": 0,
-      "Name": "Flint"
+      "Name": "Blackadder"
     },
     {
-      "Frags": 77,
+      "Frags": 8176,
       "Ping": 0,
-      "Name": "SpecialEd"
+      "Name": "Nandet"
     },
     {
-      "Frags": 140,
-      "Ping": 0,
-      "Name": "Bean"
-    },
-    {
-      "Frags": 104,
-      "Ping": 0,
-      "Name": "Aimless"
-    },
-    {
-      "Frags": 125,
+      "Frags": 8847,
       "Ping": 0,
       "Name": "Sean"
     },
     {
-      "Frags": 126,
+      "Frags": 8200,
       "Ping": 0,
-      "Name": "Richard"
+      "Name": "Morg"
+    },
+    {
+      "Frags": 10993,
+      "Ping": 0,
+      "Name": "Nohope"
+    },
+    {
+      "Frags": 8216,
+      "Ping": 0,
+      "Name": "Whitt"
+    },
+    {
+      "Frags": 11469,
+      "Ping": 0,
+      "Name": "Newbie"
+    },
+    {
+      "Frags": 8265,
+      "Ping": 0,
+      "Name": "Stinger"
+    },
+    {
+      "Frags": 9054,
+      "Ping": 0,
+      "Name": "Cledus"
+    },
+    {
+      "Frags": 8379,
+      "Ping": 0,
+      "Name": "Flint"
+    },
+    {
+      "Frags": 11017,
+      "Ping": 0,
+      "Name": "Hitnrun"
+    },
+    {
+      "Frags": 7778,
+      "Ping": 0,
+      "Name": "Wens"
+    },
+    {
+      "Frags": 4905,
+      "Ping": 0,
+      "Name": "NoAmmo"
+    },
+    {
+      "Frags": 3649,
+      "Ping": 0,
+      "Name": "Argo"
+    },
+    {
+      "Frags": 934,
+      "Ping": 0,
+      "Name": "Walter"
     }
   ]
 }

@@ -11,7 +11,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public WONTests() : base(nameof(WONTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

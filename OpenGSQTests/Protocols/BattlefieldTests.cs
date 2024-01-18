@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public BattlefieldTests() : base(nameof(BattlefieldTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

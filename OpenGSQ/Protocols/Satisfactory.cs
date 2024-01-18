@@ -30,7 +30,7 @@ namespace OpenGSQ.Protocols
         /// Gets the status asynchronously.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the StatusResponse.</returns>
-        public async Task<StatusResponse> GetStatus()
+        public async Task<Status> GetStatus()
         {
             // https://github.com/dopeghoti/SF-Tools/blob/main/Protocol.md
             byte[] request = new byte[] { 0, 0 }.Concat(Encoding.ASCII.GetBytes("opengsq")).ToArray();
@@ -48,7 +48,7 @@ namespace OpenGSQ.Protocols
             br.ReadByte();  // Protocol version
             br.ReadBytes(8);  // Request data
 
-            var result = new StatusResponse
+            var result = new Status
             {
                 State = br.ReadByte(),
                 Version = br.ReadInt32(),

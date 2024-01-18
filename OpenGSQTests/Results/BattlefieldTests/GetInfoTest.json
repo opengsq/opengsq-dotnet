@@ -1,6 +1,6 @@
 {
   "hostname": "[JAH] Warriors #01 - Metro Only - All Weapons - 64 Slots",
-  "numplayers": 64,
+  "numplayers": 32,
   "maxplayers": 64,
   "gametype": "ConquestLarge0",
   "map": "MP_Subway",

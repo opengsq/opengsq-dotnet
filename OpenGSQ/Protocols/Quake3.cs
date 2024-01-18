@@ -69,11 +69,11 @@ namespace OpenGSQ.Protocols
         /// <param name="stripColor">A boolean indicating whether to remove color codes from the server name and player names.</param>
         /// <returns>A Status object containing the server information and players.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public async Task<StatusResponse> GetStatus(bool stripColor = true)
+        public async Task<Status> GetStatus(bool stripColor = true)
         {
             using var br = await GetResponseBinaryReader();
 
-            var status = new StatusResponse
+            var status = new Status
             {
                 Info = ParseInfo(br),
                 Players = ParsePlayers(br),

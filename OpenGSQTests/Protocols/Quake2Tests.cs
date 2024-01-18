@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public Quake2Tests() : base(nameof(Quake2Tests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

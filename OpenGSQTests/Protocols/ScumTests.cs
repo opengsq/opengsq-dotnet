@@ -11,7 +11,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public ScumTests() : base(nameof(ScumTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

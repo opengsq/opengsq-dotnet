@@ -40,7 +40,7 @@ namespace OpenGSQ.Protocols
         /// <param name="masterServers">The list of master servers to query.</param>
         /// <returns>The status of the server.</returns>
         /// <exception cref="ServerNotFoundException">Thrown when the server is not found in the list of master servers.</exception>
-        public async Task<StatusResponse> GetStatus(List<StatusResponse> masterServers = null)
+        public async Task<Status> GetStatus(List<Status> masterServers = null)
         {
             var ip = (await GetIPEndPoint()).Address.ToString();
 
@@ -62,7 +62,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>A list of servers from the master servers.</returns>
         /// <exception cref="Exception">Thrown when failed to connect to any of the master servers.</exception>
-        public static async Task<List<StatusResponse>> QueryMasterServers()
+        public static async Task<List<Status>> QueryMasterServers()
         {
             foreach (var (host, port) in _masterServers)
             {
@@ -75,7 +75,7 @@ namespace OpenGSQ.Protocols
 
                     var total = -1;
                     var response = new byte[0];
-                    var servers = new List<StatusResponse>();
+                    var servers = new List<Status>();
 
                     while (total == -1 || servers.Count < total)
                     {
@@ -91,7 +91,7 @@ namespace OpenGSQ.Protocols
                         // server bytes length always 127
                         while (br.BaseStream.Length - br.BaseStream.Position >= 127)
                         {
-                            var statusResponse = new StatusResponse
+                            var statusResponse = new Status
                             {
                                 Ip = string.Join(".", br.ReadBytes(4).Reverse().Select(b => b.ToString())),
                                 Port = br.ReadInt16(),

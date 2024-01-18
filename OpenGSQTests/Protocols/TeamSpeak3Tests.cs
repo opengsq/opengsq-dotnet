@@ -11,7 +11,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public TeamSpeak3Tests() : base(nameof(TeamSpeak3Tests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

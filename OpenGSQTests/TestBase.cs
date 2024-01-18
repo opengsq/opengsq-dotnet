@@ -8,22 +8,22 @@ using System.Threading;
 
 namespace OpenGSQTests
 {
-    public abstract class TestBase
+    public abstract partial class TestBase
     {
         /// <summary>
         /// Set save the result to file
         /// </summary>
-        protected bool _EnableSave;
+        protected bool EnableSave = false;
 
         /// <summary>
         /// Delay on every test case since too quick may causes timeout
         /// </summary>
-        protected int _DelayPerTest = 0;
+        protected int DelayPerTest = 0;
 
         /// <summary>
         /// OpenGSQTests Results Path
         /// </summary>
-        public string ResultsPath = Path.Combine(Regex.Match(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ".+OpenGSQTests").Value, "Results");
+        public string ResultsPath = Path.Combine(MyRegex().Match(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)).Value, "Results");
 
         /// <summary>
         /// Protocol result path
@@ -64,14 +64,17 @@ namespace OpenGSQTests
                 result = JsonSerializer.Serialize(result, result.GetType(), Options);
             }
 
-            if (_EnableSave)
+            if (EnableSave)
             {
                 File.WriteAllText(Path.Combine(_protocolPath, $"{functionName}.{(isJson ? "json" : "txt")}"), result.ToString());
             }
 
             Console.WriteLine(result.ToString());
 
-            Thread.Sleep(_DelayPerTest);
+            Thread.Sleep(DelayPerTest);
         }
+
+        [GeneratedRegex(".+OpenGSQTests")]
+        private static partial Regex MyRegex();
     }
 }

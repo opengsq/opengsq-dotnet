@@ -6,36 +6,12 @@
   "map": "None",
   "version": "1.6",
   "password": "0",
-  "numplayers": "5",
+  "numplayers": "14",
   "maxplayers": "120",
   "rules": {},
   "players": [
     {
-      "name": "SAMETNEXX",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "56",
-      "time": ""
-    },
-    {
-      "name": "Gidikla_Beni",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "93",
-      "time": ""
-    },
-    {
-      "name": "anil",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "53",
-      "time": ""
-    },
-    {
-      "name": "AFFETMEM",
+      "name": "EFES",
       "team": "",
       "skin": "",
       "score": "",
@@ -43,11 +19,107 @@
       "time": ""
     },
     {
-      "name": "dyperpro31",
+      "name": "YAKUPTV",
       "team": "",
       "skin": "",
       "score": "",
-      "ping": "62",
+      "ping": "176",
+      "time": ""
+    },
+    {
+      "name": "FatSqueegee12",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "66",
+      "time": ""
+    },
+    {
+      "name": "LethalBaobab76",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "66",
+      "time": ""
+    },
+    {
+      "name": "Emir",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "70",
+      "time": ""
+    },
+    {
+      "name": "Abbas",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "66",
+      "time": ""
+    },
+    {
+      "name": "Abdullah",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "60",
+      "time": ""
+    },
+    {
+      "name": "Pasa",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "76",
+      "time": ""
+    },
+    {
+      "name": "filistin",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "70",
+      "time": ""
+    },
+    {
+      "name": "filistindusmani",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "70",
+      "time": ""
+    },
+    {
+      "name": "israil",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "54",
+      "time": ""
+    },
+    {
+      "name": "testoalpy",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "75",
+      "time": ""
+    },
+    {
+      "name": "SeriousMaelstrom89",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "79",
+      "time": ""
+    },
+    {
+      "name": "Berke",
+      "team": "",
+      "skin": "",
+      "score": "",
+      "ping": "66",
       "time": ""
     }
   ]

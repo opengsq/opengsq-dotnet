@@ -16,7 +16,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public EOSTests() : base(nameof(EOSTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

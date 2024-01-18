@@ -38,13 +38,13 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>A Status object containing the server information, players, and teams.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public async Task<StatusResponse> GetStatus()
+        public async Task<Status> GetStatus()
         {
             using var udpClient = new UdpClient();
             var responseData = await ConnectAndSendPackets(udpClient);
             using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
 
-            return new StatusResponse
+            return new Status
             {
                 // Save Status Info
                 Info = GetInfo(br),
@@ -72,7 +72,7 @@ namespace OpenGSQ.Protocols
                 await udpClient.SendAsync(requestData, requestData.Length);
 
                 // Packet 2: First response
-                responseData = (await udpClient.ReceiveAsync()).Buffer;
+                responseData = await udpClient.ReceiveAsyncWithTimeout();
 
                 // Get challenge
                 if (int.TryParse(Encoding.ASCII.GetString(responseData.Skip(5).ToArray()).Trim(), out int result) && result != 0)
@@ -104,7 +104,7 @@ namespace OpenGSQ.Protocols
 
             do
             {
-                var responseData = (await udpClient.ReceiveAsync()).Buffer;
+                var responseData = await udpClient.ReceiveAsyncWithTimeout();
 
                 using var br = new BinaryReader(new MemoryStream(responseData), Encoding.UTF8);
                 var header = br.ReadByte();

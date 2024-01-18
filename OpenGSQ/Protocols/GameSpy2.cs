@@ -34,14 +34,14 @@ namespace OpenGSQ.Protocols
         /// <param name="request">The type of information to request.</param>
         /// <returns>A Status object containing the requested information.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public async Task<StatusResponse> GetStatus(Request request = Request.Info | Request.Players | Request.Teams)
+        public async Task<Status> GetStatus(Request request = Request.Info | Request.Players | Request.Teams)
         {
             using var udpClient = new UdpClient();
             var requestData = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(request)).ToArray();
             var responseData = await udpClient.CommunicateAsync(this, requestData);
 
             using var br = new BinaryReader(new MemoryStream(responseData.Skip(5).ToArray()), Encoding.UTF8);
-            var status = new StatusResponse();
+            var status = new Status();
 
             // Save Response Info
             if (request.HasFlag(Request.Info))

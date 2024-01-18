@@ -15,7 +15,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public Doom3Tests() : base(nameof(Doom3Tests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

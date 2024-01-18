@@ -12,7 +12,7 @@ namespace OpenGSQ.Protocols.Tests
 
         public FiveMTests() : base(nameof(FiveMTests))
         {
-            _EnableSave = false;
+            // EnableSave = true;
         }
 
         [TestMethod()]

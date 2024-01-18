@@ -55,11 +55,11 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>A Status object containing the server information and players.</returns>
         /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
-        public async Task<StatusResponse> GetStatus()
+        public async Task<Status> GetStatus()
         {
             using var br = await GetResponseBinaryReader();
 
-            return new StatusResponse
+            return new Status
             {
                 Info = ParseInfo(br),
                 Players = ParsePlayers(br),

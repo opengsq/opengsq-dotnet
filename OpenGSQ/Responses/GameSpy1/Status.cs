@@ -5,7 +5,7 @@ namespace OpenGSQ.Responses.GameSpy1
     /// <summary>
     /// Server Status
     /// </summary>
-    public class StatusResponse
+    public class Status
     {
         /// <summary>
         /// Indicates whether the response is XServerQuery or old response.

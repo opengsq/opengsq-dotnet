@@ -15,8 +15,8 @@ namespace OpenGSQ.Protocols.Tests
 
         public GameSpy1Tests() : base(nameof(GameSpy1Tests))
         {
-            _EnableSave = false;
-            _DelayPerTest = 900;
+            // EnableSave = true;
+            DelayPerTest = 900;
         }
 
         [TestMethod()]

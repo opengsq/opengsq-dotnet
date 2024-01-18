@@ -1,44 +1,100 @@
 [
   {
-    "clid": "65324",
+    "clid": "4188",
     "cid": "122",
-    "client_database_id": "76226",
-    "client_nickname": "Luc",
+    "client_database_id": "56950",
+    "client_nickname": "Unknown",
+    "client_type": "1"
+  },
+  {
+    "clid": "4113",
+    "cid": "1627",
+    "client_database_id": "61925",
+    "client_nickname": "[-T.W-] Allucination",
     "client_type": "0"
   },
   {
-    "clid": "65279",
-    "cid": "50",
-    "client_database_id": "74940",
-    "client_nickname": "Foxik",
+    "clid": "3865",
+    "cid": "1679",
+    "client_database_id": "54781",
+    "client_nickname": "todorovic",
     "client_type": "0"
   },
   {
-    "clid": "65262",
-    "cid": "122",
-    "client_database_id": "74418",
-    "client_nickname": "WARPOY",
+    "clid": "3788",
+    "cid": "1828",
+    "client_database_id": "73562",
+    "client_nickname": "Parham",
     "client_type": "0"
   },
   {
-    "clid": "65260",
-    "cid": "338",
-    "client_database_id": "77009",
-    "client_nickname": "Thug",
+    "clid": "3670",
+    "cid": "127",
+    "client_database_id": "41432",
+    "client_nickname": "Lucas/ Alfanabeto",
     "client_type": "0"
   },
   {
-    "clid": "65032",
-    "cid": "338",
-    "client_database_id": "77041",
-    "client_nickname": "Gollum",
+    "clid": "2874",
+    "cid": "1627",
+    "client_database_id": "61926",
+    "client_nickname": "[-T.W-] Fragwit",
     "client_type": "0"
   },
   {
-    "clid": "65026",
-    "cid": "1877",
-    "client_database_id": "77392",
-    "client_nickname": "imran",
+    "clid": "2805",
+    "cid": "1679",
+    "client_database_id": "76305",
+    "client_nickname": "kmalbasic",
+    "client_type": "0"
+  },
+  {
+    "clid": "2193",
+    "cid": "1635",
+    "client_database_id": "71629",
+    "client_nickname": "kAy",
+    "client_type": "0"
+  },
+  {
+    "clid": "2138",
+    "cid": "1828",
+    "client_database_id": "73733",
+    "client_nickname": "Gripex",
+    "client_type": "0"
+  },
+  {
+    "clid": "1990",
+    "cid": "1717",
+    "client_database_id": "67183",
+    "client_nickname": "Jafostepah",
+    "client_type": "0"
+  },
+  {
+    "clid": "1753",
+    "cid": "1",
+    "client_database_id": "2",
+    "client_nickname": "Echo419",
+    "client_type": "0"
+  },
+  {
+    "clid": "2271",
+    "cid": "1635",
+    "client_database_id": "71726",
+    "client_nickname": "Udy",
+    "client_type": "0"
+  },
+  {
+    "clid": "1328",
+    "cid": "1",
+    "client_database_id": "25219",
+    "client_nickname": "Hooty",
+    "client_type": "0"
+  },
+  {
+    "clid": "826",
+    "cid": "1907",
+    "client_database_id": "77367",
+    "client_nickname": "Jonte",
     "client_type": "0"
   },
   {
@@ -49,38 +105,10 @@
     "client_type": "0"
   },
   {
-    "clid": "65004",
-    "cid": "1877",
-    "client_database_id": "76504",
-    "client_nickname": "Dung",
-    "client_type": "0"
-  },
-  {
-    "clid": "64844",
-    "cid": "714",
-    "client_database_id": "77273",
-    "client_nickname": "NOVELA",
-    "client_type": "0"
-  },
-  {
-    "clid": "65042",
-    "cid": "1877",
-    "client_database_id": "76085",
-    "client_nickname": "aaa",
-    "client_type": "0"
-  },
-  {
     "clid": "64645",
     "cid": "122",
     "client_database_id": "73041",
     "client_nickname": "TeamSpeakUser1",
-    "client_type": "0"
-  },
-  {
-    "clid": "64608",
-    "cid": "43",
-    "client_database_id": "72281",
-    "client_nickname": "XoRneT",
     "client_type": "0"
   },
   {
@@ -91,20 +119,6 @@
     "client_type": "0"
   },
   {
-    "clid": "64355",
-    "cid": "714",
-    "client_database_id": "63841",
-    "client_nickname": "hardcoreki11er",
-    "client_type": "0"
-  },
-  {
-    "clid": "64192",
-    "cid": "1886",
-    "client_database_id": "76370",
-    "client_nickname": "erclaudio",
-    "client_type": "0"
-  },
-  {
     "clid": "63539",
     "cid": "1",
     "client_database_id": "25219",
@@ -112,24 +126,10 @@
     "client_type": "0"
   },
   {
-    "clid": "63471",
-    "cid": "43",
-    "client_database_id": "77350",
-    "client_nickname": "Vlad",
-    "client_type": "0"
-  },
-  {
-    "clid": "65358",
-    "cid": "1877",
-    "client_database_id": "76217",
-    "client_nickname": "toket gede",
-    "client_type": "0"
-  },
-  {
-    "clid": "62976",
-    "cid": "1679",
-    "client_database_id": "54773",
-    "client_nickname": "OganjKaramel",
+    "clid": "1441",
+    "cid": "714",
+    "client_database_id": "63841",
+    "client_nickname": "hardcoreki11er",
     "client_type": "0"
   },
   {
@@ -138,20 +138,6 @@
     "client_database_id": "2",
     "client_nickname": "Ranksystem - Verification",
     "client_type": "1"
-  },
-  {
-    "clid": "62161",
-    "cid": "1901",
-    "client_database_id": "77165",
-    "client_nickname": "Nigga",
-    "client_type": "0"
-  },
-  {
-    "clid": "62158",
-    "cid": "1901",
-    "client_database_id": "77144",
-    "client_nickname": "BigMac",
-    "client_type": "0"
   },
   {
     "clid": "58404",
@@ -210,6 +196,13 @@
     "client_type": "0"
   },
   {
+    "clid": "3155",
+    "cid": "1704",
+    "client_database_id": "76389",
+    "client_nickname": "4k1s4m3",
+    "client_type": "0"
+  },
+  {
     "clid": "44840",
     "cid": "1539",
     "client_database_id": "56937",
@@ -256,6 +249,13 @@
     "cid": "1535",
     "client_database_id": "56944",
     "client_nickname": "Pappa Smurf",
+    "client_type": "0"
+  },
+  {
+    "clid": "3148",
+    "cid": "1846",
+    "client_database_id": "77000",
+    "client_nickname": "pho bang mi heau curry",
     "client_type": "0"
   },
   {
@@ -357,13 +357,6 @@
     "client_type": "0"
   },
   {
-    "clid": "65389",
-    "cid": "122",
-    "client_database_id": "56950",
-    "client_nickname": "Unknown",
-    "client_type": "1"
-  },
-  {
     "clid": "24498",
     "cid": "1535",
     "client_database_id": "59458",
@@ -403,20 +396,6 @@
     "cid": "10",
     "client_database_id": "31566",
     "client_nickname": "Hans",
-    "client_type": "0"
-  },
-  {
-    "clid": "10589",
-    "cid": "1",
-    "client_database_id": "2",
-    "client_nickname": "Echo419",
-    "client_type": "0"
-  },
-  {
-    "clid": "63624",
-    "cid": "605",
-    "client_database_id": "77215",
-    "client_nickname": "Demizon",
     "client_type": "0"
   },
   {
@@ -567,6 +546,13 @@
     "client_type": "0"
   },
   {
+    "clid": "1300",
+    "cid": "122",
+    "client_database_id": "77402",
+    "client_nickname": "21savage",
+    "client_type": "0"
+  },
+  {
     "clid": "109",
     "cid": "1263",
     "client_database_id": "44076",
@@ -578,6 +564,13 @@
     "cid": "1220",
     "client_database_id": "43012",
     "client_nickname": "Rock Radio",
+    "client_type": "0"
+  },
+  {
+    "clid": "901",
+    "cid": "1679",
+    "client_database_id": "71571",
+    "client_nickname": "ShortOne",
     "client_type": "0"
   },
   {
@@ -693,17 +686,17 @@
     "client_type": "0"
   },
   {
+    "clid": "2067",
+    "cid": "1717",
+    "client_database_id": "67155",
+    "client_nickname": "divad_4",
+    "client_type": "0"
+  },
+  {
     "clid": "82",
     "cid": "1546",
     "client_database_id": "57099",
     "client_nickname": "Ich Bin Besser",
-    "client_type": "0"
-  },
-  {
-    "clid": "64791",
-    "cid": "1828",
-    "client_database_id": "76003",
-    "client_nickname": "TeamSpeakUser11",
     "client_type": "0"
   },
   {
@@ -746,13 +739,6 @@
     "cid": "1263",
     "client_database_id": "71486",
     "client_nickname": "jeff",
-    "client_type": "0"
-  },
-  {
-    "clid": "62393",
-    "cid": "1828",
-    "client_database_id": "73733",
-    "client_nickname": "Gripex",
     "client_type": "0"
   },
   {

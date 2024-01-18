@@ -3,7 +3,7 @@ namespace OpenGSQ.Responses.Scum
     /// <summary>
     /// Represents the response status of a server.
     /// </summary>
-    public class StatusResponse
+    public class Status
     {
         /// <summary>
         /// Gets or sets the IP address of the server.
