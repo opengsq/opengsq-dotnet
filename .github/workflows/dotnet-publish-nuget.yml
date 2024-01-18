@@ -6,20 +6,19 @@ on:
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET 7
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7
-    - name: Build
-      run: dotnet build OpenGSQ -c Release
-    - name: Create the package
-      run: dotnet pack OpenGSQ -c Release
-    - name: Publish the package to nuget.org
-      run: dotnet nuget push OpenGSQ/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
+      - uses: actions/checkout@v4
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8
+      - name: Build
+        run: dotnet build OpenGSQ -c Release
+      - name: Create the package
+        run: dotnet pack OpenGSQ -c Release
+      - name: Publish the package to nuget.org
+        run: dotnet nuget push OpenGSQ/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN -s https://api.nuget.org/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_TOKEN }}
