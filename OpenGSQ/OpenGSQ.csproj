@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <AssemblyTitle>OpenGSQ</AssemblyTitle>
-    <VersionPrefix>1.0.0</VersionPrefix>
-    <Version>1.3.0</Version>
+    <VersionPrefix>2.0.0</VersionPrefix>
+    <Version>2.0.0</Version>
     <Authors>OpenGSQ, BattlefieldDuck</Authors>
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>OpenGSQ</AssemblyName>
@@ -12,14 +12,14 @@
     <PackageProjectUrl>https://github.com/opengsq/opengsq-dotnet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/opengsq/opengsq-dotnet</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Description>.NET library for querying game servers</Description>
-    <PackageTags>game, csharp, server-query, opengsq, game-server-query</PackageTags>
+    <Description>.NET library designed for querying game servers. It supports 23 different query protocols.</Description>
+    <PackageTags>game, minecraft, csharp, source, quake, teamspeak3, eos, gamespy, doom3, fivem, ase, server-query, opengsq, game-server-query, unreal2</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SharpZipLib" Version="1.3.2" />
+    <PackageReference Include="SharpZipLib" Version="1.4.2" />
     <PackageReference Include="System.Net.Http.Json" Version="8.0.0" />
     <PackageReference Include="System.Text.Json" Version="8.0.1" />
   </ItemGroup>
