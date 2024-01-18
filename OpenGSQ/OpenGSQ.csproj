@@ -11,6 +11,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/opengsq/opengsq-dotnet</PackageProjectUrl>
     <RepositoryUrl>https://github.com/opengsq/opengsq-dotnet</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Description>.NET library designed for querying game servers. It supports 23 different query protocols.</Description>
     <PackageTags>game, minecraft, csharp, source, quake, teamspeak3, eos, gamespy, doom3, fivem, ase, server-query, opengsq, game-server-query, unreal2</PackageTags>
@@ -26,6 +27,10 @@
 
   <ItemGroup>
     <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\README.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
