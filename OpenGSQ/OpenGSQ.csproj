@@ -1,4 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <NetCoreAppCurrent>net8.0</NetCoreAppCurrent>
+    <NetCoreAppPrevious>net7.0</NetCoreAppPrevious>
+    <NetCoreAppMinimum>net6.0</NetCoreAppMinimum>
+    <NetFrameworkMinimum>net462</NetFrameworkMinimum>
+  </PropertyGroup>
 
   <PropertyGroup>
     <AssemblyTitle>OpenGSQ</AssemblyTitle>
@@ -17,13 +23,6 @@
     <PackageTags>game, minecraft, csharp, source, quake, teamspeak3, eos, gamespy, doom3, fivem, ase, server-query, opengsq, game-server-query, unreal2</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <NetCoreAppCurrent>net8.0</NetCoreAppCurrent>
-    <NetCoreAppPrevious>net7.0</NetCoreAppPrevious>
-    <NetCoreAppMinimum>net6.0</NetCoreAppMinimum>
-    <NetFrameworkMinimum>net462</NetFrameworkMinimum>
   </PropertyGroup>
 
   <ItemGroup>
