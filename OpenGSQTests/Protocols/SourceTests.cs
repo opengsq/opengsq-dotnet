@@ -41,11 +41,11 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public async Task RemoteConsoleTest()
         {
-            using var remoteConsole = new Source.RemoteConsole("122.128.109.245", 27010);
+            using var remoteConsole = new Source.RemoteConsole("", 27010);
 
             try
             {
-                await remoteConsole.Authenticate("n97h79b86g68");
+                await remoteConsole.Authenticate("");
 
                 string result = await remoteConsole.SendCommand("cvarlist");
 
