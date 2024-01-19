@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using OpenGSQ.Exceptions;
 using OpenGSQ.Responses.Unreal2;
 
 namespace OpenGSQ.Protocols
@@ -18,17 +19,17 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// Represents the byte value for details.
         /// </summary>
-        protected const byte _DETAILS = 0x00;
+        protected const byte DETAILS = 0x00;
 
         /// <summary>
         /// Represents the byte value for rules.
         /// </summary>
-        protected const byte _RULES = 0x01;
+        protected const byte RULES = 0x01;
 
         /// <summary>
         /// Represents the byte value for players.
         /// </summary>
-        protected const byte _PLAYERS = 0x02;
+        protected const byte PLAYERS = 0x02;
 
         /// <summary>
         /// Initializes a new instance of the Unreal2 class.
@@ -42,9 +43,10 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>The details of the server.</returns>
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetDetails()
         {
-            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _DETAILS });
+            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, DETAILS });
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -52,13 +54,9 @@ namespace OpenGSQ.Protocols
                 br.ReadBytes(4);
 
                 byte header = br.ReadByte();
+                InvalidPacketException.ThrowIfNotEqual(header, DETAILS);
 
-                if (header != _DETAILS)
-                {
-                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_DETAILS}.");
-                }
-
-                var details = new Status
+                return new Status
                 {
                     ServerId = br.ReadInt32(),
                     ServerIP = br.ReadString(),
@@ -73,8 +71,6 @@ namespace OpenGSQ.Protocols
                     Flags = br.ReadInt32(),
                     Skill = ReadString(br)
                 };
-
-                return details;
             }
         }
 
@@ -83,9 +79,10 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>The rules of the server.</returns>
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Dictionary<string, object>> GetRules()
         {
-            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _RULES });
+            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, RULES });
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -93,16 +90,12 @@ namespace OpenGSQ.Protocols
                 br.ReadBytes(4);
 
                 byte header = br.ReadByte();
-
-                if (header != _RULES)
-                {
-                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_RULES}.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, RULES);
 
                 var rules = new Dictionary<string, object>();
                 var mutators = new List<string>();
 
-                while (br.BaseStream.Position != br.BaseStream.Length)
+                while (!br.IsEnd())
                 {
                     string key = ReadString(br);
                     string val = ReadString(br);
@@ -128,9 +121,10 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>A list of players of the server.</returns>
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<List<Player>> GetPlayers()
         {
-            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _PLAYERS });
+            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, PLAYERS });
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -138,15 +132,11 @@ namespace OpenGSQ.Protocols
                 br.ReadBytes(4);
 
                 byte header = br.ReadByte();
-
-                if (header != _PLAYERS)
-                {
-                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_PLAYERS}.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, PLAYERS);
 
                 var players = new List<Player>();
 
-                while (br.BaseStream.Position != br.BaseStream.Length)
+                while (!br.IsEnd())
                 {
                     var player = new Player
                     {

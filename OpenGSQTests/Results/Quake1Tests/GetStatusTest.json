@@ -6,8 +6,7 @@
     "hostname": "[BOTS] CustomTF For The People [BOTS]",
     "community": "https://discord.gg/fp9sSZ5",
     "admin/dev": "�Pulse����-",
-    "watervis": "0",
-    "n": "34",
+    "n": "24",
     "rj": "2",
     "curse": "5",
     "deathmatch": "3",
@@ -18,86 +17,97 @@
     "maxspectators": "16",
     "samelevel": "0",
     "money": "11000",
-    "map": "spit2"
+    "map": "2fort5p",
+    "watervis": "1"
   },
   "Players": [
     {
-      "Id": 450,
-      "Score": 0,
-      "Time": 21,
-      "Ping": 807,
-      "Name": "Gypsy",
-      "Skin": "tf_demo",
-      "Color1": 4,
-      "Color2": 4
-    },
-    {
-      "Id": 451,
-      "Score": 0,
-      "Time": 21,
-      "Ping": 807,
-      "Name": "Dot Matrix",
-      "Skin": "tf_demo",
-      "Color1": 13,
-      "Color2": 13
-    },
-    {
-      "Id": 452,
+      "Id": 840,
       "Score": -1,
-      "Time": 21,
+      "Time": 49,
       "Ping": 807,
-      "Name": "David",
-      "Skin": "tf_demo",
-      "Color1": 13,
-      "Color2": 13
-    },
-    {
-      "Id": 453,
-      "Score": -1,
-      "Time": 21,
-      "Ping": 807,
-      "Name": "RoboCop",
-      "Skin": "tf_demo",
-      "Color1": 4,
-      "Color2": 4
-    },
-    {
-      "Id": 454,
-      "Score": -1,
-      "Time": 21,
-      "Ping": 807,
-      "Name": "Hadaly",
+      "Name": "Johnny 5",
       "Skin": "tf_medic",
       "Color1": 13,
       "Color2": 13
     },
     {
-      "Id": 455,
+      "Id": 841,
       "Score": -1,
-      "Time": 21,
+      "Time": 49,
       "Ping": 807,
-      "Name": "Data",
+      "Name": "Lore",
+      "Skin": "tf_snipe",
+      "Color1": 4,
+      "Color2": 4
+    },
+    {
+      "Id": 842,
+      "Score": 0,
+      "Time": 49,
+      "Ping": 807,
+      "Name": "Hadaly",
       "Skin": "tf_pyro",
-      "Color1": 4,
-      "Color2": 4
+      "Color1": 13,
+      "Color2": 13
     },
     {
-      "Id": 448,
+      "Id": 843,
       "Score": -1,
-      "Time": 21,
+      "Time": 48,
       "Ping": 807,
-      "Name": "Vi",
-      "Skin": "tf_sold",
-      "Color1": 4,
-      "Color2": 4
-    },
-    {
-      "Id": 449,
-      "Score": -1,
-      "Time": 21,
-      "Ping": 807,
-      "Name": "Kryten",
+      "Name": "Jerry",
       "Skin": "tf_scout",
+      "Color1": 4,
+      "Color2": 4
+    },
+    {
+      "Id": 844,
+      "Score": 0,
+      "Time": 48,
+      "Ping": 807,
+      "Name": "Governator",
+      "Skin": "tf_medic",
+      "Color1": 13,
+      "Color2": 13
+    },
+    {
+      "Id": 845,
+      "Score": -1,
+      "Time": 48,
+      "Ping": 807,
+      "Name": "Marvin",
+      "Skin": "tf_snipe",
+      "Color1": 13,
+      "Color2": 13
+    },
+    {
+      "Id": 846,
+      "Score": 1,
+      "Time": 48,
+      "Ping": 807,
+      "Name": "RoboCop",
+      "Skin": "tf_eng",
+      "Color1": 4,
+      "Color2": 4
+    },
+    {
+      "Id": 847,
+      "Score": 0,
+      "Time": 5,
+      "Ping": 178,
+      "Name": "PC",
+      "Skin": "",
+      "Color1": 11,
+      "Color2": 2
+    },
+    {
+      "Id": 839,
+      "Score": -1,
+      "Time": 49,
+      "Ping": 807,
+      "Name": "Ash",
+      "Skin": "tf_snipe",
       "Color1": 4,
       "Color2": 4
     }

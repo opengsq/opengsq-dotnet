@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -37,6 +38,8 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="stripColor">Whether to strip color codes from the returned information.</param>
         /// <returns>A dictionary containing the server information.</returns>
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Dictionary<string, object>> GetInfo(bool stripColor = true)
         {
             byte[] request = new byte[] { 0xFF, 0xFF, 0x67, 0x65, 0x74, 0x49, 0x6E, 0x66, 0x6F, 0x00, 0x6F, 0x67, 0x73, 0x71, 0x00 };
@@ -47,11 +50,7 @@ namespace OpenGSQ.Protocols
                 br.ReadBytes(2); // Skip 2 bytes
 
                 string header = br.ReadStringEx();
-
-                if (header != "infoResponse")
-                {
-                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: infoResponse.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, "infoResponse");
 
                 // Read challenge
                 br.ReadBytes(4);

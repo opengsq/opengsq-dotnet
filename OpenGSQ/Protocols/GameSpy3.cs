@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.GameSpy2;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -37,7 +37,8 @@ namespace OpenGSQ.Protocols
         /// Retrieves information about the server including Info, Players, and Teams.
         /// </summary>
         /// <returns>A Status object containing the server information, players, and teams.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus()
         {
             byte[] response = await ConnectAndSendPackets();
@@ -113,11 +114,7 @@ namespace OpenGSQ.Protocols
                 using (var br = new BinaryReader(new MemoryStream(response)))
                 {
                     var header = br.ReadByte();
-
-                    if (header != 0)
-                    {
-                        throw new Exception($"Packet header mismatch. Received: {header}. Expected: 0.");
-                    }
+                    InvalidPacketException.ThrowIfNotEqual(header, 0);
 
                     // Skip the timestamp and splitnum
                     br.ReadBytes(13);

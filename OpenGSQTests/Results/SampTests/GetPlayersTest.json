@@ -1,56 +1,104 @@
 [
   {
     "Id": 0,
-    "Name": "[GSF] Oscar_Brooks",
-    "Score": 27,
-    "Ping": 101
+    "Name": "[GSF] Jason_Ward",
+    "Score": 23,
+    "Ping": 35
   },
   {
     "Id": 1,
-    "Name": "CHEFE_C.V.R.L",
-    "Score": 0,
-    "Ping": 243
+    "Name": "Eazy_Reyes",
+    "Score": 23,
+    "Ping": 66
+  },
+  {
+    "Id": 2,
+    "Name": "[MB] Benson_Corleone",
+    "Score": 55,
+    "Ping": 82
   },
   {
     "Id": 3,
-    "Name": "[GSF] Franklin_Brooks",
-    "Score": 31,
-    "Ping": 96
+    "Name": "[SAFD] Denaun_Harris",
+    "Score": 26,
+    "Ping": 65
   },
   {
     "Id": 4,
-    "Name": "Ethan_Anderson",
-    "Score": 11,
-    "Ping": 258
+    "Name": "Shermaine_Champagne",
+    "Score": 29,
+    "Ping": 46
+  },
+  {
+    "Id": 5,
+    "Name": "Yuli_monge",
+    "Score": 0,
+    "Ping": 472
   },
   {
     "Id": 6,
-    "Name": "[GSF] Jones_Brooks",
-    "Score": 31,
-    "Ping": 86
+    "Name": "Lars_Vegas",
+    "Score": 27,
+    "Ping": 207
   },
   {
     "Id": 9,
-    "Name": "[SWAT] Louis_Fratto",
-    "Score": 18,
-    "Ping": 192
+    "Name": "mmd_aminn",
+    "Score": 0,
+    "Ping": 151
   },
   {
-    "Id": 11,
-    "Name": "Tony_Clinton",
-    "Score": 24,
-    "Ping": 80
+    "Id": 10,
+    "Name": "[GSF] Kenny_Lynch",
+    "Score": 34,
+    "Ping": 51
   },
   {
-    "Id": 13,
-    "Name": "Gabriel_Medrano",
-    "Score": 27,
-    "Ping": 90
+    "Id": 12,
+    "Name": "Sebastian_Madrid",
+    "Score": 0,
+    "Ping": 178
   },
   {
-    "Id": 17,
+    "Id": 14,
+    "Name": "ibr_Bremooo",
+    "Score": 4,
+    "Ping": 91
+  },
+  {
+    "Id": 16,
+    "Name": "[CM] Astrid_Corleone",
+    "Score": 39,
+    "Ping": 91
+  },
+  {
+    "Id": 19,
+    "Name": "[NBA] Trey_Warren",
+    "Score": 21,
+    "Ping": 76
+  },
+  {
+    "Id": 24,
+    "Name": "Jacob_Harlon",
+    "Score": 20,
+    "Ping": 45
+  },
+  {
+    "Id": 27,
+    "Name": "Levi_Becker",
+    "Score": 29,
+    "Ping": 95
+  },
+  {
+    "Id": 28,
+    "Name": "[NBA] Jaren_Jackson",
+    "Score": 16,
+    "Ping": 86
+  },
+  {
+    "Id": 47,
     "Name": "[NBA] Percy_WiIliams",
     "Score": 24,
-    "Ping": 141
+    "Ping": 147
   }
 ]

@@ -1,54 +1,142 @@
 {
-  "gamename": "mta",
-  "gameport": "22003",
-  "hostname": "MTA Türkiye ✖ GÜL GAMİNG FREEROAM ✖ [Roleplay/Askeri/Drift/Drop/Turkey/Tr/Gül Gaming]",
-  "gametype": "ＢＥＤＡＶＡ － ＶＩＰ",
-  "map": "None",
-  "version": "1.6",
-  "password": "0",
-  "numplayers": "5",
-  "maxplayers": "120",
-  "rules": {},
-  "players": [
+  "GameName": "mta",
+  "GamePort": 22003,
+  "HostName": "MTA Türkiye ✖ GÜL GAMİNG FREEROAM ✖ [Roleplay/Askeri/Drift/Drop/Turkey/Tr/Gül Gaming]",
+  "GameType": "ＢＥＤＡＶＡ － ＶＩＰ",
+  "Map": "None",
+  "Version": "1.6",
+  "Password": false,
+  "NumPlayers": 16,
+  "MaxPlayers": 120,
+  "Rules": {},
+  "Players": [
     {
-      "name": "majorka",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "70",
-      "time": ""
+      "Name": "SnowDen",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 74,
+      "Time": 0
     },
     {
-      "name": "BlueCans43",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "324",
-      "time": ""
+      "Name": "AcridViolin70",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 65,
+      "Time": 0
     },
     {
-      "name": "AlluringCascades49",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "91",
-      "time": ""
+      "Name": "Bashe00",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 64,
+      "Time": 0
     },
     {
-      "name": "SpicyDavenport72",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "71",
-      "time": ""
+      "Name": "STV-Bati",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 69,
+      "Time": 0
     },
     {
-      "name": "Berke",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "206",
-      "time": ""
+      "Name": "Berke",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 59,
+      "Time": 0
+    },
+    {
+      "Name": "CHIVAS",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 137,
+      "Time": 0
+    },
+    {
+      "Name": "Zature_Prosu",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 117,
+      "Time": 0
+    },
+    {
+      "Name": "'Sweet",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 95,
+      "Time": 0
+    },
+    {
+      "Name": "STV-HardBeyfendi",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 315,
+      "Time": 0
+    },
+    {
+      "Name": "ErkaN_ThE_bEST",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 64,
+      "Time": 0
+    },
+    {
+      "Name": "puzeydun",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 69,
+      "Time": 0
+    },
+    {
+      "Name": "sevilay",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 81,
+      "Time": 0
+    },
+    {
+      "Name": "Veysss",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 89,
+      "Time": 0
+    },
+    {
+      "Name": "amcarte",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 61,
+      "Time": 0
+    },
+    {
+      "Name": "#Popy",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 56,
+      "Time": 0
+    },
+    {
+      "Name": "Arda",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 63,
+      "Time": 0
     }
   ]
 }

@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using OpenGSQ.Exceptions;
 using OpenGSQ.Responses.Quake1;
 
 namespace OpenGSQ.Protocols
@@ -54,7 +55,8 @@ namespace OpenGSQ.Protocols
         /// Gets the status of the server including information and players.
         /// </summary>
         /// <returns>A Status object containing the server information and players.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus()
         {
             using (var br = await GetResponseBinaryReader())
@@ -71,18 +73,14 @@ namespace OpenGSQ.Protocols
         /// Gets a BinaryReader for the response data.
         /// </summary>
         /// <returns>A BinaryReader for the response data.</returns>
-        /// <exception cref="Exception">Thrown when the packet header does not match the expected header.</exception>
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
         protected async Task<BinaryReader> GetResponseBinaryReader()
         {
             byte[] response = await ConnectAndSend(RequestHeader);
 
             var br = new BinaryReader(new MemoryStream(response));
             var header = br.ReadStringEx(Delimiter1);
-
-            if (header != ResponseHeader)
-            {
-                throw new Exception($"Packet header mismatch. Received: {header}. Expected: {ResponseHeader}.");
-            }
+            InvalidPacketException.ThrowIfNotEqual(header, ResponseHeader);
 
             return br;
         }
@@ -165,6 +163,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="request">The request to send.</param>
         /// <returns>The response data received from the server.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         protected async Task<byte[]> ConnectAndSend(string request)
         {
             // Send Request

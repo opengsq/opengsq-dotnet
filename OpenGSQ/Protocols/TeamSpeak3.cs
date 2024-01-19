@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -31,6 +32,7 @@ namespace OpenGSQ.Protocols
         /// Gets the server information asynchronously.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the server information.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Dictionary<string, string>> GetInfo()
         {
             var response = await SendAndReceive(Encoding.ASCII.GetBytes("serverinfo"));
@@ -41,6 +43,7 @@ namespace OpenGSQ.Protocols
         /// Gets the client list asynchronously.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the client list.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<List<Dictionary<string, string>>> GetClients()
         {
             var response = await SendAndReceive(Encoding.ASCII.GetBytes("clientlist"));
@@ -51,6 +54,7 @@ namespace OpenGSQ.Protocols
         /// Gets the channel list asynchronously.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the channel list.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<List<Dictionary<string, string>>> GetChannels()
         {
             var response = await SendAndReceive(Encoding.ASCII.GetBytes("channellist -topic"));

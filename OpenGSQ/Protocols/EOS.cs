@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Linq;
 using OpenGSQ.Responses.EOS;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -76,19 +77,24 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Asynchronously sends a matchmaking request and returns the response.
+        /// Retrieves matchmaking data asynchronously.
         /// </summary>
-        /// <param name="data">The data to send with the matchmaking request.</param>
-        /// <returns>A task that represents the asynchronous operation. The task result contains the matchmaking response.</returns>
+        /// <param name="data">The data to be sent to the server.</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains the matchmaking data.
+        /// </returns>
+        /// <exception cref="AuthenticationException">Thrown when there is a failure in getting the access token.</exception>
         public async Task<Matchmaking> GetMatchmakingAsync(Dictionary<string, object> data)
         {
             if (_accessToken == null)
             {
-                _accessToken = await GetAccessTokenAsync();
-
-                if (_accessToken == null)
+                try
                 {
-                    throw new Exception("Failed to get access token");
+                    _accessToken = await GetAccessTokenAsync();
+                }
+                catch (Exception ex)
+                {
+                    throw new AuthenticationException($"Failed to get access token due to an error: {ex.Message}");
                 }
             }
 
@@ -115,12 +121,16 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Asynchronously gets information about the server.
+        /// Retrieves the information about the game server.
         /// </summary>
-        /// <returns>A task that represents the asynchronous operation. The task result contains the server information.</returns>
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains a dictionary of the server information.
+        /// </returns>
+        /// <exception cref="ServerNotFoundException">Thrown when the server is not found.</exception>
+        /// <exception cref="AuthenticationException">Thrown when there is a failure in getting the access token.</exception>
         public async Task<Dictionary<string, object>> GetInfo()
         {
-            string address = (await GetIPEndPoint()).Address.ToString();
+            string address = await GetIPAddress();
             string addressBoundPort = $":{Port}";
 
             var data = await GetMatchmakingAsync(new Dictionary<string, object>
@@ -145,7 +155,7 @@ namespace OpenGSQ.Protocols
 
             if (data.Count <= 0)
             {
-                throw new Exception("Server not found");
+                throw new ServerNotFoundException($"Server with address {address} and port {Port} was not found.");
             }
 
             return data.Sessions.First();

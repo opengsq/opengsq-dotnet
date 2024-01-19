@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenGSQ.Exceptions;
 using OpenGSQTests;
 using System;
 using System.Threading.Tasks;

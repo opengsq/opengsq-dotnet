@@ -1,6 +1,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.KillingFloor;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -24,9 +25,10 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <returns>The details of the server.</returns>
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public new async Task<Status> GetDetails()
         {
-            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, _DETAILS });
+            byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, DETAILS });
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -34,13 +36,9 @@ namespace OpenGSQ.Protocols
                 br.ReadBytes(4);
 
                 byte header = br.ReadByte();
+                InvalidPacketException.ThrowIfNotEqual(header, DETAILS);
 
-                if (header != _DETAILS)
-                {
-                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {_DETAILS}.");
-                }
-
-                var details = new Status
+                return new Status
                 {
                     ServerId = br.ReadInt32(),
                     ServerIP = br.ReadString(),
@@ -57,8 +55,6 @@ namespace OpenGSQ.Protocols
                     Flags = br.ReadInt32(),
                     Skill = ReadString(br)
                 };
-
-                return details;
             }
         }
     }

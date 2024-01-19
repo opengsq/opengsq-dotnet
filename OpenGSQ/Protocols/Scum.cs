@@ -6,6 +6,7 @@ using System.Linq;
 using System.IO;
 using System.Net.Sockets;
 using OpenGSQ.Responses.Scum;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -39,10 +40,11 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="masterServers">The list of master servers to query.</param>
         /// <returns>The status of the server.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         /// <exception cref="ServerNotFoundException">Thrown when the server is not found in the list of master servers.</exception>
         public async Task<Status> GetStatus(List<Status> masterServers = null)
         {
-            var ip = (await GetIPEndPoint()).Address.ToString();
+            var ip = await GetIPAddress();
 
             if (masterServers == null)
             {
@@ -64,6 +66,7 @@ namespace OpenGSQ.Protocols
         /// Queries the master servers for a list of servers.
         /// </summary>
         /// <returns>A list of servers from the master servers.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         /// <exception cref="Exception">Thrown when failed to connect to any of the master servers.</exception>
         public static async Task<List<Status>> QueryMasterServers()
         {

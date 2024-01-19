@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.GameSpy2;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -32,7 +31,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="requestHeader">The type of information to request.</param>
         /// <returns>A Status object containing the requested information.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus(RequestHeader requestHeader = RequestHeader.Info | RequestHeader.Players | RequestHeader.Teams)
         {
             var request = new byte[] { 0xFE, 0xFD, 0x00, 0x04, 0x05, 0x06, 0x07 }.Concat(GetRequestBytes(requestHeader)).ToArray();
@@ -157,7 +156,7 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// Represents the types of requests that can be sent.
         /// </summary>
-        [Flags]
+        [System.Flags]
         public enum RequestHeader : short
         {
             /// <summary>

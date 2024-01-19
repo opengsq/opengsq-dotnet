@@ -6,6 +6,8 @@ using System.Text.Json;
 using System.Linq;
 using System.IO;
 using System.Text.RegularExpressions;
+using OpenGSQ.Exceptions;
+using OpenGSQ.Responses.Minecraft;
 
 namespace OpenGSQ.Protocols
 {
@@ -32,6 +34,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="version">The protocol version. Default is 47.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the server status.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Dictionary<string, object>> GetStatus(int version = 47)
         {
             // Prepare the request
@@ -78,32 +81,28 @@ namespace OpenGSQ.Protocols
         /// Gets the server status for servers using a version older than Minecraft 1.7.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the server status.</returns>
-        public async Task<Dictionary<string, object>> GetStatusPre17()
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
+        public async Task<StatusPre17> GetStatusPre17()
         {
             byte[] response = await TcpClient.CommunicateAsync(this, new byte[] { 0xFE, 0x01 });
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
                 var header = br.ReadByte();
-
-                if (header != 0xFF)
-                {
-                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {0xFF}.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, 0xFF);
 
                 br.ReadBytes(2);  // length of the following string
                 var items = Encoding.BigEndianUnicode.GetString(br.ReadBytes(response.Length - 2)).Split('\0');
 
-                var result = new Dictionary<string, object>
+                return new StatusPre17
                 {
-                    ["protocol"] = items[1],
-                    ["version"] = items[2],
-                    ["motd"] = items[3],
-                    ["numplayers"] = int.Parse(items[4]),
-                    ["maxplayers"] = int.Parse(items[5])
+                    Protocol = items[1],
+                    Version = items[2],
+                    Motd = items[3],
+                    NumPlayers = int.Parse(items[4]),
+                    MaxPlayers = int.Parse(items[5])
                 };
-
-                return result;
             }
         }
 

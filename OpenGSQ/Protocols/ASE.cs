@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenGSQ.Exceptions;
+using OpenGSQ.Responses.ASE;
 
 namespace OpenGSQ.Protocols
 {
@@ -15,8 +16,8 @@ namespace OpenGSQ.Protocols
         /// <inheritdoc/>
         public override string FullName => "All-Seeing Eye Protocol";
 
-        private readonly byte[] _request = Encoding.ASCII.GetBytes("s");
-        private readonly byte[] _response = Encoding.ASCII.GetBytes("EYE1");
+        private readonly byte[] requestHeader = Encoding.ASCII.GetBytes("s");
+        private readonly byte[] responseHeader = Encoding.ASCII.GetBytes("EYE1");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ASE"/> class.
@@ -29,38 +30,38 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Gets the status of the server.
+        /// Asynchronously gets the status of the server.
         /// </summary>
-        /// <returns>A dictionary containing the server status.</returns>
-        public async Task<Dictionary<string, object>> GetStatus()
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains a Status object with the status information.
+        /// </returns>
+        /// <exception cref="InvalidPacketException">
+        /// Thrown when the received packet header does not match the expected header.
+        /// </exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
+        public async Task<Status> GetStatus()
         {
-            byte[] response = await UdpClient.CommunicateAsync(this, _request);
+            byte[] response = await UdpClient.CommunicateAsync(this, requestHeader);
 
-            using (var br = new BinaryReader(new MemoryStream(response), Encoding.UTF8))
+            using (var br = new BinaryReader(new MemoryStream(response)))
             {
                 byte[] header = br.ReadBytes(4);
+                InvalidPacketException.ThrowIfNotEqual(header, responseHeader);
 
-                if (!header.SequenceEqual(_response))
+                return new Status
                 {
-                    throw new InvalidPacketException($"Packet header mismatch. Received: {BitConverter.ToString(header)}. Expected: {BitConverter.ToString(_response)}.");
-                }
-
-                var result = new Dictionary<string, object>
-                {
-                    ["gamename"] = ReadString(br),
-                    ["gameport"] = ReadString(br),
-                    ["hostname"] = ReadString(br),
-                    ["gametype"] = ReadString(br),
-                    ["map"] = ReadString(br),
-                    ["version"] = ReadString(br),
-                    ["password"] = ReadString(br),
-                    ["numplayers"] = ReadString(br),
-                    ["maxplayers"] = ReadString(br),
-                    ["rules"] = ParseRules(br),
-                    ["players"] = ParsePlayers(br)
+                    GameName = ReadString(br),
+                    GamePort = int.Parse(ReadString(br)),
+                    HostName = ReadString(br),
+                    GameType = ReadString(br),
+                    Map = ReadString(br),
+                    Version = ReadString(br),
+                    Password = ReadString(br) != "0",
+                    NumPlayers = int.Parse(ReadString(br)),
+                    MaxPlayers = int.Parse(ReadString(br)),
+                    Rules = ParseRules(br),
+                    Players = ParsePlayers(br),
                 };
-
-                return result;
             }
         }
 
@@ -83,36 +84,54 @@ namespace OpenGSQ.Protocols
             return rules;
         }
 
-        private List<Dictionary<string, string>> ParsePlayers(BinaryReader br)
+        private List<Player> ParsePlayers(BinaryReader br)
         {
-            var players = new List<Dictionary<string, string>>();
-            var keys = new Dictionary<int, string>
-            {
-                [1] = "name",
-                [2] = "team",
-                [4] = "skin",
-                [8] = "score",
-                [16] = "ping",
-                [32] = "time"
-            };
+            var players = new List<Player>();
 
             while (!br.IsEnd())
             {
-                byte flags = br.ReadByte();
-                var player = new Dictionary<string, string>();
-
-                foreach (var key in keys)
-                {
-                    if ((flags & key.Key) == key.Key)
-                    {
-                        player[key.Value] = ReadString(br);
-                    }
-                }
-
-                players.Add(player);
+                players.Add(ParsePlayer(br));
             }
 
             return players;
+        }
+
+        private Player ParsePlayer(BinaryReader br)
+        {
+            byte flags = br.ReadByte();
+            var player = new Player();
+
+            if ((flags & 1) == 1)
+            {
+                player.Name = ReadString(br);
+            }
+
+            if ((flags & 2) == 2)
+            {
+                player.Team = ReadString(br);
+            }
+
+            if ((flags & 4) == 4)
+            {
+                player.Skin = ReadString(br);
+            }
+
+            if ((flags & 8) == 8)
+            {
+                player.Score = int.TryParse(ReadString(br), out int result) ? result : 0;
+            }
+
+            if ((flags & 16) == 16)
+            {
+                player.Ping = int.TryParse(ReadString(br), out int result) ? result : 0;
+            }
+
+            if ((flags & 32) == 32)
+            {
+                player.Time = int.TryParse(ReadString(br), out int result) ? result : 0;
+            }
+
+            return player;
         }
 
         private string ReadString(BinaryReader br)

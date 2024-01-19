@@ -94,6 +94,7 @@
     "nkpolicepackv1",
     "plt_lumberjack",
     "plt_lumberjack-streams",
+    "ak-ouchie",
     "lf-carcontrol",
     "drag_crafting",
     "mana_hunting",
@@ -329,6 +330,7 @@
     "voodoo_vdcoffin",
     "weilher_colorized_radio_icons",
     "xtxvxtx_female_male_body_remastered",
+    "vx-prop-util",
     "qb-radio",
     "basic-gamemode",
     "chat",
@@ -358,5 +360,5 @@
     "tags": "Roleplay, Casual, Economy, LSPD, EMS, Gangs, Cars, Motorcycles, Secrets, qbx_core, gunplay, Customs, Crime, territories, semi-serious, original, qbxcore",
     "txAdmin-version": "6.0.2"
   },
-  "version": 1314568422
+  "version": 552170063
 }

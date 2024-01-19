@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenGSQ.Exceptions;
 using OpenGSQ.Responses.Vcmp;
 
 namespace OpenGSQ.Protocols
@@ -40,9 +41,10 @@ namespace OpenGSQ.Protocols
         /// Asynchronously gets the status of the server.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains a StatusResponse object with the server status.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus()
         {
-            var response = await SendAndReceive(new byte[] { (byte)'i' });
+            var response = await SendAndReceive((byte)'i');
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -63,9 +65,10 @@ namespace OpenGSQ.Protocols
         /// Asynchronously gets the list of players from the server.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains a list of Player objects.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<List<Player>> GetPlayers()
         {
-            var response = await SendAndReceive(new byte[] { (byte)'c' });
+            var response = await SendAndReceive((byte)'c');
 
             using (var br = new BinaryReader(new MemoryStream(response), Encoding.UTF8))
             {
@@ -86,14 +89,13 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="data">The data to be sent.</param>
         /// <returns>A byte array containing the response from the remote host.</returns>
-        protected async Task<byte[]> SendAndReceive(byte[] data)
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
+        protected async Task<byte[]> SendAndReceive(byte data)
         {
             // Format the address
-            var host = (await GetIPEndPoint()).Address.ToString();
+            string[] splitIp = (await GetIPAddress()).Split('.');
 
             byte[] headerData = new byte[6];
-            string[] splitIp = host.Split('.');
-
             for (int i = 0; i < splitIp.Length; i++)
             {
                 headerData[i] = Convert.ToByte(int.Parse(splitIp[i]));
@@ -102,17 +104,13 @@ namespace OpenGSQ.Protocols
             headerData[4] = (byte)(Port >> 8);
             headerData[5] = (byte)Port;
 
-            byte[] packetHeader = headerData.Concat(data).ToArray();
+            byte[] packetHeader = headerData.Append(data).ToArray();
             var request = RequestHeader.Concat(packetHeader).ToArray();
 
             // Validate the response
             var response = await UdpClient.CommunicateAsync(this, request);
             var header = response.Take(ResponseHeader.Length).ToArray();
-
-            if (!header.SequenceEqual(ResponseHeader))
-            {
-                throw new InvalidPacketException($"Packet header mismatch. Received: {BitConverter.ToString(header)}. Expected: {BitConverter.ToString(ResponseHeader)}.");
-            }
+            InvalidPacketException.ThrowIfNotEqual(header, ResponseHeader);
 
             return response.Skip(ResponseHeader.Length + packetHeader.Length).ToArray();
         }

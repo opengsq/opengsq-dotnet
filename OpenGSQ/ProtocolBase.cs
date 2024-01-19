@@ -42,18 +42,20 @@ namespace OpenGSQ
         }
 
         /// <summary>
-        /// Asynchronously gets the Internet Protocol (IP) endpoint.
+        /// Retrieves the IP address of the host.
         /// </summary>
-        /// <returns>A task that represents the asynchronous operation. The task result contains the IP endpoint.</returns>
-        protected async Task<IPEndPoint> GetIPEndPoint()
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains the IP address of the host.
+        /// </returns>
+        protected async Task<string> GetIPAddress()
         {
-            if (IPAddress.TryParse(Host, out var ipAddress))
+            if (IPAddress.TryParse(Host, out var address))
             {
-                return new IPEndPoint(ipAddress, Port);
+                return await Task.FromResult(address.ToString());
             }
             else
             {
-                return new IPEndPoint((await Dns.GetHostAddressesAsync(Host))[0], Port);
+                return (await Dns.GetHostAddressesAsync(Host))[0].ToString();
             }
         }
     }

@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.Samp;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -30,9 +31,10 @@ namespace OpenGSQ.Protocols
         /// Asynchronously gets the status of the server.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains a StatusResponse object with the server status.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public new async Task<Status> GetStatus()
         {
-            var response = await SendAndReceive(new byte[] { (byte)'i' });
+            var response = await SendAndReceive((byte)'i');
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -52,9 +54,10 @@ namespace OpenGSQ.Protocols
         /// Asynchronously gets the list of players from the server.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains a list of Player objects.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public new async Task<List<Player>> GetPlayers()
         {
-            var response = await SendAndReceive(new byte[] { (byte)'d' });
+            var response = await SendAndReceive((byte)'d');
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -80,9 +83,10 @@ namespace OpenGSQ.Protocols
         /// Asynchronously gets the rules.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains a dictionary of rules.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Dictionary<string, string>> GetRules()
         {
-            var response = await SendAndReceive(new byte[] { (byte)'r' });
+            var response = await SendAndReceive((byte)'r');
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {

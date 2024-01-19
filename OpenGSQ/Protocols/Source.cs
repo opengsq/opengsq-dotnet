@@ -5,10 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using Environment = OpenGSQ.Responses.Source.Environment;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -35,7 +35,6 @@ namespace OpenGSQ.Protocols
         /// </summary>
         protected byte[] A2S_RULES = new byte[] { 0x56 };
 
-
         /// <summary>
         /// Initializes a new instance of the Source class.
         /// </summary>
@@ -51,8 +50,11 @@ namespace OpenGSQ.Protocols
         /// Retrieves information about the server including, but not limited to: its name, the map currently being played, and the number of players.<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO">https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO</see>
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains the server information.
+        /// </returns>
+        /// <exception cref="InvalidPacketException">Thrown when the received packet type is not S2A_INFO_SRC or S2A_INFO_DETAILED.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<PartialInfo> GetInfo()
         {
             byte[] response = await ConnectAndSendChallenge(A2S_INFO);
@@ -63,7 +65,7 @@ namespace OpenGSQ.Protocols
 
                 if (header != (byte)QueryResponse.S2A_INFO_SRC && header != (byte)QueryResponse.S2A_INFO_DETAILED)
                 {
-                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_INFO_SRC} or {QueryResponse.S2A_INFO_DETAILED}.");
+                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_INFO_SRC} or {QueryResponse.S2A_INFO_DETAILED}.");
                 }
 
                 if (header == (byte)QueryResponse.S2A_INFO_SRC)
@@ -170,8 +172,11 @@ namespace OpenGSQ.Protocols
         /// This query retrieves information about the players currently on the server.<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries#A2S_PLAYER">https://developer.valvesoftware.com/wiki/Server_queries#A2S_PLAYER</see>
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains a list of players.
+        /// </returns>
+        /// <exception cref="InvalidPacketException">Thrown when the received packet type is not S2A_PLAYER.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<List<Player>> GetPlayers()
         {
             byte[] response = await ConnectAndSendChallenge(A2S_PLAYER);
@@ -179,11 +184,7 @@ namespace OpenGSQ.Protocols
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
                 var header = br.ReadByte();
-
-                if (header != (byte)QueryResponse.S2A_PLAYER)
-                {
-                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_PLAYER}.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, (byte)QueryResponse.S2A_PLAYER);
 
                 var playerCount = br.ReadByte();
                 var players = new List<Player>();
@@ -201,7 +202,7 @@ namespace OpenGSQ.Protocols
                     });
                 }
 
-                if (br.BaseStream.Position < br.BaseStream.Length)
+                if (!br.IsEnd())
                 {
                     for (int i = 0; i < playerCount; i++)
                     {
@@ -218,8 +219,11 @@ namespace OpenGSQ.Protocols
         /// Returns the server rules, or configuration variables in name/value pairs.<br />
         /// See: <see href="https://developer.valvesoftware.com/wiki/Server_queries#A2S_RULES">https://developer.valvesoftware.com/wiki/Server_queries#A2S_RULES</see>
         /// </summary>
-        /// <returns></returns>
-        /// <exception cref="SocketException"></exception>
+        /// <returns>
+        /// A task that represents the asynchronous operation. The task result contains a dictionary of rules where the rule name is the key and the rule value is the value.
+        /// </returns>
+        /// <exception cref="InvalidPacketException">Thrown when the received packet type is not S2A_RULES.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Dictionary<string, string>> GetRules()
         {
             byte[] response = await ConnectAndSendChallenge(A2S_RULES);
@@ -227,11 +231,7 @@ namespace OpenGSQ.Protocols
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
                 var header = br.ReadByte();
-
-                if (header != (byte)QueryResponse.S2A_RULES)
-                {
-                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {QueryResponse.S2A_RULES}.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, (byte)QueryResponse.S2A_RULES);
 
                 var ruleCount = br.ReadUInt16();
                 var rules = new Dictionary<string, string>();
@@ -259,7 +259,7 @@ namespace OpenGSQ.Protocols
                 // Set up request base
                 byte[] requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }.Concat(header).ToArray();
 
-                if (header.SequenceEqual(A2S_INFO))
+                if (header.Equals(A2S_INFO))
                 {
                     requestBase = requestBase.Concat(Encoding.Default.GetBytes("Source Engine Query\0")).ToArray();
                 }
@@ -267,7 +267,7 @@ namespace OpenGSQ.Protocols
                 // Set up request data
                 byte[] requestData = requestBase;
 
-                if (!header.SequenceEqual(A2S_INFO))
+                if (!header.Equals(A2S_INFO))
                 {
                     requestData = requestData.Concat(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }).ToArray();
                 }
@@ -366,7 +366,7 @@ namespace OpenGSQ.Protocols
 
                 if (crc32.Value != crc32Sum)
                 {
-                    throw new Exception("CRC32 checksum mismatch of uncompressed packet data.");
+                    throw new InvalidPacketException("CRC32 checksum mismatch of uncompressed packet data.");
                 }
             }
 
@@ -473,15 +473,19 @@ namespace OpenGSQ.Protocols
             }
 
             /// <summary>
-            /// Authenticate the connection
+            /// Authenticates the client with the server using the provided password.
             /// </summary>
-            /// <param name="password"></param>
-            /// <exception cref="AuthenticationException"></exception>
+            /// <param name="password">The password to be used for authentication.</param>
+            /// <returns>A task that represents the asynchronous operation.</returns>
+            /// <exception cref="ArgumentException">Thrown when the password is null or empty.</exception>
+            /// <exception cref="InvalidPacketException">Thrown when the received packet type is not SERVERDATA_AUTH_RESPONSE.</exception>
+            /// <exception cref="AuthenticationException">Thrown when authentication fails.</exception>
+            /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
             public async Task Authenticate(string password)
             {
                 if (string.IsNullOrEmpty(password))
                 {
-                    throw new ArgumentException("Password is required");
+                    throw new ArgumentException("Password cannot be null or empty. Please provide a valid password.");
                 }
 
                 // Connect
@@ -509,22 +513,23 @@ namespace OpenGSQ.Protocols
                 if (packet.Type != PacketType.SERVERDATA_AUTH_RESPONSE)
                 {
                     _tcpClient.Close();
-                    throw new Exception($"Packet type mismatch. Received: {(int)packet.Type}. Expected: {(int)PacketType.SERVERDATA_AUTH_RESPONSE}.");
+                    InvalidPacketException.ThrowIfNotEqual((int)packet.Type, (int)PacketType.SERVERDATA_AUTH_RESPONSE);
                 }
 
                 // Throw exception if authentication failed
                 if (packet.Id == -1 || packet.Id != id)
                 {
                     _tcpClient.Close();
-                    throw new AuthenticationException("Authentication failed");
+                    throw new AuthenticationException("Authentication failed. The server did not accept the provided password.");
                 }
             }
 
             /// <summary>
-            /// Send command to the server
+            /// Sends a command to the server and waits for the response.
             /// </summary>
-            /// <param name="command"></param>
-            /// <returns>The server's response to the original command</returns>
+            /// <param name="command">The command to be sent to the server.</param>
+            /// <returns>A task that represents the asynchronous operation. The task result contains the server response to the command.</returns>
+            /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
             public async Task<string> SendCommand(string command)
             {
                 // Send the command and a empty command packet

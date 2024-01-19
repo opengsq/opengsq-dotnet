@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.GameSpy1;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -33,7 +34,7 @@ namespace OpenGSQ.Protocols
         /// Gets basic server information, mainly for recognition.
         /// </summary>
         /// <returns>A dictionary containing the basic server information.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public Task<Dictionary<string, string>> GetBasic()
         {
             return SendAndParseKeyValue("\\basic\\");
@@ -44,7 +45,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
         /// <returns>A dictionary containing the game information.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public Task<Dictionary<string, string>> GetInfo(bool XServerQuery = true)
         {
             return SendAndParseKeyValue("\\info\\" + (XServerQuery ? "xserverquery" : string.Empty));
@@ -55,7 +56,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
         /// <returns>A dictionary containing the game rules.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public Task<Dictionary<string, string>> GetRules(bool XServerQuery = true)
         {
             return SendAndParseKeyValue("\\rules\\" + (XServerQuery ? "xserverquery" : string.Empty));
@@ -66,7 +67,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
         /// <returns>A list of dictionaries containing the player information.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public Task<List<Dictionary<string, string>>> GetPlayers(bool XServerQuery = true)
         {
             return SendAndParseObject("\\players\\" + (XServerQuery ? "xserverquery" : string.Empty));
@@ -77,7 +78,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="XServerQuery">A boolean indicating whether to use XServerQuery.</param>
         /// <returns>A Status object containing the server information, players, and teams.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus(bool XServerQuery = true)
         {
             byte[] response = await ConnectAndSend("\\status\\" + (XServerQuery ? "xserverquery" : string.Empty));
@@ -144,7 +145,7 @@ namespace OpenGSQ.Protocols
         /// Returns information about each team on the server.
         /// </summary>
         /// <returns>A list of dictionaries containing the team information.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public Task<List<Dictionary<string, string>>> GetTeams()
         {
             return SendAndParseObject("\\teams\\");
@@ -155,7 +156,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="text">The text to send with the echo command.</param>
         /// <returns>A dictionary containing the server's response.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public Task<Dictionary<string, string>> GetEcho(string text = "this is a test")
         {
             return SendAndParseKeyValue("\\echo\\" + text);

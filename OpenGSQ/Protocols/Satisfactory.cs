@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenGSQ.Exceptions;
 using OpenGSQ.Responses.Satisfactory;
 
 namespace OpenGSQ.Protocols
@@ -29,6 +30,7 @@ namespace OpenGSQ.Protocols
         /// Gets the status asynchronously.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the StatusResponse.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus()
         {
             // https://github.com/dopeghoti/SF-Tools/blob/main/Protocol.md
@@ -38,23 +40,17 @@ namespace OpenGSQ.Protocols
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
                 byte header = br.ReadByte();
-
-                if (header != 1)
-                {
-                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: 1.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, 1);
 
                 br.ReadByte();  // Protocol version
                 br.ReadBytes(8);  // Request data
 
-                var result = new Status
+                return new Status
                 {
                     State = br.ReadByte(),
                     Version = br.ReadInt32(),
                     BeaconPort = br.ReadInt16()
                 };
-
-                return result;
             }
         }
     }

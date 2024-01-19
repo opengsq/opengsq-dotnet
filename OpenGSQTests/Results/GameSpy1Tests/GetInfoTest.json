@@ -1,10 +1,10 @@
 {
   "hostname": " --- ComboGib CTF (Grapple) -- London --- EatSleepUT.com",
   "hostport": "7777",
-  "maptitle": "CTF-2on2-OvalTech-RSA",
-  "mapname": "CTF-2on2-OvalTech-RSA",
+  "maptitle": "duku ! (nw)",
+  "mapname": "CTF-DukuCB3(nw)",
   "gametype": "CTFGame",
-  "numplayers": "12",
+  "numplayers": "17",
   "maxplayers": "18",
   "gamemode": "openplaying",
   "gamever": "469",

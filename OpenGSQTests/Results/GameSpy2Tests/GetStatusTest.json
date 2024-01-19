@@ -2,9 +2,9 @@
   "Info": {
     "hostname": "*Easy Prey/Death*",
     "hostport": "15567",
-    "mapname": "HUE [Choppers] -SSM-",
+    "mapname": "Hastings [Extra Vehicles] -SSM-",
     "gametype": "coop",
-    "numplayers": "2",
+    "numplayers": "0",
     "maxplayers": "50",
     "gamemode": "pre",
     "password": "0",
@@ -45,24 +45,7 @@
     "all_active_mods": "bfvietnam",
     "game_id_name": "BFVietnam"
   },
-  "Players": [
-    {
-      "player": "Matt Foley",
-      "score": "0",
-      "deaths": "0",
-      "ping": "57",
-      "team": "2",
-      "kills": "0"
-    },
-    {
-      "player": "Gra$$HoPPer",
-      "score": "0",
-      "deaths": "0",
-      "ping": "0",
-      "team": "1",
-      "kills": "0"
-    }
-  ],
+  "Players": [],
   "Teams": [
     {
       "team": "red",

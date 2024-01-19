@@ -1,6 +1,6 @@
-using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ
 {
@@ -124,14 +124,14 @@ namespace OpenGSQ
         public static async Task<byte[]> ReceiveAsync(this System.Net.Sockets.TcpClient tcpClient)
         {
             var buffer = new byte[tcpClient.Client.ReceiveBufferSize];
-            var segment = new ArraySegment<byte>(buffer);
+            var segment = new System.ArraySegment<byte>(buffer);
             var receiveTask = tcpClient.Client.ReceiveAsync(segment, SocketFlags.None);
 
             if (await Task.WhenAny(receiveTask, Task.Delay(tcpClient.Client.ReceiveTimeout)) == receiveTask)
             {
                 // Task completed within timeout.
                 var receivedBytes = new byte[receiveTask.Result];
-                Array.Copy(buffer, receivedBytes, receiveTask.Result);
+                System.Array.Copy(buffer, receivedBytes, receiveTask.Result);
                 return receivedBytes;
             }
             else

@@ -1,8 +1,8 @@
-using System;
 using System.Threading.Tasks;
 using System.Linq;
 using System.IO;
 using OpenGSQ.Responses.RakNet;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -34,6 +34,7 @@ namespace OpenGSQ.Protocols
         /// Gets the server status asynchronously.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the server status.</returns>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus()
         {
             byte[] request = ID_UNCONNECTED_PING.Concat(TIMESTAMP).Concat(OFFLINE_MESSAGE_DATA_ID).Concat(CLIENT_GUID).ToArray();
@@ -42,19 +43,11 @@ namespace OpenGSQ.Protocols
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
                 var header = br.ReadByte();
-
-                if (header != ID_UNCONNECTED_PONG[0])
-                {
-                    throw new InvalidPacketException($"Packet header mismatch. Received: {header}. Expected: {ID_UNCONNECTED_PONG[0]}.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, ID_UNCONNECTED_PONG[0]);
 
                 br.ReadBytes(TIMESTAMP.Length + CLIENT_GUID.Length);  // skip timestamp and guid
                 var magic = br.ReadBytes(OFFLINE_MESSAGE_DATA_ID.Length);
-
-                if (!magic.SequenceEqual(OFFLINE_MESSAGE_DATA_ID))
-                {
-                    throw new InvalidPacketException($"Magic value mismatch. Received: {magic}. Expected: {OFFLINE_MESSAGE_DATA_ID}.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(magic, OFFLINE_MESSAGE_DATA_ID);
 
                 br.ReadInt16();  // skip remaining packet length
 

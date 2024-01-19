@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.Quake2;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -33,7 +32,8 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="stripColor">A boolean indicating whether to remove color codes from the server name.</param>
         /// <returns>A dictionary containing the server information.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Dictionary<string, string>> GetInfo(bool stripColor = true)
         {
             byte[] response = await ConnectAndSend("getinfo");
@@ -41,12 +41,7 @@ namespace OpenGSQ.Protocols
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
                 var header = br.ReadStringEx(Delimiter1);
-                string infoResponseHeader = "infoResponse\n";
-
-                if (header != infoResponseHeader)
-                {
-                    throw new Exception($"Packet header mismatch. Received: {header}. Expected: {infoResponseHeader}.");
-                }
+                InvalidPacketException.ThrowIfNotEqual(header, "infoResponse\n");
 
                 var info = ParseInfo(br);
 
@@ -67,7 +62,8 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="stripColor">A boolean indicating whether to remove color codes from the server name and player names.</param>
         /// <returns>A Status object containing the server information and players.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus(bool stripColor = true)
         {
             using (var br = await GetResponseBinaryReader())

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.Quake2;
+using OpenGSQ.Exceptions;
 
 namespace OpenGSQ.Protocols
 {
@@ -30,7 +30,8 @@ namespace OpenGSQ.Protocols
         /// Gets the status of the server including information and players.
         /// </summary>
         /// <returns>A Status object containing the server information and players.</returns>
-        /// <exception cref="SocketException">Thrown when a socket error occurs.</exception>
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
+        /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public new async Task<Status> GetStatus()
         {
             using (var br = await GetResponseBinaryReader())

@@ -1,98 +1,18 @@
 [
   {
-    "player": "��ul~C�llect�r",
-    "frags": "47",
-    "ping": " 96",
-    "team": "1",
-    "mesh": "Female Commando",
-    "skin": "FCommandoSkins.goth",
-    "face": "FCommandoSkins.Freylis",
-    "ngsecret": "true"
-  },
-  {
-    "player": "h3Lc@t",
-    "frags": "32",
-    "ping": " 256",
-    "team": "0",
-    "mesh": "Female Soldier",
-    "skin": "SGirlSkins.fbth",
-    "face": "SGirlSkins.Annaka",
-    "ngsecret": "true"
-  },
-  {
-    "player": "One",
-    "frags": "79",
-    "ping": " 38",
-    "team": "0",
-    "mesh": "Male Soldier",
-    "skin": "SoldierSkins.Blkt",
-    "face": "SoldierSkins.Malcom",
-    "ngsecret": "true"
-  },
-  {
-    "player": "Wmax",
-    "frags": "48",
-    "ping": " 53",
+    "player": "justtryintohavefun",
+    "frags": "0",
+    "ping": " 140",
     "team": "1",
     "mesh": "Male Soldier",
     "skin": "SoldierSkins.hkil",
-    "face": "SoldierSkins.vector",
-    "ngsecret": "true"
-  },
-  {
-    "player": "Richie$Rich",
-    "frags": "64",
-    "ping": " 112",
-    "team": "1",
-    "mesh": "Male Soldier",
-    "skin": "SoldierSkins.sldr",
-    "face": "SoldierSkins.Rankin",
-    "ngsecret": "true"
-  },
-  {
-    "player": "CreepLauraDieBitch",
-    "frags": "0",
-    "ping": " 103",
-    "team": "255",
-    "mesh": "Spectator",
-    "skin": "None",
-    "face": "",
-    "ngsecret": "true"
-  },
-  {
-    "player": "wish_me_luck",
-    "frags": "0",
-    "ping": " 64",
-    "team": "255",
-    "mesh": "Spectator",
-    "skin": "None",
-    "face": "",
-    "ngsecret": "true"
-  },
-  {
-    "player": "~Mago'Ed!*",
-    "frags": "88",
-    "ping": " 384",
-    "team": "0",
-    "mesh": "Male Commando",
-    "skin": "CommandoSkins.goth",
-    "face": "CommandoSkins.Kragoth",
-    "ngsecret": "true"
-  },
-  {
-    "player": "Gaucho",
-    "frags": "80",
-    "ping": " 179",
-    "team": "1",
-    "mesh": "Male Soldier",
-    "skin": "SoldierSkins.Blkt",
-    "face": "SoldierSkins.",
+    "face": "SoldierSkins.matrix",
     "ngsecret": "true"
   },
   {
     "player": "creep",
-    "frags": "215",
-    "ping": " 45",
+    "frags": "230",
+    "ping": " 50",
     "team": "1",
     "mesh": "Female Commando",
     "skin": "FCommandoSkins.goth",
@@ -100,9 +20,9 @@
     "ngsecret": "true"
   },
   {
-    "player": "dickfish.umx",
-    "frags": "243",
-    "ping": " 44",
+    "player": "123456",
+    "frags": "193",
+    "ping": " 134",
     "team": "0",
     "mesh": "Male Soldier",
     "skin": "SoldierSkins.hkil",
@@ -110,13 +30,143 @@
     "ngsecret": "true"
   },
   {
-    "player": "wpxc",
-    "frags": "109",
-    "ping": " 51",
+    "player": "CALIGULA",
+    "frags": "85",
+    "ping": " 219",
     "team": "0",
     "mesh": "Male Soldier",
-    "skin": "SoldierSkins.Gard",
-    "face": "SoldierSkins.Drake",
+    "skin": "SoldierSkins.hkil",
+    "face": "SoldierSkins.matrix",
+    "ngsecret": "true"
+  },
+  {
+    "player": "d",
+    "frags": "331",
+    "ping": " 61",
+    "team": "0",
+    "mesh": "",
+    "skin": "SGirlSkins.Garf",
+    "face": "SGirlSkins.Risa",
+    "ngsecret": "true"
+  },
+  {
+    "player": "deadbaby",
+    "frags": "20",
+    "ping": " 111",
+    "team": "0",
+    "mesh": "",
+    "skin": "SoldierSkins.Blkt",
+    "face": "SoldierSkins.",
+    "ngsecret": "true"
+  },
+  {
+    "player": "DepecheM",
+    "frags": "116",
+    "ping": " 244",
+    "team": "1",
+    "mesh": "Male Soldier",
+    "skin": "SoldierSkins.hkil",
+    "face": "SoldierSkins.matrix",
+    "ngsecret": "true"
+  },
+  {
+    "player": "bustacell",
+    "frags": "341",
+    "ping": " 42",
+    "team": "1",
+    "mesh": "",
+    "skin": "FCommandoSkins.goth",
+    "face": "FCommandoSkins.Malise",
+    "ngsecret": "true"
+  },
+  {
+    "player": "One",
+    "frags": "128",
+    "ping": " 39",
+    "team": "0",
+    "mesh": "Male Soldier",
+    "skin": "SoldierSkins.Blkt",
+    "face": "SoldierSkins.Malcom",
+    "ngsecret": "true"
+  },
+  {
+    "player": "deepwinter",
+    "frags": "99",
+    "ping": " 117",
+    "team": "1",
+    "mesh": "",
+    "skin": "FCommandoSkins.goth",
+    "face": "FCommandoSkins.Visse",
+    "ngsecret": "true"
+  },
+  {
+    "player": "-gravedicker-",
+    "frags": "0",
+    "ping": " 31",
+    "team": "255",
+    "mesh": "Spectator",
+    "skin": "None",
+    "face": "",
+    "ngsecret": "true"
+  },
+  {
+    "player": "CreepLauraDieBitch",
+    "frags": "0",
+    "ping": " 104",
+    "team": "255",
+    "mesh": "Spectator",
+    "skin": "None",
+    "face": "",
+    "ngsecret": "true"
+  },
+  {
+    "player": "|BLS|Coldandhot",
+    "frags": "165",
+    "ping": " 143",
+    "team": "0",
+    "mesh": "",
+    "skin": "SoldierSkins.hkil",
+    "face": "SoldierSkins.matrix",
+    "ngsecret": "true"
+  },
+  {
+    "player": "bouncing_boner",
+    "frags": "0",
+    "ping": " 157",
+    "team": "255",
+    "mesh": "Spectator",
+    "skin": "None",
+    "face": "",
+    "ngsecret": "true"
+  },
+  {
+    "player": "jerc",
+    "frags": "119",
+    "ping": " 96",
+    "team": "1",
+    "mesh": "",
+    "skin": "FCommandoSkins.daco",
+    "face": "FCommandoSkins.Jayce",
+    "ngsecret": "true"
+  },
+  {
+    "player": "BRUNO",
+    "frags": "155",
+    "ping": " 48",
+    "team": "0",
+    "mesh": "",
+    "skin": "SoldierSkins.Blkt",
+    "face": "SoldierSkins.Malcom",
+    "ngsecret": "true"
+  },
+  {
+    "player": "LaguNz",
+    "frags": "209",
+    "ping": " 43",
+    "team": "1",
+    "mesh": "Female Soldier",
+    "skin": "SGirlSkins.Garf",
+    "face": "SGirlSkins.Isis",
     "ngsecret": "true"
   }
 ]

@@ -3,7 +3,7 @@
     "hostname": "�l�bAvenge�6Tech",
     "gametype": "SMP",
     "map": "WaterdogPE",
-    "numplayers": "9",
+    "numplayers": "4",
     "maxplayers": "300",
     "hostport": "19132",
     "hostip": "0.0.0.0",
@@ -14,31 +14,16 @@
   },
   "Players": [
     {
-      "player": "JayDogRandomnes"
+      "player": "VoicefulColt315"
     },
     {
-      "player": "XxNE0BLAZExX777"
-    },
-    {
-      "player": "Sirknightless1"
-    },
-    {
-      "player": "meow boi887291"
+      "player": "killingece"
     },
     {
       "player": "IronFlam3s"
     },
     {
-      "player": "S117PlaysMC"
-    },
-    {
-      "player": "DrakeRuss2012"
-    },
-    {
-      "player": "Vortexgod4418"
-    },
-    {
-      "player": "Maxumum213"
+      "player": "Benny1of1"
     }
   ],
   "Teams": []

@@ -13,16 +13,32 @@
     "gamedir": "jump",
     "gamename": "Q2JUMP 1.35ger",
     "hostname": ".german q2 jump",
-    "mapname": "jumpish36",
+    "mapname": "comm8_opkez",
     "matchlock": "1",
     "matchtime": "20",
     "maxclients": "15",
     "port": "27910",
     "protocol": "34",
-    "time_remaining": "00:59",
+    "time_remaining": "28:16",
     "timelimit": "0",
     "version": "q2proded r1826~7ad132a Dec 28 2018 Linux x86_64",
-    "uptime": "13 days, 18 hours, 50 mins, 50 secs"
+    "uptime": "14 days, 17 hours, 44 mins, 5 secs"
   },
-  "Players": []
+  "Players": [
+    {
+      "Frags": -1,
+      "Ping": 34,
+      "Name": "sata"
+    },
+    {
+      "Frags": 0,
+      "Ping": 96,
+      "Name": "ace"
+    },
+    {
+      "Frags": -1,
+      "Ping": 41,
+      "Name": "[tige]Edvin"
+    }
+  ]
 }
