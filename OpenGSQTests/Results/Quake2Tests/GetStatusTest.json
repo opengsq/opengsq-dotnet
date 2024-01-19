@@ -13,7 +13,7 @@
     "gamedir": "jump",
     "gamename": "Q2JUMP 1.35ger",
     "hostname": ".german q2 jump",
-    "mapname": "jumph1gh",
+    "mapname": "jumpish36",
     "matchlock": "1",
     "matchtime": "20",
     "maxclients": "15",
@@ -22,7 +22,7 @@
     "time_remaining": "00:59",
     "timelimit": "0",
     "version": "q2proded r1826~7ad132a Dec 28 2018 Linux x86_64",
-    "uptime": "12 days, 18 hours, 44 mins, 52 secs"
+    "uptime": "13 days, 18 hours, 50 mins, 50 secs"
   },
   "Players": []
 }

@@ -5,10 +5,10 @@
   "QueryPort": 0,
   "ServerName": "Uliunai.lt|[v1065]|HOE/Suicidal/Hard|150 LvL|+6 Perks",
   "MapName": "",
-  "GameType": "KF-Dust2_Knubbe",
+  "GameType": "KF-MiniMilitia-EDIT",
   "NumPlayers": 1195592971,
   "MaxPlayers": 1415933281,
   "Ping": 6647929,
-  "Flags": 2,
+  "Flags": 6,
   "Skill": ""
 }

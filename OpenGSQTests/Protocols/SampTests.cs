@@ -13,6 +13,7 @@ namespace OpenGSQ.Protocols.Tests
         public SampTests() : base(nameof(SampTests))
         {
             // EnableSave = true;
+            DelayPerTest = 1000;
         }
 
         [TestMethod()]

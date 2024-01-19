@@ -2,9 +2,9 @@
   "Info": {
     "hostname": "*Easy Prey/Death*",
     "hostport": "15567",
-    "mapname": "Flaming Dart [Extra Vehicles] -SSM-",
+    "mapname": "HUE [Choppers] -SSM-",
     "gametype": "coop",
-    "numplayers": "4",
+    "numplayers": "2",
     "maxplayers": "50",
     "gamemode": "pre",
     "password": "0",
@@ -47,27 +47,11 @@
   },
   "Players": [
     {
-      "player": "Jason",
-      "score": "0",
-      "deaths": "0",
-      "ping": "71",
-      "team": "1",
-      "kills": "0"
-    },
-    {
-      "player": "Rbilly",
-      "score": "0",
-      "deaths": "0",
-      "ping": "36",
-      "team": "2",
-      "kills": "0"
-    },
-    {
       "player": "Matt Foley",
       "score": "0",
       "deaths": "0",
-      "ping": "0",
-      "team": "1",
+      "ping": "57",
+      "team": "2",
       "kills": "0"
     },
     {
@@ -75,7 +59,7 @@
       "score": "0",
       "deaths": "0",
       "ping": "0",
-      "team": "2",
+      "team": "1",
       "kills": "0"
     }
   ],

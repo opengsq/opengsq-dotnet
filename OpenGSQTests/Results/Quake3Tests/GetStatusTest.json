@@ -1,7 +1,7 @@
 {
   "Info": {
-    "omnibot_playing": "25",
-    "P": "-1212121212121212121212121",
+    "omnibot_playing": "24",
+    "P": "2121212121212121212121212",
     "voteFlags": "507903",
     "g_balancedteams": "1",
     "g_bluelimbotime": "12000",
@@ -10,7 +10,7 @@
     "mod_version": "2.2.0",
     "mod_url": "http://jaymod.clanfu.org",
     "mod_binary": "linux-release",
-    "sv_uptime": "00d16h29m",
+    "sv_uptime": "01d16h35m",
     "sv_cpu": "Intel(R) Xeon(R) CPU E3-1270 v5",
     "g_axismaxlives": "0",
     "g_alliedmaxlives": "0",
@@ -21,7 +21,7 @@
     "sv_minPing": "0",
     "sv_minRate": "0",
     "sv_privateClients": "0",
-    "mapname": "supplydepot2",
+    "mapname": "decay_b7",
     "protocol": "84",
     "g_gametype": "2",
     "sv_userInfoFloodProtect": "1",
@@ -40,129 +40,129 @@
   },
   "Players": [
     {
-      "Frags": 9474,
+      "Frags": 8423,
+      "Ping": 125,
+      "Name": "dbnk61"
+    },
+    {
+      "Frags": 22876,
       "Ping": 0,
       "Name": "George"
     },
     {
-      "Frags": 8894,
+      "Frags": 22068,
       "Ping": 0,
       "Name": "Beelz"
     },
     {
-      "Frags": 9998,
+      "Frags": 24943,
       "Ping": 0,
       "Name": "Chimichanga"
     },
     {
-      "Frags": 9141,
+      "Frags": 22327,
       "Ping": 0,
       "Name": "Kaolin"
     },
     {
-      "Frags": 9503,
+      "Frags": 24402,
       "Ping": 0,
       "Name": "HalfH"
     },
     {
-      "Frags": 8387,
+      "Frags": 20739,
       "Ping": 0,
       "Name": "Ed"
     },
     {
-      "Frags": 9854,
+      "Frags": 23332,
       "Ping": 0,
       "Name": "Razor"
     },
     {
-      "Frags": 8621,
+      "Frags": 20981,
       "Ping": 0,
       "Name": "Amadi"
     },
     {
-      "Frags": 9965,
+      "Frags": 24531,
       "Ping": 0,
       "Name": "Brad"
     },
     {
-      "Frags": 8779,
+      "Frags": 20222,
       "Ping": 0,
       "Name": "Bortack"
     },
     {
-      "Frags": 8550,
+      "Frags": 23240,
       "Ping": 0,
       "Name": "Blackadder"
     },
     {
-      "Frags": 8176,
+      "Frags": 19921,
       "Ping": 0,
       "Name": "Nandet"
     },
     {
-      "Frags": 8847,
+      "Frags": 22990,
       "Ping": 0,
       "Name": "Sean"
     },
     {
-      "Frags": 8200,
+      "Frags": 20979,
       "Ping": 0,
       "Name": "Morg"
     },
     {
-      "Frags": 10993,
+      "Frags": 24993,
       "Ping": 0,
       "Name": "Nohope"
     },
     {
-      "Frags": 8216,
+      "Frags": 20332,
       "Ping": 0,
       "Name": "Whitt"
     },
     {
-      "Frags": 11469,
+      "Frags": 26350,
       "Ping": 0,
       "Name": "Newbie"
     },
     {
-      "Frags": 8265,
+      "Frags": 20277,
       "Ping": 0,
       "Name": "Stinger"
     },
     {
-      "Frags": 9054,
+      "Frags": 24446,
       "Ping": 0,
       "Name": "Cledus"
     },
     {
-      "Frags": 8379,
+      "Frags": 19770,
       "Ping": 0,
       "Name": "Flint"
     },
     {
-      "Frags": 11017,
+      "Frags": 24244,
       "Ping": 0,
       "Name": "Hitnrun"
     },
     {
-      "Frags": 7778,
+      "Frags": 18624,
       "Ping": 0,
       "Name": "Wens"
     },
     {
-      "Frags": 4905,
+      "Frags": 1024,
       "Ping": 0,
-      "Name": "NoAmmo"
+      "Name": "Drago"
     },
     {
-      "Frags": 3649,
+      "Frags": 15376,
       "Ping": 0,
       "Name": "Argo"
-    },
-    {
-      "Frags": 934,
-      "Ping": 0,
-      "Name": "Walter"
     }
   ]
 }

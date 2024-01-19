@@ -94,7 +94,6 @@
     "nkpolicepackv1",
     "plt_lumberjack",
     "plt_lumberjack-streams",
-    "ak-ouchie",
     "lf-carcontrol",
     "drag_crafting",
     "mana_hunting",
@@ -112,7 +111,7 @@
     "cfx-gabz-pdm",
     "cfx-gabz-pdprops",
     "cfx-gabz-townhall",
-    "dnxnewsenoraroad",
+    "dnxroadimprovements",
     "dp_remake",
     "Drug_location",
     "fightclub",
@@ -125,6 +124,7 @@
     "FranklinHousefix",
     "freedom_tower",
     "Gatto_WorkShopLA",
+    "glowpalms",
     "qb-prison",
     "xtxvxtx_prop_disabler",
     "laundry",
@@ -358,5 +358,5 @@
     "tags": "Roleplay, Casual, Economy, LSPD, EMS, Gangs, Cars, Motorcycles, Secrets, qbx_core, gunplay, Customs, Crime, territories, semi-serious, original, qbxcore",
     "txAdmin-version": "6.0.2"
   },
-  "version": 1365005309
+  "version": 1314568422
 }

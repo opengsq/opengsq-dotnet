@@ -31,28 +31,12 @@
   "si_antiLag": "1",
   "bot_enable": "1",
   "gamename": "baseETQW-1",
-  "si_campaign": "campaign_northamerica",
-  "si_map": "maps/valley.entities",
+  "si_campaign": "campaign_pacific",
+  "si_map": "maps/canyon.entities",
   "si_campaignInfo": "",
   "players": [
     {
       "id": 0,
-      "ping": 0,
-      "name": "Vlad_Putimir",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 1,
-      "ping": 0,
-      "name": "Bad Hombre",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 2,
       "ping": 0,
       "name": "NiceLagSwitch",
       "clantag_pos": 0,
@@ -60,47 +44,7 @@
       "typeflag": 1
     },
     {
-      "id": 3,
-      "ping": 0,
-      "name": "rumpleforeskin",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 4,
-      "ping": 0,
-      "name": "NoobMcBoob",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 5,
-      "ping": 0,
-      "name": "NOSFERATU",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 6,
-      "ping": 0,
-      "name": "Boss_Tweed",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 11,
-      "ping": 0,
-      "name": "Kettle",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 13,
+      "id": 1,
       "ping": 0,
       "name": "CTZN Kane",
       "clantag_pos": 0,
@@ -108,15 +52,23 @@
       "typeflag": 1
     },
     {
-      "id": 14,
+      "id": 11,
       "ping": 0,
-      "name": "STFUandDIE",
+      "name": "Bad Hombre",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
-      "id": 16,
+      "id": 12,
+      "ping": 0,
+      "name": "rumpleforeskin",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 13,
       "ping": 0,
       "name": "HaltHammerzeit",
       "clantag_pos": 0,
@@ -124,9 +76,25 @@
       "typeflag": 1
     },
     {
-      "id": 17,
+      "id": 14,
       "ping": 0,
       "name": "Gumbii",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 16,
+      "ping": 0,
+      "name": "Kettle",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 17,
+      "ping": 0,
+      "name": "flower.tube",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1

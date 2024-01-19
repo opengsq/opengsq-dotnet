@@ -6,44 +6,12 @@
   "map": "None",
   "version": "1.6",
   "password": "0",
-  "numplayers": "14",
+  "numplayers": "5",
   "maxplayers": "120",
   "rules": {},
   "players": [
     {
-      "name": "EFES",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "66",
-      "time": ""
-    },
-    {
-      "name": "YAKUPTV",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "176",
-      "time": ""
-    },
-    {
-      "name": "FatSqueegee12",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "66",
-      "time": ""
-    },
-    {
-      "name": "LethalBaobab76",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "66",
-      "time": ""
-    },
-    {
-      "name": "Emir",
+      "name": "majorka",
       "team": "",
       "skin": "",
       "score": "",
@@ -51,67 +19,27 @@
       "time": ""
     },
     {
-      "name": "Abbas",
+      "name": "BlueCans43",
       "team": "",
       "skin": "",
       "score": "",
-      "ping": "66",
+      "ping": "324",
       "time": ""
     },
     {
-      "name": "Abdullah",
+      "name": "AlluringCascades49",
       "team": "",
       "skin": "",
       "score": "",
-      "ping": "60",
+      "ping": "91",
       "time": ""
     },
     {
-      "name": "Pasa",
+      "name": "SpicyDavenport72",
       "team": "",
       "skin": "",
       "score": "",
-      "ping": "76",
-      "time": ""
-    },
-    {
-      "name": "filistin",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "70",
-      "time": ""
-    },
-    {
-      "name": "filistindusmani",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "70",
-      "time": ""
-    },
-    {
-      "name": "israil",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "54",
-      "time": ""
-    },
-    {
-      "name": "testoalpy",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "75",
-      "time": ""
-    },
-    {
-      "name": "SeriousMaelstrom89",
-      "team": "",
-      "skin": "",
-      "score": "",
-      "ping": "79",
+      "ping": "71",
       "time": ""
     },
     {
@@ -119,7 +47,7 @@
       "team": "",
       "skin": "",
       "score": "",
-      "ping": "66",
+      "ping": "206",
       "time": ""
     }
   ]
