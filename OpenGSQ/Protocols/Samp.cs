@@ -34,7 +34,7 @@ namespace OpenGSQ.Protocols
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public new async Task<Status> GetStatus()
         {
-            var response = await SendAndReceive((byte)'i');
+            var response = await GetResponse((byte)'i');
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -57,7 +57,7 @@ namespace OpenGSQ.Protocols
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public new async Task<List<Player>> GetPlayers()
         {
-            var response = await SendAndReceive((byte)'d');
+            var response = await GetResponse((byte)'d');
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -86,7 +86,7 @@ namespace OpenGSQ.Protocols
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Dictionary<string, string>> GetRules()
         {
-            var response = await SendAndReceive((byte)'r');
+            var response = await GetResponse((byte)'r');
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {

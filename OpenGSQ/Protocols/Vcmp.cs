@@ -44,7 +44,7 @@ namespace OpenGSQ.Protocols
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<Status> GetStatus()
         {
-            var response = await SendAndReceive((byte)'i');
+            var response = await GetResponse((byte)'i');
 
             using (var br = new BinaryReader(new MemoryStream(response)))
             {
@@ -68,7 +68,7 @@ namespace OpenGSQ.Protocols
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<List<Player>> GetPlayers()
         {
-            var response = await SendAndReceive((byte)'c');
+            var response = await GetResponse((byte)'c');
 
             using (var br = new BinaryReader(new MemoryStream(response), Encoding.UTF8))
             {
@@ -90,7 +90,7 @@ namespace OpenGSQ.Protocols
         /// <param name="data">The data to be sent.</param>
         /// <returns>A byte array containing the response from the remote host.</returns>
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
-        protected async Task<byte[]> SendAndReceive(byte data)
+        protected async Task<byte[]> GetResponse(byte data)
         {
             // Format the address
             string[] splitIp = (await GetIPAddress()).Split('.');
@@ -104,7 +104,7 @@ namespace OpenGSQ.Protocols
             headerData[4] = (byte)(Port >> 8);
             headerData[5] = (byte)Port;
 
-            byte[] packetHeader = headerData.Append(data).ToArray();
+            byte[] packetHeader = headerData.Concat(new byte[] { data }).ToArray();
             var request = RequestHeader.Concat(packetHeader).ToArray();
 
             // Validate the response
@@ -121,7 +121,7 @@ namespace OpenGSQ.Protocols
         /// <param name="br">The binary reader.</param>
         /// <param name="readOffset">The read offset. Default is 1.</param>
         /// <returns>The string read from the binary reader.</returns>
-        protected string ReadString(BinaryReader br, int readOffset = 1)
+        protected static string ReadString(BinaryReader br, int readOffset = 1)
         {
             var length = readOffset == 1 ? br.ReadByte() : br.ReadInt32();
             return Encoding.UTF8.GetString(br.ReadBytes(length));
