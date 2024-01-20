@@ -16,7 +16,7 @@
         /// <param name="timeout">The timeout for the connection in milliseconds.</param>
         public GameSpy4(string host, int port, int timeout = 5000) : base(host, port, timeout)
         {
-            Challenge = true;
+            ChallengeRequired = true;
         }
     }
 }

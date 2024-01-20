@@ -83,15 +83,55 @@ namespace OpenGSQ.Responses.Battlefield
         public int RoundTime { get; set; }
 
         // Additional properties based on your code
+
+        /// <summary>
+        /// Gets or sets the game mod. This property is optional.
+        /// </summary>
         public string Mod { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IP port of the game server. This property is optional.
+        /// </summary>
         public string IpPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets the version of PunkBuster. This property is optional.
+        /// </summary>
         public string PunkBusterVersion { get; set; }
-        public bool JoinQueue { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the join queue is enabled. This property is optional.
+        /// </summary>
+        public bool? JoinQueue { get; set; }
+
+        /// <summary>
+        /// Gets or sets the region of the game server. This property is optional.
+        /// </summary>
         public string Region { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ping site of the game server. This property is optional.
+        /// </summary>
         public string PingSite { get; set; }
+
+        /// <summary>
+        /// Gets or sets the country of the game server. This property is optional.
+        /// </summary>
         public string Country { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of players in the Blaze game state. This property is optional.
+        /// </summary>
         public int? BlazePlayerCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Blaze game state. This property is optional.
+        /// </summary>
         public string BlazeGameState { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether quick match is enabled. This property is optional.
+        /// </summary>
         public bool? QuickMatch { get; set; }
     }
 }

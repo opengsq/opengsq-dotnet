@@ -222,11 +222,8 @@ namespace OpenGSQ.Protocols
         {
             using (var udpClient = new System.Net.Sockets.UdpClient())
             {
-                udpClient.Client.SendTimeout = Timeout;
-                udpClient.Client.ReceiveTimeout = Timeout;
-
                 // Connect to remote host
-                udpClient.Connect(Host, Port);
+                udpClient.Connect(Host, Port, Timeout);
 
                 // Send Request
                 byte[] datagram = Encoding.ASCII.GetBytes(request);

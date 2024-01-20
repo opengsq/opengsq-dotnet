@@ -250,11 +250,8 @@ namespace OpenGSQ.Protocols
         {
             using (var udpClient = new System.Net.Sockets.UdpClient())
             {
-                udpClient.Client.SendTimeout = Timeout;
-                udpClient.Client.ReceiveTimeout = Timeout;
-
                 // Connect to remote host
-                udpClient.Connect(Host, Port);
+                udpClient.Connect(Host, Port, Timeout);
 
                 // Set up request base
                 byte[] requestBase = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF }.Concat(header).ToArray();
@@ -490,7 +487,7 @@ namespace OpenGSQ.Protocols
 
                 // Connect
                 _tcpClient = new System.Net.Sockets.TcpClient();
-                await _tcpClient.ConnectAsync(Host, Port);
+                await _tcpClient.ConnectAsync(Host, Port, Timeout);
                 _tcpClient.Client.SendTimeout = Timeout;
                 _tcpClient.Client.ReceiveTimeout = Timeout;
 

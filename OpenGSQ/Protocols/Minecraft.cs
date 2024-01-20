@@ -46,7 +46,7 @@ namespace OpenGSQ.Protocols
             using (var tcpClient = new System.Net.Sockets.TcpClient())
             {
                 tcpClient.ReceiveTimeout = Timeout;
-                await tcpClient.ConnectAsync(Host, Port);
+                await tcpClient.ConnectAsync(Host, Port, Timeout);
                 await tcpClient.SendAsync(request);
 
                 byte[] response = await tcpClient.ReceiveAsync();

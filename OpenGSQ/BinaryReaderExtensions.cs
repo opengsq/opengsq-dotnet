@@ -8,7 +8,7 @@ namespace OpenGSQ
     /// <summary>
     /// Provides extension methods for the BinaryReader class.
     /// </summary>
-    public static class BinaryReaderExtensions
+    internal static class BinaryReaderExtensions
     {
         /// <summary>
         /// Calculates the number of bytes remaining in the BinaryReader's BaseStream.

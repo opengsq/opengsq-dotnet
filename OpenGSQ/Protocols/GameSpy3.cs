@@ -20,7 +20,7 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// A boolean indicating whether to use the challenge method.
         /// </summary>
-        protected bool Challenge;
+        protected bool ChallengeRequired;
 
         /// <summary>
         /// Initializes a new instance of the GameSpy3 class.
@@ -64,14 +64,12 @@ namespace OpenGSQ.Protocols
             using (var udpClient = new System.Net.Sockets.UdpClient())
             {
                 // Connect to remote host
-                udpClient.Connect(Host, Port);
-                udpClient.Client.SendTimeout = Timeout;
-                udpClient.Client.ReceiveTimeout = Timeout;
+                udpClient.Connect(Host, Port, Timeout);
 
                 // Packet 1: Initial request
                 byte[] responseData, challenge = new byte[] { }, requestData = new byte[] { 0xFE, 0xFD, 0x09, 0x04, 0x05, 0x06, 0x07 };
 
-                if (Challenge)
+                if (ChallengeRequired)
                 {
                     await udpClient.SendAsync(requestData, requestData.Length);
 
