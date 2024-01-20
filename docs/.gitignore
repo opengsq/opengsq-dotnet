@@ -1,0 +1,4 @@
+# Docfx
+.cache
+/_site/
+/api/
