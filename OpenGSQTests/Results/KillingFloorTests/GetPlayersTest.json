@@ -1,79 +1,114 @@
 [
   {
-    "Id": 6039,
-    "Name": "Frenk",
-    "Ping": 64,
-    "Score": 34,
+    "Id": 3445,
+    "Name": "Shrine",
+    "Ping": 136,
+    "Score": 500,
     "StatsId": 536870912
   },
   {
-    "Id": 5235,
-    "Name": "Ahoris_.i.",
-    "Ping": 100,
-    "Score": 969,
+    "Id": 2896,
+    "Name": "[L]",
+    "Ping": 68,
+    "Score": 676,
     "StatsId": 536870912
   },
   {
-    "Id": 5120,
-    "Name": "Metall",
-    "Ping": 36,
-    "Score": 4411,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 4985,
-    "Name": "ilkornej",
+    "Id": 2700,
+    "Name": "LovaSekcija",
     "Ping": 56,
-    "Score": 0,
+    "Score": 5889,
     "StatsId": 536870912
   },
   {
-    "Id": 4935,
-    "Name": "VMR",
-    "Ping": 56,
-    "Score": 3210,
+    "Id": 2698,
+    "Name": "ForgotteN`",
+    "Ping": 76,
+    "Score": 6328,
     "StatsId": 536870912
   },
   {
-    "Id": 4592,
-    "Name": "i_hate_mOskow",
-    "Ping": 44,
-    "Score": 10616,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 4497,
-    "Name": "Lukenzo",
-    "Ping": 40,
-    "Score": 797,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 4244,
-    "Name": "Р”РѕР±СЂСЏРє",
-    "Ping": 52,
-    "Score": 2,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 3575,
-    "Name": "Lucky",
-    "Ping": 192,
-    "Score": 2858,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 3467,
-    "Name": "Gr1Zl1s",
-    "Ping": 16,
-    "Score": 141,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 2749,
-    "Name": "johnxina",
+    "Id": 1645,
+    "Name": "wece67",
     "Ping": 32,
-    "Score": 14,
+    "Score": 14563,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1181,
+    "Name": "Хрю",
+    "Ping": 72,
+    "Score": 58025,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1044,
+    "Name": "вњЇiBPower",
+    "Ping": 36,
+    "Score": 59397,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 395,
+    "Name": "Lukenzo",
+    "Ping": 56,
+    "Score": 60748,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 20,
+    "Name": "Valera",
+    "Ping": 80,
+    "Score": 7390,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 19,
+    "Name": "Desh",
+    "Ping": 76,
+    "Score": 86033,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 16,
+    "Name": "Tyson_Fura",
+    "Ping": 56,
+    "Score": 67607,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 15,
+    "Name": "dr85horzine",
+    "Ping": 32,
+    "Score": 102404,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 14,
+    "Name": "i_hate_mOskow",
+    "Ping": 64,
+    "Score": 128713,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 13,
+    "Name": "Dodo",
+    "Ping": 72,
+    "Score": 95749,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 12,
+    "Name": "skwerewolf",
+    "Ping": 68,
+    "Score": 92638,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 9,
+    "Name": "johnxina",
+    "Ping": 44,
+    "Score": 7790,
     "StatsId": 536870912
   }
 ]

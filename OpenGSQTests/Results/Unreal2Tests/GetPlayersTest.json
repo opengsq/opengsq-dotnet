@@ -1,65 +1,93 @@
 [
   {
-    "Id": 6749,
-    "Name": "Cip",
-    "Ping": 48,
-    "Score": 2655,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 6651,
-    "Name": "Monky'_Sinner",
-    "Ping": 228,
-    "Score": 2787,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 6512,
+    "Id": 5614,
     "Name": "-_Darkkingh_-",
-    "Ping": 256,
-    "Score": 3405,
+    "Ping": 280,
+    "Score": 2012,
     "StatsId": 536870912
   },
   {
-    "Id": 6333,
-    "Name": "KALIO_BG",
+    "Id": 4882,
+    "Name": "NORD-WEST",
+    "Ping": 32,
+    "Score": 2079,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 4358,
+    "Name": "aryana_yaryari",
+    "Ping": 112,
+    "Score": 864,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 4287,
+    "Name": "$StoreHookerCracksal",
+    "Ping": 164,
+    "Score": 2008,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3611,
+    "Name": "Asking",
+    "Ping": 44,
+    "Score": 2237,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3417,
+    "Name": "K-Ð¯Î”ÐŸBÎ”",
+    "Ping": 32,
+    "Score": 2164,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3351,
+    "Name": "DOOOOOOOM",
+    "Ping": 196,
+    "Score": 2101,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3291,
+    "Name": "Cip",
+    "Ping": 72,
+    "Score": 3482,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 2362,
+    "Name": "ml0ss",
+    "Ping": 60,
+    "Score": 6198,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1392,
+    "Name": "RLD!",
     "Ping": 48,
-    "Score": 4215,
+    "Score": 2018,
     "StatsId": 536870912
   },
   {
-    "Id": 4618,
-    "Name": "Kazak_(Rus)",
+    "Id": 196,
+    "Name": "J-hope_176",
     "Ping": 64,
-    "Score": 537,
+    "Score": 2980,
     "StatsId": 536870912
   },
   {
-    "Id": 4524,
-    "Name": "[RUS]Fluffi",
-    "Ping": 84,
-    "Score": 2010,
+    "Id": 6,
+    "Name": "MOBSTER",
+    "Ping": 48,
+    "Score": 1412,
     "StatsId": 536870912
   },
   {
-    "Id": 2581,
-    "Name": "LimiteS",
-    "Ping": 52,
-    "Score": 6642,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 796,
-    "Name": "Juska",
-    "Ping": 56,
-    "Score": 2828,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 731,
-    "Name": "Guapon",
-    "Ping": 40,
-    "Score": 7275,
+    "Id": 1,
+    "Name": "That_Black_Guy",
+    "Ping": 36,
+    "Score": 2606,
     "StatsId": 536870912
   }
 ]

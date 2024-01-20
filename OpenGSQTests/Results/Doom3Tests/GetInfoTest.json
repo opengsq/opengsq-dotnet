@@ -13,11 +13,12 @@
   "si_readyPercent": "51",
   "si_disableVoting": "0",
   "si_adminStart": "0",
-  "si_motd_4": "1Gbps dedicated",
-  "si_motd_2": "http://taw.net",
-  "si_motd_1": "TAW - The Art of Warfare",
-  "si_adminname": "FrodeThree",
-  "si_website": "https://wiki.enemyterritory.org",
+  "si_motd_4": "https://discord.gg/etqw",
+  "si_motd_3": "",
+  "si_motd_2": "EU Vanilla  ",
+  "si_motd_1": "",
+  "si_adminname": "The Makron",
+  "si_website": "https://discord.gg/etqw",
   "si_timelimit": "20",
   "si_rules": "sdGameRulesCampaign",
   "si_spectators": "1",
@@ -31,52 +32,12 @@
   "si_antiLag": "1",
   "bot_enable": "1",
   "gamename": "baseETQW-1",
-  "si_campaign": "campaign_africa",
-  "si_map": "maps/refinery.entities",
+  "si_campaign": "campaign_northamerica",
+  "si_map": "maps/valley.entities",
   "si_campaignInfo": "",
   "players": [
     {
       "id": 0,
-      "ping": 0,
-      "name": "iceT-bag",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 1,
-      "ping": 0,
-      "name": "STFUandDIE",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 2,
-      "ping": 0,
-      "name": "flower.tube",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 3,
-      "ping": 5,
-      "name": "Mowgli",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 4,
-      "ping": 0,
-      "name": "NiceLagSwitch",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 5,
       "ping": 0,
       "name": "HaltHammerzeit",
       "clantag_pos": 0,
@@ -84,39 +45,15 @@
       "typeflag": 1
     },
     {
-      "id": 6,
-      "ping": 0,
-      "name": "NOSFERATU",
+      "id": 1,
+      "ping": 140,
+      "name": "PickleSuit_",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
     },
     {
-      "id": 8,
-      "ping": 0,
-      "name": "FannyPack",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 12,
-      "ping": 0,
-      "name": "WAT|infected_remnants",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 13,
-      "ping": 0,
-      "name": "Kettle",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 14,
+      "id": 2,
       "ping": 0,
       "name": "CTZN Kane",
       "clantag_pos": 0,
@@ -124,9 +61,57 @@
       "typeflag": 1
     },
     {
-      "id": 15,
+      "id": 3,
+      "ping": 0,
+      "name": "Vlad_Putimir",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 5,
+      "ping": 0,
+      "name": "iceT-bag",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 6,
       "ping": 0,
       "name": "NoobMcBoob",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 7,
+      "ping": 0,
+      "name": "Boss_Tweed",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 8,
+      "ping": 0,
+      "name": "Kettle",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 9,
+      "ping": 0,
+      "name": "FannyPack",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 10,
+      "ping": 0,
+      "name": "flower.tube",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1

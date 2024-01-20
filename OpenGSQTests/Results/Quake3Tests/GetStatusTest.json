@@ -1,16 +1,16 @@
 {
   "Info": {
     "omnibot_playing": "25",
-    "P": "-121212121212121212121212-1",
+    "P": "-1212121212121212121212121",
     "voteFlags": "507903",
     "g_balancedteams": "1",
-    "g_bluelimbotime": "10000",
+    "g_bluelimbotime": "12000",
     "g_redlimbotime": "14000",
     "gamename": "jaymod",
     "mod_version": "2.2.0",
     "mod_url": "http://jaymod.clanfu.org",
     "mod_binary": "linux-release",
-    "sv_uptime": "02d15h28m",
+    "sv_uptime": "03d15h26m",
     "sv_cpu": "Intel(R) Xeon(R) CPU E3-1270 v5",
     "g_axismaxlives": "0",
     "g_alliedmaxlives": "0",
@@ -21,7 +21,7 @@
     "sv_minPing": "0",
     "sv_minRate": "0",
     "sv_privateClients": "0",
-    "mapname": "goldrush-gals",
+    "mapname": "supplydepot2",
     "protocol": "84",
     "g_gametype": "2",
     "sv_userInfoFloodProtect": "1",
@@ -34,135 +34,135 @@
     "sv_dlRate": "100000",
     "sv_maxRate": "45000",
     "sv_hostname": "New Server /connect jay1.clan-fa.com:27960",
-    "timelimit": "30",
+    "timelimit": "15",
     "sv_maxclients": "60",
     "version": "ET Legacy v2.81.0 linux-i386 Jan 27 2023"
   },
   "Players": [
     {
-      "Frags": 36850,
+      "Frags": 52135,
       "Ping": 0,
       "Name": "George"
     },
     {
-      "Frags": 34814,
+      "Frags": 48103,
       "Ping": 0,
       "Name": "Beelz"
     },
     {
-      "Frags": 39445,
+      "Frags": 54969,
       "Ping": 0,
       "Name": "Chimichanga"
     },
     {
-      "Frags": 33993,
+      "Frags": 46787,
       "Ping": 0,
       "Name": "Kaolin"
     },
     {
-      "Frags": 38793,
+      "Frags": 51894,
       "Ping": 0,
       "Name": "HalfH"
     },
     {
-      "Frags": 32805,
+      "Frags": 45393,
       "Ping": 0,
       "Name": "Ed"
     },
     {
-      "Frags": 37189,
+      "Frags": 53125,
       "Ping": 0,
       "Name": "Razor"
     },
     {
-      "Frags": 33555,
+      "Frags": 0,
       "Ping": 0,
       "Name": "Amadi"
     },
     {
-      "Frags": 38717,
+      "Frags": 54818,
       "Ping": 0,
       "Name": "Brad"
     },
     {
-      "Frags": 32608,
+      "Frags": 45374,
       "Ping": 0,
       "Name": "Bortack"
     },
     {
-      "Frags": 37030,
+      "Frags": 50927,
       "Ping": 0,
       "Name": "Blackadder"
     },
     {
-      "Frags": 31832,
+      "Frags": 44767,
       "Ping": 0,
       "Name": "Nandet"
     },
     {
-      "Frags": 36919,
+      "Frags": 50693,
       "Ping": 0,
       "Name": "Sean"
     },
     {
-      "Frags": 32483,
+      "Frags": 45295,
       "Ping": 0,
       "Name": "Morg"
     },
     {
-      "Frags": 38098,
+      "Frags": 51202,
       "Ping": 0,
       "Name": "Nohope"
     },
     {
-      "Frags": 32097,
+      "Frags": 44532,
       "Ping": 0,
       "Name": "Whitt"
     },
     {
-      "Frags": 40487,
+      "Frags": 55686,
       "Ping": 0,
       "Name": "Newbie"
     },
     {
-      "Frags": 32417,
+      "Frags": 44763,
       "Ping": 0,
       "Name": "Stinger"
     },
     {
-      "Frags": 38522,
+      "Frags": 51872,
       "Ping": 0,
       "Name": "Cledus"
     },
     {
-      "Frags": 31245,
+      "Frags": 43875,
       "Ping": 0,
       "Name": "Flint"
     },
     {
-      "Frags": 37296,
+      "Frags": 52059,
       "Ping": 0,
       "Name": "Hitnrun"
     },
     {
-      "Frags": 30649,
+      "Frags": 43194,
       "Ping": 0,
       "Name": "Wens"
     },
     {
-      "Frags": 14725,
+      "Frags": 7717,
       "Ping": 0,
-      "Name": "Drago"
+      "Name": "Halfwit"
     },
     {
-      "Frags": 26477,
+      "Frags": 38877,
       "Ping": 0,
       "Name": "Argo"
     },
     {
-      "Frags": 1142,
+      "Frags": 2063,
       "Ping": 0,
-      "Name": "Missnrun"
+      "Name": "Malin"
     }
   ]
 }

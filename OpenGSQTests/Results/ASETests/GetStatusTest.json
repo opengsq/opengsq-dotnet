@@ -2,128 +2,56 @@
   "GameName": "mta",
   "GamePort": 22003,
   "HostName": "MTA Türkiye ✖ GÜL GAMİNG FREEROAM ✖ [Roleplay/Askeri/Drift/Drop/Turkey/Tr/Gül Gaming]",
-  "GameType": "ＢＥＤＡＶＡ － ＶＩＰ",
+  "GameType": "23:00 Etkinlik (Discord)",
   "Map": "None",
   "Version": "1.6",
   "Password": false,
-  "NumPlayers": 16,
+  "NumPlayers": 17,
   "MaxPlayers": 120,
   "Rules": {},
   "Players": [
     {
-      "Name": "SnowDen",
+      "Name": "KindPony58",
       "Team": "",
       "Skin": "",
       "Score": 0,
-      "Ping": 74,
+      "Ping": 78,
       "Time": 0
     },
     {
-      "Name": "AcridViolin70",
+      "Name": "tassak",
       "Team": "",
       "Skin": "",
       "Score": 0,
-      "Ping": 65,
+      "Ping": 317,
       "Time": 0
     },
     {
-      "Name": "Bashe00",
+      "Name": "RaneX",
       "Team": "",
       "Skin": "",
       "Score": 0,
-      "Ping": 64,
+      "Ping": 79,
       "Time": 0
     },
     {
-      "Name": "STV-Bati",
+      "Name": "luxus009",
       "Team": "",
       "Skin": "",
       "Score": 0,
-      "Ping": 69,
+      "Ping": 75,
       "Time": 0
     },
     {
-      "Name": "Berke",
+      "Name": "ParsS",
       "Team": "",
       "Skin": "",
       "Score": 0,
-      "Ping": 59,
+      "Ping": 72,
       "Time": 0
     },
     {
-      "Name": "CHIVAS",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 137,
-      "Time": 0
-    },
-    {
-      "Name": "Zature_Prosu",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 117,
-      "Time": 0
-    },
-    {
-      "Name": "'Sweet",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 95,
-      "Time": 0
-    },
-    {
-      "Name": "STV-HardBeyfendi",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 315,
-      "Time": 0
-    },
-    {
-      "Name": "ErkaN_ThE_bEST",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 64,
-      "Time": 0
-    },
-    {
-      "Name": "puzeydun",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 69,
-      "Time": 0
-    },
-    {
-      "Name": "sevilay",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 81,
-      "Time": 0
-    },
-    {
-      "Name": "Veysss",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 89,
-      "Time": 0
-    },
-    {
-      "Name": "amcarte",
-      "Team": "",
-      "Skin": "",
-      "Score": 0,
-      "Ping": 61,
-      "Time": 0
-    },
-    {
-      "Name": "#Popy",
+      "Name": "berat31",
       "Team": "",
       "Skin": "",
       "Score": 0,
@@ -131,11 +59,91 @@
       "Time": 0
     },
     {
-      "Name": "Arda",
+      "Name": "Slarch",
       "Team": "",
       "Skin": "",
       "Score": 0,
-      "Ping": 63,
+      "Ping": 110,
+      "Time": 0
+    },
+    {
+      "Name": "JackBROWNS",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 73,
+      "Time": 0
+    },
+    {
+      "Name": "Rauzentr",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 98,
+      "Time": 0
+    },
+    {
+      "Name": "Muhasebeci",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 86,
+      "Time": 0
+    },
+    {
+      "Name": "KorayBeyk",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 57,
+      "Time": 0
+    },
+    {
+      "Name": "Restzz34",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 79,
+      "Time": 0
+    },
+    {
+      "Name": "maxverstappen33",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 180,
+      "Time": 0
+    },
+    {
+      "Name": "BARIZZ",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 70,
+      "Time": 0
+    },
+    {
+      "Name": "Snowden",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 75,
+      "Time": 0
+    },
+    {
+      "Name": "GiantElbow15",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 165,
+      "Time": 0
+    },
+    {
+      "Name": "efeduskunn21",
+      "Team": "",
+      "Skin": "",
+      "Score": 0,
+      "Ping": 83,
       "Time": 0
     }
   ]

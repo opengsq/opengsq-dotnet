@@ -1,104 +1,236 @@
 [
   {
     "Id": 0,
-    "Name": "[GSF] Jason_Ward",
-    "Score": 23,
-    "Ping": 35
+    "Name": "John_Ozaak",
+    "Score": 22,
+    "Ping": 50
   },
   {
     "Id": 1,
-    "Name": "Eazy_Reyes",
-    "Score": 23,
-    "Ping": 66
+    "Name": "Shermaine_Champagne",
+    "Score": 29,
+    "Ping": 45
   },
   {
     "Id": 2,
-    "Name": "[MB] Benson_Corleone",
-    "Score": 55,
-    "Ping": 82
+    "Name": "Viktor_Sanctus",
+    "Score": 0,
+    "Ping": 260
   },
   {
     "Id": 3,
-    "Name": "[SAFD] Denaun_Harris",
-    "Score": 26,
-    "Ping": 65
+    "Name": "Matthew_Reiner",
+    "Score": 32,
+    "Ping": 56
   },
   {
     "Id": 4,
-    "Name": "Shermaine_Champagne",
-    "Score": 29,
-    "Ping": 46
+    "Name": "Cloudy_Heckingbottom",
+    "Score": 28,
+    "Ping": 65
   },
   {
     "Id": 5,
-    "Name": "Yuli_monge",
-    "Score": 0,
-    "Ping": 472
+    "Name": "[NG] Jacqueline_Matisse",
+    "Score": 19,
+    "Ping": 67
   },
   {
     "Id": 6,
-    "Name": "Lars_Vegas",
-    "Score": 27,
-    "Ping": 207
+    "Name": "Andrew_Clarson",
+    "Score": 31,
+    "Ping": 91
+  },
+  {
+    "Id": 7,
+    "Name": "Dominique_Johnsons",
+    "Score": 9,
+    "Ping": 29
+  },
+  {
+    "Id": 8,
+    "Name": "Artyom_Arctica",
+    "Score": 18,
+    "Ping": 133
   },
   {
     "Id": 9,
-    "Name": "mmd_aminn",
-    "Score": 0,
-    "Ping": 151
+    "Name": "Chuck_Clayton",
+    "Score": 24,
+    "Ping": 45
   },
   {
     "Id": 10,
-    "Name": "[GSF] Kenny_Lynch",
-    "Score": 34,
-    "Ping": 51
+    "Name": "Jevonte_Kingsly",
+    "Score": 33,
+    "Ping": 169
+  },
+  {
+    "Id": 11,
+    "Name": "Elwynn_Watts",
+    "Score": 40,
+    "Ping": 66
   },
   {
     "Id": 12,
-    "Name": "Sebastian_Madrid",
-    "Score": 0,
-    "Ping": 178
+    "Name": "[NBA] Dominique_Burns",
+    "Score": 25,
+    "Ping": 76
+  },
+  {
+    "Id": 13,
+    "Name": "[SAPD] Thaven_Wright",
+    "Score": 25,
+    "Ping": 307
   },
   {
     "Id": 14,
+    "Name": "Henry_Sins",
+    "Score": 12,
+    "Ping": 133
+  },
+  {
+    "Id": 15,
     "Name": "ibr_Bremooo",
-    "Score": 4,
-    "Ping": 91
+    "Score": 5,
+    "Ping": 97
   },
   {
     "Id": 16,
-    "Name": "[CM] Astrid_Corleone",
-    "Score": 39,
-    "Ping": 91
+    "Name": "Shewantey_Miller",
+    "Score": 22,
+    "Ping": 86
+  },
+  {
+    "Id": 17,
+    "Name": "[NBA] Percy_WiIliams",
+    "Score": 24,
+    "Ping": 132
+  },
+  {
+    "Id": 18,
+    "Name": "Tony_Clinton",
+    "Score": 24,
+    "Ping": 66
   },
   {
     "Id": 19,
-    "Name": "[NBA] Trey_Warren",
+    "Name": "Ignaz_Becker",
     "Score": 21,
     "Ping": 76
   },
   {
-    "Id": 24,
-    "Name": "Jacob_Harlon",
+    "Id": 20,
+    "Name": "[SAPD] Dinghy_Davidson",
+    "Score": 44,
+    "Ping": 81
+  },
+  {
+    "Id": 21,
+    "Name": "[NBA] Clayton_Burns",
     "Score": 20,
-    "Ping": 45
+    "Ping": 56
+  },
+  {
+    "Id": 22,
+    "Name": "[GSF] Mully_Mark",
+    "Score": 30,
+    "Ping": 71
+  },
+  {
+    "Id": 23,
+    "Name": "[FBI] Mircea_Niko",
+    "Score": 20,
+    "Ping": 67
+  },
+  {
+    "Id": 24,
+    "Name": "[GSF] Kenny_Lynch",
+    "Score": 34,
+    "Ping": 61
+  },
+  {
+    "Id": 25,
+    "Name": "Gerald_Harris",
+    "Score": 11,
+    "Ping": 112
+  },
+  {
+    "Id": 26,
+    "Name": "Gerald_Bleedson",
+    "Score": 18,
+    "Ping": 240
   },
   {
     "Id": 27,
-    "Name": "Levi_Becker",
-    "Score": 29,
-    "Ping": 95
+    "Name": "Abu_Hajar",
+    "Score": 22,
+    "Ping": 205
   },
   {
     "Id": 28,
-    "Name": "[NBA] Jaren_Jackson",
-    "Score": 16,
-    "Ping": 86
+    "Name": "Lars_Vegas",
+    "Score": 27,
+    "Ping": 198
   },
   {
-    "Id": 47,
-    "Name": "[NBA] Percy_WiIliams",
-    "Score": 24,
-    "Ping": 147
+    "Id": 29,
+    "Name": "[WWI] Giovanni_Russell",
+    "Score": 9,
+    "Ping": 81
+  },
+  {
+    "Id": 30,
+    "Name": "[GSF] Buzz_Hornet",
+    "Score": 26,
+    "Ping": 35
+  },
+  {
+    "Id": 31,
+    "Name": "[FBI] Omer_Azeez",
+    "Score": 28,
+    "Ping": 35
+  },
+  {
+    "Id": 32,
+    "Name": "[SAPD] Bret_Reigns",
+    "Score": 37,
+    "Ping": 67
+  },
+  {
+    "Id": 34,
+    "Name": "Barry_Edwards",
+    "Score": 21,
+    "Ping": 168
+  },
+  {
+    "Id": 36,
+    "Name": "[NBA] Lamar_Anderson",
+    "Score": 30,
+    "Ping": 87
+  },
+  {
+    "Id": 37,
+    "Name": "Jacob_Harlon",
+    "Score": 20,
+    "Ping": 51
+  },
+  {
+    "Id": 38,
+    "Name": "[GSF] Jay_Fleck",
+    "Score": 22,
+    "Ping": 88
+  },
+  {
+    "Id": 39,
+    "Name": "[GSF] Sakee_Cappone",
+    "Score": 26,
+    "Ping": 118
+  },
+  {
+    "Id": 41,
+    "Name": "[MB] Benson_Corleone",
+    "Score": 55,
+    "Ping": 77
   }
 ]

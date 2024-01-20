@@ -2,11 +2,11 @@
   "Info": {
     "hostname": "*Easy Prey/Death*",
     "hostport": "15567",
-    "mapname": "Hastings [Extra Vehicles] -SSM-",
+    "mapname": "Flaming Dart [Extra Vehicles] -SSM-",
     "gametype": "coop",
     "numplayers": "0",
     "maxplayers": "50",
-    "gamemode": "pre",
+    "gamemode": "openplaying",
     "password": "0",
     "gamever": "v1.21",
     "dedicated": "2",
@@ -49,11 +49,11 @@
   "Teams": [
     {
       "team": "red",
-      "tickets": "846"
+      "tickets": "839"
     },
     {
       "team": "blue",
-      "tickets": "846"
+      "tickets": "752"
     }
   ]
 }

@@ -193,6 +193,7 @@
     "ox_target",
     "pls_scrapyard",
     "qbx_core",
+    "qbx_truckrobbery",
     "qb-ambulancejob",
     "qb-bankrobbery",
     "qb-cityhall",
@@ -285,7 +286,6 @@
     "pixel_antiCL",
     "popcornrp_houserobbery",
     "popcornrp-laundering",
-    "popcornrp-truckheist",
     "pp_bananapeel",
     "prp-jobhall",
     "ps-mdt",
@@ -330,7 +330,6 @@
     "voodoo_vdcoffin",
     "weilher_colorized_radio_icons",
     "xtxvxtx_female_male_body_remastered",
-    "vx-prop-util",
     "qb-radio",
     "basic-gamemode",
     "chat",
@@ -360,5 +359,5 @@
     "tags": "Roleplay, Casual, Economy, LSPD, EMS, Gangs, Cars, Motorcycles, Secrets, qbx_core, gunplay, Customs, Crime, territories, semi-serious, original, qbxcore",
     "txAdmin-version": "6.0.2"
   },
-  "version": 552170063
+  "version": 1261659127
 }

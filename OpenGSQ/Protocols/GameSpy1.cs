@@ -87,7 +87,7 @@ namespace OpenGSQ.Protocols
             {
                 var status = new Status
                 {
-                    KeyValues = new Dictionary<string, string>()
+                    Info = new Dictionary<string, string>()
                 };
 
                 long position = 0;
@@ -98,7 +98,7 @@ namespace OpenGSQ.Protocols
                     && !key.ToLower().StartsWith("player_"))
                 {
                     // Save key and value
-                    status.KeyValues[key] = br.ReadStringEx(_delimiter);
+                    status.Info[key] = br.ReadStringEx(_delimiter);
 
                     // Save the position after read the value
                     position = br.BaseStream.Position;
@@ -115,7 +115,7 @@ namespace OpenGSQ.Protocols
                     // Save teams if it is XServerQuery response
                     status.Teams = new List<Dictionary<string, string>>();
 
-                    var teams = status.KeyValues.Where(x => x.Key.Contains('_'));
+                    var teams = status.Info.Where(x => x.Key.Contains('_'));
 
                     foreach (KeyValuePair<string, string> keyValue in teams)
                     {
@@ -133,7 +133,7 @@ namespace OpenGSQ.Protocols
                         status.Teams[index][key] = keyValue.Value;
 
                         // Remove the key
-                        status.KeyValues.Remove(keyValue.Key);
+                        status.Info.Remove(keyValue.Key);
                     }
                 }
 
