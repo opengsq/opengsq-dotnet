@@ -131,16 +131,12 @@ namespace OpenGSQ
             tcpClient.SendTimeout = timeout;
             tcpClient.ReceiveTimeout = timeout;
 
-            try
+            var receiveTask = tcpClient.ConnectAsync(host, port);
+
+            if (await Task.WhenAny(receiveTask, Task.Delay(timeout)) != receiveTask)
             {
-                using (var cts = new CancellationTokenSource(timeout))
-                {
-                    await tcpClient.ConnectAsync(host, port, cts.Token);
-                }
-            }
-            catch (System.OperationCanceledException ex)
-            {
-                throw new TimeoutException($"The operation has timed out. {ex.Message}");
+                // Task timed out.
+                throw new TimeoutException("The operation has timed out.");
             }
         }
 
