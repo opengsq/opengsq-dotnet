@@ -1,0 +1,441 @@
+---
+uid: OpenGSQ.Protocols.Tests.BattlefieldTests.GetPlayersTest
+---
+
+# Test Method GetPlayersTest
+
+Here are the results for the test method.
+
+```json
+[
+  {
+    "name": "Bisatiz",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "3",
+    "kills": "16",
+    "deaths": "17",
+    "score": "8702",
+    "rank": "58",
+    "ping": "29"
+  },
+  {
+    "name": "zKuntur",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "10",
+    "kills": "50",
+    "deaths": "15",
+    "score": "7804",
+    "rank": "145",
+    "ping": "34"
+  },
+  {
+    "name": "UbiBaWka",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "2",
+    "kills": "10",
+    "deaths": "10",
+    "score": "2197",
+    "rank": "125",
+    "ping": "43"
+  },
+  {
+    "name": "x_ToGo_x",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "4",
+    "kills": "8",
+    "deaths": "7",
+    "score": "4724",
+    "rank": "145",
+    "ping": "52"
+  },
+  {
+    "name": "I-HEB3OPOB-I",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "4",
+    "kills": "31",
+    "deaths": "10",
+    "score": "15802",
+    "rank": "145",
+    "ping": "65535"
+  },
+  {
+    "name": "Pawel197704",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "10",
+    "kills": "10",
+    "deaths": "24",
+    "score": "7576",
+    "rank": "28",
+    "ping": "28"
+  },
+  {
+    "name": "Gaz_Ranger_28x",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "1",
+    "kills": "7",
+    "deaths": "14",
+    "score": "5772",
+    "rank": "112",
+    "ping": "23"
+  },
+  {
+    "name": "Roma_sibir_55",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "1",
+    "kills": "17",
+    "deaths": "16",
+    "score": "7330",
+    "rank": "145",
+    "ping": "72"
+  },
+  {
+    "name": "XCelimanX",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "10",
+    "kills": "5",
+    "deaths": "5",
+    "score": "5304",
+    "rank": "145",
+    "ping": "18"
+  },
+  {
+    "name": "cerberus2500",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "3",
+    "kills": "4",
+    "deaths": "6",
+    "score": "3668",
+    "rank": "95",
+    "ping": "21"
+  },
+  {
+    "name": "4uintus",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "4",
+    "kills": "52",
+    "deaths": "36",
+    "score": "10807",
+    "rank": "145",
+    "ping": "22"
+  },
+  {
+    "name": "orel116IL",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "4",
+    "kills": "10",
+    "deaths": "16",
+    "score": "10522",
+    "rank": "38",
+    "ping": "57"
+  },
+  {
+    "name": "uNreal_Niru",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "4",
+    "kills": "5",
+    "deaths": "12",
+    "score": "3670",
+    "rank": "51",
+    "ping": "42"
+  },
+  {
+    "name": "El_DIVINO91",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "3",
+    "kills": "33",
+    "deaths": "25",
+    "score": "9066",
+    "rank": "50",
+    "ping": "112"
+  },
+  {
+    "name": "Vasya666Vasya",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "3",
+    "kills": "7",
+    "deaths": "11",
+    "score": "6308",
+    "rank": "145",
+    "ping": "62"
+  },
+  {
+    "name": "MrEgYpTx",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "1",
+    "kills": "43",
+    "deaths": "11",
+    "score": "16084",
+    "rank": "72",
+    "ping": "80"
+  },
+  {
+    "name": "laylay73",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "4",
+    "kills": "17",
+    "deaths": "21",
+    "score": "10212",
+    "rank": "145",
+    "ping": "107"
+  },
+  {
+    "name": "tecnoden",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "1",
+    "kills": "17",
+    "deaths": "20",
+    "score": "11802",
+    "rank": "145",
+    "ping": "58"
+  },
+  {
+    "name": "DJOstice",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "5",
+    "kills": "27",
+    "deaths": "13",
+    "score": "7410",
+    "rank": "145",
+    "ping": "25"
+  },
+  {
+    "name": "Troldemort",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "3",
+    "kills": "8",
+    "deaths": "16",
+    "score": "3954",
+    "rank": "96",
+    "ping": "17"
+  },
+  {
+    "name": "Googlefaul",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "5",
+    "kills": "72",
+    "deaths": "13",
+    "score": "11361",
+    "rank": "73",
+    "ping": "104"
+  },
+  {
+    "name": "Loloppopsossi786",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "1",
+    "kills": "5",
+    "deaths": "5",
+    "score": "2872",
+    "rank": "68",
+    "ping": "22"
+  },
+  {
+    "name": "InFiniTy_ZarKaM",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "2",
+    "kills": "21",
+    "deaths": "15",
+    "score": "8916",
+    "rank": "42",
+    "ping": "41"
+  },
+  {
+    "name": "duisendpot",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "2",
+    "kills": "4",
+    "deaths": "10",
+    "score": "1992",
+    "rank": "89",
+    "ping": "38"
+  },
+  {
+    "name": "tamirmichael",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "2",
+    "kills": "1",
+    "deaths": "5",
+    "score": "1914",
+    "rank": "69",
+    "ping": "24"
+  },
+  {
+    "name": "sleepwalker7474",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "10",
+    "kills": "14",
+    "deaths": "11",
+    "score": "7634",
+    "rank": "145",
+    "ping": "33"
+  },
+  {
+    "name": "cf9b1fc3a0c91d4d",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "5",
+    "kills": "2",
+    "deaths": "5",
+    "score": "2232",
+    "rank": "77",
+    "ping": "38"
+  },
+  {
+    "name": "-0_KzG_0-",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "3",
+    "kills": "3",
+    "deaths": "2",
+    "score": "660",
+    "rank": "51",
+    "ping": "16"
+  },
+  {
+    "name": "0317Mo_Yan",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "2",
+    "kills": "3",
+    "deaths": "4",
+    "score": "1290",
+    "rank": "1",
+    "ping": "38"
+  },
+  {
+    "name": "BlackDistrict_PL",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "4",
+    "kills": "8",
+    "deaths": "5",
+    "score": "2402",
+    "rank": "128",
+    "ping": "44"
+  },
+  {
+    "name": "MrMacPhisto2501",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "4",
+    "kills": "13",
+    "deaths": "9",
+    "score": "4614",
+    "rank": "145",
+    "ping": "47"
+  },
+  {
+    "name": "JoJacksonGER",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "3",
+    "kills": "6",
+    "deaths": "3",
+    "score": "1560",
+    "rank": "145",
+    "ping": "20"
+  },
+  {
+    "name": "Fryer42",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "1",
+    "kills": "0",
+    "deaths": "0",
+    "score": "0",
+    "rank": "108",
+    "ping": "21"
+  },
+  {
+    "name": "GianCarco",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "2",
+    "kills": "0",
+    "deaths": "4",
+    "score": "140",
+    "rank": "113",
+    "ping": "32"
+  },
+  {
+    "name": "Azerbaidschan",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "1",
+    "kills": "3",
+    "deaths": "0",
+    "score": "848",
+    "rank": "145",
+    "ping": "13"
+  },
+  {
+    "name": "Flyguy21jager",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "2",
+    "kills": "0",
+    "deaths": "1",
+    "score": "280",
+    "rank": "145",
+    "ping": "65535"
+  },
+  {
+    "name": "jcpresas",
+    "guid": "",
+    "teamId": "2",
+    "squadId": "1",
+    "kills": "0",
+    "deaths": "0",
+    "score": "1040",
+    "rank": "145",
+    "ping": "40"
+  },
+  {
+    "name": "9032b57a6b49f900",
+    "guid": "",
+    "teamId": "1",
+    "squadId": "2",
+    "kills": "1",
+    "deaths": "1",
+    "score": "200",
+    "rank": "145",
+    "ping": "29"
+  },
+  {
+    "name": "manara033",
+    "guid": "",
+    "teamId": "0",
+    "squadId": "0",
+    "kills": "0",
+    "deaths": "0",
+    "score": "0",
+    "rank": "145",
+    "ping": "65535"
+  }
+]
+```

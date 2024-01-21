@@ -1,114 +1,107 @@
 [
   {
-    "Id": 3445,
-    "Name": "Shrine",
-    "Ping": 136,
-    "Score": 500,
+    "Id": 4080,
+    "Name": "DLL",
+    "Ping": 52,
+    "Score": 2321,
     "StatsId": 536870912
   },
   {
-    "Id": 2896,
-    "Name": "[L]",
-    "Ping": 68,
-    "Score": 676,
+    "Id": 3844,
+    "Name": "uuuuuttyy",
+    "Ping": 240,
+    "Score": 3713,
     "StatsId": 536870912
   },
   {
-    "Id": 2700,
-    "Name": "LovaSekcija",
-    "Ping": 56,
-    "Score": 5889,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 2698,
-    "Name": "ForgotteN`",
-    "Ping": 76,
-    "Score": 6328,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 1645,
-    "Name": "wece67",
-    "Ping": 32,
-    "Score": 14563,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 1181,
-    "Name": "Хрю",
-    "Ping": 72,
-    "Score": 58025,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 1044,
-    "Name": "вњЇiBPower",
-    "Ping": 36,
-    "Score": 59397,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 395,
-    "Name": "Lukenzo",
-    "Ping": 56,
-    "Score": 60748,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 20,
-    "Name": "Valera",
+    "Id": 3647,
+    "Name": "SUBZERO",
     "Ping": 80,
-    "Score": 7390,
+    "Score": 2762,
     "StatsId": 536870912
   },
   {
-    "Id": 19,
-    "Name": "Desh",
-    "Ping": 76,
-    "Score": 86033,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 16,
-    "Name": "Tyson_Fura",
-    "Ping": 56,
-    "Score": 67607,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 15,
-    "Name": "dr85horzine",
-    "Ping": 32,
-    "Score": 102404,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 14,
-    "Name": "i_hate_mOskow",
-    "Ping": 64,
-    "Score": 128713,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 13,
-    "Name": "Dodo",
-    "Ping": 72,
-    "Score": 95749,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 12,
-    "Name": "skwerewolf",
+    "Id": 2799,
+    "Name": "Odessit",
     "Ping": 68,
-    "Score": 92638,
+    "Score": 5535,
     "StatsId": 536870912
   },
   {
-    "Id": 9,
-    "Name": "johnxina",
-    "Ping": 44,
-    "Score": 7790,
+    "Id": 1983,
+    "Name": "wece67",
+    "Ping": 28,
+    "Score": 3339,
     "StatsId": 536870912
+  },
+  {
+    "Id": 1811,
+    "Name": "NIC128",
+    "Ping": 68,
+    "Score": 3103,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 860,
+    "Name": "XFACTOR",
+    "Ping": 144,
+    "Score": 2919,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 753,
+    "Name": "Sheriffi",
+    "Ping": 48,
+    "Score": 3111,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 275,
+    "Name": "Doodlez",
+    "Ping": 68,
+    "Score": -2147483648,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 8,
+    "Name": "johnxina",
+    "Ping": 40,
+    "Score": 5762,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 7,
+    "Name": "Р”РѕР±СЂСЏРє",
+    "Ping": 60,
+    "Score": 3587,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 6,
+    "Name": "Danek",
+    "Ping": 56,
+    "Score": 632,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3,
+    "Name": "[Dr.Pavco]",
+    "Ping": 56,
+    "Score": 2444,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 2,
+    "Name": "H1Æ¤×”Ñ²Æ¬1â„‚",
+    "Ping": 88,
+    "Score": 25275,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1,
+    "Name": "DS",
+    "Ping": 84,
+    "Score": 1102,
+    "StatsId": 0
   }
 ]

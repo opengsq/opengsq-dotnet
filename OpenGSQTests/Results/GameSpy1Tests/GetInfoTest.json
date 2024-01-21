@@ -1,10 +1,10 @@
 {
   "hostname": " --- ComboGib CTF (Grapple) -- London --- EatSleepUT.com",
   "hostport": "7777",
-  "maptitle": "CTF-Bolt_HE (High End Systems)",
-  "mapname": "CTF-Bolt_HE",
+  "maptitle": "|-Vp-| FragWhoreArena",
+  "mapname": "CTF-(Vp)FragWhore[ZPC]",
   "gametype": "CTFGame",
-  "numplayers": "18",
+  "numplayers": "12",
   "maxplayers": "18",
   "gamemode": "openplaying",
   "gamever": "469",

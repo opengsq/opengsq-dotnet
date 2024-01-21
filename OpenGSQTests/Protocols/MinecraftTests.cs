@@ -7,7 +7,7 @@ namespace OpenGSQ.Protocols.Tests
     [TestClass()]
     public class MinecraftTests : TestBase
     {
-        public Minecraft minecraft = new("valistar.site", 25565);
+        public Minecraft minecraft = new("mc.goldcraft.ir", 25565);
 
         public MinecraftTests() : base(nameof(MinecraftTests))
         {

@@ -1,6 +1,6 @@
 {
   "deployment": "ad9a8feffb3b4b2ca315546f038c3ae2",
-  "id": "018f2a9c3b124ab0a5f67e8c8596f5f2",
+  "id": "1deb685a177c44e684c3fc3511630c1d",
   "bucket": "TestGameMode_C:<None>:TheIsland_WP",
   "settings": {
     "maxPublicPlayers": 70,
@@ -15,11 +15,11 @@
     "rejoinAfterKick": "",
     "platforms": null
   },
-  "totalPlayers": 52,
-  "openPublicPlayers": 18,
+  "totalPlayers": 49,
+  "openPublicPlayers": 21,
   "publicPlayers": [],
   "started": false,
-  "lastUpdated": "2024-01-20T23:09:52.098Z",
+  "lastUpdated": null,
   "attributes": {
     "MINORBUILDID_s": "53",
     "MODID_l": 0,
@@ -29,11 +29,11 @@
     "SERVERPASSWORD_b": false,
     "MATCHTIMEOUT_d": 120.0,
     "ENABLEDMODSFILEIDS_s": "4979340",
-    "DAYTIME_s": "304",
+    "DAYTIME_s": "312",
     "SOTFMATCHSTARTED_b": false,
     "STEELSHIELDENABLED_l": 1,
     "SERVERUSESBATTLEYE_b": true,
-    "EOSSERVERPING_l": 281,
+    "EOSSERVERPING_l": 313,
     "ALLOWDOWNLOADCHARS_l": 1,
     "OFFICIALSERVER_s": "1",
     "GAMEMODE_s": "TestGameMode_C",

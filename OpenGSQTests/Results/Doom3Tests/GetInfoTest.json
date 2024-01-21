@@ -32,30 +32,30 @@
   "si_antiLag": "1",
   "bot_enable": "1",
   "gamename": "baseETQW-1",
-  "si_campaign": "campaign_northamerica",
-  "si_map": "maps/valley.entities",
+  "si_campaign": "campaign_northeurope",
+  "si_map": "maps/quarry.entities",
   "si_campaignInfo": "",
   "players": [
     {
       "id": 0,
       "ping": 0,
-      "name": "HaltHammerzeit",
+      "name": "NOSFERATU",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
       "id": 1,
-      "ping": 140,
-      "name": "PickleSuit_",
+      "ping": 0,
+      "name": "flower.tube",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 0
+      "typeflag": 1
     },
     {
       "id": 2,
       "ping": 0,
-      "name": "CTZN Kane",
+      "name": "rumpleforeskin",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
@@ -63,45 +63,45 @@
     {
       "id": 3,
       "ping": 0,
-      "name": "Vlad_Putimir",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 5,
-      "ping": 0,
-      "name": "iceT-bag",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 6,
-      "ping": 0,
       "name": "NoobMcBoob",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
-      "id": 7,
+      "id": 4,
+      "ping": 100,
+      "name": "Player____",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 10,
       "ping": 0,
-      "name": "Boss_Tweed",
+      "name": "HaltHammerzeit",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
-      "id": 8,
+      "id": 11,
       "ping": 0,
-      "name": "Kettle",
+      "name": "NiceLagSwitch",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
-      "id": 9,
+      "id": 12,
+      "ping": 0,
+      "name": "STFUandDIE",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 13,
       "ping": 0,
       "name": "FannyPack",
       "clantag_pos": 0,
@@ -109,9 +109,9 @@
       "typeflag": 1
     },
     {
-      "id": 10,
+      "id": 14,
       "ping": 0,
-      "name": "flower.tube",
+      "name": "Bad Hombre",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1

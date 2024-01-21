@@ -1,0 +1,452 @@
+---
+uid: OpenGSQ.Protocols.Tests.SourceTests.GetPlayersTest
+---
+
+# Test Method GetPlayersTest
+
+Here are the results for the test method.
+
+```json
+[
+  {
+    "Name": "SAMSON(RUS)",
+    "Score": 23,
+    "Duration": 10723.83
+  },
+  {
+    "Name": "turknaskooyun",
+    "Score": 3,
+    "Duration": 10723.829
+  },
+  {
+    "Name": "❤LikeanAngexngelofKzerongRows",
+    "Score": 14,
+    "Duration": 10125.511
+  },
+  {
+    "Name": "Baeplush",
+    "Score": 9,
+    "Duration": 9894.555
+  },
+  {
+    "Name": "Scrimblo I",
+    "Score": 1,
+    "Duration": 9513.253
+  },
+  {
+    "Name": "Mike1633",
+    "Score": 8,
+    "Duration": 9071.885
+  },
+  {
+    "Name": "Flightkitten #SAVETF2",
+    "Score": 0,
+    "Duration": 8115.799
+  },
+  {
+    "Name": "-W3E-GoatTheftAuto",
+    "Score": 2,
+    "Duration": 7857.664
+  },
+  {
+    "Name": "lolman165",
+    "Score": 9,
+    "Duration": 7804.669
+  },
+  {
+    "Name": "A10-kentaco",
+    "Score": 0,
+    "Duration": 7560.6255
+  },
+  {
+    "Name": "Galaktus",
+    "Score": 0,
+    "Duration": 6625.4897
+  },
+  {
+    "Name": "Rody",
+    "Score": 5,
+    "Duration": 6297.642
+  },
+  {
+    "Name": "Arck0s",
+    "Score": 8,
+    "Duration": 6056.5024
+  },
+  {
+    "Name": "_shrub",
+    "Score": 3,
+    "Duration": 5848.0625
+  },
+  {
+    "Name": "JonasVenture",
+    "Score": 5,
+    "Duration": 5743.347
+  },
+  {
+    "Name": "palo_jr",
+    "Score": 8,
+    "Duration": 5713.857
+  },
+  {
+    "Name": "♡★Niko (she/her)★♡",
+    "Score": 3,
+    "Duration": 5447.907
+  },
+  {
+    "Name": "Ricou [Fr]",
+    "Score": 2,
+    "Duration": 5341.287
+  },
+  {
+    "Name": "X--N",
+    "Score": 4,
+    "Duration": 4780.3174
+  },
+  {
+    "Name": "mgray245",
+    "Score": 1,
+    "Duration": 4766.5625
+  },
+  {
+    "Name": "妹控",
+    "Score": 8,
+    "Duration": 4248.594
+  },
+  {
+    "Name": "Green Horse",
+    "Score": 0,
+    "Duration": 4138.517
+  },
+  {
+    "Name": "DUSTBOWL",
+    "Score": 8,
+    "Duration": 4120.727
+  },
+  {
+    "Name": "[DB] Plecoman",
+    "Score": 0,
+    "Duration": 3593.2979
+  },
+  {
+    "Name": "j-chou2",
+    "Score": 0,
+    "Duration": 3590.8228
+  },
+  {
+    "Name": "linuxlove",
+    "Score": 8,
+    "Duration": 3455.7778
+  },
+  {
+    "Name": "agent_1",
+    "Score": 2,
+    "Duration": 3251.733
+  },
+  {
+    "Name": "Kugibat",
+    "Score": 20,
+    "Duration": 3228.9028
+  },
+  {
+    "Name": "kanade",
+    "Score": 0,
+    "Duration": 3102.993
+  },
+  {
+    "Name": "Yu so Kawaii | إيّاد",
+    "Score": 0,
+    "Duration": 3080.6125
+  },
+  {
+    "Name": "Maxxuwukawaii",
+    "Score": 9,
+    "Duration": 2785.1128
+  },
+  {
+    "Name": "YHWH",
+    "Score": 4,
+    "Duration": 2777.3428
+  },
+  {
+    "Name": "Metalclaw24601",
+    "Score": 0,
+    "Duration": 2589.2388
+  },
+  {
+    "Name": "Power",
+    "Score": 10,
+    "Duration": 2575.2588
+  },
+  {
+    "Name": "Malaysia Airlines Flight 370",
+    "Score": 2,
+    "Duration": 2358.8398
+  },
+  {
+    "Name": "super F",
+    "Score": 5,
+    "Duration": 2282.865
+  },
+  {
+    "Name": "obersuchti",
+    "Score": 2,
+    "Duration": 2252.8496
+  },
+  {
+    "Name": "Iron Fox (Update-sized)",
+    "Score": 4,
+    "Duration": 2052.1348
+  },
+  {
+    "Name": "Ceol",
+    "Score": 3,
+    "Duration": 1996.695
+  },
+  {
+    "Name": "Shotgun Ed",
+    "Score": 4,
+    "Duration": 1897.995
+  },
+  {
+    "Name": "Fasthink",
+    "Score": 23,
+    "Duration": 1879.365
+  },
+  {
+    "Name": "Andy (playing on a Deck)",
+    "Score": 0,
+    "Duration": 1860.375
+  },
+  {
+    "Name": "maaxiimiiliiaan",
+    "Score": 4,
+    "Duration": 1810.95
+  },
+  {
+    "Name": "H2O | Aiii",
+    "Score": 8,
+    "Duration": 1749.6844
+  },
+  {
+    "Name": "ꑭslayerꑭ",
+    "Score": 1,
+    "Duration": 1746.8046
+  },
+  {
+    "Name": "FreeAndLit",
+    "Score": 7,
+    "Duration": 1681.7045
+  },
+  {
+    "Name": "Noct Gar",
+    "Score": 9,
+    "Duration": 1604.8444
+  },
+  {
+    "Name": "caesar029",
+    "Score": 1,
+    "Duration": 1599.1444
+  },
+  {
+    "Name": "//HEI-HIKO",
+    "Score": 0,
+    "Duration": 1583.2747
+  },
+  {
+    "Name": "contact",
+    "Score": 1,
+    "Duration": 1518.1295
+  },
+  {
+    "Name": "Bziim",
+    "Score": 8,
+    "Duration": 1459.3446
+  },
+  {
+    "Name": "zedd11dave",
+    "Score": 3,
+    "Duration": 1429.0594
+  },
+  {
+    "Name": "有咩留番拜山先講",
+    "Score": 15,
+    "Duration": 1357.7195
+  },
+  {
+    "Name": "TaterTots",
+    "Score": 4,
+    "Duration": 1191.0706
+  },
+  {
+    "Name": "neptune gear",
+    "Score": 2,
+    "Duration": 1184.6205
+  },
+  {
+    "Name": "aradia megido",
+    "Score": 2,
+    "Duration": 1182.4153
+  },
+  {
+    "Name": "Kaiji",
+    "Score": 1,
+    "Duration": 1158.9407
+  },
+  {
+    "Name": "joshuarhodeshall",
+    "Score": 3,
+    "Duration": 1142.9805
+  },
+  {
+    "Name": "pedroxom",
+    "Score": 2,
+    "Duration": 1107.4905
+  },
+  {
+    "Name": "Galen Weston Jr.",
+    "Score": 10,
+    "Duration": 1083.2351
+  },
+  {
+    "Name": "Grave Digger",
+    "Score": 3,
+    "Duration": 1079.4106
+  },
+  {
+    "Name": "Faith",
+    "Score": 5,
+    "Duration": 1003.82544
+  },
+  {
+    "Name": "Lin",
+    "Score": 2,
+    "Duration": 958.6601
+  },
+  {
+    "Name": "Ex1t",
+    "Score": 0,
+    "Duration": 933.8505
+  },
+  {
+    "Name": "Kokadosh",
+    "Score": 2,
+    "Duration": 893.95
+  },
+  {
+    "Name": "meow \uD83D\uDC3E",
+    "Score": 7,
+    "Duration": 836.9804
+  },
+  {
+    "Name": "Scuffed katana+9 PvP stones+4",
+    "Score": 0,
+    "Duration": 716.65045
+  },
+  {
+    "Name": "cool ass blue dominus",
+    "Score": 5,
+    "Duration": 632.80054
+  },
+  {
+    "Name": "I enjoy bullying furries",
+    "Score": 0,
+    "Duration": 616.96063
+  },
+  {
+    "Name": "Asmodeus",
+    "Score": 1,
+    "Duration": 596.5753
+  },
+  {
+    "Name": "pipidaster131",
+    "Score": 0,
+    "Duration": 530.93207
+  },
+  {
+    "Name": "doghouse",
+    "Score": 4,
+    "Duration": 482.65485
+  },
+  {
+    "Name": "Piranha Plant",
+    "Score": 9,
+    "Duration": 473.33975
+  },
+  {
+    "Name": "TR",
+    "Score": 0,
+    "Duration": 448.965
+  },
+  {
+    "Name": "McBain",
+    "Score": 9,
+    "Duration": 427.77005
+  },
+  {
+    "Name": "Tarik Nakich",
+    "Score": 4,
+    "Duration": 384.78003
+  },
+  {
+    "Name": "IsaacLQM",
+    "Score": 2,
+    "Duration": 376.85544
+  },
+  {
+    "Name": "cracoas",
+    "Score": 9,
+    "Duration": 325.00507
+  },
+  {
+    "Name": "Pan",
+    "Score": 4,
+    "Duration": 303.19504
+  },
+  {
+    "Name": "SolarHuntress",
+    "Score": 4,
+    "Duration": 276.44986
+  },
+  {
+    "Name": "Krauss Von Dunkel",
+    "Score": 3,
+    "Duration": 246.94507
+  },
+  {
+    "Name": "Anglo-Tzar",
+    "Score": 0,
+    "Duration": 182.71497
+  },
+  {
+    "Name": "Europan Hookmouth",
+    "Score": 2,
+    "Duration": 164.52005
+  },
+  {
+    "Name": "Subway_Santa",
+    "Score": 0,
+    "Duration": 163.39503
+  },
+  {
+    "Name": "fhtep1234",
+    "Score": 0,
+    "Duration": 148.9949
+  },
+  {
+    "Name": "Periquito Luz",
+    "Score": 0,
+    "Duration": 105.25505
+  },
+  {
+    "Name": "Dawk Rawk",
+    "Score": 2,
+    "Duration": 99.10493
+  },
+  {
+    "Name": "big meaty claw",
+    "Score": 0,
+    "Duration": 88.214745
+  }
+]
+```

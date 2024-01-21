@@ -1,0 +1,24 @@
+---
+uid: OpenGSQ.Protocols.Tests.GameSpy1Tests.GetInfoTest
+---
+
+# Test Method GetInfoTest
+
+Here are the results for the test method.
+
+```json
+{
+  "hostname": " --- ComboGib CTF (Grapple) -- London --- EatSleepUT.com",
+  "hostport": "7777",
+  "maptitle": "|-Vp-| FragWhoreArena",
+  "mapname": "CTF-(Vp)FragWhore[ZPC]",
+  "gametype": "CTFGame",
+  "numplayers": "12",
+  "maxplayers": "18",
+  "gamemode": "openplaying",
+  "gamever": "469",
+  "minnetver": "432",
+  "worldlog": "false",
+  "wantworldlog": "false"
+}
+```

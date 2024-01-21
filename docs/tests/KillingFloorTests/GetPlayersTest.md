@@ -1,0 +1,117 @@
+---
+uid: OpenGSQ.Protocols.Tests.KillingFloorTests.GetPlayersTest
+---
+
+# Test Method GetPlayersTest
+
+Here are the results for the test method.
+
+```json
+[
+  {
+    "Id": 4080,
+    "Name": "DLL",
+    "Ping": 52,
+    "Score": 2321,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3844,
+    "Name": "uuuuuttyy",
+    "Ping": 240,
+    "Score": 3713,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3647,
+    "Name": "SUBZERO",
+    "Ping": 80,
+    "Score": 2762,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 2799,
+    "Name": "Odessit",
+    "Ping": 68,
+    "Score": 5535,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1983,
+    "Name": "wece67",
+    "Ping": 28,
+    "Score": 3339,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1811,
+    "Name": "NIC128",
+    "Ping": 68,
+    "Score": 3103,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 860,
+    "Name": "XFACTOR",
+    "Ping": 144,
+    "Score": 2919,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 753,
+    "Name": "Sheriffi",
+    "Ping": 48,
+    "Score": 3111,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 275,
+    "Name": "Doodlez",
+    "Ping": 68,
+    "Score": -2147483648,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 8,
+    "Name": "johnxina",
+    "Ping": 40,
+    "Score": 5762,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 7,
+    "Name": "Р”РѕР±СЂСЏРє",
+    "Ping": 60,
+    "Score": 3587,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 6,
+    "Name": "Danek",
+    "Ping": 56,
+    "Score": 632,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3,
+    "Name": "[Dr.Pavco]",
+    "Ping": 56,
+    "Score": 2444,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 2,
+    "Name": "H1Æ¤×”Ñ²Æ¬1â„‚",
+    "Ping": 88,
+    "Score": 25275,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1,
+    "Name": "DS",
+    "Ping": 84,
+    "Score": 1102,
+    "StatsId": 0
+  }
+]
+```

@@ -4,7 +4,7 @@
     "hostport": "15567",
     "mapname": "Flaming Dart [Extra Vehicles] -SSM-",
     "gametype": "coop",
-    "numplayers": "0",
+    "numplayers": "8",
     "maxplayers": "50",
     "gamemode": "openplaying",
     "password": "0",
@@ -45,15 +45,80 @@
     "all_active_mods": "bfvietnam",
     "game_id_name": "BFVietnam"
   },
-  "Players": [],
+  "Players": [
+    {
+      "player": "Hoang Huynh",
+      "score": "10",
+      "deaths": "3",
+      "ping": "238",
+      "team": "2",
+      "kills": "11"
+    },
+    {
+      "player": "VKHD Player",
+      "score": "15",
+      "deaths": "2",
+      "ping": "108",
+      "team": "2",
+      "kills": "12"
+    },
+    {
+      "player": "Tyme Bulm",
+      "score": "9",
+      "deaths": "0",
+      "ping": "19",
+      "team": "1",
+      "kills": "4"
+    },
+    {
+      "player": "jon",
+      "score": "19",
+      "deaths": "4",
+      "ping": "67",
+      "team": "1",
+      "kills": "11"
+    },
+    {
+      "player": "gooodie boi",
+      "score": "2",
+      "deaths": "4",
+      "ping": "121",
+      "team": "2",
+      "kills": "3"
+    },
+    {
+      "player": "str1ker",
+      "score": "3",
+      "deaths": "5",
+      "ping": "183",
+      "team": "1",
+      "kills": "5"
+    },
+    {
+      "player": "Santa",
+      "score": "3",
+      "deaths": "5",
+      "ping": "110",
+      "team": "1",
+      "kills": "3"
+    },
+    {
+      "player": "Hannibal",
+      "score": "9",
+      "deaths": "2",
+      "ping": "149",
+      "team": "2",
+      "kills": "6"
+    }
+  ],
   "Teams": [
     {
       "team": "red",
-      "tickets": "839"
+      "tickets": "770"
     },
     {
       "team": "blue",
-      "tickets": "752"
+      "tickets": "536"
     }
   ]
 }
