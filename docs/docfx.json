@@ -39,6 +39,9 @@
       "_appName": "OpenGSQ",
       "_appTitle": "OpenGSQ",
       "_enableSearch": true,
+      "_appLogoPath": "images/logo.png",
+      "_appFaviconPath": "images/favicon.ico",
+      "_googleAnalyticsTagId": "G-EBNPX27LWD",
       "pdf": true
     }
   }
