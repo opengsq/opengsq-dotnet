@@ -9,444 +9,499 @@ Here are the results for the test method.
 ```json
 [
   {
-    "Name": "SAMSON(RUS)",
-    "Score": 23,
-    "Duration": 10723.83
-  },
-  {
-    "Name": "turknaskooyun",
-    "Score": 3,
-    "Duration": 10723.829
-  },
-  {
-    "Name": "❤LikeanAngexngelofKzerongRows",
-    "Score": 14,
-    "Duration": 10125.511
-  },
-  {
-    "Name": "Baeplush",
-    "Score": 9,
-    "Duration": 9894.555
-  },
-  {
-    "Name": "Scrimblo I",
-    "Score": 1,
-    "Duration": 9513.253
-  },
-  {
-    "Name": "Mike1633",
-    "Score": 8,
-    "Duration": 9071.885
-  },
-  {
-    "Name": "Flightkitten #SAVETF2",
-    "Score": 0,
-    "Duration": 8115.799
-  },
-  {
-    "Name": "-W3E-GoatTheftAuto",
-    "Score": 2,
-    "Duration": 7857.664
-  },
-  {
-    "Name": "lolman165",
-    "Score": 9,
-    "Duration": 7804.669
-  },
-  {
-    "Name": "A10-kentaco",
-    "Score": 0,
-    "Duration": 7560.6255
-  },
-  {
-    "Name": "Galaktus",
-    "Score": 0,
-    "Duration": 6625.4897
-  },
-  {
-    "Name": "Rody",
-    "Score": 5,
-    "Duration": 6297.642
-  },
-  {
-    "Name": "Arck0s",
-    "Score": 8,
-    "Duration": 6056.5024
-  },
-  {
-    "Name": "_shrub",
-    "Score": 3,
-    "Duration": 5848.0625
-  },
-  {
-    "Name": "JonasVenture",
-    "Score": 5,
-    "Duration": 5743.347
-  },
-  {
-    "Name": "palo_jr",
-    "Score": 8,
-    "Duration": 5713.857
-  },
-  {
-    "Name": "♡★Niko (she/her)★♡",
-    "Score": 3,
-    "Duration": 5447.907
-  },
-  {
-    "Name": "Ricou [Fr]",
-    "Score": 2,
-    "Duration": 5341.287
-  },
-  {
-    "Name": "X--N",
-    "Score": 4,
-    "Duration": 4780.3174
-  },
-  {
-    "Name": "mgray245",
-    "Score": 1,
-    "Duration": 4766.5625
-  },
-  {
-    "Name": "妹控",
-    "Score": 8,
-    "Duration": 4248.594
-  },
-  {
-    "Name": "Green Horse",
-    "Score": 0,
-    "Duration": 4138.517
-  },
-  {
-    "Name": "DUSTBOWL",
-    "Score": 8,
-    "Duration": 4120.727
-  },
-  {
-    "Name": "[DB] Plecoman",
-    "Score": 0,
-    "Duration": 3593.2979
-  },
-  {
-    "Name": "j-chou2",
-    "Score": 0,
-    "Duration": 3590.8228
-  },
-  {
-    "Name": "linuxlove",
-    "Score": 8,
-    "Duration": 3455.7778
-  },
-  {
-    "Name": "agent_1",
-    "Score": 2,
-    "Duration": 3251.733
-  },
-  {
-    "Name": "Kugibat",
-    "Score": 20,
-    "Duration": 3228.9028
-  },
-  {
-    "Name": "kanade",
-    "Score": 0,
-    "Duration": 3102.993
-  },
-  {
-    "Name": "Yu so Kawaii | إيّاد",
-    "Score": 0,
-    "Duration": 3080.6125
-  },
-  {
-    "Name": "Maxxuwukawaii",
-    "Score": 9,
-    "Duration": 2785.1128
-  },
-  {
-    "Name": "YHWH",
-    "Score": 4,
-    "Duration": 2777.3428
-  },
-  {
-    "Name": "Metalclaw24601",
-    "Score": 0,
-    "Duration": 2589.2388
-  },
-  {
-    "Name": "Power",
-    "Score": 10,
-    "Duration": 2575.2588
-  },
-  {
-    "Name": "Malaysia Airlines Flight 370",
-    "Score": 2,
-    "Duration": 2358.8398
-  },
-  {
-    "Name": "super F",
-    "Score": 5,
-    "Duration": 2282.865
-  },
-  {
-    "Name": "obersuchti",
-    "Score": 2,
-    "Duration": 2252.8496
-  },
-  {
-    "Name": "Iron Fox (Update-sized)",
-    "Score": 4,
-    "Duration": 2052.1348
-  },
-  {
-    "Name": "Ceol",
-    "Score": 3,
-    "Duration": 1996.695
-  },
-  {
-    "Name": "Shotgun Ed",
-    "Score": 4,
-    "Duration": 1897.995
-  },
-  {
-    "Name": "Fasthink",
-    "Score": 23,
-    "Duration": 1879.365
-  },
-  {
-    "Name": "Andy (playing on a Deck)",
-    "Score": 0,
-    "Duration": 1860.375
-  },
-  {
-    "Name": "maaxiimiiliiaan",
-    "Score": 4,
-    "Duration": 1810.95
-  },
-  {
-    "Name": "H2O | Aiii",
-    "Score": 8,
-    "Duration": 1749.6844
-  },
-  {
-    "Name": "ꑭslayerꑭ",
-    "Score": 1,
-    "Duration": 1746.8046
-  },
-  {
-    "Name": "FreeAndLit",
+    "Name": "Haywoood Jablowme",
     "Score": 7,
-    "Duration": 1681.7045
+    "Duration": 12892.308
   },
   {
-    "Name": "Noct Gar",
-    "Score": 9,
-    "Duration": 1604.8444
-  },
-  {
-    "Name": "caesar029",
-    "Score": 1,
-    "Duration": 1599.1444
-  },
-  {
-    "Name": "//HEI-HIKO",
+    "Name": "Xtreme_Shoot",
     "Score": 0,
-    "Duration": 1583.2747
+    "Duration": 10855.669
   },
   {
-    "Name": "contact",
-    "Score": 1,
-    "Duration": 1518.1295
+    "Name": "Ignis",
+    "Score": 0,
+    "Duration": 9787.437
   },
   {
-    "Name": "Bziim",
+    "Name": "OMGEngineer",
     "Score": 8,
-    "Duration": 1459.3446
+    "Duration": 9694.301
   },
   {
-    "Name": "zedd11dave",
-    "Score": 3,
-    "Duration": 1429.0594
-  },
-  {
-    "Name": "有咩留番拜山先講",
+    "Name": "grrr i hate mondeys!!!",
     "Score": 15,
-    "Duration": 1357.7195
+    "Duration": 9073.1455
   },
   {
-    "Name": "TaterTots",
+    "Name": "Dragrandir",
+    "Score": 8,
+    "Duration": 7966.796
+  },
+  {
+    "Name": "Nokia_Legends03",
     "Score": 4,
-    "Duration": 1191.0706
+    "Duration": 7536.5454
   },
   {
-    "Name": "neptune gear",
-    "Score": 2,
-    "Duration": 1184.6205
-  },
-  {
-    "Name": "aradia megido",
-    "Score": 2,
-    "Duration": 1182.4153
-  },
-  {
-    "Name": "Kaiji",
-    "Score": 1,
-    "Duration": 1158.9407
-  },
-  {
-    "Name": "joshuarhodeshall",
-    "Score": 3,
-    "Duration": 1142.9805
-  },
-  {
-    "Name": "pedroxom",
-    "Score": 2,
-    "Duration": 1107.4905
-  },
-  {
-    "Name": "Galen Weston Jr.",
-    "Score": 10,
-    "Duration": 1083.2351
-  },
-  {
-    "Name": "Grave Digger",
-    "Score": 3,
-    "Duration": 1079.4106
-  },
-  {
-    "Name": "Faith",
-    "Score": 5,
-    "Duration": 1003.82544
-  },
-  {
-    "Name": "Lin",
-    "Score": 2,
-    "Duration": 958.6601
-  },
-  {
-    "Name": "Ex1t",
+    "Name": "techno machine.",
     "Score": 0,
-    "Duration": 933.8505
+    "Duration": 6349.345
   },
   {
-    "Name": "Kokadosh",
-    "Score": 2,
-    "Duration": 893.95
+    "Name": "Ammonsu",
+    "Score": 17,
+    "Duration": 5914.4204
   },
   {
-    "Name": "meow \uD83D\uDC3E",
+    "Name": "Jaden",
+    "Score": 17,
+    "Duration": 5821.4805
+  },
+  {
+    "Name": "FaNTaSTiK_v2",
     "Score": 7,
-    "Duration": 836.9804
+    "Duration": 5738.966
+  },
+  {
+    "Name": "Franva97",
+    "Score": 8,
+    "Duration": 5564.9053
+  },
+  {
+    "Name": "I Broke My Ankles",
+    "Score": 9,
+    "Duration": 5550.5205
+  },
+  {
+    "Name": "Qeb",
+    "Score": 17,
+    "Duration": 5068.256
+  },
+  {
+    "Name": "Korokomancer",
+    "Score": 3,
+    "Duration": 4628.947
+  },
+  {
+    "Name": "The Gamering",
+    "Score": 10,
+    "Duration": 4388.302
+  },
+  {
+    "Name": "max",
+    "Score": 14,
+    "Duration": 4355.3315
+  },
+  {
+    "Name": "FAILEDFEMBOY",
+    "Score": 5,
+    "Duration": 4255.4614
+  },
+  {
+    "Name": "Discommodious",
+    "Score": 1,
+    "Duration": 4017.2327
+  },
+  {
+    "Name": "Sakas  -DMC-",
+    "Score": 1,
+    "Duration": 3734.7507
+  },
+  {
+    "Name": "abog.nicolasludu",
+    "Score": 0,
+    "Duration": 3609.3848
+  },
+  {
+    "Name": "Atlatlatlatlatlatlatlatlist",
+    "Score": 0,
+    "Duration": 3566.4148
+  },
+  {
+    "Name": "pvt. johnson",
+    "Score": 2,
+    "Duration": 3516.9446
+  },
+  {
+    "Name": "<KraKeN>",
+    "Score": 0,
+    "Duration": 3488.5647
   },
   {
     "Name": "Scuffed katana+9 PvP stones+4",
-    "Score": 0,
-    "Duration": 716.65045
-  },
-  {
-    "Name": "cool ass blue dominus",
-    "Score": 5,
-    "Duration": 632.80054
-  },
-  {
-    "Name": "I enjoy bullying furries",
-    "Score": 0,
-    "Duration": 616.96063
-  },
-  {
-    "Name": "Asmodeus",
-    "Score": 1,
-    "Duration": 596.5753
-  },
-  {
-    "Name": "pipidaster131",
-    "Score": 0,
-    "Duration": 530.93207
-  },
-  {
-    "Name": "doghouse",
-    "Score": 4,
-    "Duration": 482.65485
-  },
-  {
-    "Name": "Piranha Plant",
-    "Score": 9,
-    "Duration": 473.33975
-  },
-  {
-    "Name": "TR",
-    "Score": 0,
-    "Duration": 448.965
-  },
-  {
-    "Name": "McBain",
-    "Score": 9,
-    "Duration": 427.77005
-  },
-  {
-    "Name": "Tarik Nakich",
-    "Score": 4,
-    "Duration": 384.78003
-  },
-  {
-    "Name": "IsaacLQM",
-    "Score": 2,
-    "Duration": 376.85544
-  },
-  {
-    "Name": "cracoas",
-    "Score": 9,
-    "Duration": 325.00507
-  },
-  {
-    "Name": "Pan",
-    "Score": 4,
-    "Duration": 303.19504
-  },
-  {
-    "Name": "SolarHuntress",
-    "Score": 4,
-    "Duration": 276.44986
-  },
-  {
-    "Name": "Krauss Von Dunkel",
     "Score": 3,
-    "Duration": 246.94507
+    "Duration": 3373.0796
   },
   {
-    "Name": "Anglo-Tzar",
-    "Score": 0,
-    "Duration": 182.71497
+    "Name": "SmugEngineer",
+    "Score": 13,
+    "Duration": 3315.2246
   },
   {
-    "Name": "Europan Hookmouth",
+    "Name": "Scharf",
+    "Score": 14,
+    "Duration": 3298.8743
+  },
+  {
+    "Name": "woxic",
+    "Score": 16,
+    "Duration": 3241.3796
+  },
+  {
+    "Name": "Danny",
     "Score": 2,
-    "Duration": 164.52005
+    "Duration": 3099.2395
   },
   {
-    "Name": "Subway_Santa",
-    "Score": 0,
-    "Duration": 163.39503
-  },
-  {
-    "Name": "fhtep1234",
-    "Score": 0,
-    "Duration": 148.9949
-  },
-  {
-    "Name": "Periquito Luz",
-    "Score": 0,
-    "Duration": 105.25505
-  },
-  {
-    "Name": "Dawk Rawk",
+    "Name": "Egor Chekist",
     "Score": 2,
-    "Duration": 99.10493
+    "Duration": 3090.6592
   },
   {
-    "Name": "big meaty claw",
+    "Name": "Tipper",
     "Score": 0,
-    "Duration": 88.214745
+    "Duration": 3056.1748
+  },
+  {
+    "Name": "SorcererCat",
+    "Score": 2,
+    "Duration": 2968.9792
+  },
+  {
+    "Name": "ironwall",
+    "Score": 15,
+    "Duration": 2956.5144
+  },
+  {
+    "Name": "мя.Gäto",
+    "Score": 9,
+    "Duration": 2938.1545
+  },
+  {
+    "Name": "Kaenbyou",
+    "Score": 7,
+    "Duration": 2898.944
+  },
+  {
+    "Name": "beep!",
+    "Score": 7,
+    "Duration": 2817.3594
+  },
+  {
+    "Name": "puppies are damn liars",
+    "Score": 7,
+    "Duration": 2733.0251
+  },
+  {
+    "Name": "SerpentSnekko",
+    "Score": 6,
+    "Duration": 2538.227
+  },
+  {
+    "Name": "RainTimes",
+    "Score": 18,
+    "Duration": 2449.5237
+  },
+  {
+    "Name": "Mew Kirby",
+    "Score": 10,
+    "Duration": 2365.154
+  },
+  {
+    "Name": "LiquidTiberium77",
+    "Score": 5,
+    "Duration": 2342.8342
+  },
+  {
+    "Name": "Mike Hawk",
+    "Score": 8,
+    "Duration": 2317.7842
+  },
+  {
+    "Name": "Stalinus",
+    "Score": 11,
+    "Duration": 2243.194
+  },
+  {
+    "Name": "dpy",
+    "Score": 5,
+    "Duration": 2242.1743
+  },
+  {
+    "Name": "Cønker",
+    "Score": 1,
+    "Duration": 2235.4392
+  },
+  {
+    "Name": "vasya666",
+    "Score": 4,
+    "Duration": 2230.6694
+  },
+  {
+    "Name": "Xray Hombre",
+    "Score": 9,
+    "Duration": 2202.154
+  },
+  {
+    "Name": "sause",
+    "Score": 0,
+    "Duration": 2073.8442
+  },
+  {
+    "Name": "Foster Kia",
+    "Score": 14,
+    "Duration": 2065.9844
+  },
+  {
+    "Name": "Shooterman8881",
+    "Score": 7,
+    "Duration": 2051.0286
+  },
+  {
+    "Name": "SenSation314",
+    "Score": 2,
+    "Duration": 1806.8595
+  },
+  {
+    "Name": "PredatedElk6",
+    "Score": 8,
+    "Duration": 1785.2592
+  },
+  {
+    "Name": "-Krv Oz-",
+    "Score": 7,
+    "Duration": 1696.9663
+  },
+  {
+    "Name": "barn farts",
+    "Score": 4,
+    "Duration": 1689.4813
+  },
+  {
+    "Name": "Averageman",
+    "Score": 5,
+    "Duration": 1664.9712
+  },
+  {
+    "Name": "Bucket Axolotl",
+    "Score": 5,
+    "Duration": 1570.6812
+  },
+  {
+    "Name": "Capitão Xorume",
+    "Score": 2,
+    "Duration": 1555.4562
+  },
+  {
+    "Name": "Tap_ok",
+    "Score": 6,
+    "Duration": 1468.6064
+  },
+  {
+    "Name": "scrupeeno",
+    "Score": 14,
+    "Duration": 1243.1262
+  },
+  {
+    "Name": "LTFreeBorn",
+    "Score": 1,
+    "Duration": 1234.0662
+  },
+  {
+    "Name": "Evil Quak",
+    "Score": 4,
+    "Duration": 1185.4512
+  },
+  {
+    "Name": "yerrrwhatupp",
+    "Score": 7,
+    "Duration": 1145.0115
+  },
+  {
+    "Name": "wes",
+    "Score": 17,
+    "Duration": 1134.8113
+  },
+  {
+    "Name": "Mama Looigi",
+    "Score": 7,
+    "Duration": 1114.3811
+  },
+  {
+    "Name": "MediaevalJulio14",
+    "Score": 10,
+    "Duration": 1061.5168
+  },
+  {
+    "Name": "Potato",
+    "Score": 17,
+    "Duration": 1041.5819
+  },
+  {
+    "Name": "WAAGGHH Enjoyer",
+    "Score": 2,
+    "Duration": 1017.34204
+  },
+  {
+    "Name": "Fox News at 21",
+    "Score": 6,
+    "Duration": 1013.0969
+  },
+  {
+    "Name": "KRY23",
+    "Score": 18,
+    "Duration": 982.61676
+  },
+  {
+    "Name": "eggman (real)",
+    "Score": 4,
+    "Duration": 913.4521
+  },
+  {
+    "Name": "Fabio292",
+    "Score": 26,
+    "Duration": 816.16205
+  },
+  {
+    "Name": "Box",
+    "Score": 16,
+    "Duration": 782.8317
+  },
+  {
+    "Name": "Cappuccino シ",
+    "Score": 10,
+    "Duration": 777.3557
+  },
+  {
+    "Name": "Soul",
+    "Score": 5,
+    "Duration": 751.1384
+  },
+  {
+    "Name": "medoct",
+    "Score": 15,
+    "Duration": 746.5483
+  },
+  {
+    "Name": "SlopJoe",
+    "Score": 9,
+    "Duration": 728.21716
+  },
+  {
+    "Name": "Wizzisaurio",
+    "Score": 5,
+    "Duration": 723.16266
+  },
+  {
+    "Name": "Karnnos",
+    "Score": 1,
+    "Duration": 720.208
+  },
+  {
+    "Name": "joe cool",
+    "Score": 0,
+    "Duration": 717.1477
+  },
+  {
+    "Name": "OberUberWurst",
+    "Score": 7,
+    "Duration": 708.98773
+  },
+  {
+    "Name": "Caxps",
+    "Score": 6,
+    "Duration": 697.5715
+  },
+  {
+    "Name": "kerber_",
+    "Score": 5,
+    "Duration": 646.2303
+  },
+  {
+    "Name": "Kislotnitsa",
+    "Score": 9,
+    "Duration": 634.2449
+  },
+  {
+    "Name": "kiwi",
+    "Score": 13,
+    "Duration": 623.0246
+  },
+  {
+    "Name": "hippo kingdom",
+    "Score": 11,
+    "Duration": 618.0301
+  },
+  {
+    "Name": "\uD83D\uDC27Linux Gaming\uD83D\uDC27",
+    "Score": 2,
+    "Duration": 584.04
+  },
+  {
+    "Name": "Slimsin",
+    "Score": 4,
+    "Duration": 459.4801
+  },
+  {
+    "Name": "Pastenik",
+    "Score": 5,
+    "Duration": 448.3801
+  },
+  {
+    "Name": "MysteryFingerz",
+    "Score": 5,
+    "Duration": 419.76013
+  },
+  {
+    "Name": "Peace",
+    "Score": 2,
+    "Duration": 364.70972
+  },
+  {
+    "Name": "$1.50 costco hotdog",
+    "Score": 7,
+    "Duration": 355.36517
+  },
+  {
+    "Name": "QuackCocaine",
+    "Score": 0,
+    "Duration": 321.7201
+  },
+  {
+    "Name": "Pestilential",
+    "Score": 0,
+    "Duration": 304.27524
+  },
+  {
+    "Name": "T I M A S",
+    "Score": 6,
+    "Duration": 243.40459
+  },
+  {
+    "Name": "Revelry",
+    "Score": 6,
+    "Duration": 241.23027
+  },
+  {
+    "Name": "Titus",
+    "Score": 1,
+    "Duration": 114.75017
+  },
+  {
+    "Name": "Ihrga",
+    "Score": 0,
+    "Duration": 72.00013
+  },
+  {
+    "Name": "davi",
+    "Score": 0,
+    "Duration": 52.079937
+  },
+  {
+    "Name": "",
+    "Score": 0,
+    "Duration": 5.159999
   }
 ]
 ```

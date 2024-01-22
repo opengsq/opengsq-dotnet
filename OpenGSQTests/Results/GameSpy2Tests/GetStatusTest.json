@@ -2,11 +2,11 @@
   "Info": {
     "hostname": "*Easy Prey/Death*",
     "hostport": "15567",
-    "mapname": "Flaming Dart [Extra Vehicles] -SSM-",
+    "mapname": "Irving [Extra Vehicles] -SSM-",
     "gametype": "coop",
-    "numplayers": "8",
+    "numplayers": "4",
     "maxplayers": "50",
-    "gamemode": "openplaying",
+    "gamemode": "pre",
     "password": "0",
     "gamever": "v1.21",
     "dedicated": "2",
@@ -47,78 +47,46 @@
   },
   "Players": [
     {
-      "player": "Hoang Huynh",
-      "score": "10",
-      "deaths": "3",
-      "ping": "238",
-      "team": "2",
-      "kills": "11"
-    },
-    {
-      "player": "VKHD Player",
-      "score": "15",
-      "deaths": "2",
-      "ping": "108",
-      "team": "2",
-      "kills": "12"
-    },
-    {
-      "player": "Tyme Bulm",
-      "score": "9",
+      "player": "Ka",
+      "score": "0",
       "deaths": "0",
-      "ping": "19",
+      "ping": "175",
       "team": "1",
-      "kills": "4"
+      "kills": "0"
     },
     {
-      "player": "jon",
-      "score": "19",
-      "deaths": "4",
-      "ping": "67",
+      "player": "WR",
+      "score": "0",
+      "deaths": "0",
+      "ping": "139",
       "team": "1",
-      "kills": "11"
+      "kills": "0"
     },
     {
-      "player": "gooodie boi",
-      "score": "2",
-      "deaths": "4",
-      "ping": "121",
+      "player": "pinky",
+      "score": "0",
+      "deaths": "0",
+      "ping": "32",
       "team": "2",
-      "kills": "3"
-    },
-    {
-      "player": "str1ker",
-      "score": "3",
-      "deaths": "5",
-      "ping": "183",
-      "team": "1",
-      "kills": "5"
-    },
-    {
-      "player": "Santa",
-      "score": "3",
-      "deaths": "5",
-      "ping": "110",
-      "team": "1",
-      "kills": "3"
+      "kills": "0"
     },
     {
       "player": "Hannibal",
-      "score": "9",
-      "deaths": "2",
-      "ping": "149",
-      "team": "2",
-      "kills": "6"
+      "score": "0",
+      "deaths": "0",
+      "ping": "112",
+      "team": "1",
+      "kills": "0"
     }
   ],
   "Teams": [
     {
       "team": "red",
-      "tickets": "770"
+      "tickets": "846"
     },
     {
       "team": "blue",
-      "tickets": "536"
+      "tickets": "846"
     }
   ]
 }

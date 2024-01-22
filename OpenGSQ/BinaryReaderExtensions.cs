@@ -96,5 +96,16 @@ namespace OpenGSQ
         {
             return br.TryReadStringEx(out outString, new byte[] { charByte });
         }
+
+        /// <summary>
+        /// Reads a Pascal string from a binary stream.
+        /// </summary>
+        /// <param name="br">The binary reader to read the string from.</param>
+        /// <returns>A string read from the binary stream.</returns>
+        public static string ReadPascalString(this BinaryReader br)
+        {
+            int length = br.ReadByte();
+            return Encoding.UTF8.GetString(br.ReadBytes(length - 1));
+        }
     }
 }

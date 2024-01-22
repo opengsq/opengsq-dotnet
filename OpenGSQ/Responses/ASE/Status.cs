@@ -20,7 +20,7 @@ namespace OpenGSQ.Responses.ASE
         /// <summary>
         /// Gets or sets the host name of the game.
         /// </summary>
-        public string HostName { get; set; }
+        public string Hostname { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the game.

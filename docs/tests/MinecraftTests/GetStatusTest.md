@@ -14,7 +14,7 @@ Here are the results for the test method.
   },
   "players": {
     "max": 2023,
-    "online": 2,
+    "online": 8,
     "sample": [
       {
         "name": "§aBe Player Haye Server",

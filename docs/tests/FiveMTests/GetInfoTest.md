@@ -134,7 +134,6 @@ Here are the results for the test method.
     "FranklinHousefix",
     "freedom_tower",
     "Gatto_WorkShopLA",
-    "glowpalms",
     "qb-prison",
     "xtxvxtx_prop_disabler",
     "laundry",
@@ -368,6 +367,6 @@ Here are the results for the test method.
     "tags": "Roleplay, Casual, Economy, LSPD, EMS, Gangs, Cars, Motorcycles, Secrets, qbx_core, gunplay, Customs, Crime, territories, semi-serious, original, qbxcore",
     "txAdmin-version": "6.0.2"
   },
-  "version": 1203673699
+  "version": 204245275
 }
 ```

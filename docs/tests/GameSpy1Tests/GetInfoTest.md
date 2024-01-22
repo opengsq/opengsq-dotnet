@@ -10,10 +10,10 @@ Here are the results for the test method.
 {
   "hostname": " --- ComboGib CTF (Grapple) -- London --- EatSleepUT.com",
   "hostport": "7777",
-  "maptitle": "|-Vp-| FragWhoreArena",
-  "mapname": "CTF-(Vp)FragWhore[ZPC]",
+  "maptitle": "FRAG WHORE FAST ATTACK BY BULBAFLEX",
+  "mapname": "CTF-((-FragWhore-FastAttack-V2))",
   "gametype": "CTFGame",
-  "numplayers": "12",
+  "numplayers": "18",
   "maxplayers": "18",
   "gamemode": "openplaying",
   "gamever": "469",

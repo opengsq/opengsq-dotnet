@@ -9,7 +9,7 @@ Here are the results for the test method.
 ```json
 {
   "Password": false,
-  "NumPlayers": 94,
+  "NumPlayers": 52,
   "MaxPlayers": 250,
   "ServerName": "[ENG] Valrise RPG",
   "GameType": "Valrise RP 2.0.13 (RPG/RP)",

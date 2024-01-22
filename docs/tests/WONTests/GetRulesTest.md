@@ -10,8 +10,8 @@ Here are the results for the test method.
 {
   "allow_spectators": "0",
   "amx_client_languages": "0",
-  "amx_nextmap": "de_piranesi",
-  "amx_timeleft": "13:32",
+  "amx_nextmap": "as_oilrig",
+  "amx_timeleft": "12:57",
   "amxmodx_version": "1.8.1.3746",
   "coop": "0",
   "csdmsake_version": "1.1e",

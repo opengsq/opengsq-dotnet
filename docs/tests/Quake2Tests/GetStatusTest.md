@@ -22,16 +22,16 @@ Here are the results for the test method.
     "gamedir": "jump",
     "gamename": "Q2JUMP 1.35ger",
     "hostname": ".german q2 jump",
-    "mapname": "hellfire_46",
+    "mapname": "apocalypse42",
     "matchlock": "1",
     "matchtime": "20",
     "maxclients": "15",
     "port": "27910",
     "protocol": "34",
-    "time_remaining": "32:35",
+    "time_remaining": "00:59",
     "timelimit": "0",
     "version": "q2proded r1826~7ad132a Dec 28 2018 Linux x86_64",
-    "uptime": "16 days, 9 hours, 42 mins, 45 secs"
+    "uptime": "17 days, 13 hours, 22 mins, 40 secs"
   },
   "Players": []
 }

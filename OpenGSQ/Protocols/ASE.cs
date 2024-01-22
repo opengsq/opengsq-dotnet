@@ -50,15 +50,15 @@ namespace OpenGSQ.Protocols
 
                 return new Status
                 {
-                    GameName = ReadString(br),
-                    GamePort = int.Parse(ReadString(br)),
-                    HostName = ReadString(br),
-                    GameType = ReadString(br),
-                    Map = ReadString(br),
-                    Version = ReadString(br),
-                    Password = ReadString(br) != "0",
-                    NumPlayers = int.Parse(ReadString(br)),
-                    MaxPlayers = int.Parse(ReadString(br)),
+                    GameName = br.ReadPascalString(),
+                    GamePort = int.Parse(br.ReadPascalString()),
+                    Hostname = br.ReadPascalString(),
+                    GameType = br.ReadPascalString(),
+                    Map = br.ReadPascalString(),
+                    Version = br.ReadPascalString(),
+                    Password = br.ReadPascalString() != "0",
+                    NumPlayers = int.Parse(br.ReadPascalString()),
+                    MaxPlayers = int.Parse(br.ReadPascalString()),
                     Rules = ParseRules(br),
                     Players = ParsePlayers(br),
                 };
@@ -71,14 +71,14 @@ namespace OpenGSQ.Protocols
 
             while (!br.IsEnd())
             {
-                string key = ReadString(br);
+                string key = br.ReadPascalString();
 
                 if (string.IsNullOrEmpty(key))
                 {
                     break;
                 }
 
-                rules[key] = ReadString(br);
+                rules[key] = br.ReadPascalString();
             }
 
             return rules;
@@ -103,41 +103,35 @@ namespace OpenGSQ.Protocols
 
             if ((flags & 1) == 1)
             {
-                player.Name = ReadString(br);
+                player.Name = br.ReadPascalString();
             }
 
             if ((flags & 2) == 2)
             {
-                player.Team = ReadString(br);
+                player.Team = br.ReadPascalString();
             }
 
             if ((flags & 4) == 4)
             {
-                player.Skin = ReadString(br);
+                player.Skin = br.ReadPascalString();
             }
 
             if ((flags & 8) == 8)
             {
-                player.Score = int.TryParse(ReadString(br), out int result) ? result : 0;
+                player.Score = int.TryParse(br.ReadPascalString(), out int result) ? result : 0;
             }
 
             if ((flags & 16) == 16)
             {
-                player.Ping = int.TryParse(ReadString(br), out int result) ? result : 0;
+                player.Ping = int.TryParse(br.ReadPascalString(), out int result) ? result : 0;
             }
 
             if ((flags & 32) == 32)
             {
-                player.Time = int.TryParse(ReadString(br), out int result) ? result : 0;
+                player.Time = int.TryParse(br.ReadPascalString(), out int result) ? result : 0;
             }
 
             return player;
-        }
-
-        private string ReadString(BinaryReader br)
-        {
-            int length = br.ReadByte();
-            return Encoding.UTF8.GetString(br.ReadBytes(length - 1));
         }
     }
 }

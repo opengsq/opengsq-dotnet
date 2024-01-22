@@ -10,7 +10,7 @@
     "mod_version": "2.2.0",
     "mod_url": "http://jaymod.clanfu.org",
     "mod_binary": "linux-release",
-    "sv_uptime": "04d07h26m",
+    "sv_uptime": "05d11h07m",
     "sv_cpu": "Intel(R) Xeon(R) CPU E3-1270 v5",
     "g_axismaxlives": "0",
     "g_alliedmaxlives": "0",
@@ -21,7 +21,7 @@
     "sv_minPing": "0",
     "sv_minRate": "0",
     "sv_privateClients": "0",
-    "mapname": "et_mor2_night_final",
+    "mapname": "river_port",
     "protocol": "84",
     "g_gametype": "2",
     "sv_userInfoFloodProtect": "1",
@@ -40,129 +40,129 @@
   },
   "Players": [
     {
-      "Frags": 62362,
+      "Frags": 79980,
       "Ping": 0,
       "Name": "George"
     },
     {
-      "Frags": 56798,
+      "Frags": 71487,
       "Ping": 0,
       "Name": "Beelz"
     },
     {
-      "Frags": 64674,
+      "Frags": 82284,
       "Ping": 0,
       "Name": "Chimichanga"
     },
     {
-      "Frags": 55439,
+      "Frags": 70231,
       "Ping": 0,
       "Name": "Kaolin"
     },
     {
-      "Frags": 62737,
+      "Frags": 83683,
       "Ping": 0,
       "Name": "HalfH"
     },
     {
-      "Frags": 53306,
+      "Frags": 67616,
       "Ping": 0,
       "Name": "Ed"
     },
     {
-      "Frags": 63139,
+      "Frags": 78907,
       "Ping": 0,
       "Name": "Razor"
     },
     {
-      "Frags": 54172,
+      "Frags": 67812,
       "Ping": 0,
       "Name": "Amadi"
     },
     {
-      "Frags": 64624,
+      "Frags": 81942,
       "Ping": 0,
       "Name": "Brad"
     },
     {
-      "Frags": 53712,
+      "Frags": 69204,
       "Ping": 0,
       "Name": "Bortack"
     },
     {
-      "Frags": 60935,
+      "Frags": 79469,
       "Ping": 0,
       "Name": "Blackadder"
     },
     {
-      "Frags": 53119,
+      "Frags": 67736,
       "Ping": 0,
       "Name": "Nandet"
     },
     {
-      "Frags": 59671,
+      "Frags": 78164,
       "Ping": 0,
       "Name": "Sean"
     },
     {
-      "Frags": 53373,
+      "Frags": 66966,
       "Ping": 0,
       "Name": "Morg"
     },
     {
-      "Frags": 60570,
+      "Frags": 77396,
       "Ping": 0,
       "Name": "Nohope"
     },
     {
-      "Frags": 52657,
+      "Frags": 66643,
       "Ping": 0,
       "Name": "Whitt"
     },
     {
-      "Frags": 63711,
+      "Frags": 79029,
       "Ping": 0,
       "Name": "Newbie"
     },
     {
-      "Frags": 52171,
+      "Frags": 65066,
       "Ping": 0,
       "Name": "Stinger"
     },
     {
-      "Frags": 62241,
+      "Frags": 78848,
       "Ping": 0,
       "Name": "Cledus"
     },
     {
-      "Frags": 51200,
+      "Frags": 65039,
       "Ping": 0,
       "Name": "Flint"
     },
     {
-      "Frags": 62533,
+      "Frags": 79404,
       "Ping": 0,
       "Name": "Hitnrun"
     },
     {
-      "Frags": 51367,
+      "Frags": 64251,
       "Ping": 0,
       "Name": "Wens"
     },
     {
-      "Frags": 16475,
+      "Frags": 30852,
       "Ping": 0,
       "Name": "Halfwit"
     },
     {
-      "Frags": 46684,
+      "Frags": 60449,
       "Ping": 0,
       "Name": "Argo"
     },
     {
-      "Frags": 302,
+      "Frags": 1083,
       "Ping": 0,
-      "Name": "Tanz"
+      "Name": "Backfire"
     }
   ]
 }

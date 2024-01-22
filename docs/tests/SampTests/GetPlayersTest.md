@@ -10,561 +10,321 @@ Here are the results for the test method.
 [
   {
     "Id": 0,
-    "Name": "Brian_Gambino",
-    "Score": 17,
-    "Ping": 82
+    "Name": "Lisa_Anderline",
+    "Score": 23,
+    "Ping": 168
   },
   {
     "Id": 1,
-    "Name": "[NBA] DelRoy_Anderson",
-    "Score": 17,
-    "Ping": 77
+    "Name": "Sidi_Boundagani",
+    "Score": 23,
+    "Ping": 65
   },
   {
     "Id": 2,
-    "Name": "Miguel_Escobar",
-    "Score": 28,
-    "Ping": 301
+    "Name": "Pablo_Shelby",
+    "Score": 16,
+    "Ping": 189
   },
   {
     "Id": 3,
-    "Name": "[NBA] Jaren_Jackson",
-    "Score": 16,
-    "Ping": 78
+    "Name": "Charlotte_Martinez",
+    "Score": 18,
+    "Ping": 66
   },
   {
     "Id": 4,
-    "Name": "Jacob_Harlon",
-    "Score": 20,
-    "Ping": 121
+    "Name": "Michael_Hilton",
+    "Score": 27,
+    "Ping": 60
   },
   {
     "Id": 5,
-    "Name": "Chuck_Clayton",
-    "Score": 24,
-    "Ping": 57
+    "Name": "Lukas_Eastwood",
+    "Score": 30,
+    "Ping": 132
   },
   {
     "Id": 6,
-    "Name": "[SAPD] Iftina_Hernandez",
-    "Score": 26,
-    "Ping": 233
+    "Name": "Hector_Huerta",
+    "Score": 23,
+    "Ping": 200
   },
   {
     "Id": 7,
-    "Name": "Mike_Legend",
-    "Score": 23,
-    "Ping": 202
+    "Name": "Jacqueline_Matisse",
+    "Score": 19,
+    "Ping": 65
   },
   {
     "Id": 8,
-    "Name": "Nazario_Vialpando",
-    "Score": 22,
-    "Ping": 155
+    "Name": "[SAFD] Tyrone_McClain",
+    "Score": 31,
+    "Ping": 189
   },
   {
     "Id": 9,
-    "Name": "[SAPD] Hendrix_Anderson",
-    "Score": 33,
-    "Ping": 93
+    "Name": "ibr_Bremooo",
+    "Score": 0,
+    "Ping": 97
   },
   {
     "Id": 10,
-    "Name": "[NG] Mark_Chesterfield",
+    "Name": "[WWI] Andrew_Wilson",
     "Score": 25,
-    "Ping": 61
+    "Ping": 178
   },
   {
     "Id": 11,
-    "Name": "Abu_Hajar",
-    "Score": 22,
-    "Ping": 229
+    "Name": "Domingo_Vercetti",
+    "Score": 23,
+    "Ping": 60
   },
   {
     "Id": 12,
-    "Name": "rob_poiler",
-    "Score": 5,
-    "Ping": 253
+    "Name": "Kazak_Kodorov",
+    "Score": 31,
+    "Ping": 60
   },
   {
     "Id": 13,
-    "Name": "[WWI] Andrew_Wilson",
-    "Score": 25,
-    "Ping": 275
+    "Name": "Klaus_Becker",
+    "Score": 21,
+    "Ping": 82
   },
   {
     "Id": 14,
     "Name": "[SASD] Dom_Hoover",
     "Score": 24,
-    "Ping": 64
-  },
-  {
-    "Id": 15,
-    "Name": "[MB] Benson_Corleone",
-    "Score": 55,
-    "Ping": 78
-  },
-  {
-    "Id": 16,
-    "Name": "Bofade_Eznuts",
-    "Score": 26,
-    "Ping": 41
-  },
-  {
-    "Id": 17,
-    "Name": "Shubham_Addison",
-    "Score": 26,
-    "Ping": 123
-  },
-  {
-    "Id": 18,
-    "Name": "Arturo_Beltran",
-    "Score": 28,
-    "Ping": 193
-  },
-  {
-    "Id": 19,
-    "Name": "Vincent_Maranzano",
-    "Score": 8,
-    "Ping": 68
-  },
-  {
-    "Id": 20,
-    "Name": "[LSV] Tony_Frost",
-    "Score": 24,
-    "Ping": 92
-  },
-  {
-    "Id": 21,
-    "Name": "Sidi_Boundagani",
-    "Score": 23,
-    "Ping": 57
-  },
-  {
-    "Id": 22,
-    "Name": "Hadleigh_Vanidestine",
-    "Score": 26,
     "Ping": 71
   },
   {
-    "Id": 23,
-    "Name": "Antonio_Vercetti",
-    "Score": 36,
-    "Ping": 36
+    "Id": 16,
+    "Name": "[NG] Ted_Ehrmantraut",
+    "Score": 28,
+    "Ping": 137
   },
   {
-    "Id": 24,
-    "Name": "[HC] Dylan_Becker",
-    "Score": 25,
-    "Ping": 51
-  },
-  {
-    "Id": 25,
-    "Name": "Kazak_Kodorov",
-    "Score": 31,
-    "Ping": 56
-  },
-  {
-    "Id": 26,
-    "Name": "Amaya_Dobre",
-    "Score": 12,
-    "Ping": 327
-  },
-  {
-    "Id": 27,
-    "Name": "Luka_Stojicevic",
-    "Score": 9,
-    "Ping": 51
-  },
-  {
-    "Id": 28,
-    "Name": "Henry_Narkaman",
-    "Score": 2,
-    "Ping": 97
-  },
-  {
-    "Id": 29,
-    "Name": "Kapllan_Doda",
-    "Score": 2,
+    "Id": 17,
+    "Name": "Roman_Vercetti",
+    "Score": 19,
     "Ping": 61
   },
   {
-    "Id": 30,
-    "Name": "Nick_Coleman",
-    "Score": 8,
-    "Ping": 295
+    "Id": 19,
+    "Name": "[SASD] Adel_Lordran",
+    "Score": 26,
+    "Ping": 189
   },
   {
-    "Id": 31,
-    "Name": "Valode_Narkaman",
+    "Id": 20,
+    "Name": "Hasan_Hahaha",
+    "Score": 0,
+    "Ping": 81
+  },
+  {
+    "Id": 21,
+    "Name": "Rob_Persway",
     "Score": 6,
-    "Ping": 82
+    "Ping": 255
   },
   {
-    "Id": 32,
+    "Id": 22,
+    "Name": "Carlo_Vercetti",
+    "Score": 57,
+    "Ping": 51
+  },
+  {
+    "Id": 23,
+    "Name": "Bofade_Eznuts",
+    "Score": 26,
+    "Ping": 45
+  },
+  {
+    "Id": 24,
+    "Name": "Hutero_Crazy",
+    "Score": 49,
+    "Ping": 117
+  },
+  {
+    "Id": 25,
+    "Name": "Mike_Legend",
+    "Score": 23,
+    "Ping": 210
+  },
+  {
+    "Id": 26,
+    "Name": "[SAFD] Simon_Gofrowsky",
+    "Score": 27,
+    "Ping": 81
+  },
+  {
+    "Id": 27,
     "Name": "Elias_Rumph",
     "Score": 8,
     "Ping": 62
   },
   {
+    "Id": 28,
+    "Name": "[GSF] James_Perkin",
+    "Score": 31,
+    "Ping": 158
+  },
+  {
+    "Id": 29,
+    "Name": "[NG] Shawn_Cooper",
+    "Score": 28,
+    "Ping": 60
+  },
+  {
+    "Id": 30,
+    "Name": "Viktor_Addlson",
+    "Score": 28,
+    "Ping": 128
+  },
+  {
+    "Id": 31,
+    "Name": "jhon",
+    "Score": 0,
+    "Ping": 282
+  },
+  {
+    "Id": 32,
+    "Name": "[MB] Benson_Corleone",
+    "Score": 55,
+    "Ping": 81
+  },
+  {
     "Id": 33,
-    "Name": "Alex_Kanriz",
-    "Score": 12,
-    "Ping": 175
+    "Name": "[SASD] Franklin_Grey",
+    "Score": 26,
+    "Ping": 55
   },
   {
     "Id": 34,
-    "Name": "[NBA] Percy_WiIliams",
-    "Score": 24,
-    "Ping": 149
-  },
-  {
-    "Id": 35,
-    "Name": "[WWI] Giovanni_Russell",
-    "Score": 9,
-    "Ping": 66
+    "Name": "[WWI] Ignaz_Becker",
+    "Score": 21,
+    "Ping": 76
   },
   {
     "Id": 36,
-    "Name": "Malena_Vasquez",
-    "Score": 25,
-    "Ping": 208
-  },
-  {
-    "Id": 37,
-    "Name": "Luis_Muller",
-    "Score": 15,
-    "Ping": 176
+    "Name": "Matthew_Reiner",
+    "Score": 32,
+    "Ping": 46
   },
   {
     "Id": 38,
-    "Name": "Mike_Jonne",
-    "Score": 13,
-    "Ping": 20
+    "Name": "Mimos_Hammi",
+    "Score": 23,
+    "Ping": 143
   },
   {
     "Id": 39,
-    "Name": "Matthew_Reiner",
-    "Score": 32,
-    "Ping": 52
+    "Name": "Szopjal_Geci",
+    "Score": 8,
+    "Ping": 61
   },
   {
     "Id": 40,
-    "Name": "Kishore_Hope",
-    "Score": 19,
-    "Ping": 274
+    "Name": "Jacob_Harlon",
+    "Score": 20,
+    "Ping": 50
   },
   {
     "Id": 41,
-    "Name": "[SASD] Enzo_Harrison",
-    "Score": 29,
-    "Ping": 238
+    "Name": "[SAPD] Yoru_Becker",
+    "Score": 20,
+    "Ping": 86
   },
   {
     "Id": 42,
-    "Name": "[FBI] Alan_Reins",
-    "Score": 23,
-    "Ping": 181
+    "Name": "Seyhan_Addison",
+    "Score": 30,
+    "Ping": 178
   },
   {
     "Id": 43,
-    "Name": "Akash_Rolex",
-    "Score": 6,
-    "Ping": 175
-  },
-  {
-    "Id": 44,
-    "Name": "[GSF] Sali_Cross",
-    "Score": 27,
+    "Name": "[FBI] Mircea_Niko",
+    "Score": 20,
     "Ping": 61
   },
   {
     "Id": 45,
-    "Name": "[FBI] Omer_Azeez",
-    "Score": 28,
-    "Ping": 30
+    "Name": "Dominique_Johnsons",
+    "Score": 9,
+    "Ping": 24
   },
   {
     "Id": 46,
-    "Name": "Kill_Dinks",
-    "Score": 17,
-    "Ping": 123
-  },
-  {
-    "Id": 47,
-    "Name": "[NBA] Lamar_Anderson",
-    "Score": 30,
-    "Ping": 82
-  },
-  {
-    "Id": 48,
-    "Name": "[SAPD] Bret_Reigns",
-    "Score": 37,
-    "Ping": 72
-  },
-  {
-    "Id": 49,
-    "Name": "[SAPD] Kondo_Tadao",
-    "Score": 25,
-    "Ping": 224
-  },
-  {
-    "Id": 50,
-    "Name": "[FBI] Enya_Hernandez",
-    "Score": 30,
-    "Ping": 51
-  },
-  {
-    "Id": 51,
-    "Name": "rodriiii_caino",
-    "Score": 0,
-    "Ping": 279
-  },
-  {
-    "Id": 52,
-    "Name": "Alesio_Rumph",
-    "Score": 12,
-    "Ping": 52
-  },
-  {
-    "Id": 53,
-    "Name": "Jack_Vercetti",
-    "Score": 23,
-    "Ping": 165
-  },
-  {
-    "Id": 54,
-    "Name": "[NG] Marcus_Fernandes",
-    "Score": 23,
-    "Ping": 206
-  },
-  {
-    "Id": 55,
-    "Name": "[NBA] Clayton_Burns",
-    "Score": 20,
-    "Ping": 56
-  },
-  {
-    "Id": 56,
-    "Name": "Gerald_Bleedson",
-    "Score": 19,
-    "Ping": 305
-  },
-  {
-    "Id": 57,
-    "Name": "Sergio.Ramos",
-    "Score": 0,
-    "Ping": 103
-  },
-  {
-    "Id": 58,
-    "Name": "[NBA] Charles_McTavish",
-    "Score": 27,
-    "Ping": 51
-  },
-  {
-    "Id": 59,
-    "Name": "Cuauhtemoc_Maldonado",
-    "Score": 24,
-    "Ping": 77
-  },
-  {
-    "Id": 60,
-    "Name": "Rebel_agosto",
-    "Score": 0,
-    "Ping": 160
-  },
-  {
-    "Id": 61,
-    "Name": "Szopjal_Geci",
-    "Score": 7,
-    "Ping": 61
-  },
-  {
-    "Id": 62,
-    "Name": "[SAPD] Dinghy_Davidson",
-    "Score": 44,
-    "Ping": 87
-  },
-  {
-    "Id": 63,
-    "Name": "Isabella_Vasquez",
-    "Score": 28,
-    "Ping": 171
-  },
-  {
-    "Id": 64,
-    "Name": "Clark_Gvardia",
-    "Score": 8,
+    "Name": "[SASD] Nabster_Kowalski",
+    "Score": 16,
     "Ping": 76
   },
   {
-    "Id": 65,
-    "Name": "Charlotte_Martinez",
-    "Score": 18,
-    "Ping": 67
+    "Id": 47,
+    "Name": "[NG] Mark_Chesterfield",
+    "Score": 25,
+    "Ping": 70
   },
   {
-    "Id": 66,
-    "Name": "mike_kings",
-    "Score": 5,
-    "Ping": 243
+    "Id": 48,
+    "Name": "Daniel_Wellington",
+    "Score": 21,
+    "Ping": 137
   },
   {
-    "Id": 67,
-    "Name": "Hutero_Crazy",
-    "Score": 49,
-    "Ping": 72
-  },
-  {
-    "Id": 68,
-    "Name": "[SASD] Franklin_Grey",
-    "Score": 26,
-    "Ping": 50
-  },
-  {
-    "Id": 69,
-    "Name": "Hector_Huerta",
-    "Score": 23,
-    "Ping": 201
-  },
-  {
-    "Id": 70,
-    "Name": "PW_Arshin",
-    "Score": 0,
-    "Ping": 170
-  },
-  {
-    "Id": 71,
-    "Name": "[SWAT] Louis_Fratto",
-    "Score": 18,
-    "Ping": 193
-  },
-  {
-    "Id": 72,
-    "Name": "[SASD] Hammad_Hilton",
-    "Score": 30,
-    "Ping": 369
-  },
-  {
-    "Id": 73,
-    "Name": "[SAPD] Billu_Morrison",
-    "Score": 23,
-    "Ping": 922
-  },
-  {
-    "Id": 74,
-    "Name": "John_Caruso",
-    "Score": 22,
-    "Ping": 82
-  },
-  {
-    "Id": 75,
-    "Name": "Kenard_Bozb",
-    "Score": 17,
-    "Ping": 36
-  },
-  {
-    "Id": 77,
-    "Name": "gtag",
-    "Score": 0,
-    "Ping": 242
-  },
-  {
-    "Id": 78,
-    "Name": "Donny_Charleston",
-    "Score": 28,
-    "Ping": 41
-  },
-  {
-    "Id": 79,
-    "Name": "Drew_Tattaglia",
-    "Score": 6,
-    "Ping": 56
-  },
-  {
-    "Id": 80,
-    "Name": "[GSF] Dikembe_Dalton",
-    "Score": 17,
+    "Id": 49,
+    "Name": "Gustavo_Barboza",
+    "Score": 8,
     "Ping": 77
   },
   {
-    "Id": 81,
-    "Name": "Justin_Swift",
-    "Score": 28,
-    "Ping": 186
+    "Id": 52,
+    "Name": "[VIP] Martin_Winchester",
+    "Score": 37,
+    "Ping": 163
   },
   {
-    "Id": 82,
-    "Name": "Viktor_Addlson",
-    "Score": 28,
-    "Ping": 135
-  },
-  {
-    "Id": 83,
-    "Name": "Denzel_Costa",
-    "Score": 25,
-    "Ping": 243
-  },
-  {
-    "Id": 84,
-    "Name": "Rowan_Rojas",
-    "Score": 25,
-    "Ping": 176
-  },
-  {
-    "Id": 85,
-    "Name": "[GSF] Jax_Kingston",
-    "Score": 34,
+    "Id": 53,
+    "Name": "vito_carleone",
+    "Score": 19,
     "Ping": 66
   },
   {
-    "Id": 86,
-    "Name": "[VIP] Shanell_Fairfield",
-    "Score": 60,
-    "Ping": 92
+    "Id": 55,
+    "Name": "[HC] Dylan_becker",
+    "Score": 25,
+    "Ping": 55
   },
   {
-    "Id": 87,
-    "Name": "[WWI] Nina_Tech",
-    "Score": 27,
-    "Ping": 125
+    "Id": 56,
+    "Name": "[SASD] Hammad_Hilton",
+    "Score": 30,
+    "Ping": 194
   },
   {
-    "Id": 88,
-    "Name": "Ive_Harmon",
-    "Score": 35,
-    "Ping": 83
+    "Id": 58,
+    "Name": "Kacper_Kowalski",
+    "Score": 49,
+    "Ping": 35
   },
   {
-    "Id": 89,
-    "Name": "Omar_Beausejour",
-    "Score": 10,
-    "Ping": 25
+    "Id": 59,
+    "Name": "[WWI] Smog_Eix",
+    "Score": 21,
+    "Ping": 88
   },
   {
-    "Id": 90,
-    "Name": "Yuniel_Contrera",
-    "Score": 0,
-    "Ping": 185
+    "Id": 62,
+    "Name": "Damien_Taylor",
+    "Score": 20,
+    "Ping": 112
   },
   {
-    "Id": 91,
-    "Name": "Mark_Schafer",
-    "Score": 19,
-    "Ping": 103
-  },
-  {
-    "Id": 92,
-    "Name": "Bintang_Pamungkas",
-    "Score": 0,
-    "Ping": 358
-  },
-  {
-    "Id": 93,
-    "Name": "Gerald_Harris",
-    "Score": 11,
-    "Ping": 113
+    "Id": 76,
+    "Name": "Tanay_Curtis",
+    "Score": 21,
+    "Ping": 108
   }
 ]
 ```

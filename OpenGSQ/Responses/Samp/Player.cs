@@ -25,5 +25,4 @@ namespace OpenGSQ.Responses.Samp
         /// </summary>
         public int Ping { get; set; }
     }
-
 }

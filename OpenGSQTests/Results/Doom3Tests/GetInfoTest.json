@@ -32,14 +32,13 @@
   "si_antiLag": "1",
   "bot_enable": "1",
   "gamename": "baseETQW-1",
-  "si_campaign": "campaign_northeurope",
-  "si_map": "maps/quarry.entities",
-  "si_campaignInfo": "",
+  "si_campaign": "campaign_pacific",
+  "si_map": "maps/canyon.entities",
   "players": [
     {
       "id": 0,
       "ping": 0,
-      "name": "NOSFERATU",
+      "name": "WAT|infected_remnants",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
@@ -47,15 +46,7 @@
     {
       "id": 1,
       "ping": 0,
-      "name": "flower.tube",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 2,
-      "ping": 0,
-      "name": "rumpleforeskin",
+      "name": "iceT-bag",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
@@ -63,45 +54,21 @@
     {
       "id": 3,
       "ping": 0,
-      "name": "NoobMcBoob",
+      "name": "Boss_Tweed",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
       "id": 4,
-      "ping": 100,
-      "name": "Player____",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 0
-    },
-    {
-      "id": 10,
       "ping": 0,
-      "name": "HaltHammerzeit",
+      "name": "CTZN Kane",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
-      "id": 11,
-      "ping": 0,
-      "name": "NiceLagSwitch",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 12,
-      "ping": 0,
-      "name": "STFUandDIE",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 13,
+      "id": 5,
       "ping": 0,
       "name": "FannyPack",
       "clantag_pos": 0,
@@ -109,12 +76,60 @@
       "typeflag": 1
     },
     {
-      "id": 14,
+      "id": 6,
       "ping": 0,
-      "name": "Bad Hombre",
+      "name": "Kettle",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
+    },
+    {
+      "id": 7,
+      "ping": 0,
+      "name": "HaltHammerzeit",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 8,
+      "ping": 0,
+      "name": "NOSFERATU",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 9,
+      "ping": 0,
+      "name": "Gumbii",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 10,
+      "ping": 61,
+      "name": "Konkwista",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 11,
+      "ping": 0,
+      "name": "Vlad_Putimir",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 12,
+      "ping": 36,
+      "name": "WARRIOR______",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
     }
   ]
 }
