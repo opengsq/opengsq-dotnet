@@ -24,6 +24,8 @@ items:
   items:
   - uid: OpenGSQ.Protocols.Tests.EOSTests.GetInfoTest
     name: GetInfoTest
+  - uid: OpenGSQ.Protocols.Tests.EOSTests.GetMatchmakingAsyncTest
+    name: GetMatchmakingAsyncTest
 - uid: OpenGSQ.Protocols.Tests.FiveMTests
   name: FiveMTests
   items:

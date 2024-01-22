@@ -20,42 +20,47 @@ namespace OpenGSQ.Protocols
         /// <inheritdoc/>
         public override string FullName => "Epic Online Services (EOS) Protocol";
 
-        private readonly string _apiUrl = "https://api.epicgames.dev";
-        private readonly string _clientId;
-        private readonly string _clientSecret;
+        private static readonly string _apiUrl = "https://api.epicgames.dev";
         private readonly string _deploymentId;
-        private string _accessToken;
+        private readonly string _accessToken;
 
         /// <summary>
         /// Initializes a new instance of the EOS class.
         /// </summary>
-        /// <param name="host">The host to connect to.</param>
-        /// <param name="port">The port to connect to.</param>
-        /// <param name="timeout">The connection timeout in milliseconds. Default is 5 seconds.</param>
-        /// <param name="clientId">The client ID for authentication.</param>
-        /// <param name="clientSecret">The client secret for authentication.</param>
-        /// <param name="deploymentId">The deployment ID for authentication.</param>
-        public EOS(string host, int port, int timeout = 5000, string clientId = null, string clientSecret = null, string deploymentId = null) : base(host, port, timeout)
+        /// <param name="host">The host name of the server.</param>
+        /// <param name="port">The port number of the server.</param>
+        /// <param name="timeout">The timeout value for the connection, in milliseconds. Default is 5000.</param>
+        /// <param name="deploymentId">The deployment ID for the application.</param>
+        /// <param name="accessToken">The access token for the application.</param>
+        /// <exception cref="ArgumentException">Thrown when either deploymentId or accessToken is null.</exception>
+        public EOS(string host, int port, int timeout = 5000, string deploymentId = null, string accessToken = null) : base(host, port, timeout)
         {
-            if (clientId == null || clientSecret == null || deploymentId == null)
+            if (deploymentId == null || accessToken == null)
             {
-                throw new ArgumentException("clientId, clientSecret, and deploymentId must not be null");
+                throw new ArgumentException("deploymentId, and accessToken must not be null");
             }
 
-            _clientId = clientId;
-            _clientSecret = clientSecret;
             _deploymentId = deploymentId;
+            _accessToken = accessToken;
         }
 
         /// <summary>
         /// Asynchronously gets an access token.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the access token.</returns>
-        protected async Task<string> GetAccessTokenAsync()
+        public static async Task<string> GetAccessTokenAsync(string clientId, string clientSecret, string deploymentId, string grantType, string externalAuthType, string externalAuthToken)
         {
             string url = $"{_apiUrl}/auth/v1/oauth/token";
-            string body = $"grant_type=client_credentials&deployment_id={_deploymentId}";
-            string authInfo = $"{_clientId}:{_clientSecret}";
+
+            var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString.Add("grant_type", grantType);
+            queryString.Add("external_auth_type", externalAuthType);
+            queryString.Add("external_auth_token", externalAuthToken);
+            queryString.Add("nonce", "opengsq");
+            queryString.Add("deployment_id", deploymentId);
+            queryString.Add("display_name", "User");
+
+            string authInfo = $"{clientId}:{clientSecret}";
             authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
 
             using (var client = new HttpClient()
@@ -67,7 +72,7 @@ namespace OpenGSQ.Protocols
                 }
             })
             {
-                HttpResponseMessage response = await client.PostAsync(url, new StringContent(body, Encoding.UTF8, "application/x-www-form-urlencoded"));
+                HttpResponseMessage response = await client.PostAsync(url, new StringContent(queryString.ToString(), Encoding.UTF8, "application/x-www-form-urlencoded"));
                 response.EnsureSuccessStatusCode();
 
                 var data = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
@@ -77,41 +82,81 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Retrieves matchmaking data asynchronously.
+        /// Asynchronously retrieves an external authentication token.
         /// </summary>
-        /// <param name="data">The data to be sent to the server.</param>
-        /// <returns>
-        /// A task that represents the asynchronous operation. The task result contains the matchmaking data.
-        /// </returns>
-        /// <exception cref="AuthenticationException">Thrown when there is a failure in getting the access token.</exception>
-        public async Task<Matchmaking> GetMatchmakingAsync(Dictionary<string, object> data)
+        /// <param name="clientId">The client ID.</param>
+        /// <param name="clientSecret">The client secret.</param>
+        /// <param name="externalAuthType">The type of external authentication.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the access token.</returns>
+        /// <exception cref="ArgumentException">Thrown when either clientId or clientSecret is null.</exception>
+        /// <exception cref="NotImplementedException">Thrown when the provided externalAuthType hasn't been implemented yet.</exception>
+        public static async Task<string> GetExternalAuthTokenAsync(string clientId, string clientSecret, string externalAuthType)
         {
-            if (_accessToken == null)
+            if (externalAuthType == "deviceid_access_token")
             {
-                try
+                string url = $"{_apiUrl}/auth/v1/accounts/deviceid";
+
+                var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+                queryString.Add("deviceModel", "PC");
+
+                string authInfo = $"{clientId}:{clientSecret}";
+                authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
+
+                using (var client = new HttpClient()
                 {
-                    _accessToken = await GetAccessTokenAsync();
-                }
-                catch (Exception ex)
+                    BaseAddress = new Uri(url),
+                    DefaultRequestHeaders =
+                    {
+                        Authorization = new AuthenticationHeaderValue("Basic", authInfo)
+                    }
+                })
                 {
-                    throw new AuthenticationException($"Failed to get access token due to an error: {ex.Message}");
+                    HttpResponseMessage response = await client.PostAsync(url, new StringContent(queryString.ToString(), Encoding.UTF8, "application/x-www-form-urlencoded"));
+                    response.EnsureSuccessStatusCode();
+
+                    var data = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
+
+                    return data["access_token"].ToString();
                 }
             }
 
-            string url = $"{_apiUrl}/matchmaking/v1/{_deploymentId}/filter";
+            throw new NotImplementedException($"The external authentication type '{externalAuthType}' is not supported. Please provide a supported authentication type.");
+        }
+
+        /// <summary>
+        /// Asynchronously retrieves matchmaking data without any filter parameters.
+        /// </summary>
+        /// <param name="deploymentId">The deployment ID.</param>
+        /// <param name="accessToken">The access token.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the matchmaking data.</returns>
+        public static Task<Matchmaking> GetMatchmakingAsync(string deploymentId, string accessToken)
+        {
+            return GetMatchmakingAsync(deploymentId, accessToken, new Dictionary<string, object>());
+        }
+
+        /// <summary>
+        /// Asynchronously retrieves matchmaking data.
+        /// </summary>
+        /// <param name="deploymentId">The deployment ID.</param>
+        /// <param name="accessToken">The access token.</param>
+        /// <param name="filter">The filter parameters for the matchmaking request.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the matchmaking data.</returns>
+        public static async Task<Matchmaking> GetMatchmakingAsync(string deploymentId, string accessToken, Dictionary<string, object> filter)
+        {
+            string url = $"{_apiUrl}/matchmaking/v1/{deploymentId}/filter";
 
             using (var client = new HttpClient()
             {
                 BaseAddress = new Uri(url),
                 DefaultRequestHeaders =
                 {
-                    Authorization = new AuthenticationHeaderValue("Bearer", _accessToken)
+                    Authorization = new AuthenticationHeaderValue("Bearer", accessToken)
                 }
             })
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage response = await client.PostAsync(url, new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json"));
+                HttpResponseMessage response = await client.PostAsync(url, new StringContent(JsonSerializer.Serialize(filter), Encoding.UTF8, "application/json"));
                 response.EnsureSuccessStatusCode();
 
                 var responseData = await response.Content.ReadFromJsonAsync<Matchmaking>();
@@ -133,7 +178,7 @@ namespace OpenGSQ.Protocols
             string address = await GetIPAddress();
             string addressBoundPort = $":{Port}";
 
-            var data = await GetMatchmakingAsync(new Dictionary<string, object>
+            var data = await GetMatchmakingAsync(_deploymentId, _accessToken, new Dictionary<string, object>
             {
                 { "criteria", new List<Dictionary<string, object>>
                     {
