@@ -52,13 +52,18 @@ namespace OpenGSQ.Protocols
         {
             string url = $"{_apiUrl}/auth/v1/oauth/token";
 
-            var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
-            queryString.Add("grant_type", grantType);
-            queryString.Add("external_auth_type", externalAuthType);
-            queryString.Add("external_auth_token", externalAuthToken);
-            queryString.Add("nonce", "opengsq");
-            queryString.Add("deployment_id", deploymentId);
-            queryString.Add("display_name", "User");
+            var values = new Dictionary<string, string>
+            {
+                { "grant_type", grantType },
+                { "external_auth_type", externalAuthType },
+                { "external_auth_token", externalAuthToken },
+                { "nonce", "opengsq" },
+                { "deployment_id", deploymentId },
+                { "display_name", "User" },
+            };
+
+            var content = new FormUrlEncodedContent(values);
+            var queryString = await content.ReadAsStringAsync();
 
             string authInfo = $"{clientId}:{clientSecret}";
             authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
@@ -72,7 +77,7 @@ namespace OpenGSQ.Protocols
                 }
             })
             {
-                HttpResponseMessage response = await client.PostAsync(url, new StringContent(queryString.ToString(), Encoding.UTF8, "application/x-www-form-urlencoded"));
+                HttpResponseMessage response = await client.PostAsync(url, new StringContent(queryString, Encoding.UTF8, "application/x-www-form-urlencoded"));
                 response.EnsureSuccessStatusCode();
 
                 var data = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
@@ -96,8 +101,13 @@ namespace OpenGSQ.Protocols
             {
                 string url = $"{_apiUrl}/auth/v1/accounts/deviceid";
 
-                var queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
-                queryString.Add("deviceModel", "PC");
+                var values = new Dictionary<string, string>
+                {
+                    { "deviceModel", "PC" },
+                };
+
+                var content = new FormUrlEncodedContent(values);
+                var queryString = await content.ReadAsStringAsync();
 
                 string authInfo = $"{clientId}:{clientSecret}";
                 authInfo = Convert.ToBase64String(Encoding.Default.GetBytes(authInfo));
@@ -111,7 +121,7 @@ namespace OpenGSQ.Protocols
                     }
                 })
                 {
-                    HttpResponseMessage response = await client.PostAsync(url, new StringContent(queryString.ToString(), Encoding.UTF8, "application/x-www-form-urlencoded"));
+                    HttpResponseMessage response = await client.PostAsync(url, new StringContent(queryString, Encoding.UTF8, "application/x-www-form-urlencoded"));
                     response.EnsureSuccessStatusCode();
 
                     var data = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
