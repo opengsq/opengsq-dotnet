@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // Quake3 - https://www.gametracker.com/search/et/
         public Quake3 quake3 = new("108.61.18.110", 27960);
 
-        public Quake3Tests() : base(nameof(Quake3Tests))
+        public Quake3Tests() : base(typeof(Quake3Tests))
         {
             // EnableSave = true;
             DelayPerTest = 900;

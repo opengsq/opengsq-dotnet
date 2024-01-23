@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols.Tests
     {
         public Scum scum = new("15.235.181.19", 7042);
 
-        public ScumTests() : base(nameof(ScumTests))
+        public ScumTests() : base(typeof(ScumTests))
         {
             // EnableSave = true;
         }

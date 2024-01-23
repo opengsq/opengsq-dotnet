@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // fivem
         public FiveM fivem = new("144.217.10.12", 30120);
 
-        public FiveMTests() : base(nameof(FiveMTests))
+        public FiveMTests() : base(typeof(FiveMTests))
         {
             // EnableSave = true;
         }

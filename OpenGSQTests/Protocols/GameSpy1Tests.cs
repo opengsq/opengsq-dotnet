@@ -13,7 +13,7 @@ namespace OpenGSQ.Protocols.Tests
         // Battlefield Vietnam (XServerQuery)
         //public GameSpy1 gameSpy1 = new GameSpy1("66.150.121.123", 7778);
 
-        public GameSpy1Tests() : base(nameof(GameSpy1Tests))
+        public GameSpy1Tests() : base(typeof(GameSpy1Tests))
         {
             // EnableSave = true;
             DelayPerTest = 900;

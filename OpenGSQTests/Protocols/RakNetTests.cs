@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // minecraftpe
         public RakNet raknet = new("mc.advancius.net", 19132);
 
-        public RakNetTests() : base(nameof(RakNetTests))
+        public RakNetTests() : base(typeof(RakNetTests))
         {
             // EnableSave = true;
         }

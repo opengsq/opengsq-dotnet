@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols.Tests
     {
         public Unreal2 unreal2 = new("51.195.117.236", 9981);
 
-        public Unreal2Tests() : base(nameof(Unreal2Tests))
+        public Unreal2Tests() : base(typeof(Unreal2Tests))
         {
             // EnableSave = true;
         }

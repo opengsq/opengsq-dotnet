@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // Minecraft Pocket Edition
         public GameSpy4 gameSpy4 = new("play.avengetech.me", 19132);
 
-        public GameSpy4Tests() : base(nameof(GameSpy4Tests))
+        public GameSpy4Tests() : base(typeof(GameSpy4Tests))
         {
             // EnableSave = true;
         }

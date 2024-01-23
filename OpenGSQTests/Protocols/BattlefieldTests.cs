@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // mtasa
         public Battlefield battlefield = new("94.250.199.214", 47200, 10000);
 
-        public BattlefieldTests() : base(nameof(BattlefieldTests))
+        public BattlefieldTests() : base(typeof(BattlefieldTests))
         {
             // EnableSave = true;
         }

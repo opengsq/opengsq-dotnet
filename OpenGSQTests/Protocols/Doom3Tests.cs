@@ -13,7 +13,7 @@ namespace OpenGSQ.Protocols.Tests
         // etqw
         public Doom3 doom3 = new("178.162.135.83", 27735);
 
-        public Doom3Tests() : base(nameof(Doom3Tests))
+        public Doom3Tests() : base(typeof(Doom3Tests))
         {
             // EnableSave = true;
         }

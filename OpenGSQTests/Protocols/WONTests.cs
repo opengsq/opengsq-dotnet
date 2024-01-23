@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols.Tests
     {
         public WON won = new("212.227.190.150", 27020);
 
-        public WONTests() : base(nameof(WONTests))
+        public WONTests() : base(typeof(WONTests))
         {
             // EnableSave = true;
         }

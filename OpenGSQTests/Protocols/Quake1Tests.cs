@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // QuakeWorld
         public Quake1 quake1 = new("35.185.44.174", 27500);
 
-        public Quake1Tests() : base(nameof(Quake1Tests))
+        public Quake1Tests() : base(typeof(Quake1Tests))
         {
             // EnableSave = true;
         }

@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // Samp
         public Samp samp = new("51.254.178.238", 7777);
 
-        public SampTests() : base(nameof(SampTests))
+        public SampTests() : base(typeof(SampTests))
         {
             // EnableSave = true;
             DelayPerTest = 1000;

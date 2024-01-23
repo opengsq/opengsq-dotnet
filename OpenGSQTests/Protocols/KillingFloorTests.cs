@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols.Tests
     {
         public KillingFloor killingFloor = new("185.80.128.168", 7708);
 
-        public KillingFloorTests() : base(nameof(KillingFloorTests))
+        public KillingFloorTests() : base(typeof(KillingFloorTests))
         {
             // EnableSave = true;
         }

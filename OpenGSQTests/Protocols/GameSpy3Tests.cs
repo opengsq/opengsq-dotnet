@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // Battlefield 2
         public GameSpy3 gameSpy3 = new("95.172.92.116", 29900);
 
-        public GameSpy3Tests() : base(nameof(GameSpy3Tests))
+        public GameSpy3Tests() : base(typeof(GameSpy3Tests))
         {
             // EnableSave = true;
         }

@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols.Tests
     {
         public TeamSpeak3 teamSpeak3 = new("145.239.200.2", 10011, 9987);
 
-        public TeamSpeak3Tests() : base(nameof(TeamSpeak3Tests))
+        public TeamSpeak3Tests() : base(typeof(TeamSpeak3Tests))
         {
             // EnableSave = true;
         }

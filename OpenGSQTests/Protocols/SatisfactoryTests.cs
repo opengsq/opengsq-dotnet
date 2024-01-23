@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols.Tests
     {
         public Satisfactory satisfactory = new("79.136.0.124", 15777);
 
-        public SatisfactoryTests() : base(nameof(SatisfactoryTests))
+        public SatisfactoryTests() : base(typeof(SatisfactoryTests))
         {
             // EnableSave = true;
         }

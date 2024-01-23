@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // Quake2
         public Quake2 quake2 = new("46.165.236.118", 27910);
 
-        public Quake2Tests() : base(nameof(Quake2Tests))
+        public Quake2Tests() : base(typeof(Quake2Tests))
         {
             // EnableSave = true;
         }

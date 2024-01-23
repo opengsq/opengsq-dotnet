@@ -9,7 +9,7 @@ namespace OpenGSQ.Protocols.Tests
     {
         public Minecraft minecraft = new("mc.goldcraft.ir", 25565);
 
-        public MinecraftTests() : base(nameof(MinecraftTests))
+        public MinecraftTests() : base(typeof(MinecraftTests))
         {
             // EnableSave = true;
         }

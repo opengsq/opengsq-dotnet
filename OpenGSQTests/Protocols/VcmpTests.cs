@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // Vcmp
         public Vcmp vcmp = new("51.178.65.136", 8114);
 
-        public VcmpTests() : base(nameof(VcmpTests))
+        public VcmpTests() : base(typeof(VcmpTests))
         {
             // EnableSave = true;
         }

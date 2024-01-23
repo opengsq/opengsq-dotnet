@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenGSQ.Exceptions;
 using OpenGSQTests;
-using System;
 using System.Threading.Tasks;
 
 namespace OpenGSQ.Protocols.Tests
@@ -15,7 +13,7 @@ namespace OpenGSQ.Protocols.Tests
         // The Ship
         // public Source source = new Source("5.79.86.193", 27021);
 
-        public SourceTests() : base(nameof(SourceTests))
+        public SourceTests() : base(typeof(SourceTests))
         {
             // EnableSave = true;
             DelayPerTest = 1000;
@@ -37,29 +35,6 @@ namespace OpenGSQ.Protocols.Tests
         public async Task GetRulesTest()
         {
             SaveResult(nameof(GetRulesTest), await source.GetRules());
-        }
-
-        [TestMethod()]
-        public async Task RemoteConsoleTest()
-        {
-            using var remoteConsole = new Source.RemoteConsole("", 27010);
-
-            try
-            {
-                await remoteConsole.Authenticate("");
-
-                string result = await remoteConsole.SendCommand("cvarlist");
-
-                SaveResult(nameof(RemoteConsoleTest), result, isJson: false);
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine($"{e.Message}");
-            }
-            catch (AuthenticationException e)
-            {
-                Console.WriteLine($"{e.Message}");
-            }
         }
     }
 }

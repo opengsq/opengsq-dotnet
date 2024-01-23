@@ -7,7 +7,7 @@ namespace OpenGSQ.Protocols.Tests
     [TestClass()]
     public class EOSTests : TestBase
     {
-        public EOSTests() : base(nameof(EOSTests))
+        public EOSTests() : base(typeof(EOSTests))
         {
             // EnableSave = true;
         }

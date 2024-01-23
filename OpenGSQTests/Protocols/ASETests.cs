@@ -10,7 +10,7 @@ namespace OpenGSQ.Protocols.Tests
         // mtasa
         public ASE ase = new("79.137.97.3", 22126);
 
-        public ASETests() : base(nameof(ASETests))
+        public ASETests() : base(typeof(ASETests))
         {
             // EnableSave = true;
         }
