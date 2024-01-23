@@ -30,6 +30,11 @@
         ]
       }
     ],
+    "sitemap": {
+      "baseUrl": "https://dotnet.opengsq.com",
+      "priority": 0.5,
+      "changefreq": "daily"
+    },
     "output": "_site",
     "template": [
       "default",

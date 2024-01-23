@@ -15,7 +15,7 @@ namespace OpenGSQTests
         /// <summary>
         /// Set save the result to file
         /// </summary>
-        protected bool EnableSave = !false;
+        protected bool EnableSave = false;
 
         /// <summary>
         /// Delay on every test case since too quick may causes timeout
@@ -90,7 +90,7 @@ namespace OpenGSQTests
                 string docsPath = Path.Combine(DocsBasePath, _type.Namespace, _type.Name);
                 Directory.CreateDirectory(docsPath);
 
-                // Generate /docs/tests/{_protocolName}/{functionName}.md
+                // Generate /docs/tests/{_type.FullName}/{functionName}/{functionName}.md
                 string contents = $"---\nuid: {_type.FullName}.{functionName}\n---\n\n";
                 contents += $"# Test Method {functionName}\n\nHere are the results for the test method.\n\n";
                 contents += $"```{(isJson ? "json" : "txt")}\n{result}\n```\n";

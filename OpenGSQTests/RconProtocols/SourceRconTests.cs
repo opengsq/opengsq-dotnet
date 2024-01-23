@@ -11,7 +11,7 @@ namespace OpenGSQ.RconProtocols.Tests
     {
         public SourceRconTests() : base(typeof(SourceRconTests))
         {
-            EnableSave = true;
+            // EnableSave = true;
         }
 
         [TestMethod()]
