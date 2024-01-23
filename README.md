@@ -54,4 +54,4 @@ class Program
 
 ## Tests and Results
 
-You can find information about tests and results at [https://dotnet.opengsq.com/tests](https://dotnet.opengsq.com/tests/ASETests/ASETests.html).
+You can find information about tests and results at [https://dotnet.opengsq.com/tests](https://dotnet.opengsq.com/tests/OpenGSQ.Protocols.Tests/OpenGSQ.Protocols.Tests.html).
