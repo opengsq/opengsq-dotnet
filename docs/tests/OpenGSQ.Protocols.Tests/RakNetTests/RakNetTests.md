@@ -2,9 +2,8 @@
 uid: OpenGSQ.Protocols.Tests.RakNetTests
 ---
 
-# Test Class RakNetTests
+# Test Class OpenGSQ.Protocols.Tests.RakNetTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/RakNetTests/GetStatusTest.html">GetStatusTest</a>
-
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.RakNetTests.GetStatusTest)

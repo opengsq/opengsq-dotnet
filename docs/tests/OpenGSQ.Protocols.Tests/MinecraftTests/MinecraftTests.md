@@ -2,11 +2,10 @@
 uid: OpenGSQ.Protocols.Tests.MinecraftTests
 ---
 
-# Test Class MinecraftTests
+# Test Class OpenGSQ.Protocols.Tests.MinecraftTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/MinecraftTests/GetStatusTest.html">GetStatusTest</a>
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.MinecraftTests.GetStatusTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/MinecraftTests/GetStatusPre17Test.html">GetStatusPre17Test</a>
-
+[GetStatusPre17Test](xref:OpenGSQ.Protocols.Tests.MinecraftTests.GetStatusPre17Test)

@@ -2,21 +2,20 @@
 uid: OpenGSQ.Protocols.Tests.GameSpy1Tests
 ---
 
-# Test Class GameSpy1Tests
+# Test Class OpenGSQ.Protocols.Tests.GameSpy1Tests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/GameSpy1Tests/GetBasicTest.html">GetBasicTest</a>
+[GetBasicTest](xref:OpenGSQ.Protocols.Tests.GameSpy1Tests.GetBasicTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/GameSpy1Tests/GetInfoTest.html">GetInfoTest</a>
+[GetInfoTest](xref:OpenGSQ.Protocols.Tests.GameSpy1Tests.GetInfoTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/GameSpy1Tests/GetRulesTest.html">GetRulesTest</a>
+[GetRulesTest](xref:OpenGSQ.Protocols.Tests.GameSpy1Tests.GetRulesTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/GameSpy1Tests/GetPlayersTest.html">GetPlayersTest</a>
+[GetPlayersTest](xref:OpenGSQ.Protocols.Tests.GameSpy1Tests.GetPlayersTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/GameSpy1Tests/GetStatusTest.html">GetStatusTest</a>
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.GameSpy1Tests.GetStatusTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/GameSpy1Tests/GetTeamsTest.html">GetTeamsTest</a>
+[GetTeamsTest](xref:OpenGSQ.Protocols.Tests.GameSpy1Tests.GetTeamsTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/GameSpy1Tests/GetEchoTest.html">GetEchoTest</a>
-
+[GetEchoTest](xref:OpenGSQ.Protocols.Tests.GameSpy1Tests.GetEchoTest)

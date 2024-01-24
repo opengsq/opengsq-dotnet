@@ -2,13 +2,12 @@
 uid: OpenGSQ.Protocols.Tests.Unreal2Tests
 ---
 
-# Test Class Unreal2Tests
+# Test Class OpenGSQ.Protocols.Tests.Unreal2Tests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/Unreal2Tests/GetDetailsTest.html">GetDetailsTest</a>
+[GetDetailsTest](xref:OpenGSQ.Protocols.Tests.Unreal2Tests.GetDetailsTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/Unreal2Tests/GetRulesTest.html">GetRulesTest</a>
+[GetRulesTest](xref:OpenGSQ.Protocols.Tests.Unreal2Tests.GetRulesTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/Unreal2Tests/GetPlayersTest.html">GetPlayersTest</a>
-
+[GetPlayersTest](xref:OpenGSQ.Protocols.Tests.Unreal2Tests.GetPlayersTest)

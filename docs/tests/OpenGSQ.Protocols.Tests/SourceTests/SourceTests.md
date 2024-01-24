@@ -2,13 +2,12 @@
 uid: OpenGSQ.Protocols.Tests.SourceTests
 ---
 
-# Test Class SourceTests
+# Test Class OpenGSQ.Protocols.Tests.SourceTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/SourceTests/GetInfoTest.html">GetInfoTest</a>
+[GetInfoTest](xref:OpenGSQ.Protocols.Tests.SourceTests.GetInfoTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/SourceTests/GetPlayersTest.html">GetPlayersTest</a>
+[GetPlayersTest](xref:OpenGSQ.Protocols.Tests.SourceTests.GetPlayersTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/SourceTests/GetRulesTest.html">GetRulesTest</a>
-
+[GetRulesTest](xref:OpenGSQ.Protocols.Tests.SourceTests.GetRulesTest)

@@ -2,13 +2,12 @@
 uid: OpenGSQ.Protocols.Tests.FiveMTests
 ---
 
-# Test Class FiveMTests
+# Test Class OpenGSQ.Protocols.Tests.FiveMTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/FiveMTests/GetInfoTest.html">GetInfoTest</a>
+[GetInfoTest](xref:OpenGSQ.Protocols.Tests.FiveMTests.GetInfoTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/FiveMTests/GetPlayersTest.html">GetPlayersTest</a>
+[GetPlayersTest](xref:OpenGSQ.Protocols.Tests.FiveMTests.GetPlayersTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/FiveMTests/GetDynamicTest.html">GetDynamicTest</a>
-
+[GetDynamicTest](xref:OpenGSQ.Protocols.Tests.FiveMTests.GetDynamicTest)

@@ -2,13 +2,12 @@
 uid: OpenGSQ.Protocols.Tests.SampTests
 ---
 
-# Test Class SampTests
+# Test Class OpenGSQ.Protocols.Tests.SampTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/SampTests/GetStatusTest.html">GetStatusTest</a>
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.SampTests.GetStatusTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/SampTests/GetPlayersTest.html">GetPlayersTest</a>
+[GetPlayersTest](xref:OpenGSQ.Protocols.Tests.SampTests.GetPlayersTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/SampTests/GetRulesTest.html">GetRulesTest</a>
-
+[GetRulesTest](xref:OpenGSQ.Protocols.Tests.SampTests.GetRulesTest)

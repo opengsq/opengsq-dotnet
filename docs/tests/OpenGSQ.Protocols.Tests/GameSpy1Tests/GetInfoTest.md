@@ -10,10 +10,10 @@ Here are the results for the test method.
 {
   "hostname": " --- ComboGib CTF (Grapple) -- London --- EatSleepUT.com",
   "hostport": "7777",
-  "maptitle": "CTF-MiniArena",
-  "mapname": "CTF-MiniArena",
+  "maptitle": "CTFRM3-BrokenLimits",
+  "mapname": "CTF-RM-BrokenLimits",
   "gametype": "CTFGame",
-  "numplayers": "3",
+  "numplayers": "18",
   "maxplayers": "18",
   "gamemode": "openplaying",
   "gamever": "469",

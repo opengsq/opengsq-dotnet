@@ -10,13 +10,13 @@ Here are the results for the test method.
 [
   {
     "team": "Red",
-    "score": "1.000000",
-    "size": "3"
+    "score": "5.000000",
+    "size": "9"
   },
   {
     "team": "Blue",
-    "score": "0.000000",
-    "size": "3"
+    "score": "5.000000",
+    "size": "9"
   },
   {
     "team": "Green",

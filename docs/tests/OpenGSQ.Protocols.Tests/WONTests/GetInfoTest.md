@@ -18,7 +18,7 @@ Here are the results for the test method.
   "DLL": 1,
   "Protocol": 46,
   "Name": "[Murka] NEW CS1.5 DeathMatch s4ke murka-terroristka.de",
-  "Map": "cs_italy",
+  "Map": "de_inferno",
   "Folder": "cstrike",
   "Game": "CounterStrike",
   "Players": 6,

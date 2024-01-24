@@ -2,9 +2,8 @@
 uid: OpenGSQ.Protocols.Tests.ASETests
 ---
 
-# Test Class ASETests
+# Test Class OpenGSQ.Protocols.Tests.ASETests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/ASETests/GetStatusTest.html">GetStatusTest</a>
-
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.ASETests.GetStatusTest)

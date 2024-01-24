@@ -86,7 +86,7 @@ Here are the results for the test method.
     "channel_order": "0",
     "channel_name": "Welcome | Rules in Channel Description",
     "channel_topic": "",
-    "total_clients": "8",
+    "total_clients": "10",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -113,7 +113,7 @@ Here are the results for the test method.
     "channel_order": "43",
     "channel_name": "Lobby 3",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "3",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -122,7 +122,7 @@ Here are the results for the test method.
     "channel_order": "50",
     "channel_name": "Lobby 4",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -131,7 +131,7 @@ Here are the results for the test method.
     "channel_order": "605",
     "channel_name": "Lobby 5",
     "channel_topic": "We'll eat your tendies",
-    "total_clients": "0",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -140,7 +140,7 @@ Here are the results for the test method.
     "channel_order": "127",
     "channel_name": "Lobby 6",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -158,7 +158,7 @@ Here are the results for the test method.
     "channel_order": "338",
     "channel_name": "Lobby 8",
     "channel_topic": "Sheep Shaggers United",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -176,7 +176,7 @@ Here are the results for the test method.
     "channel_order": "802",
     "channel_name": "Lobby 10",
     "channel_topic": "",
-    "total_clients": "2",
+    "total_clients": "0",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -185,7 +185,7 @@ Here are the results for the test method.
     "channel_order": "959",
     "channel_name": "Lobby 11",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "1",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -203,7 +203,7 @@ Here are the results for the test method.
     "channel_order": "1548",
     "channel_name": "Lobby \uD83D\uDCAF",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -266,7 +266,7 @@ Here are the results for the test method.
     "channel_order": "1208",
     "channel_name": "German",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -905,7 +905,7 @@ Here are the results for the test method.
     "channel_order": "745",
     "channel_name": "Campionii_Pa_Sate",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "3",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -986,7 +986,7 @@ Here are the results for the test method.
     "channel_order": "1486",
     "channel_name": "Dogs",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1013,7 +1013,7 @@ Here are the results for the test method.
     "channel_order": "1539",
     "channel_name": "shemale",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1121,7 +1121,7 @@ Here are the results for the test method.
     "channel_order": "1654",
     "channel_name": "BigBois",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1148,7 +1148,7 @@ Here are the results for the test method.
     "channel_order": "1674",
     "channel_name": "JUU zavod za distroficare",
     "channel_topic": "",
-    "total_clients": "1",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1283,7 +1283,7 @@ Here are the results for the test method.
     "channel_order": "1732",
     "channel_name": "k_clan",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1301,7 +1301,7 @@ Here are the results for the test method.
     "channel_order": "1744",
     "channel_name": "Panolypse",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1508,7 +1508,7 @@ Here are the results for the test method.
     "channel_order": "1852",
     "channel_name": "Magia",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1652,7 +1652,7 @@ Here are the results for the test method.
     "channel_order": "1888",
     "channel_name": "E.M.P.",
     "channel_topic": "",
-    "total_clients": "1",
+    "total_clients": "0",
     "channel_needed_subscribe_power": "0"
   },
   {
@@ -1778,7 +1778,7 @@ Here are the results for the test method.
     "channel_order": "1906",
     "channel_name": "Rambazamba",
     "channel_topic": "",
-    "total_clients": "0",
+    "total_clients": "2",
     "channel_needed_subscribe_power": "0"
   },
   {

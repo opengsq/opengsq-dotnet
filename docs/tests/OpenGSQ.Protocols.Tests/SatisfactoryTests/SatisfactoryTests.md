@@ -2,9 +2,8 @@
 uid: OpenGSQ.Protocols.Tests.SatisfactoryTests
 ---
 
-# Test Class SatisfactoryTests
+# Test Class OpenGSQ.Protocols.Tests.SatisfactoryTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/SatisfactoryTests/GetStatusTest.html">GetStatusTest</a>
-
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.SatisfactoryTests.GetStatusTest)

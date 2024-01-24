@@ -2,13 +2,12 @@
 uid: OpenGSQ.Protocols.Tests.BattlefieldTests
 ---
 
-# Test Class BattlefieldTests
+# Test Class OpenGSQ.Protocols.Tests.BattlefieldTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/BattlefieldTests/GetInfoTest.html">GetInfoTest</a>
+[GetInfoTest](xref:OpenGSQ.Protocols.Tests.BattlefieldTests.GetInfoTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/BattlefieldTests/GetVersionTest.html">GetVersionTest</a>
+[GetVersionTest](xref:OpenGSQ.Protocols.Tests.BattlefieldTests.GetVersionTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/BattlefieldTests/GetPlayersTest.html">GetPlayersTest</a>
-
+[GetPlayersTest](xref:OpenGSQ.Protocols.Tests.BattlefieldTests.GetPlayersTest)

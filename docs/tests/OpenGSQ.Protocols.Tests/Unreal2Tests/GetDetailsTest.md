@@ -14,11 +14,11 @@ Here are the results for the test method.
   "QueryPort": 0,
   "ServerName": "Uliunai.lt|[v1065]|HOE/Suicidal/Hard|150 LvL|+6 Perks",
   "MapName": "",
-  "GameType": "KF-TowerOfBabel_v1-FIX",
+  "GameType": "KF-BusStation-EDIT-Uliunai",
   "NumPlayers": 1195592971,
   "MaxPlayers": 1415933281,
   "Ping": 6647929,
-  "Flags": 4,
+  "Flags": 11,
   "Skill": ""
 }
 ```

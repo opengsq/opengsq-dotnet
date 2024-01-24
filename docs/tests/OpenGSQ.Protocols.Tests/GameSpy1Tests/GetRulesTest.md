@@ -13,7 +13,7 @@ Here are the results for the test method.
   "password": "False",
   "timelimit": "20",
   "goalteamscore": "7",
-  "minplayers": "6",
+  "minplayers": "8",
   "changelevels": "True",
   "maxteams": "2",
   "balanceteams": "True",
@@ -21,7 +21,7 @@ Here are the results for the test method.
   "friendlyfire": "0%",
   "tournament": "False",
   "gamestyle": "Hardcore",
-  "botskill": "Skilled",
+  "botskill": "Average",
   "AdminName": "snowguy",
   "AdminEMail": "negruler@gmail.com"
 }

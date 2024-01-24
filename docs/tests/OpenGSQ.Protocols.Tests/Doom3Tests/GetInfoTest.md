@@ -47,67 +47,203 @@ Here are the results for the test method.
   "players": [
     {
       "id": 0,
-      "ping": 0,
-      "name": "FannyPack",
+      "ping": 73,
+      "name": "delissimoPL",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
     },
     {
       "id": 1,
-      "ping": 0,
-      "name": "HaltHammerzeit",
+      "ping": 40,
+      "name": "Cino",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
+    },
+    {
+      "id": 2,
+      "ping": 16,
+      "name": "OllerDude",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
     },
     {
       "id": 3,
-      "ping": 0,
-      "name": "Gumbii",
+      "ping": 172,
+      "name": "SEGO",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
     },
     {
       "id": 4,
-      "ping": 0,
-      "name": "Bad Hombre",
+      "ping": 32,
+      "name": "Mic2010",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
     },
     {
       "id": 5,
-      "ping": 0,
-      "name": "rumpleforeskin",
+      "ping": 59,
+      "name": "Konkwista",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
+    },
+    {
+      "id": 6,
+      "ping": 54,
+      "name": "Lo spaccone",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
     },
     {
       "id": 7,
-      "ping": 0,
-      "name": "Boss_Tweed",
+      "ping": 40,
+      "name": "pOx",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
     },
     {
       "id": 8,
-      "ping": 0,
-      "name": "flower.tube",
+      "ping": 28,
+      "name": "10tacl3_",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
+    },
+    {
+      "id": 9,
+      "ping": 90,
+      "name": "Bela ",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 10,
+      "ping": 72,
+      "name": "ValkoVer",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 11,
+      "ping": 48,
+      "name": "-Ilya-",
+      "clantag_pos": 1,
+      "clantag": "",
+      "typeflag": 0
     },
     {
       "id": 12,
-      "ping": 0,
-      "name": "CTZN Kane",
+      "ping": 87,
+      "name": "legende",
+      "clantag_pos": 0,
+      "clantag": "n1-",
+      "typeflag": 0
+    },
+    {
+      "id": 13,
+      "ping": 40,
+      "name": "CannedHam",
+      "clantag_pos": 0,
+      "clantag": "SPAM",
+      "typeflag": 0
+    },
+    {
+      "id": 14,
+      "ping": 41,
+      "name": "Modron",
+      "clantag_pos": 0,
+      "clantag": "SPAM",
+      "typeflag": 0
+    },
+    {
+      "id": 15,
+      "ping": 108,
+      "name": "Draelor",
       "clantag_pos": 0,
       "clantag": "",
-      "typeflag": 1
+      "typeflag": 0
+    },
+    {
+      "id": 16,
+      "ping": 62,
+      "name": "Galaction",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 17,
+      "ping": 104,
+      "name": "WARRIOR______",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 18,
+      "ping": 25,
+      "name": "JBL",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 19,
+      "ping": 50,
+      "name": "Rodik",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 20,
+      "ping": 15,
+      "name": "+Hyd",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 21,
+      "ping": 52,
+      "name": "Teshin",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 22,
+      "ping": 58,
+      "name": "magister",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 23,
+      "ping": 39,
+      "name": "_enemy_in_dis_guise",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 24,
+      "ping": 31,
+      "name": "Miki_Lovell",
+      "clantag_pos": 0,
+      "clantag": "WE",
+      "typeflag": 0
     }
   ]
 }

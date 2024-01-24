@@ -9,7 +9,7 @@ Here are the results for the test method.
 ```json
 {
   "deployment": "ad9a8feffb3b4b2ca315546f038c3ae2",
-  "id": "fef95b85200c42a5996fc622fee6890d",
+  "id": "db10a2b2a8a048109c538261a3b1d467",
   "bucket": "TestGameMode_C:<None>:TheIsland_WP",
   "settings": {
     "maxPublicPlayers": 70,
@@ -24,13 +24,13 @@ Here are the results for the test method.
     "rejoinAfterKick": "",
     "platforms": null
   },
-  "totalPlayers": 17,
-  "openPublicPlayers": 53,
+  "totalPlayers": 30,
+  "openPublicPlayers": 40,
   "publicPlayers": [],
   "started": false,
   "lastUpdated": null,
   "attributes": {
-    "MINORBUILDID_s": "53",
+    "MINORBUILDID_s": "59",
     "MODID_l": 0,
     "CUSTOMSERVERNAME_s": "NA-PVE-TheIsland5366",
     "ADDRESSDEV_s": "5.62.115.46,127.0.0.1",
@@ -38,11 +38,11 @@ Here are the results for the test method.
     "SERVERPASSWORD_b": false,
     "MATCHTIMEOUT_d": 120.0,
     "ENABLEDMODSFILEIDS_s": "4979340",
-    "DAYTIME_s": "334",
+    "DAYTIME_s": "352",
     "SOTFMATCHSTARTED_b": false,
     "STEELSHIELDENABLED_l": 1,
     "SERVERUSESBATTLEYE_b": true,
-    "EOSSERVERPING_l": 212,
+    "EOSSERVERPING_l": 229,
     "ALLOWDOWNLOADCHARS_l": 1,
     "OFFICIALSERVER_s": "1",
     "GAMEMODE_s": "TestGameMode_C",
@@ -55,11 +55,11 @@ Here are the results for the test method.
     "SESSIONISPVE_l": 1,
     "__EOS_BUSESPRESENCE_b": true,
     "ENABLEDMODS_s": "927090",
-    "SESSIONNAMEUPPER_s": "NA-PVE-THEISLAND5366 - (V33.53)",
+    "SESSIONNAMEUPPER_s": "NA-PVE-THEISLAND5366 - (V33.59)",
     "SERVERPLATFORMTYPE_s": "PC+XSX+WINGDK+PS5",
     "MAPNAME_s": "TheIsland_WP",
     "BUILDID_s": "33",
-    "SESSIONNAME_s": "NA-PVE-TheIsland5366 - (v33.53)"
+    "SESSIONNAME_s": "NA-PVE-TheIsland5366 - (v33.59)"
   },
   "owner": "Client_xyza7891muomRmynIIHaJB9COBKkwj6n",
   "ownerPlatformId": null

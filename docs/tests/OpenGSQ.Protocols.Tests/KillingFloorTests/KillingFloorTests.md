@@ -2,13 +2,12 @@
 uid: OpenGSQ.Protocols.Tests.KillingFloorTests
 ---
 
-# Test Class KillingFloorTests
+# Test Class OpenGSQ.Protocols.Tests.KillingFloorTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/KillingFloorTests/GetDetailsTest.html">GetDetailsTest</a>
+[GetDetailsTest](xref:OpenGSQ.Protocols.Tests.KillingFloorTests.GetDetailsTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/KillingFloorTests/GetRulesTest.html">GetRulesTest</a>
+[GetRulesTest](xref:OpenGSQ.Protocols.Tests.KillingFloorTests.GetRulesTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/KillingFloorTests/GetPlayersTest.html">GetPlayersTest</a>
-
+[GetPlayersTest](xref:OpenGSQ.Protocols.Tests.KillingFloorTests.GetPlayersTest)

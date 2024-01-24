@@ -2,13 +2,12 @@
 uid: OpenGSQ.Protocols.Tests.TeamSpeak3Tests
 ---
 
-# Test Class TeamSpeak3Tests
+# Test Class OpenGSQ.Protocols.Tests.TeamSpeak3Tests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/TeamSpeak3Tests/GetInfoTest.html">GetInfoTest</a>
+[GetInfoTest](xref:OpenGSQ.Protocols.Tests.TeamSpeak3Tests.GetInfoTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/TeamSpeak3Tests/GetClientsTest.html">GetClientsTest</a>
+[GetClientsTest](xref:OpenGSQ.Protocols.Tests.TeamSpeak3Tests.GetClientsTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/TeamSpeak3Tests/GetChannelsTest.html">GetChannelsTest</a>
-
+[GetChannelsTest](xref:OpenGSQ.Protocols.Tests.TeamSpeak3Tests.GetChannelsTest)

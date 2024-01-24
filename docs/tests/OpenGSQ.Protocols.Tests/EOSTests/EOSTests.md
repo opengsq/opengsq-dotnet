@@ -2,11 +2,10 @@
 uid: OpenGSQ.Protocols.Tests.EOSTests
 ---
 
-# Test Class EOSTests
+# Test Class OpenGSQ.Protocols.Tests.EOSTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/EOSTests/GetInfoTest.html">GetInfoTest</a>
+[GetInfoTest](xref:OpenGSQ.Protocols.Tests.EOSTests.GetInfoTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/EOSTests/GetMatchmakingAsyncTest.html">GetMatchmakingAsyncTest</a>
-
+[GetMatchmakingAsyncTest](xref:OpenGSQ.Protocols.Tests.EOSTests.GetMatchmakingAsyncTest)

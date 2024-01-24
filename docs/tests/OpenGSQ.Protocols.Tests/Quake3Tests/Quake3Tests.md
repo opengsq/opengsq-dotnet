@@ -2,11 +2,10 @@
 uid: OpenGSQ.Protocols.Tests.Quake3Tests
 ---
 
-# Test Class Quake3Tests
+# Test Class OpenGSQ.Protocols.Tests.Quake3Tests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/Quake3Tests/GetInfoTest.html">GetInfoTest</a>
+[GetInfoTest](xref:OpenGSQ.Protocols.Tests.Quake3Tests.GetInfoTest)
 
-<a href="/tests/OpenGSQ.Protocols.Tests/Quake3Tests/GetStatusTest.html">GetStatusTest</a>
-
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.Quake3Tests.GetStatusTest)

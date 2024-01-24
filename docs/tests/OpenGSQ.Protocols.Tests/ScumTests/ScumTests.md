@@ -2,9 +2,8 @@
 uid: OpenGSQ.Protocols.Tests.ScumTests
 ---
 
-# Test Class ScumTests
+# Test Class OpenGSQ.Protocols.Tests.ScumTests
 
 ### Test Methods
 
-<a href="/tests/OpenGSQ.Protocols.Tests/ScumTests/GetStatusTest.html">GetStatusTest</a>
-
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.ScumTests.GetStatusTest)

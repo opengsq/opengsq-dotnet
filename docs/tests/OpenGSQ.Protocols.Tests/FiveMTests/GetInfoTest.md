@@ -109,6 +109,7 @@ Here are the results for the test method.
     "mana_hunting",
     "communityservice",
     "ajaxon_aldore_hospital",
+    "as_mirhouse",
     "beachhouse",
     "brofx_mansion_06",
     "qbx_management",
@@ -217,6 +218,7 @@ Here are the results for the test method.
     "qb-lockpick",
     "qb-menu",
     "qb-namechange",
+    "supracatneon",
     "qb-policejob",
     "qb-radialmenu",
     "qb-streetraces",
@@ -346,7 +348,7 @@ Here are the results for the test method.
     "yarn",
     "monitor"
   ],
-  "server": "FXServer-master SERVER v1.0.0.7290 win32",
+  "server": "FXServer-master SERVER v1.0.0.7345 win32",
   "vars": {
     "Discord": "https://discord.gg/popcornroleplay",
     "banner_connecting": "https://i.imgur.com/MVpUwKT.png",
@@ -365,8 +367,8 @@ Here are the results for the test method.
     "sv_pureLevel": "0",
     "sv_scriptHookAllowed": "false",
     "tags": "Roleplay, Casual, Economy, LSPD, EMS, Gangs, Cars, Motorcycles, Secrets, qbx_core, gunplay, Customs, Crime, territories, semi-serious, original, qbxcore",
-    "txAdmin-version": "6.0.2"
+    "txAdmin-version": "7.0.0"
   },
-  "version": 204245275
+  "version": 700484453
 }
 ```
