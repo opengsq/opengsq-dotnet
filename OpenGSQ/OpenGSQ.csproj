@@ -23,6 +23,7 @@
     <PackageTags>game, minecraft, csharp, source, quake, teamspeak3, eos, gamespy, doom3, fivem, ase, server-query, opengsq, game-server-query, unreal2</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup Label="SourceLink">
