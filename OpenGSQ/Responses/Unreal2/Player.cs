@@ -13,7 +13,7 @@ namespace OpenGSQ.Responses.Unreal2
         /// <summary>
         /// Gets or sets the name of the player.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the ping of the player.

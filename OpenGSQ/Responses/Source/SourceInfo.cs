@@ -28,7 +28,7 @@ namespace OpenGSQ.Responses.Source
         /// <summary>
         /// Version of the game installed on the server.
         /// </summary>
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
 
         /// <summary>
         /// If present, this specifies which additional data fields will be included.
@@ -53,12 +53,12 @@ namespace OpenGSQ.Responses.Source
         /// <summary>
         /// Name of the spectator server for SourceTV.
         /// </summary>
-        public string SpectatorName { get; set; }
+        public string? SpectatorName { get; set; }
 
         /// <summary>
         /// Tags that describe the game according to the server (for future use.)
         /// </summary>
-        public string Keywords { get; set; }
+        public string? Keywords { get; set; }
 
         /// <summary>
         /// The server's 64-bit GameID. If this is present, a more accurate AppID is present in the low 24 bits. The earlier AppID could have been truncated as it was forced into 16-bit storage.

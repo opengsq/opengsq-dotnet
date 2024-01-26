@@ -10,7 +10,7 @@ namespace OpenGSQ.Responses.Battlefield
         /// <summary>
         /// Gets or sets the hostname of the game server.
         /// </summary>
-        public string Hostname { get; set; }
+        public string Hostname { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the number of players in the game.
@@ -25,12 +25,12 @@ namespace OpenGSQ.Responses.Battlefield
         /// <summary>
         /// Gets or sets the type of the game.
         /// </summary>
-        public string GameType { get; set; }
+        public string GameType { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the current map of the game.
         /// </summary>
-        public string Map { get; set; }
+        public string Map { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the number of rounds played.
@@ -45,7 +45,7 @@ namespace OpenGSQ.Responses.Battlefield
         /// <summary>
         /// Gets or sets the list of teams.
         /// </summary>
-        public List<float> Teams { get; set; }
+        public List<float> Teams { get; set; } = new List<float>();
 
         /// <summary>
         /// Gets or sets the target score.
@@ -55,7 +55,7 @@ namespace OpenGSQ.Responses.Battlefield
         /// <summary>
         /// Gets or sets the status of the game.
         /// </summary>
-        public string Status { get; set; }
+        public string Status { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets a value indicating whether the game is ranked.
@@ -87,17 +87,17 @@ namespace OpenGSQ.Responses.Battlefield
         /// <summary>
         /// Gets or sets the game mod. This property is optional.
         /// </summary>
-        public string Mod { get; set; }
+        public string Mod { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the IP port of the game server. This property is optional.
         /// </summary>
-        public string IpPort { get; set; }
+        public string IpPort { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the version of PunkBuster. This property is optional.
         /// </summary>
-        public string PunkBusterVersion { get; set; }
+        public string? PunkBusterVersion { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the join queue is enabled. This property is optional.
@@ -107,17 +107,17 @@ namespace OpenGSQ.Responses.Battlefield
         /// <summary>
         /// Gets or sets the region of the game server. This property is optional.
         /// </summary>
-        public string Region { get; set; }
+        public string? Region { get; set; }
 
         /// <summary>
         /// Gets or sets the ping site of the game server. This property is optional.
         /// </summary>
-        public string PingSite { get; set; }
+        public string? PingSite { get; set; }
 
         /// <summary>
         /// Gets or sets the country of the game server. This property is optional.
         /// </summary>
-        public string Country { get; set; }
+        public string? Country { get; set; }
 
         /// <summary>
         /// Gets or sets the number of players in the Blaze game state. This property is optional.
@@ -127,7 +127,7 @@ namespace OpenGSQ.Responses.Battlefield
         /// <summary>
         /// Gets or sets the Blaze game state. This property is optional.
         /// </summary>
-        public string BlazeGameState { get; set; }
+        public string? BlazeGameState { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether quick match is enabled. This property is optional.

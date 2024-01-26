@@ -29,11 +29,11 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="host">The host name of the server.</param>
         /// <param name="port">The port number of the server.</param>
-        /// <param name="timeout">The timeout value for the connection, in milliseconds. Default is 5000.</param>
         /// <param name="deploymentId">The deployment ID for the application.</param>
         /// <param name="accessToken">The access token for the application.</param>
+        /// <param name="timeout">The timeout value for the connection, in milliseconds. Default is 5000.</param>
         /// <exception cref="ArgumentException">Thrown when either deploymentId or accessToken is null.</exception>
-        public EOS(string host, int port, int timeout = 5000, string deploymentId = null, string accessToken = null) : base(host, port, timeout)
+        public EOS(string host, int port, string deploymentId,string accessToken, int timeout = 5000) : base(host, port, timeout)
         {
             if (deploymentId == null || accessToken == null)
             {
@@ -82,7 +82,12 @@ namespace OpenGSQ.Protocols
 
                 var data = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
 
-                return data["access_token"].ToString();
+                if (data == null || !data.TryGetValue("access_token", out var accessToken))
+                {
+                    throw new Exception($"Failed to get access token from {url}");
+                }
+
+                return accessToken.ToString()!;
             }
         }
 
@@ -126,7 +131,12 @@ namespace OpenGSQ.Protocols
 
                     var data = await response.Content.ReadFromJsonAsync<Dictionary<string, object>>();
 
-                    return data["access_token"].ToString();
+                    if (data == null || !data.TryGetValue("access_token", out var accessToken))
+                    {
+                        throw new Exception($"Failed to get access token from {url}");
+                    }
+
+                    return accessToken.ToString()!;
                 }
             }
 
@@ -171,7 +181,7 @@ namespace OpenGSQ.Protocols
 
                 var responseData = await response.Content.ReadFromJsonAsync<Matchmaking>();
 
-                return responseData;
+                return responseData ?? throw new Exception($"Failed to load data from {url}"); ;
             }
         }
 

@@ -8,7 +8,7 @@ namespace OpenGSQ.Responses.Source
         /// <summary>
         /// Player Name
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Player Score

@@ -13,7 +13,7 @@ namespace OpenGSQ.RconProtocols
     /// </summary>
     public class SourceRcon : ProtocolBase, IDisposable
     {
-        private System.Net.Sockets.TcpClient _tcpClient;
+        private System.Net.Sockets.TcpClient? _tcpClient;
 
         /// <inheritdoc/>
         public override string FullName => "Source RCON Protocol";

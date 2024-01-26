@@ -8,17 +8,17 @@ namespace OpenGSQ.Responses.ASE
         /// <summary>
         /// Gets or sets the name of the player.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the team of the player.
         /// </summary>
-        public string Team { get; set; }
+        public string Team { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the skin of the player.
         /// </summary>
-        public string Skin { get; set; }
+        public string Skin { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the score of the player.

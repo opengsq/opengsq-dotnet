@@ -8,7 +8,7 @@ namespace OpenGSQ.Responses.Scum
         /// <summary>
         /// Gets or sets the IP address of the server.
         /// </summary>
-        public string Ip { get; set; }
+        public string Ip { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the port number of the server.
@@ -18,7 +18,7 @@ namespace OpenGSQ.Responses.Scum
         /// <summary>
         /// Gets or sets the name of the server.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the number of players currently connected to the server.
@@ -43,6 +43,6 @@ namespace OpenGSQ.Responses.Scum
         /// <summary>
         /// Gets or sets the version of the server.
         /// </summary>
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
     }
 }

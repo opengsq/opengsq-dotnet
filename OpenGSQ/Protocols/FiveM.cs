@@ -33,7 +33,7 @@ namespace OpenGSQ.Protocols
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
 
-                return await response.Content.ReadFromJsonAsync<T>();
+                return await response.Content.ReadFromJsonAsync<T>() ?? throw new Exception($"Failed to load data from {url}");
             }
         }
 

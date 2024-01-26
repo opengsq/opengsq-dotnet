@@ -8,12 +8,12 @@ namespace OpenGSQ.Responses.RakNet
         /// <summary>
         /// Gets or sets the edition of the server (MCPE or MCEE for Education Edition).
         /// </summary>
-        public string Edition { get; set; }
+        public string Edition { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the first line of the Message of the Day (MOTD).
         /// </summary>
-        public string MotdLine1 { get; set; }
+        public string MotdLine1 { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the protocol version of the server.
@@ -23,7 +23,7 @@ namespace OpenGSQ.Responses.RakNet
         /// <summary>
         /// Gets or sets the version name of the server.
         /// </summary>
-        public string VersionName { get; set; }
+        public string VersionName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the number of players currently on the server.
@@ -38,17 +38,17 @@ namespace OpenGSQ.Responses.RakNet
         /// <summary>
         /// Gets or sets the unique ID of the server.
         /// </summary>
-        public string ServerUniqueId { get; set; }
+        public string ServerUniqueId { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the second line of the Message of the Day (MOTD).
         /// </summary>
-        public string MotdLine2 { get; set; }
+        public string MotdLine2 { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the game mode of the server.
         /// </summary>
-        public string GameMode { get; set; }
+        public string GameMode { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the numeric representation of the game mode.

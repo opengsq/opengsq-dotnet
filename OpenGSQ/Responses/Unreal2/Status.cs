@@ -13,7 +13,7 @@ namespace OpenGSQ.Responses.Unreal2
         /// <summary>
         /// Gets or sets the IP address of the server.
         /// </summary>
-        public string ServerIP { get; set; }
+        public string ServerIP { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the game port of the server.
@@ -28,17 +28,17 @@ namespace OpenGSQ.Responses.Unreal2
         /// <summary>
         /// Gets or sets the name of the server.
         /// </summary>
-        public string ServerName { get; set; }
+        public string ServerName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the name of the map.
         /// </summary>
-        public string MapName { get; set; }
+        public string MapName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the type of the game.
         /// </summary>
-        public string GameType { get; set; }
+        public string GameType { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the number of players.
@@ -63,6 +63,6 @@ namespace OpenGSQ.Responses.Unreal2
         /// <summary>
         /// Gets or sets the skill level.
         /// </summary>
-        public string Skill { get; set; }
+        public string Skill { get; set; } = string.Empty;
     }
 }

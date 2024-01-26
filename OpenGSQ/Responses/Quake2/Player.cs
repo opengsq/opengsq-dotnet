@@ -18,11 +18,11 @@ namespace OpenGSQ.Responses.Quake2
         /// <summary>
         /// Gets or sets the player's name.
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Gets or sets the player's address.
         /// </summary>
-        public string Address { get; set; }
+        public string? Address { get; set; }
     }
 }

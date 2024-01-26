@@ -10,7 +10,7 @@ namespace OpenGSQ.Responses.ASE
         /// <summary>
         /// Gets or sets the name of the game.
         /// </summary>
-        public string GameName { get; set; }
+        public string GameName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the port of the game.
@@ -20,22 +20,22 @@ namespace OpenGSQ.Responses.ASE
         /// <summary>
         /// Gets or sets the host name of the game.
         /// </summary>
-        public string Hostname { get; set; }
+        public string Hostname { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the type of the game.
         /// </summary>
-        public string GameType { get; set; }
+        public string GameType { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the map of the game.
         /// </summary>
-        public string Map { get; set; }
+        public string Map { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the version of the game.
         /// </summary>
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets a value indicating whether a password is required.
@@ -55,11 +55,11 @@ namespace OpenGSQ.Responses.ASE
         /// <summary>
         /// Gets or sets the rules of the game.
         /// </summary>
-        public Dictionary<string, string> Rules { get; set; }
+        public Dictionary<string, string> Rules { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Gets or sets the players in the game.
         /// </summary>
-        public List<Player> Players { get; set; }
+        public List<Player> Players { get; set; } = new List<Player>();
     }
 }

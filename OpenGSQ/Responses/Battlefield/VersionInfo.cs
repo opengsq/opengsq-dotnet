@@ -8,11 +8,11 @@ namespace OpenGSQ.Responses.Battlefield
         /// <summary>
         /// Gets or sets the mod of the game.
         /// </summary>
-        public string Mod { get; set; }
+        public string Mod { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the version of the mod.
         /// </summary>
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
     }
 }

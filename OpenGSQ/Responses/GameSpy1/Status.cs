@@ -16,16 +16,16 @@ namespace OpenGSQ.Responses.GameSpy1
         /// Server's Info
         /// <para>If <see cref="IsXServerQuery"/> is <see langword="true"/>, then it includes \info\xserverquery\rules\xserverquery, else \basic\\info\\rules\\</para>
         /// </summary>
-        public Dictionary<string, string> Info { get; set; }
+        public Dictionary<string, string> Info { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Server's Players
         /// </summary>
-        public List<Dictionary<string, string>> Players { get; set; }
+        public List<Dictionary<string, string>> Players { get; set; } = new List<Dictionary<string, string>>();
 
         /// <summary>
         /// Server's Teams (Only when <see cref="IsXServerQuery"/> is <see langword="true"/>)
         /// </summary>
-        public List<Dictionary<string, string>> Teams { get; set; }
+        public List<Dictionary<string, string>> Teams { get; set; } = new List<Dictionary<string, string>>();
     }
 }

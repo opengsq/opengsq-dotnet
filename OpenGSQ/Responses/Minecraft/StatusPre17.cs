@@ -8,17 +8,17 @@ namespace OpenGSQ.Responses.Minecraft
         /// <summary>
         /// Gets or sets the protocol of the game.
         /// </summary>
-        public string Protocol { get; set; }
+        public string Protocol { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the version of the game.
         /// </summary>
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the message of the day.
         /// </summary>
-        public string Motd { get; set; }
+        public string Motd { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the number of players in the game.

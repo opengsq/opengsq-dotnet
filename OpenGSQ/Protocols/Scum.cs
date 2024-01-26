@@ -42,7 +42,7 @@ namespace OpenGSQ.Protocols
         /// <returns>The status of the server.</returns>
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         /// <exception cref="ServerNotFoundException">Thrown when the server is not found in the list of master servers.</exception>
-        public async Task<Status> GetStatus(List<Status> masterServers = null)
+        public async Task<Status> GetStatus(List<Status>? masterServers = null)
         {
             var ip = await GetIPAddress();
 

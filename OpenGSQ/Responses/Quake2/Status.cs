@@ -10,11 +10,11 @@ namespace OpenGSQ.Responses.Quake2
         /// <summary>
         /// Gets or sets the server information.
         /// </summary>
-        public Dictionary<string, string> Info { get; set; }
+        public Dictionary<string, string> Info { get; set; } = new Dictionary<string, string>();
 
         /// <summary>
         /// Gets or sets the list of players.
         /// </summary>
-        public List<Player> Players { get; set; }
+        public List<Player> Players { get; set; } = new List<Player>();
     }
 }

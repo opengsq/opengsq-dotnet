@@ -11,7 +11,7 @@ namespace OpenGSQ.Responses.EOS
         /// Gets or sets the list of sessions returned by the matchmaking request.
         /// Each session is represented as a dictionary of string keys and object values.
         /// </summary>
-        public List<Dictionary<string, object>> Sessions { get; set; }
+        public List<Dictionary<string, object>> Sessions { get; set; } = new List<Dictionary<string, object>>();
 
         /// <summary>
         /// Gets or sets the count of sessions returned by the matchmaking request.

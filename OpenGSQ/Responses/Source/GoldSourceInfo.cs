@@ -8,7 +8,7 @@ namespace OpenGSQ.Responses.Source
         /// <summary>
         /// IP address and port of the server.
         /// </summary>
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
 
         /// <summary>
         /// Indicates whether the game is a mod
@@ -22,12 +22,12 @@ namespace OpenGSQ.Responses.Source
         /// <summary>
         /// URL to mod website.
         /// </summary>
-        public string Link { get; set; }
+        public string Link { get; set; } = string.Empty;
 
         /// <summary>
         /// URL to download the mod.
         /// </summary>
-        public string DownloadLink { get; set; }
+        public string DownloadLink { get; set; } = string.Empty;
 
         /// <summary>
         /// Version of mod installed on server.

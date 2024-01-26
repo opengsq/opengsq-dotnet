@@ -8,7 +8,7 @@ namespace OpenGSQ.Responses.Vcmp
         /// <summary>
         /// Gets or sets the version of the server.
         /// </summary>
-        public string Version { get; set; }
+        public string Version { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets a value indicating whether a password is required to connect to the server.
@@ -28,16 +28,16 @@ namespace OpenGSQ.Responses.Vcmp
         /// <summary>
         /// Gets or sets the name of the server.
         /// </summary>
-        public string ServerName { get; set; }
+        public string ServerName { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the type of game being played on the server.
         /// </summary>
-        public string GameType { get; set; }
+        public string GameType { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the language of the server.
         /// </summary>
-        public string Language { get; set; }
+        public string Language { get; set; } = string.Empty;
     }
 }

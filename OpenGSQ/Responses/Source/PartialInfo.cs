@@ -13,22 +13,22 @@ namespace OpenGSQ.Responses.Source
         /// <summary>
         /// Name of the server.
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// Map the server has currently loaded.
         /// </summary>
-        public string Map { get; set; }
+        public string Map { get; set; } = string.Empty;
 
         /// <summary>
         /// Name of the folder containing the game files.
         /// </summary>
-        public string Folder { get; set; }
+        public string Folder { get; set; } = string.Empty;
 
         /// <summary>
         /// Full name of the game.
         /// </summary>
-        public string Game { get; set; }
+        public string Game { get; set; } = string.Empty;
 
         /// <summary>
         /// Number of players on the server.
