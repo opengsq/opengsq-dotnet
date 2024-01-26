@@ -23,7 +23,13 @@
     <PackageTags>game, minecraft, csharp, source, quake, teamspeak3, eos, gamespy, doom3, fivem, ase, server-query, opengsq, game-server-query, unreal2</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <LangVersion>8.0</LangVersion>
     <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- 👇 disable the nullable warnings when compiling for .NET Standard 2.0 -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <NoWarn>$(NoWarn);nullable</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Label="SourceLink">
