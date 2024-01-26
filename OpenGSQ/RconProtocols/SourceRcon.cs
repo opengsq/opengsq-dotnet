@@ -97,6 +97,11 @@ namespace OpenGSQ.RconProtocols
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
         public async Task<string> SendCommand(string command)
         {
+            if (_tcpClient == null)
+            {
+                throw new InvalidOperationException("The client is not authenticated. Please ensure that the Authenticate() method has been successfully called before attempting to send a command.");
+            }
+
             // Send the command and a empty command packet
             int id = new Random().Next(4096), dummyId = id + 1;
             await _tcpClient.SendAsync(new Packet(id, PacketType.SERVERDATA_EXECCOMMAND, command).GetBytes());

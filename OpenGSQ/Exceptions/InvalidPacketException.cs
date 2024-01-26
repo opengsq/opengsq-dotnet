@@ -30,12 +30,12 @@ namespace OpenGSQ.Exceptions
         {
             if (typeof(T) == typeof(byte[]))
             {
-                if (!(received as byte[]).SequenceEqual(expected as byte[]))
+                if (!(received as byte[])!.SequenceEqual((expected as byte[])!))
                 {
                     throw new InvalidPacketException(GetMessage(received, expected));
                 }
             }
-            else if (!received.Equals(expected))
+            else if (!received!.Equals(expected))
             {
                 throw new InvalidPacketException(GetMessage(received, expected));
             }
@@ -48,13 +48,13 @@ namespace OpenGSQ.Exceptions
 
             if (typeof(T) == typeof(byte[]))
             {
-                receivedStr = BitConverter.ToString(received as byte[]);
-                expectedStr = BitConverter.ToString(expected as byte[]);
+                receivedStr = BitConverter.ToString((received as byte[])!);
+                expectedStr = BitConverter.ToString((expected as byte[])!);
             }
             else
             {
-                receivedStr = received.ToString();
-                expectedStr = expected.ToString();
+                receivedStr = received!.ToString()!;
+                expectedStr = expected!.ToString()!;
             }
 
             return $"Packet header mismatch. Received: {receivedStr}. Expected: {expectedStr}.";

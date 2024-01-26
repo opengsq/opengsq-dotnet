@@ -72,6 +72,11 @@ namespace OpenGSQ.Protocols
                     // The packet may respond with two json objects, so we need to get the json length exactly
                     var data = JsonSerializer.Deserialize<Dictionary<string, object>>(Encoding.UTF8.GetString(br.ReadBytes(count)));
 
+                    if (data == null)
+                    {
+                        throw new InvalidOperationException("Failed to deserialize the response into a dictionary. The response might be empty or not in the expected format.");
+                    }
+
                     return data;
                 }
             }
