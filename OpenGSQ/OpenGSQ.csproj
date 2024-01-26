@@ -8,8 +8,8 @@
 
   <PropertyGroup>
     <AssemblyTitle>OpenGSQ</AssemblyTitle>
-    <VersionPrefix>2.1.1</VersionPrefix>
-    <Version>2.1.1</Version>
+    <VersionPrefix>2.1.2</VersionPrefix>
+    <Version>2.1.2</Version>
     <Authors>OpenGSQ, BattlefieldDuck</Authors>
     <TargetFrameworks>$(NetCoreAppCurrent);$(NetCoreAppPrevious);$(NetCoreAppMinimum);netstandard2.1;netstandard2.0;$(NetFrameworkMinimum)</TargetFrameworks>
     <AssemblyName>OpenGSQ</AssemblyName>
