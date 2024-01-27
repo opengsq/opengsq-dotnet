@@ -33,13 +33,8 @@ namespace OpenGSQ.Protocols
         /// <param name="accessToken">The access token for the application.</param>
         /// <param name="timeout">The timeout value for the connection, in milliseconds. Default is 5000.</param>
         /// <exception cref="ArgumentException">Thrown when either deploymentId or accessToken is null.</exception>
-        public EOS(string host, int port, string deploymentId,string accessToken, int timeout = 5000) : base(host, port, timeout)
+        public EOS(string host, int port, string deploymentId, string accessToken, int timeout = 5000) : base(host, port, timeout)
         {
-            if (deploymentId == null || accessToken == null)
-            {
-                throw new ArgumentException("deploymentId, and accessToken must not be null");
-            }
-
             _deploymentId = deploymentId;
             _accessToken = accessToken;
         }
