@@ -51,10 +51,10 @@ namespace OpenGSQ.Protocols
                     Info = GetInfo(br),
 
                     // Save Status Players
-                    Players = GetDictionaries(br),
+                    Players = GetDictionaries(br, "player"),
 
                     // Save Status Teams
-                    Teams = GetDictionaries(br)
+                    Teams = GetDictionaries(br, "team")
                 };
             }
         }
@@ -194,7 +194,7 @@ namespace OpenGSQ.Protocols
             return info;
         }
 
-        private List<Dictionary<string, string>> GetDictionaries(BinaryReader br)
+        private List<Dictionary<string, string>> GetDictionaries(BinaryReader br, string objectType)
         {
             var kvs = new List<Dictionary<string, string>>();
 
@@ -221,7 +221,7 @@ namespace OpenGSQ.Protocols
                     key = key.TrimEnd('t').TrimEnd('_');
 
                     // Change the key to name
-                    if (key == "player" || key == "team")
+                    if (key == objectType)
                     {
                         key = "name";
                     }
@@ -234,7 +234,7 @@ namespace OpenGSQ.Protocols
                             kvs.Add(new Dictionary<string, string>());
                         }
 
-                        kvs[i++][key] = value;
+                        kvs[i++][key] = value.Trim();
                     }
 
                     i = 0;
