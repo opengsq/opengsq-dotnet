@@ -17,8 +17,4 @@
     <ProjectReference Include="..\OpenGSQ\OpenGSQ.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Results\" />
-  </ItemGroup>
-
 </Project>
