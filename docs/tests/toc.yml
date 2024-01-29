@@ -20,8 +20,8 @@ items:
   - uid: OpenGSQ.Protocols.Tests.Doom3Tests
     name: Doom3Tests
     items:
-    - uid: OpenGSQ.Protocols.Tests.Doom3Tests.GetInfoTest
-      name: GetInfoTest
+    - uid: OpenGSQ.Protocols.Tests.Doom3Tests.GetStatusTest
+      name: GetStatusTest
   - uid: OpenGSQ.Protocols.Tests.EOSTests
     name: EOSTests
     items:

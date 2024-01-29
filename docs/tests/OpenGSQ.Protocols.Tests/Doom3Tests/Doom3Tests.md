@@ -6,4 +6,4 @@ uid: OpenGSQ.Protocols.Tests.Doom3Tests
 
 ### Test Methods
 
-[GetInfoTest](xref:OpenGSQ.Protocols.Tests.Doom3Tests.GetInfoTest)
+[GetStatusTest](xref:OpenGSQ.Protocols.Tests.Doom3Tests.GetStatusTest)

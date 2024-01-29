@@ -1,8 +1,8 @@
 ---
-uid: OpenGSQ.Protocols.Tests.Doom3Tests.GetInfoTest
+uid: OpenGSQ.Protocols.Tests.Doom3Tests.GetStatusTest
 ---
 
-# Test Method GetInfoTest
+# Test Method GetStatusTest
 
 Here are the results for the test method.
 
@@ -42,15 +42,15 @@ Here are the results for the test method.
     "si_antiLag": "1",
     "bot_enable": "1",
     "gamename": "baseETQW-1",
-    "si_campaign": "campaign_africa",
-    "si_map": "maps/island",
-    "si_campaignInfo": "2 2"
+    "si_campaign": "campaign_pacific",
+    "si_map": "maps/sewer",
+    "si_campaignInfo": "2"
   },
   "Players": [
     {
       "id": 0,
       "ping": 0,
-      "name": "CTZN Kane",
+      "name": "Boss_Tweed",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
@@ -58,7 +58,7 @@ Here are the results for the test method.
     {
       "id": 1,
       "ping": 0,
-      "name": "STFUandDIE",
+      "name": "flower.tube",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
@@ -66,13 +66,21 @@ Here are the results for the test method.
     {
       "id": 2,
       "ping": 0,
-      "name": "flower.tube",
+      "name": "STFUandDIE",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
       "id": 3,
+      "ping": 34,
+      "name": "SERG007____",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 0
+    },
+    {
+      "id": 5,
       "ping": 0,
       "name": "Gumbii",
       "clantag_pos": 0,
@@ -80,15 +88,7 @@ Here are the results for the test method.
       "typeflag": 1
     },
     {
-      "id": 4,
-      "ping": 0,
-      "name": "Vlad_Putimir",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 5,
+      "id": 6,
       "ping": 0,
       "name": "Bad Hombre",
       "clantag_pos": 0,
@@ -97,30 +97,14 @@ Here are the results for the test method.
     },
     {
       "id": 7,
-      "ping": 34,
-      "name": "Tymek",
+      "ping": 35,
+      "name": "Mic2010",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 0
     },
     {
-      "id": 9,
-      "ping": 0,
-      "name": "FannyPack",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 10,
-      "ping": 0,
-      "name": "NoobMcBoob",
-      "clantag_pos": 0,
-      "clantag": "",
-      "typeflag": 1
-    },
-    {
-      "id": 11,
+      "id": 8,
       "ping": 0,
       "name": "HaltHammerzeit",
       "clantag_pos": 0,
@@ -128,17 +112,33 @@ Here are the results for the test method.
       "typeflag": 1
     },
     {
-      "id": 13,
+      "id": 12,
       "ping": 0,
-      "name": "Boss_Tweed",
+      "name": "WAT|infected_remnants",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
     },
     {
-      "id": 14,
+      "id": 15,
       "ping": 0,
-      "name": "Kettle",
+      "name": "Vlad_Putimir",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 16,
+      "ping": 0,
+      "name": "FannyPack",
+      "clantag_pos": 0,
+      "clantag": "",
+      "typeflag": 1
+    },
+    {
+      "id": 17,
+      "ping": 0,
+      "name": "iceT-bag",
       "clantag_pos": 0,
       "clantag": "",
       "typeflag": 1
