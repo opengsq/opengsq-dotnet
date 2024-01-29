@@ -12,7 +12,7 @@ Here are the results for the test method.
     "hostname": "�l�bAvenge�6Tech",
     "gametype": "SMP",
     "map": "WaterdogPE",
-    "numplayers": "9",
+    "numplayers": "2",
     "maxplayers": "300",
     "hostport": "19132",
     "hostip": "0.0.0.0",
@@ -23,31 +23,10 @@ Here are the results for the test method.
   },
   "Players": [
     {
-      "player": "QueenGoose1"
+      "name": "IronFlam3s"
     },
     {
-      "player": "Saltykidpro"
-    },
-    {
-      "player": "XxNE0BLAZExX777"
-    },
-    {
-      "player": "SirBonji4340"
-    },
-    {
-      "player": "BeansRgodly"
-    },
-    {
-      "player": "VastRacketeer67"
-    },
-    {
-      "player": "IronFlam3s"
-    },
-    {
-      "player": "HunterDebAser"
-    },
-    {
-      "player": "Benny1of1"
+      "name": "KindDuke1085"
     }
   ],
   "Teams": []

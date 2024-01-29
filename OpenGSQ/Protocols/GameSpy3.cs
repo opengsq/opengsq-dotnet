@@ -51,10 +51,10 @@ namespace OpenGSQ.Protocols
                     Info = GetInfo(br),
 
                     // Save Status Players
-                    Players = GetPlayers(br),
+                    Players = GetDictionaries(br),
 
                     // Save Status Teams
-                    Teams = GetTeams(br)
+                    Teams = GetDictionaries(br)
                 };
             }
         }
@@ -194,122 +194,58 @@ namespace OpenGSQ.Protocols
             return info;
         }
 
-        private List<Dictionary<string, string>> GetPlayers(BinaryReader br)
+        private List<Dictionary<string, string>> GetDictionaries(BinaryReader br)
         {
-            var players = new List<Dictionary<string, string>>();
+            var kvs = new List<Dictionary<string, string>>();
 
             // Return if BaseStream is end
-            if (br.BaseStream.Position == br.BaseStream.Length)
+            if (br.IsEnd())
             {
-                return players;
+                return kvs;
             }
 
-            // Skip \x01player_\x00\x00
-            br.ReadByte();
-            string key = br.ReadStringEx().TrimEnd('_');
+            // Skip a byte
             br.ReadByte();
 
-            // Team index
+            // Player/Team index
             int i = 0;
 
-            // Loop all values and save
-            while (br.BaseStream.Position < br.BaseStream.Length)
+            while (!br.IsEnd())
             {
-                if (br.TryReadStringEx(out var value))
+                if (br.TryReadStringEx(out string key))
                 {
-                    // Add a Dictionary object if not exists
-                    if (players.Count < i + 1)
+                    // Skip \x00
+                    br.ReadByte();
+
+                    // Remove the trailing "_t"
+                    key = key.TrimEnd('t').TrimEnd('_');
+
+                    // Change the key to name
+                    if (key == "player" || key == "team")
                     {
-                        players.Add(new Dictionary<string, string>());
+                        key = "name";
                     }
 
-                    // Save the value
-                    players[i++][key] = value.Trim();
+                    while (!br.IsEnd() && br.TryReadStringEx(out string value))
+                    {
+                        // Add a Dictionary object if not exists
+                        if (kvs.Count < i + 1)
+                        {
+                            kvs.Add(new Dictionary<string, string>());
+                        }
+
+                        kvs[i++][key] = value;
+                    }
+
+                    i = 0;
                 }
                 else
                 {
-                    // Return if no player
-                    if (br.BaseStream.Position == br.BaseStream.Length)
-                    {
-                        break;
-                    }
-
-                    // Set new key
-                    if (br.TryReadStringEx(out key))
-                    {
-                        // Remove the trailing "_"
-                        key = key.TrimEnd('_');
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-                    // Reset the team index
-                    i = br.ReadByte();
+                    break;
                 }
             }
 
-            return players;
-        }
-
-        private List<Dictionary<string, string>> GetTeams(BinaryReader br)
-        {
-            var teams = new List<Dictionary<string, string>>();
-
-            // Return if BaseStream is end
-            if (br.BaseStream.Position == br.BaseStream.Length)
-            {
-                return teams;
-            }
-
-            // Skip \x00\x02team_t\x00\x00
-            br.ReadBytes(2);
-            string key = br.ReadStringEx().TrimEnd('t').TrimEnd('_');
-            br.ReadByte();
-
-            // Player index
-            int i = 0;
-
-            // Loop all values and save
-            while (br.BaseStream.Position < br.BaseStream.Length)
-            {
-                if (br.TryReadStringEx(out var value))
-                {
-                    // Add a Dictionary object if not exists
-                    if (teams.Count < i + 1)
-                    {
-                        teams.Add(new Dictionary<string, string>());
-                    }
-
-                    // Save the value
-                    teams[i++][key] = value.Trim();
-                }
-                else
-                {
-                    // Return if no team
-                    if (br.BaseStream.Position == br.BaseStream.Length)
-                    {
-                        break;
-                    }
-
-                    // Set new key
-                    if (br.TryReadStringEx(out key))
-                    {
-                        // Remove the trailing "_t"
-                        key = key.TrimEnd('t').TrimEnd('_');
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-                    // Reset the team index
-                    i = br.ReadByte();
-                }
-            }
-
-            return teams;
+            return kvs;
         }
     }
 }
