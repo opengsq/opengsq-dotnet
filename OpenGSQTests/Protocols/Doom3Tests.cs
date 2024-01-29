@@ -21,7 +21,7 @@ namespace OpenGSQ.Protocols.Tests
         [TestMethod()]
         public async Task GetInfoTest()
         {
-            SaveResult(nameof(GetInfoTest), await doom3.GetInfo());
+            SaveResult(nameof(GetInfoTest), await doom3.GetStatus());
         }
     }
 }

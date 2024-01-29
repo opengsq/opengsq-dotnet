@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using OpenGSQ.Exceptions;
+using OpenGSQ.Responses.Doom3;
 
 namespace OpenGSQ.Protocols
 {
@@ -34,13 +35,16 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Gets information from the server.
+        /// Asynchronously retrieves the status of the game server.
         /// </summary>
-        /// <param name="stripColor">Whether to strip color codes from the returned information.</param>
-        /// <returns>A dictionary containing the server information.</returns>
+        /// <param name="stripColor">A boolean indicating whether to strip color codes from the player names.</param>
+        /// <returns>A Status object containing the server information and player list.</returns>
+        /// <remarks>
+        /// This function sends a request to the game server and processes the response to extract server information and player details. If the 'stripColor' parameter is set to True, color codes in player names are removed. The function returns a Status object which includes a dictionary of server information and a list of players.
+        /// </remarks>
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected header.</exception>
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
-        public async Task<Dictionary<string, object>> GetInfo(bool stripColor = true)
+        public async Task<Status> GetStatus(bool stripColor = true)
         {
             byte[] request = new byte[] { 0xFF, 0xFF, 0x67, 0x65, 0x74, 0x49, 0x6E, 0x66, 0x6F, 0x00, 0x6F, 0x67, 0x73, 0x71, 0x00 };
             byte[] response = await UdpClient.CommunicateAsync(this, request);
@@ -60,7 +64,7 @@ namespace OpenGSQ.Protocols
                     br.BaseStream.Position -= 4;
                 }
 
-                Dictionary<string, object> info = new Dictionary<string, object>();
+                var info = new Dictionary<string, string>();
 
                 // Read protocol version
                 ushort minor = br.ReadUInt16();
@@ -89,22 +93,30 @@ namespace OpenGSQ.Protocols
 
                 long streamPosition = br.BaseStream.Position;
 
+                var players = new List<Dictionary<string, object>>();
+
                 // Try parse the fields
                 foreach (string mod in _playerFields.Keys)
                 {
                     try
                     {
-                        info["players"] = ParsePlayer(br, _playerFields[mod], stripColor);
+                        players = ParsePlayer(br, _playerFields[mod], stripColor);
                         break;
                     }
                     catch (Exception)
                     {
-                        info["players"] = new List<object>();
+                        players.Clear();
                         br.BaseStream.Position = streamPosition;
                     }
                 }
 
-                return info;
+                var status = new Status
+                {
+                    Info = info,
+                    Players = players
+                };
+
+                return status;
             }
         }
 
