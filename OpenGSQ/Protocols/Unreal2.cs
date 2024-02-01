@@ -39,12 +39,13 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Gets the details of the server.
+        /// Asynchronously retrieves the details of the server.
         /// </summary>
-        /// <returns>The details of the server.</returns>
-        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
+        /// <param name="stripColor">A boolean value indicating whether to strip color codes from the server name. Default is true.</param>
+        /// <returns>A <see cref="Task{Status}"/> representing the server status, including details such as server ID, IP, ports, server name, map name, game type, player count, max players, ping, flags, and skill level.</returns>
+        /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected DETAILS header.</exception>
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
-        public async Task<Status> GetDetails()
+        public async Task<Status> GetDetails(bool stripColor = true)
         {
             byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, DETAILS });
 
@@ -62,7 +63,7 @@ namespace OpenGSQ.Protocols
                     ServerIP = br.ReadString(),
                     GamePort = br.ReadInt32(),
                     QueryPort = br.ReadInt32(),
-                    ServerName = ReadString(br),
+                    ServerName = ReadString(br, stripColor),
                     MapName = ReadString(br),
                     GameType = ReadString(br),
                     NumPlayers = br.ReadInt32(),
@@ -159,7 +160,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="text">The input text which may contain color codes.</param>
         /// <returns>A string with color codes stripped out.</returns>
-        protected static string StripColors(string text)
+        public static string StripColor(string text)
         {
             return Regex.Replace(text, @"\x1b...|[\x00-\x1a]", "");
         }
@@ -169,7 +170,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="br">The BinaryReader to read the string from.</param>
         /// <returns>The decoded string with color codes stripped.</returns>
-        protected string ReadString(BinaryReader br)
+        protected string ReadString(BinaryReader br, bool stripColor = false)
         {
             int length = br.ReadByte();
 
@@ -186,7 +187,14 @@ namespace OpenGSQ.Protocols
                 result = Encoding.UTF8.GetString(bytes);
             }
 
-            return StripColors(result);
+            result = stripColor ? StripColor(result) : result.TrimEnd();
+
+            if (!br.IsEnd() && br.ReadByte() != 0)
+            {
+                br.BaseStream.Position -= 1;
+            }
+
+            return StripColor(result);
         }
     }
 }
