@@ -10,15 +10,15 @@ Here are the results for the test method.
 {
   "ServerId": 0,
   "ServerIP": "",
-  "GamePort": 9980,
+  "GamePort": 6969,
   "QueryPort": 0,
-  "ServerName": "Uliunai.lt|[v1065]|HOE/Suicidal/Hard|150 LvL|+6 Perks",
-  "MapName": "KF-MysteriousTrees-FIX",
-  "GameType": "MCGameType",
+  "ServerName": "The Usual Suspects TAM server DE (#rdturd)",
+  "MapName": "\u001B�@�DM-TUS-Cheops-V1",
+  "GameType": "xDeathMatch",
   "NumPlayers": 2,
-  "MaxPlayers": 15,
-  "Ping": 2,
-  "Flags": 10,
-  "Skill": ""
+  "MaxPlayers": 16,
+  "Ping": 0,
+  "Flags": 0,
+  "Skill": "0"
 }
 ```

@@ -9,45 +9,80 @@ Here are the results for the test method.
 ```json
 [
   {
-    "Id": 1673,
-    "Name": "katiadudkevich200",
-    "Ping": 40,
-    "Score": 10,
+    "Id": 679,
+    "Name": "Alyx_Howlette",
+    "Ping": 136,
+    "Score": 500,
     "StatsId": 536870912
   },
   {
-    "Id": 1350,
-    "Name": "Owl",
-    "Ping": 164,
-    "Score": 1600,
+    "Id": 597,
+    "Name": "wick",
+    "Ping": 240,
+    "Score": 570,
     "StatsId": 536870912
   },
   {
-    "Id": 1348,
-    "Name": "Beetlejuice",
-    "Ping": 44,
-    "Score": 0,
+    "Id": 596,
+    "Name": "MurDer_In_The_First_",
+    "Ping": 144,
+    "Score": 786,
     "StatsId": 536870912
   },
   {
-    "Id": 1347,
-    "Name": "call_me__ð\u009D“­ð\u009D“ªð\u009D“",
-    "Ping": 100,
-    "Score": 61,
+    "Id": 152,
+    "Name": "xoko",
+    "Ping": 28,
+    "Score": 1062,
     "StatsId": 536870912
   },
   {
-    "Id": 1345,
-    "Name": "[LTU]ASTRALAS:)P",
-    "Ping": 40,
-    "Score": 51,
+    "Id": 7,
+    "Name": "Perrito",
+    "Ping": 144,
+    "Score": 433,
     "StatsId": 536870912
   },
   {
-    "Id": 1343,
-    "Name": "Lukenzo",
+    "Id": 6,
+    "Name": "BaSS!VE",
+    "Ping": 56,
+    "Score": 441,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 5,
+    "Name": "sickboy",
+    "Ping": 52,
+    "Score": 1677,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 4,
+    "Name": "Leprosus_Rex",
+    "Ping": 76,
+    "Score": 975,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 3,
+    "Name": "Play77",
     "Ping": 48,
-    "Score": 2290,
+    "Score": 1841,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 2,
+    "Name": "Lex",
+    "Ping": 60,
+    "Score": 1785,
+    "StatsId": 536870912
+  },
+  {
+    "Id": 1,
+    "Name": "[LTU]Tadas",
+    "Ping": 16,
+    "Score": 4809,
     "StatsId": 536870912
   }
 ]

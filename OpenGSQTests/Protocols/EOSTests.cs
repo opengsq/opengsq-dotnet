@@ -56,9 +56,9 @@ namespace OpenGSQ.Protocols.Tests
             string externalAuthToken = await EOS.GetExternalAuthTokenAsync(clientId, clientSecret, externalAuthType);
             string accessToken = await EOS.GetAccessTokenAsync(clientId, clientSecret, deploymentId, grantType, externalAuthType, externalAuthToken);
 
-            EOS eos = new("34.22.135.67", 30001, deploymentId, accessToken, 5000);
+            EOS eos = new("35.226.201.18", 30111, deploymentId, accessToken, 5000);
 
-            SaveResult(nameof(GetInfoTest), await eos.GetInfo());
+            SaveResult(nameof(GetInfoPalWorldTest), await eos.GetInfo());
         }
     }
 }

@@ -8,7 +8,7 @@ namespace OpenGSQ.Protocols.Tests
     public class Quake3Tests : TestBase
     {
         // Quake3 - https://www.gametracker.com/search/et/
-        public Quake3 quake3 = new("108.61.18.110", 27960);
+        public Quake3 quake3 = new("135.148.137.185", 27960);
 
         public Quake3Tests() : base(typeof(Quake3Tests))
         {

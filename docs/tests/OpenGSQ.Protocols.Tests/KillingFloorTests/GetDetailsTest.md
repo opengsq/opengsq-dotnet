@@ -8,19 +8,19 @@ Here are the results for the test method.
 
 ```json
 {
-  "WaveCurrent": 4,
-  "WaveTotal": 10,
+  "WaveCurrent": 6647929,
+  "WaveTotal": 14,
   "ServerId": 0,
   "ServerIP": "",
   "GamePort": 7707,
   "QueryPort": 0,
-  "ServerName": "WS-GAMING.EU | NORMAL | 60LVL [#1]",
-  "MapName": "KF-MysteriousTreesV3",
-  "GameType": "UZGameType",
-  "NumPlayers": 9,
-  "MaxPlayers": 25,
-  "Ping": 0,
-  "Flags": 64,
-  "Skill": "0"
+  "ServerName": "WS-GAMING.EU | NORMAL | 60LVL [#1] (!PERK RESET!)",
+  "MapName": "",
+  "GameType": "\u001B```KF-EsperanzaII",
+  "NumPlayers": 1197102347,
+  "MaxPlayers": 1415933281,
+  "Ping": 25,
+  "Flags": 3,
+  "Skill": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000@"
 }
 ```

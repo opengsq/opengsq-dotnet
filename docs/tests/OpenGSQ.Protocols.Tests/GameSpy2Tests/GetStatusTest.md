@@ -11,7 +11,7 @@ Here are the results for the test method.
   "Info": {
     "hostname": "*Easy Prey/Death*",
     "hostport": "15567",
-    "mapname": "HUE [Choppers] -SSM-",
+    "mapname": "Hastings [Extra Vehicles] -SSM-",
     "gametype": "coop",
     "numplayers": "0",
     "maxplayers": "50",
@@ -44,7 +44,7 @@ Here are the results for the test method.
     "kickback_on_splash": "30%",
     "soldier_friendly_fire_on_splash": "100%",
     "vehicle_friendly_fire_on_splash": "100%",
-    "cpu": "3600",
+    "cpu": "3599",
     "bot_skill": "100%",
     "reservedslots": "0",
     "spectatorsallowed": "1",
@@ -58,11 +58,11 @@ Here are the results for the test method.
   "Teams": [
     {
       "team": "red",
-      "tickets": "378"
+      "tickets": "582"
     },
     {
       "team": "blue",
-      "tickets": "510"
+      "tickets": "762"
     }
   ]
 }

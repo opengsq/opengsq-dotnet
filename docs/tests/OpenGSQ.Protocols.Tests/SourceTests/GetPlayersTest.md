@@ -9,504 +9,499 @@ Here are the results for the test method.
 ```json
 [
   {
-    "Name": "grrr i hate mondeys!!!",
-    "Score": 0,
-    "Duration": 17873.773
+    "Name": "CROTCH MASTER 69",
+    "Score": 3,
+    "Duration": 19922.498
   },
   {
-    "Name": "RainTimes",
-    "Score": 24,
-    "Duration": 15609.428
-  },
-  {
-    "Name": "oyAnN",
-    "Score": 11,
-    "Duration": 13114.661
-  },
-  {
-    "Name": "FAILEDFEMBOY",
-    "Score": 8,
-    "Duration": 9966.959
-  },
-  {
-    "Name": "Nokia_Legends03",
+    "Name": "Chasing8K",
     "Score": 4,
-    "Duration": 9397.056
+    "Duration": 15187.687
   },
   {
-    "Name": "Shamus",
+    "Name": "potato_aim.exe | ㄇ.ㄉ.ㄈ.�",
     "Score": 10,
-    "Duration": 8706.402
+    "Duration": 14218.086
   },
   {
-    "Name": "SpootiS",
-    "Score": 24,
-    "Duration": 8465.168
+    "Name": "Birdiot",
+    "Score": 5,
+    "Duration": 12128.64
   },
   {
-    "Name": "beaR$",
-    "Score": 8,
-    "Duration": 7218.2607
-  },
-  {
-    "Name": "BobbyDaBear",
-    "Score": 18,
-    "Duration": 6184.1426
-  },
-  {
-    "Name": "Krazy Spray",
-    "Score": 10,
-    "Duration": 6179.9873
-  },
-  {
-    "Name": "chat",
-    "Score": 13,
-    "Duration": 6088.1943
-  },
-  {
-    "Name": "Jim Eagle",
-    "Score": 21,
-    "Duration": 5952.1895
-  },
-  {
-    "Name": "gsdf",
-    "Score": 26,
-    "Duration": 5902.5234
-  },
-  {
-    "Name": "Nitell",
-    "Score": 12,
-    "Duration": 5837.7085
-  },
-  {
-    "Name": "minecalftree",
-    "Score": 7,
-    "Duration": 5726.527
-  },
-  {
-    "Name": "Jean Pierre Polnareff (1993 OVA",
-    "Score": 7,
-    "Duration": 5238.2617
-  },
-  {
-    "Name": "doodboy",
-    "Score": 13,
-    "Duration": 5108.8247
-  },
-  {
-    "Name": "Unknown Idiot",
-    "Score": 22,
-    "Duration": 4839.969
-  },
-  {
-    "Name": "H2O | Aiii",
-    "Score": 15,
-    "Duration": 4834.854
-  },
-  {
-    "Name": "Mike1633",
-    "Score": 2,
-    "Duration": 4831.329
-  },
-  {
-    "Name": "Blue",
-    "Score": 27,
-    "Duration": 4430.5713
-  },
-  {
-    "Name": "onvars",
-    "Score": 12,
-    "Duration": 4408.476
-  },
-  {
-    "Name": "blahds",
-    "Score": 11,
-    "Duration": 4190.706
-  },
-  {
-    "Name": "correct back posture check",
-    "Score": 12,
-    "Duration": 4159.641
-  },
-  {
-    "Name": "(1)engineer gaming",
-    "Score": 19,
-    "Duration": 3856.746
-  },
-  {
-    "Name": "the medic :)",
-    "Score": 0,
-    "Duration": 3853.041
-  },
-  {
-    "Name": "Mango the fruity Paladin",
-    "Score": 6,
-    "Duration": 3510.5024
-  },
-  {
-    "Name": "Croco Sama",
-    "Score": 21,
-    "Duration": 3273.112
-  },
-  {
-    "Name": "yeehaw",
-    "Score": 12,
-    "Duration": 3075.3223
-  },
-  {
-    "Name": "doopsies",
-    "Score": 14,
-    "Duration": 2949.037
-  },
-  {
-    "Name": "Honk",
-    "Score": 8,
-    "Duration": 2906.0486
-  },
-  {
-    "Name": "Dejaboo",
+    "Name": "Morelle",
     "Score": 9,
-    "Duration": 2865.2783
+    "Duration": 10963.433
   },
   {
-    "Name": "WitchyLadyLily",
+    "Name": "el rabbit",
     "Score": 16,
-    "Duration": 2852.6978
+    "Duration": 10810.387
   },
   {
-    "Name": "esoteric Khanda Enjoyer",
-    "Score": 7,
-    "Duration": 2734.0027
-  },
-  {
-    "Name": "Larson",
-    "Score": 11,
-    "Duration": 2732.082
-  },
-  {
-    "Name": "Pečivo",
-    "Score": 11,
-    "Duration": 2680.9927
-  },
-  {
-    "Name": "Martingatica56",
-    "Score": 17,
-    "Duration": 2591.9927
-  },
-  {
-    "Name": "FriendlyCoop",
-    "Score": 8,
-    "Duration": 2520.4275
-  },
-  {
-    "Name": "Engineer Gaming",
-    "Score": 11,
-    "Duration": 2501.5461
-  },
-  {
-    "Name": "openbanana",
-    "Score": 11,
-    "Duration": 2496.4907
-  },
-  {
-    "Name": "pocheen",
-    "Score": 12,
-    "Duration": 2461.1812
-  },
-  {
-    "Name": "★RustY★",
-    "Score": 8,
-    "Duration": 2384.291
-  },
-  {
-    "Name": "Odekoe",
-    "Score": 6,
-    "Duration": 2366.6658
-  },
-  {
-    "Name": "Asbest",
-    "Score": 3,
-    "Duration": 2166.4412
-  },
-  {
-    "Name": "maksu",
-    "Score": 6,
-    "Duration": 2054.6765
-  },
-  {
-    "Name": "Kennyboy149",
-    "Score": 19,
-    "Duration": 1953.8458
-  },
-  {
-    "Name": "YARKJD",
+    "Name": "bwah",
     "Score": 2,
-    "Duration": 1860.7413
+    "Duration": 9789.581
   },
   {
-    "Name": "Donald Trump's cock and balls",
-    "Score": 0,
-    "Duration": 1850.9907
+    "Name": "Xenon_Blaze",
+    "Score": 17,
+    "Duration": 8776.714
   },
   {
-    "Name": "raputa basic 7",
-    "Score": 14,
-    "Duration": 1841.0015
-  },
-  {
-    "Name": "Cherx",
-    "Score": 4,
-    "Duration": 1838.7665
-  },
-  {
-    "Name": "Flujab13",
-    "Score": 28,
-    "Duration": 1802.7812
-  },
-  {
-    "Name": "GiantLion11",
-    "Score": 45,
-    "Duration": 1692.447
-  },
-  {
-    "Name": "Lochanside",
-    "Score": 1,
-    "Duration": 1691.1724
-  },
-  {
-    "Name": "Jag Gentlemann",
-    "Score": 6,
-    "Duration": 1652.5172
-  },
-  {
-    "Name": "Doofin",
-    "Score": 10,
-    "Duration": 1638.972
-  },
-  {
-    "Name": "Urocu",
-    "Score": 4,
-    "Duration": 1638.5671
-  },
-  {
-    "Name": "\"that\" one guy :|",
-    "Score": 1,
-    "Duration": 1611.9271
-  },
-  {
-    "Name": "Mr.Lag",
-    "Score": 3,
-    "Duration": 1609.1073
-  },
-  {
-    "Name": "ah! shit! fuck!",
-    "Score": 8,
-    "Duration": 1567.1968
-  },
-  {
-    "Name": "red seeds",
-    "Score": 11,
-    "Duration": 1502.0521
-  },
-  {
-    "Name": "Robez Harvey",
-    "Score": 12,
-    "Duration": 1305.2502
-  },
-  {
-    "Name": "Topyke",
+    "Name": "Cønker",
     "Score": 15,
-    "Duration": 1298.3053
+    "Duration": 8009.1313
   },
   {
-    "Name": "PumpkinPieTortoise",
-    "Score": 5,
-    "Duration": 1266.2797
+    "Name": "SigmaGigaMegaMale",
+    "Score": 26,
+    "Duration": 7656.9917
   },
   {
-    "Name": "ColressBp",
-    "Score": 14,
-    "Duration": 1232.6505
+    "Name": "canine defecation",
+    "Score": 2,
+    "Duration": 6967.4106
   },
   {
-    "Name": "philipjsquirrel",
-    "Score": 10,
-    "Duration": 1076.3055
+    "Name": "Baeplush",
+    "Score": 7,
+    "Duration": 6453.0195
   },
   {
-    "Name": "ShamelessSheep",
+    "Name": "5'11 pocket prince",
+    "Score": 9,
+    "Duration": 5959.336
+  },
+  {
+    "Name": "Phernandus",
+    "Score": 7,
+    "Duration": 5948.2354
+  },
+  {
+    "Name": "Laser Bean",
+    "Score": 7,
+    "Duration": 5903.7954
+  },
+  {
+    "Name": "Mr. Clean",
     "Score": 11,
-    "Duration": 1050.4153
-  },
-  {
-    "Name": "Lucky Digit",
-    "Score": 6,
-    "Duration": 1007.2135
-  },
-  {
-    "Name": "Super Chicken",
-    "Score": 5,
-    "Duration": 1001.78345
-  },
-  {
-    "Name": "jinxxedbyu2",
-    "Score": 14,
-    "Duration": 1001.01855
-  },
-  {
-    "Name": "rana sebas",
-    "Score": 19,
-    "Duration": 1000.0734
-  },
-  {
-    "Name": "Mike Litteris",
-    "Score": 5,
-    "Duration": 999.9835
-  },
-  {
-    "Name": "D34D_G04T",
-    "Score": 11,
-    "Duration": 999.69855
-  },
-  {
-    "Name": "Soggy Sesame Seed",
-    "Score": 5,
-    "Duration": 991.9434
+    "Duration": 5644.157
   },
   {
     "Name": "Ignus",
-    "Score": 16,
-    "Duration": 966.1132
+    "Score": 19,
+    "Duration": 5557.2173
   },
   {
-    "Name": "yerrrwhatupp",
-    "Score": 9,
-    "Duration": 945.0535
-  },
-  {
-    "Name": "Greggy",
-    "Score": 20,
-    "Duration": 923.9335
-  },
-  {
-    "Name": "Benji",
-    "Score": 10,
-    "Duration": 913.76337
-  },
-  {
-    "Name": "Packet",
-    "Score": 9,
-    "Duration": 911.25854
-  },
-  {
-    "Name": "T.w² | Beezwax99",
-    "Score": 27,
-    "Duration": 848.9759
-  },
-  {
-    "Name": "Asteric",
-    "Score": 12,
-    "Duration": 841.5509
-  },
-  {
-    "Name": "help",
-    "Score": 23,
-    "Duration": 823.311
-  },
-  {
-    "Name": "Dagaz",
-    "Score": 12,
-    "Duration": 753.0356
-  },
-  {
-    "Name": "Fezdalek",
-    "Score": 9,
-    "Duration": 728.9009
-  },
-  {
-    "Name": "obersuchti",
-    "Score": 2,
-    "Duration": 680.37573
-  },
-  {
-    "Name": "Stupid Sexy Flanders",
-    "Score": 8,
-    "Duration": 671.4809
-  },
-  {
-    "Name": "Virion",
-    "Score": 0,
-    "Duration": 668.631
-  },
-  {
-    "Name": "mckfly",
-    "Score": 8,
-    "Duration": 591.2459
-  },
-  {
-    "Name": "Mr_Timy",
-    "Score": 13,
-    "Duration": 536.4206
-  },
-  {
-    "Name": "Bluestar",
-    "Score": 1,
-    "Duration": 529.73083
-  },
-  {
-    "Name": "Ino",
-    "Score": 2,
-    "Duration": 527.8858
-  },
-  {
-    "Name": "Mollusk of the Deep",
-    "Score": 3,
-    "Duration": 517.5656
-  },
-  {
-    "Name": "I use Linux btw",
-    "Score": 4,
-    "Duration": 476.2709
-  },
-  {
-    "Name": "Slav_monke",
+    "Name": "Dales_yo",
     "Score": 7,
-    "Duration": 467.93054
+    "Duration": 5459.1626
   },
   {
-    "Name": "Kalivan",
+    "Name": "ShiverBorn",
+    "Score": 0,
+    "Duration": 5370.392
+  },
+  {
+    "Name": "realhedgehog2082",
+    "Score": 7,
+    "Duration": 4854.215
+  },
+  {
+    "Name": "Yautja [PAK9]",
+    "Score": 5,
+    "Duration": 4622.8247
+  },
+  {
+    "Name": "a cat",
+    "Score": 17,
+    "Duration": 4320.3086
+  },
+  {
+    "Name": "Scout",
+    "Score": 9,
+    "Duration": 4289.828
+  },
+  {
+    "Name": "DuelReality",
+    "Score": 8,
+    "Duration": 4248.8135
+  },
+  {
+    "Name": "TheEggoEffect",
     "Score": 6,
-    "Duration": 370.72372
+    "Duration": 3604.7673
   },
   {
-    "Name": "krembergs",
-    "Score": 2,
-    "Duration": 368.6543
+    "Name": "It's Me",
+    "Score": 23,
+    "Duration": 3536.8022
   },
   {
-    "Name": "Kyzous",
+    "Name": "ignorme",
+    "Score": 15,
+    "Duration": 3519.3123
+  },
+  {
+    "Name": "ᴋᴀᴏᴛɪᴄ",
+    "Score": 5,
+    "Duration": 3342.1753
+  },
+  {
+    "Name": "BlupDrup",
+    "Score": 5,
+    "Duration": 3228.9553
+  },
+  {
+    "Name": "Phoxphoric Kit-Kat",
+    "Score": 8,
+    "Duration": 3221.3352
+  },
+  {
+    "Name": "Beyond Trash",
+    "Score": 8,
+    "Duration": 3102.895
+  },
+  {
+    "Name": "freem22",
     "Score": 11,
-    "Duration": 270.01514
+    "Duration": 3067.7502
   },
   {
-    "Name": "Nil",
-    "Score": 1,
-    "Duration": 259.68015
+    "Name": "Jinx Itov",
+    "Score": 9,
+    "Duration": 3025.6453
   },
   {
-    "Name": "Scagnetti",
-    "Score": 1,
-    "Duration": 227.38039
+    "Name": "MotzuzZz",
+    "Score": 10,
+    "Duration": 2898.7002
   },
   {
-    "Name": "Namba",
+    "Name": "JonasVenture",
+    "Score": 13,
+    "Duration": 2898.4001
+  },
+  {
+    "Name": "Wolft3k",
+    "Score": 10,
+    "Duration": 2891.3052
+  },
+  {
+    "Name": "the wild 2fort goblin",
     "Score": 0,
-    "Duration": 40.425247
+    "Duration": 2803.5852
   },
   {
-    "Name": "baconguy5515",
+    "Name": "Gaouetter",
+    "Score": 7,
+    "Duration": 2720.62
+  },
+  {
+    "Name": "Joa",
+    "Score": 7,
+    "Duration": 2672.245
+  },
+  {
+    "Name": "Trobjonr",
+    "Score": 22,
+    "Duration": 2526.0254
+  },
+  {
+    "Name": "Wychlord02TTV",
+    "Score": 15,
+    "Duration": 2432.7551
+  },
+  {
+    "Name": "Ludwig II of Bavaria",
+    "Score": 11,
+    "Duration": 2210.6804
+  },
+  {
+    "Name": "modemstring",
+    "Score": 11,
+    "Duration": 2193.1604
+  },
+  {
+    "Name": "vansting5",
+    "Score": 15,
+    "Duration": 2118.655
+  },
+  {
+    "Name": "isib",
+    "Score": 12,
+    "Duration": 2099.845
+  },
+  {
+    "Name": "DeathKiller",
+    "Score": 6,
+    "Duration": 2082.6553
+  },
+  {
+    "Name": "Spectacular",
+    "Score": 4,
+    "Duration": 2051.2305
+  },
+  {
+    "Name": "edwinrestrepo2409",
+    "Score": 13,
+    "Duration": 2023.5695
+  },
+  {
+    "Name": "Piston Ash",
+    "Score": 14,
+    "Duration": 1975.3602
+  },
+  {
+    "Name": "RoseHeart",
+    "Score": 7,
+    "Duration": 1924.8401
+  },
+  {
+    "Name": "hobbs",
     "Score": 0,
-    "Duration": 33.930275
+    "Duration": 1912.4352
+  },
+  {
+    "Name": "C4r1s5a",
+    "Score": 5,
+    "Duration": 1908.7902
+  },
+  {
+    "Name": "The Guy",
+    "Score": 21,
+    "Duration": 1865.3069
+  },
+  {
+    "Name": "pyro gaming 4k ultra hd (real)",
+    "Score": 14,
+    "Duration": 1795.3
+  },
+  {
+    "Name": "Pirate",
+    "Score": 0,
+    "Duration": 1768.7759
+  },
+  {
+    "Name": "King Zarus",
+    "Score": 17,
+    "Duration": 1725.64
+  },
+  {
+    "Name": "Pan",
+    "Score": 22,
+    "Duration": 1707.0249
+  },
+  {
+    "Name": "julio.gonzales2014",
+    "Score": 6,
+    "Duration": 1625.65
+  },
+  {
+    "Name": "RichieRich!",
+    "Score": 21,
+    "Duration": 1612.5698
+  },
+  {
+    "Name": "violence :3",
+    "Score": 6,
+    "Duration": 1595.0198
+  },
+  {
+    "Name": "happy wensday! love u!",
+    "Score": 15,
+    "Duration": 1501
+  },
+  {
+    "Name": "rory438",
+    "Score": 5,
+    "Duration": 1411.165
+  },
+  {
+    "Name": "MeLeo",
+    "Score": 16,
+    "Duration": 1376.8297
+  },
+  {
+    "Name": "Atalis",
+    "Score": 20,
+    "Duration": 1335.34
+  },
+  {
+    "Name": "Invader",
+    "Score": 1,
+    "Duration": 1333.5096
+  },
+  {
+    "Name": "joe sour",
+    "Score": 19,
+    "Duration": 1291.7347
+  },
+  {
+    "Name": "Glue Connoisseur",
+    "Score": 8,
+    "Duration": 1253.0344
+  },
+  {
+    "Name": "grilledcheeseman37",
+    "Score": 8,
+    "Duration": 1246.225
+  },
+  {
+    "Name": "DubbedC",
+    "Score": 14,
+    "Duration": 1184.6648
+  },
+  {
+    "Name": "hzp",
+    "Score": 0,
+    "Duration": 1176.1134
+  },
+  {
+    "Name": "WD-40",
+    "Score": 13,
+    "Duration": 1150.5098
+  },
+  {
+    "Name": "Rixxy\uD81A\uDD10",
+    "Score": 24,
+    "Duration": 1108.8395
+  },
+  {
+    "Name": "Regult",
+    "Score": 20,
+    "Duration": 1088.995
+  },
+  {
+    "Name": "Andy (playing on a Deck)",
+    "Score": 8,
+    "Duration": 1060.4482
+  },
+  {
+    "Name": "Fabio292",
+    "Score": 0,
+    "Duration": 1058.7383
+  },
+  {
+    "Name": "Gold",
+    "Score": 12,
+    "Duration": 1046.3329
+  },
+  {
+    "Name": "Shamus",
+    "Score": 6,
+    "Duration": 1035.668
+  },
+  {
+    "Name": "Ahmed_k_",
+    "Score": 15,
+    "Duration": 1012.59814
+  },
+  {
+    "Name": "super F",
+    "Score": 3,
+    "Duration": 957.89404
+  },
+  {
+    "Name": "Borgor",
+    "Score": 6,
+    "Duration": 957.0836
+  },
+  {
+    "Name": "Porpyy",
+    "Score": 6,
+    "Duration": 940.2241
+  },
+  {
+    "Name": "is gooning the new meta",
+    "Score": 12,
+    "Duration": 930.384
+  },
+  {
+    "Name": "dog nation",
+    "Score": 2,
+    "Duration": 905.15405
+  },
+  {
+    "Name": "Fish! (with a Controller)",
+    "Score": 1,
+    "Duration": 900.38385
+  },
+  {
+    "Name": "microscopic sea creature",
+    "Score": 5,
+    "Duration": 815.03394
+  },
+  {
+    "Name": "CoochieStuffer",
+    "Score": 15,
+    "Duration": 794.919
+  },
+  {
+    "Name": "SorcererCat",
+    "Score": 5,
+    "Duration": 760.764
+  },
+  {
+    "Name": "TK",
+    "Score": 8,
+    "Duration": 740.7239
+  },
+  {
+    "Name": "Delphox",
+    "Score": 7,
+    "Duration": 615.69446
+  },
+  {
+    "Name": "Thot Tactician",
+    "Score": 10,
+    "Duration": 595.1446
+  },
+  {
+    "Name": "Erick117",
+    "Score": 1,
+    "Duration": 518.9296
+  },
+  {
+    "Name": "The Sound of Progress",
+    "Score": 7,
+    "Duration": 512.72974
+  },
+  {
+    "Name": "Monetary Policy",
+    "Score": 0,
+    "Duration": 487.725
+  },
+  {
+    "Name": "swade",
+    "Score": 7,
+    "Duration": 466.87503
+  },
+  {
+    "Name": "Dickbutt",
+    "Score": 4,
+    "Duration": 319.48486
+  },
+  {
+    "Name": "Marcofox19",
+    "Score": 1,
+    "Duration": 312.95987
+  },
+  {
+    "Name": "BearlyMasked",
+    "Score": 13,
+    "Duration": 309.05988
+  },
+  {
+    "Name": "American bird",
+    "Score": 9,
+    "Duration": 277.42502
+  },
+  {
+    "Name": "Walt Jr",
+    "Score": 6,
+    "Duration": 154.85959
   }
 ]
 ```

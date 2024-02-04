@@ -15,11 +15,10 @@ Here are the results for the test method.
     "hostname": "[BOTS] CustomTF For The People [BOTS]",
     "community": "https://discord.gg/fp9sSZ5",
     "admin/dev": "�Pulse����-",
-    "n": "26",
+    "n": "4",
     "rj": "2",
     "curse": "5",
     "deathmatch": "3",
-    "teamplay": "651?TF2.5",
     "timelimit": "50",
     "fraglimit": "500",
     "maxclients": "32",
@@ -27,88 +26,129 @@ Here are the results for the test method.
     "samelevel": "0",
     "money": "11000",
     "watervis": "0",
-    "map": "2phan"
+    "map": "dm3",
+    "teamplay": "0"
   },
   "Players": [
     {
-      "Id": 306,
-      "Score": 0,
-      "Time": 1,
+      "Id": 89,
+      "Score": -1,
+      "Time": 13,
       "Ping": 807,
-      "Name": "Data",
-      "Skin": "tf_demo",
-      "Color1": 4,
-      "Color2": 4
-    },
-    {
-      "Id": 307,
-      "Score": 0,
-      "Time": 1,
-      "Ping": 807,
-      "Name": "Vi",
-      "Skin": "tf_scout",
-      "Color1": 4,
-      "Color2": 4
-    },
-    {
-      "Id": 308,
-      "Score": 0,
-      "Time": 1,
-      "Ping": 807,
-      "Name": "Bender",
+      "Name": "Talus",
       "Skin": "tf_pyro",
-      "Color1": 13,
-      "Color2": 13
+      "Color1": 2,
+      "Color2": 11
     },
     {
-      "Id": 305,
+      "Id": 90,
       "Score": 0,
-      "Time": 1,
+      "Time": 13,
       "Ping": 807,
-      "Name": "Megatron",
-      "Skin": "tf_pyro",
-      "Color1": 13,
-      "Color2": 13
-    },
-    {
-      "Id": 309,
-      "Score": 0,
-      "Time": 1,
-      "Ping": 807,
-      "Name": "Ash",
-      "Skin": "tf_demo",
-      "Color1": 4,
+      "Name": "Max",
+      "Skin": "tf_spy",
+      "Color1": 7,
       "Color2": 4
     },
     {
-      "Id": 310,
+      "Id": 91,
       "Score": 0,
-      "Time": 1,
+      "Time": 13,
+      "Ping": 807,
+      "Name": "T-1000",
+      "Skin": "tf_sold",
+      "Color1": 3,
+      "Color2": 1
+    },
+    {
+      "Id": 92,
+      "Score": 0,
+      "Time": 13,
       "Ping": 807,
       "Name": "Nomad",
       "Skin": "tf_eng",
-      "Color1": 13,
+      "Color1": 2,
       "Color2": 13
     },
     {
-      "Id": 311,
+      "Id": 93,
       "Score": 0,
-      "Time": 1,
+      "Time": 13,
       "Ping": 807,
-      "Name": "Governator",
-      "Skin": "tf_hwguy",
+      "Name": "Bender",
+      "Skin": "tf_eng",
+      "Color1": 12,
+      "Color2": 13
+    },
+    {
+      "Id": 94,
+      "Score": 0,
+      "Time": 13,
+      "Ping": 807,
+      "Name": "Optimus Prime",
+      "Skin": "tf_pyro",
+      "Color1": 6,
+      "Color2": 7
+    },
+    {
+      "Id": 95,
+      "Score": 0,
+      "Time": 13,
+      "Ping": 807,
+      "Name": "Gort",
+      "Skin": "tf_snipe",
+      "Color1": 5,
+      "Color2": 2
+    },
+    {
+      "Id": 96,
+      "Score": 0,
+      "Time": 13,
+      "Ping": 807,
+      "Name": "Lore",
+      "Skin": "tf_pyro",
+      "Color1": 6,
+      "Color2": 12
+    },
+    {
+      "Id": 97,
+      "Score": 0,
+      "Time": 13,
+      "Ping": 807,
+      "Name": "Servo",
+      "Skin": "tf_spy",
       "Color1": 4,
       "Color2": 4
     },
     {
-      "Id": 312,
-      "Score": 0,
-      "Time": 1,
+      "Id": 98,
+      "Score": 1,
+      "Time": 13,
       "Ping": 807,
-      "Name": "Optimus Prime",
+      "Name": "R2-D2",
+      "Skin": "tf_hwguy",
+      "Color1": 9,
+      "Color2": 8
+    },
+    {
+      "Id": 99,
+      "Score": 0,
+      "Time": 13,
+      "Ping": 807,
+      "Name": "Hadaly",
       "Skin": "tf_sold",
-      "Color1": 13,
-      "Color2": 13
+      "Color1": 2,
+      "Color2": 0
+    },
+    {
+      "Id": 100,
+      "Score": 0,
+      "Time": 13,
+      "Ping": 807,
+      "Name": "Gypsy",
+      "Skin": "tf_sold",
+      "Color1": 9,
+      "Color2": 8
     }
   ]
 }

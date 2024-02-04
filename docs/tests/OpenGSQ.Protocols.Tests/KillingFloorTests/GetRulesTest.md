@@ -8,6 +8,14 @@ Here are the results for the test method.
 
 ```json
 {
+  "Mutators": [
+    "KillingFloorMut",
+    "SpecimenHPConfigMut",
+    "CleanAppIDMut",
+    "MutSlotMachine",
+    "KFShareCashMut",
+    "ServerPerksMut"
+  ],
   "ServerMode": "dedicated",
   "AdminName": "",
   "AdminEmail": "kf@ws-gaming.eu",
@@ -21,14 +29,6 @@ Here are the results for the test method.
   "Veterancy saving": "Enabled",
   "Min perk level": "0",
   "Max perk level": "60",
-  "Num trader weapons": "123",
-  "Mutators": [
-    "KillingFloorMut",
-    "SpecimenHPConfigMut",
-    "CleanAppIDMut",
-    "MutSlotMachine",
-    "KFShareCashMut",
-    "ServerPerksMut"
-  ]
+  "Num trader weapons": "123"
 }
 ```

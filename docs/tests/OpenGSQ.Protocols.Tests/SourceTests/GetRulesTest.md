@@ -67,7 +67,7 @@ Here are the results for the test method.
   "sm_afkm_version": "4.3.0",
   "sm_algobalance__version": "1.0.0-dev.17",
   "sm_autorecord_version": "1.3.0",
-  "sm_nextmap": "pl_dbz_b3",
+  "sm_nextmap": "pl_badwater",
   "sm_prof_version": "1.1",
   "sm_sourcesleuth_version": "1.8.0",
   "sm_spray_version": "1.3.8",
