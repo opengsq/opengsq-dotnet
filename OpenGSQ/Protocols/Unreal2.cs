@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -78,10 +79,11 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// Gets the rules of the server.
         /// </summary>
+        /// <param name="stripColor">A boolean value indicating whether to strip color codes. Default is true.</param>
         /// <returns>The rules of the server.</returns>
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
-        public async Task<Dictionary<string, object>> GetRules()
+        public async Task<Rules> GetRules(bool stripColor = true)
         {
             byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, RULES });
 
@@ -93,25 +95,22 @@ namespace OpenGSQ.Protocols
                 byte header = br.ReadByte();
                 InvalidPacketException.ThrowIfNotEqual(header, RULES);
 
-                var rules = new Dictionary<string, object>();
-                var mutators = new List<string>();
+                var rules = new Rules();
 
                 while (!br.IsEnd())
                 {
-                    string key = ReadString(br);
-                    string val = ReadString(br);
+                    string key = ReadString(br, stripColor);
+                    string val = ReadString(br, stripColor);
 
                     if (key.ToLower() == "mutator")
                     {
-                        mutators.Add(val);
+                        rules.Mutators.Add(val);
                     }
                     else
                     {
                         rules[key] = val;
                     }
                 }
-
-                rules["Mutators"] = mutators;
 
                 return rules;
             }
@@ -175,7 +174,7 @@ namespace OpenGSQ.Protocols
         /// </returns>
         protected string ReadString(BinaryReader br, bool stripColor = false)
         {
-            int length = br.ReadByte();
+            int length = Math.Max((byte)0, br.ReadByte());
 
             string result;
             if (length >= 128)
@@ -190,14 +189,9 @@ namespace OpenGSQ.Protocols
                 result = Encoding.UTF8.GetString(bytes);
             }
 
-            result = stripColor ? StripColor(result) : result.TrimEnd();
+            result = stripColor ? StripColor(result) : result.TrimEnd('\0');
 
-            if (!br.IsEnd() && br.ReadByte() != 0)
-            {
-                br.BaseStream.Position -= 1;
-            }
-
-            return StripColor(result);
+            return result;
         }
     }
 }

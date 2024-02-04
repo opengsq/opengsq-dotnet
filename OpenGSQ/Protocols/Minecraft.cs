@@ -35,7 +35,7 @@ namespace OpenGSQ.Protocols
         /// <param name="version">The protocol version. Default is 47.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the server status.</returns>
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
-        public async Task<Dictionary<string, object>> GetStatus(int version = 47)
+        public async Task<Dictionary<string, JsonElement>> GetStatus(int version = 47)
         {
             // Prepare the request
             var address = Encoding.UTF8.GetBytes(Host);
@@ -70,7 +70,7 @@ namespace OpenGSQ.Protocols
                     var count = UnpackVarint(br);  // json length
 
                     // The packet may respond with two json objects, so we need to get the json length exactly
-                    var data = JsonSerializer.Deserialize<Dictionary<string, object>>(Encoding.UTF8.GetString(br.ReadBytes(count)));
+                    var data = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(Encoding.UTF8.GetString(br.ReadBytes(count)));
 
                     if (data == null)
                     {

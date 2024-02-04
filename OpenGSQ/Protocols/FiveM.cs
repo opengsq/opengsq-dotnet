@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace OpenGSQ.Protocols
 {
@@ -41,27 +42,27 @@ namespace OpenGSQ.Protocols
         /// Asynchronously gets information about the server.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the server information.</returns>
-        public Task<Dictionary<string, object>> GetInfo()
+        public Task<Dictionary<string, JsonElement>> GetInfo()
         {
-            return GetAsync<Dictionary<string, object>>("info");
+            return GetAsync<Dictionary<string, JsonElement>>("info");
         }
 
         /// <summary>
         /// Asynchronously gets the list of players from the server.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the list of players.</returns>
-        public Task<List<object>> GetPlayers()
+        public Task<List<JsonElement>> GetPlayers()
         {
-            return GetAsync<List<object>>("players");
+            return GetAsync<List<JsonElement>>("players");
         }
 
         /// <summary>
         /// Asynchronously gets dynamic information from the server.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains the dynamic information.</returns>
-        public Task<Dictionary<string, object>> GetDynamic()
+        public Task<Dictionary<string, JsonElement>> GetDynamic()
         {
-            return GetAsync<Dictionary<string, object>>("dynamic");
+            return GetAsync<Dictionary<string, JsonElement>>("dynamic");
         }
     }
 }

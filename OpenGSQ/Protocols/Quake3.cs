@@ -49,7 +49,7 @@ namespace OpenGSQ.Protocols
                 {
                     if (info.ContainsKey("hostname"))
                     {
-                        info["hostname"] = StripColors(info["hostname"]);
+                        info["hostname"] = StripColor(info["hostname"]);
                     }
                 }
 
@@ -78,14 +78,14 @@ namespace OpenGSQ.Protocols
                 {
                     if (status.Info.ContainsKey("sv_hostname"))
                     {
-                        status.Info["sv_hostname"] = StripColors(status.Info["sv_hostname"]);
+                        status.Info["sv_hostname"] = StripColor(status.Info["sv_hostname"]);
                     }
 
                     foreach (var player in status.Players)
                     {
                         if (player.Name != null)
                         {
-                            player.Name = StripColors(player.Name);
+                            player.Name = StripColor(player.Name);
                         }
                     }
                 }
@@ -99,7 +99,7 @@ namespace OpenGSQ.Protocols
         /// </summary>
         /// <param name="text">The text to remove color codes from.</param>
         /// <returns>The text with color codes removed.</returns>
-        public static string StripColors(string text)
+        public static string StripColor(string text)
         {
             return new Regex("\\^(X.{6}|.)").Replace(text, string.Empty);
         }

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Linq;
 using OpenGSQ.Responses.EOS;
 using OpenGSQ.Exceptions;
 
@@ -188,10 +187,9 @@ namespace OpenGSQ.Protocols
         /// </returns>
         /// <exception cref="ServerNotFoundException">Thrown when the server is not found.</exception>
         /// <exception cref="AuthenticationException">Thrown when there is a failure in getting the access token.</exception>
-        public async Task<Dictionary<string, object>> GetInfo()
+        public async Task<Dictionary<string, JsonElement>> GetInfo()
         {
             string address = await GetIPAddress();
-            string addressBoundPort = $":{Port}";
 
             var data = await GetMatchmakingAsync(_deploymentId, _accessToken, new Dictionary<string, object>
             {
@@ -202,23 +200,33 @@ namespace OpenGSQ.Protocols
                             { "key", "attributes.ADDRESS_s" },
                             { "op", "EQUAL" },
                             { "value", address }
-                        },
-                        new Dictionary<string, object>
-                        {
-                            { "key", "attributes.ADDRESSBOUND_s" },
-                            { "op", "CONTAINS" },
-                            { "value", addressBoundPort }
-                        },
+                        }
                     }
                 }
             });
 
-            if (data.Count <= 0)
+            foreach (var session in data.Sessions)
             {
-                throw new ServerNotFoundException($"Server with address {address} and port {Port} was not found.");
+                var attributes = session["attributes"];
+
+                if (attributes.TryGetProperty("ADDRESSBOUND_s", out var element))
+                {
+                    if (element.GetString()?.EndsWith($":{Port}") == true)
+                    {
+                        return session;
+                    }
+                }
+
+                if (attributes.TryGetProperty("GAMESERVER_PORT_l", out element))
+                {
+                    if (element.GetInt64() == Port)
+                    {
+                        return session;
+                    }
+                }
             }
 
-            return data.Sessions.First();
+            throw new ServerNotFoundException($"Server with address {address} and port {Port} was not found.");
         }
     }
 }
