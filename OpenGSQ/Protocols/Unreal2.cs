@@ -166,10 +166,13 @@ namespace OpenGSQ.Protocols
         }
 
         /// <summary>
-        /// Reads a string from a BinaryReader, decodes it, and strips color codes.
+        /// Reads a string from a binary reader.
         /// </summary>
-        /// <param name="br">The BinaryReader to read the string from.</param>
-        /// <returns>The decoded string with color codes stripped.</returns>
+        /// <param name="br">The binary reader to read the string from.</param>
+        /// <param name="stripColor">Optional parameter. If set to true, color information will be stripped from the string. Default is false.</param>
+        /// <returns>
+        /// The string read from the binary reader. If 'stripColor' is true, the returned string will have color information stripped.
+        /// </returns>
         protected string ReadString(BinaryReader br, bool stripColor = false)
         {
             int length = br.ReadByte();
