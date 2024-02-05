@@ -27,7 +27,7 @@ namespace OpenGSQ.Responses.Unreal2
         /// <returns>The value associated with the specified key.</returns>
         public string this[string key]
         {
-            get { return Data[key].ToString(); }
+            get { return Data[key].ToString() ?? string.Empty; }
             set { Data[key] = value.ToString(); }
         }
     }
