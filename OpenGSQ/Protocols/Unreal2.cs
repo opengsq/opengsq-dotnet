@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -64,14 +65,14 @@ namespace OpenGSQ.Protocols
                     ServerIP = br.ReadString(),
                     GamePort = br.ReadInt32(),
                     QueryPort = br.ReadInt32(),
-                    ServerName = ReadString(br, stripColor),
-                    MapName = ReadString(br),
-                    GameType = ReadString(br),
+                    ServerName = ReadNullString(br, stripColor),
+                    MapName = ReadNullString(br, stripColor),
+                    GameType = ReadUnreal2String(br, stripColor),
                     NumPlayers = br.ReadInt32(),
                     MaxPlayers = br.ReadInt32(),
                     Ping = br.ReadInt32(),
                     Flags = br.ReadInt32(),
-                    Skill = ReadString(br)
+                    Skill = ReadUnreal2String(br, stripColor)
                 };
             }
         }
@@ -99,8 +100,8 @@ namespace OpenGSQ.Protocols
 
                 while (!br.IsEnd())
                 {
-                    string key = ReadString(br, stripColor);
-                    string val = ReadString(br, stripColor);
+                    string key = ReadUnreal2String(br, stripColor);
+                    string val = ReadUnreal2String(br, stripColor);
 
                     if (key.ToLower() == "mutator")
                     {
@@ -119,10 +120,11 @@ namespace OpenGSQ.Protocols
         /// <summary>
         /// Gets the players of the server.
         /// </summary>
+        /// <param name="stripColor">A boolean value indicating whether to strip color codes. Default is true.</param>
         /// <returns>A list of players of the server.</returns>
         /// <exception cref="InvalidPacketException">Thrown when the packet header does not match the expected value.</exception>
         /// <exception cref="TimeoutException">Thrown when the operation times out.</exception>
-        public async Task<List<Player>> GetPlayers()
+        public async Task<List<Player>> GetPlayers(bool stripColor = true)
         {
             byte[] response = await UdpClient.CommunicateAsync(this, new byte[] { 0x79, 0x00, 0x00, 0x00, PLAYERS });
 
@@ -141,7 +143,7 @@ namespace OpenGSQ.Protocols
                     var player = new Player
                     {
                         Id = br.ReadInt32(),
-                        Name = ReadString(br),
+                        Name = ReadUnreal2String(br, stripColor),
                         Ping = br.ReadInt32(),
                         Score = br.ReadInt32(),
                         StatsId = br.ReadInt32()
@@ -172,24 +174,41 @@ namespace OpenGSQ.Protocols
         /// <returns>
         /// The string read from the binary reader. If 'stripColor' is true, the returned string will have color information stripped.
         /// </returns>
-        protected string ReadString(BinaryReader br, bool stripColor = false)
+        protected string ReadUnreal2String(BinaryReader br, bool stripColor)
         {
-            int length = Math.Max((byte)0, br.ReadByte());
+            int length = br.ReadByte();
 
             string result;
             if (length >= 128)
             {
                 length = (length & 0x7f) * 2;
-                byte[] bytes = br.ReadBytes(length);
+                var bytes = br.ReadBytes(length).Where(b => b != 0xff && b != 0x00).ToArray();
                 result = Encoding.Unicode.GetString(bytes);
             }
             else
             {
-                byte[] bytes = br.ReadBytes(length);
+                var bytes = br.ReadBytes(length).Where(b => b != 0xff && b != 0x00).ToArray();
                 result = Encoding.UTF8.GetString(bytes);
             }
 
-            result = stripColor ? StripColor(result) : result.TrimEnd('\0');
+            result = stripColor ? StripColor(result) : result;
+
+            return result.Trim();
+        }
+
+        /// <summary>
+        /// Reads a string from a binary stream, optionally stripping color information.
+        /// </summary>
+        /// <param name="br">The BinaryReader to read the string from.</param>
+        /// <param name="stripColor">Optional parameter. If true, color information is stripped from the string.</param>
+        /// <returns>The string read from the binary stream, with color information stripped if stripColor is true.</returns>
+        protected string ReadNullString(BinaryReader br, bool stripColor = false)
+        {
+            br.ReadByte(); // Skip the length
+
+            string result = br.ReadStringEx();
+
+            result = stripColor ? StripColor(result) : result;
 
             return result;
         }

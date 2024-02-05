@@ -7,7 +7,7 @@ namespace OpenGSQ.Protocols.Tests
     [TestClass()]
     public class KillingFloorTests : TestBase
     {
-        public KillingFloor killingFloor = new("185.80.128.168", 7708);
+        public KillingFloor killingFloor = new("normal.ws-gaming.eu", 7708);
 
         public KillingFloorTests() : base(typeof(KillingFloorTests))
         {

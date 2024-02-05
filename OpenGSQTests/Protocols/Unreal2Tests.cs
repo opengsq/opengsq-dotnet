@@ -7,7 +7,7 @@ namespace OpenGSQ.Protocols.Tests
     [TestClass()]
     public class Unreal2Tests : TestBase
     {
-        public Unreal2 unreal2 = new("109.230.224.189", 6970);
+        public Unreal2 unreal2 = new("80.4.151.145", 7778);
 
         public Unreal2Tests() : base(typeof(Unreal2Tests))
         {

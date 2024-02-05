@@ -9,80 +9,73 @@ Here are the results for the test method.
 ```json
 [
   {
-    "Id": 679,
-    "Name": "Alyx_Howlette",
-    "Ping": 136,
+    "Id": 1529,
+    "Name": "Specas",
+    "Ping": 68,
     "Score": 500,
     "StatsId": 536870912
   },
   {
-    "Id": 597,
-    "Name": "wick",
-    "Ping": 240,
-    "Score": 570,
+    "Id": 1434,
+    "Name": "Jorji",
+    "Ping": 92,
+    "Score": 833,
     "StatsId": 536870912
   },
   {
-    "Id": 596,
-    "Name": "MurDer_In_The_First_",
-    "Ping": 144,
-    "Score": 786,
+    "Id": 879,
+    "Name": "Warrior",
+    "Ping": 168,
+    "Score": 707,
     "StatsId": 536870912
   },
   {
-    "Id": 152,
-    "Name": "xoko",
-    "Ping": 28,
-    "Score": 1062,
+    "Id": 700,
+    "Name": "Kroman",
+    "Ping": 68,
+    "Score": 2347,
     "StatsId": 536870912
   },
   {
-    "Id": 7,
-    "Name": "Perrito",
-    "Ping": 144,
-    "Score": 433,
+    "Id": 8,
+    "Name": "S.L",
+    "Ping": 40,
+    "Score": 1492,
     "StatsId": 536870912
   },
   {
     "Id": 6,
-    "Name": "BaSS!VE",
-    "Ping": 56,
-    "Score": 441,
+    "Name": "KAKTUSAS",
+    "Ping": 24,
+    "Score": 913,
     "StatsId": 536870912
   },
   {
     "Id": 5,
-    "Name": "sickboy",
-    "Ping": 52,
-    "Score": 1677,
+    "Name": "hdsee",
+    "Ping": 168,
+    "Score": 1739,
     "StatsId": 536870912
   },
   {
     "Id": 4,
-    "Name": "Leprosus_Rex",
-    "Ping": 76,
-    "Score": 975,
+    "Name": "[LTU]ASTRALAS:)P",
+    "Ping": 56,
+    "Score": 2104,
     "StatsId": 536870912
   },
   {
     "Id": 3,
-    "Name": "Play77",
-    "Ping": 48,
-    "Score": 1841,
-    "StatsId": 536870912
-  },
-  {
-    "Id": 2,
-    "Name": "Lex",
-    "Ping": 60,
-    "Score": 1785,
+    "Name": "[kor]memberst",
+    "Ping": 168,
+    "Score": 1101,
     "StatsId": 536870912
   },
   {
     "Id": 1,
-    "Name": "[LTU]Tadas",
-    "Ping": 16,
-    "Score": 4809,
+    "Name": "WhyYouStalk",
+    "Ping": 44,
+    "Score": 2239,
     "StatsId": 536870912
   }
 ]

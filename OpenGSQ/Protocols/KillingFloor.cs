@@ -45,16 +45,16 @@ namespace OpenGSQ.Protocols
                     ServerIP = br.ReadString(),
                     GamePort = br.ReadInt32(),
                     QueryPort = br.ReadInt32(),
-                    ServerName = ReadString(br, stripColor),
-                    MapName = ReadString(br),
-                    GameType = ReadString(br),
+                    ServerName = ReadNullString(br, stripColor),
+                    MapName = ReadNullString(br, stripColor),
+                    GameType = ReadUnreal2String(br, stripColor),
                     NumPlayers = br.ReadInt32(),
                     MaxPlayers = br.ReadInt32(),
                     WaveCurrent = br.ReadInt32(),
                     WaveTotal = br.ReadInt32(),
                     Ping = br.ReadInt32(),
                     Flags = br.ReadInt32(),
-                    Skill = ReadString(br)
+                    Skill = ReadUnreal2String(br, stripColor)
                 };
             }
         }
