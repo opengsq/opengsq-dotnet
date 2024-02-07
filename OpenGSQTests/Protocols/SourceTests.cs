@@ -10,6 +10,9 @@ namespace OpenGSQ.Protocols.Tests
         // TF2
         public Source source = new("45.62.160.71", 27015);
 
+        // Compressed response
+        // public Source source = new("146.19.87.161", 27015);
+
         // The Ship
         // public Source source = new Source("5.79.86.193", 27021);
 
