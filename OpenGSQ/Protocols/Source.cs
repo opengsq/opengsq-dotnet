@@ -291,7 +291,8 @@ namespace OpenGSQ.Protocols
         private async Task<byte[]> Receive(System.Net.Sockets.UdpClient udpClient)
         {
             bool isCompressed;
-            int totalPackets = -1, crc32Sum = 0;
+            int totalPackets = -1;
+            long crc32Sum = 0;
             var payloads = new SortedDictionary<int, byte[]>();
             var packets = new List<byte[]>();
 
@@ -313,7 +314,7 @@ namespace OpenGSQ.Protocols
 
                     // Packet id
                     int id = br.ReadInt32();
-                    isCompressed = id < 0;
+                    isCompressed = (id & 0x80000000) != 0;
 
                     // Check is GoldSource multi-packet response format
                     if (IsGoldSourceSplit(response, (int)br.BaseStream.Position))
@@ -328,16 +329,18 @@ namespace OpenGSQ.Protocols
                     // The number of the packet
                     int number = br.ReadByte();
 
-                    // Packet size
-                    br.ReadUInt16();
-
                     if (number == 0 && isCompressed)
                     {
                         // Decompressed size
                         br.ReadInt32();
 
                         // CRC32 sum
-                        crc32Sum = br.ReadInt32();
+                        crc32Sum = br.ReadUInt32();
+                    }
+                    else
+                    {
+                        // Packet size
+                        br.ReadUInt16();
                     }
 
                     payloads.Add(number, response.Skip((int)br.BaseStream.Position).ToArray());
