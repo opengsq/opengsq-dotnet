@@ -81,8 +81,8 @@ namespace OpenGSQ.Protocols
                         Players = br.ReadByte(),
                         MaxPlayers = br.ReadByte(),
                         Bots = br.ReadByte(),
-                        ServerType = (ServerType)br.ReadByte(),
-                        Environment = GetEnvironment(br.ReadByte()),
+                        ServerType = ParseServerType(br.ReadByte()),
+                        Environment = ParseEnvironment(br.ReadByte()),
                         Visibility = (Visibility)br.ReadByte(),
                         VAC = (VAC)br.ReadByte()
                     };
@@ -143,8 +143,8 @@ namespace OpenGSQ.Protocols
                         Players = br.ReadByte(),
                         MaxPlayers = br.ReadByte(),
                         Protocol = br.ReadByte(),
-                        ServerType = (ServerType)char.ToLower(Convert.ToChar(br.ReadByte())),
-                        Environment = (Environment)char.ToLower(Convert.ToChar(br.ReadByte())),
+                        ServerType = ParseServerType(br.ReadByte()),
+                        Environment = ParseEnvironment(br.ReadByte()),
                         Visibility = (Visibility)br.ReadByte(),
                         Mod = br.ReadByte()
                     };
@@ -418,9 +418,16 @@ namespace OpenGSQ.Protocols
             return combinedPayload.Skip(4).ToArray();
         }
 
-        private Environment GetEnvironment(byte environmentByte)
+        private ServerType ParseServerType(byte b)
         {
-            switch (environmentByte)
+            return (ServerType)Convert.ToByte(char.ToLower(Convert.ToChar(b)));
+        }
+
+        private Environment ParseEnvironment(byte b)
+        {
+            b = Convert.ToByte(char.ToLower(Convert.ToChar(b)));
+
+            switch (b)
             {
                 case (byte)Environment.Linux:
                     return Environment.Linux;
