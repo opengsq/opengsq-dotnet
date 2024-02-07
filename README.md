@@ -55,3 +55,7 @@ class Program
 ## Tests and Results
 
 You can find information about tests and results at [https://dotnet.opengsq.com/tests](https://dotnet.opengsq.com/tests/OpenGSQ.Protocols.Tests/OpenGSQ.Protocols.Tests.html).
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/opengsq/opengsq-dotnet.svg?variant=adaptive)](https://starchart.cc/opengsq/opengsq-dotnet)
