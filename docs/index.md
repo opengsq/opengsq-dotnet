@@ -7,7 +7,7 @@ While non-specialists are enabled to use this library for query game servers fas
 
 [![Dotnet Package](https://github.com/opengsq/opengsq-dotnet/actions/workflows/dotnet-package.yml/badge.svg)](https://github.com/opengsq/opengsq-dotnet/actions/workflows/dotnet-package.yml)
 [![GitHub license](https://img.shields.io/github/license/opengsq/opengsq-dotnet)](https://github.com/opengsq/opengsq-dotnet/blob/main/LICENSE)
-[![NuGet Version](http://img.shields.io/nuget/v/OpenGSQ.svg?style=flat)](https://www.nuget.org/packages/OpenGSQ/)
+[![NuGet Version](https://img.shields.io/nuget/v/OpenGSQ.svg?style=flat)](https://www.nuget.org/packages/OpenGSQ/)
 ![NuGet Downloads](https://img.shields.io/nuget/dt/OpenGSQ)
 
 The OpenGSQ .NET library provides a convenient way to query servers from applications written in the C# language.
