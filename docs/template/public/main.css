@@ -1,5 +1,17 @@
-/* Checkout https://getbootstrap.com/docs/5.3/customize/color/ for more customization options */
+/*
+    For more customization options, visit:
+    https://getbootstrap.com/docs/5.3/customize/color/
+*/
 body {
     --bs-link-color-rgb: 235, 69, 158 !important;
     --bs-link-hover-color-rgb: 211, 62, 142 !important;
+}
+
+/*
+    The z-index for the selectors '@media (min-width: 768px) body>header' and 'body[data-layout=landing]>header' is set to 1030.
+    To ensure that the '.DocSearch-Container' appears above these elements, its z-index is set to a higher value (1040).
+    The '!important' rule is used to override any other conflicting declarations.
+*/
+.DocSearch-Container {
+    z-index: 1040 !important;
 }
