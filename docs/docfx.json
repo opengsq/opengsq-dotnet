@@ -50,7 +50,7 @@
         "container": "#docsearch",
         "appId": "KWL1XULD5J",
         "apiKey": "102640797dc889088bb60007dfe7ddf9",
-        "indexName": "docsearch"
+        "indexName": "dotnet-opengsq"
       },
       "_appLogoPath": "images/logo.png",
       "_appFaviconPath": "images/favicon.ico",
