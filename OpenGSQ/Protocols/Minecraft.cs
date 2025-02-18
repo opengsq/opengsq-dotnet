@@ -54,10 +54,14 @@ namespace OpenGSQ.Protocols
                 using (var br = new BinaryReader(new MemoryStream(response)))
                 {
                     var length = UnpackVarint(br);
+                    var startDateTime = DateTime.Now;
 
                     // Keep receiving until reach packet length
                     while (response.Length < length)
                     {
+                        if ((DateTime.Now - startDateTime).TotalMilliseconds > Timeout)
+                            throw new Exceptions.TimeoutException("The server read has timed out.");
+
                         response = response.Concat(await tcpClient.ReceiveAsync()).ToArray();
                     }
                 }
@@ -69,8 +73,12 @@ namespace OpenGSQ.Protocols
                     UnpackVarint(br);  // packet id
                     var count = UnpackVarint(br);  // json length
 
+                    var settings = new JsonSerializerOptions
+                    {
+                        MaxDepth = 128 // Increased limit to handle deeply nested JSON
+                    };
                     // The packet may respond with two json objects, so we need to get the json length exactly
-                    var data = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(Encoding.UTF8.GetString(br.ReadBytes(count)));
+                    var data = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(Encoding.UTF8.GetString(br.ReadBytes(count)), settings);
 
                     if (data == null)
                     {

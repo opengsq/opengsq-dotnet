@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using OpenGSQ.Responses.Battlefield;
 using OpenGSQ.Exceptions;
+using System.Globalization;
 
 namespace OpenGSQ.Protocols
 {
@@ -56,7 +57,7 @@ namespace OpenGSQ.Protocols
 
             for (int i = 0; i < numTeams; i++)
             {
-                info.Teams.Add(float.Parse(data.Pop()));
+                info.Teams.Add(float.Parse(data.Pop(), CultureInfo.InvariantCulture));
             }
 
             info.TargetScore = int.Parse(data.Pop());
