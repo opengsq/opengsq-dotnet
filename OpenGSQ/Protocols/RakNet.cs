@@ -3,6 +3,8 @@ using System.Linq;
 using System.IO;
 using OpenGSQ.Responses.RakNet;
 using OpenGSQ.Exceptions;
+using System.Buffers.Binary;
+using System.Text;
 
 namespace OpenGSQ.Protocols
 {
@@ -49,25 +51,35 @@ namespace OpenGSQ.Protocols
                 var magic = br.ReadBytes(OFFLINE_MESSAGE_DATA_ID.Length);
                 InvalidPacketException.ThrowIfNotEqual(magic, OFFLINE_MESSAGE_DATA_ID);
 
-                br.ReadInt16();  // skip remaining packet length
+                int length = BinaryPrimitives.ReverseEndianness(br.ReadUInt16());
+                string[] splittedData = Encoding.UTF8.GetString(br.ReadBytes(length)).Split(';');
 
-                byte[] delimiter = { (byte)';' };
-
-                return new Status
+                var status = new Status
                 {
-                    Edition = br.ReadStringEx(delimiter),
-                    MotdLine1 = br.ReadStringEx(delimiter),
-                    ProtocolVersion = int.Parse(br.ReadStringEx(delimiter)),
-                    VersionName = br.ReadStringEx(delimiter),
-                    NumPlayers = int.Parse(br.ReadStringEx(delimiter)),
-                    MaxPlayers = int.Parse(br.ReadStringEx(delimiter)),
-                    ServerUniqueId = br.ReadStringEx(delimiter),
-                    MotdLine2 = br.ReadStringEx(delimiter),
-                    GameMode = br.ReadStringEx(delimiter),
-                    GameModeNumeric = int.Parse(br.ReadStringEx(delimiter)),
-                    PortIPv4 = int.Parse(br.ReadStringEx(delimiter)),
-                    PortIPv6 = int.Parse(br.ReadStringEx(delimiter))
+                    Edition = splittedData[0],
+                    MotdLine1 = splittedData[1],
+                    VersionName = splittedData[3],
+                    NumPlayers = int.Parse(splittedData[4]),
+                    MaxPlayers = int.Parse(splittedData[5]),
                 };
+
+                status.ProtocolVersion = int.TryParse(splittedData[2], out int ProtocolVersionResult) ? ProtocolVersionResult : 0;
+
+                try
+                {
+                    status.ServerUniqueId = splittedData[6];
+                    status.MotdLine2 = splittedData[7];
+                    status.GameMode = splittedData[8];
+                    status.GameModeNumeric = int.TryParse(splittedData[9], out int GameModeNumericResult) ? GameModeNumericResult : 0;
+                    status.PortIPv4 = int.Parse(splittedData[10]);
+                    status.PortIPv6 = int.Parse(splittedData[11]);
+                }
+                catch
+                {
+                    // pass
+                }
+
+                return status;
             }
         }
     }
